@@ -34,11 +34,19 @@
                         type="button"
                         class="btn btn-primary my-2"
                         data-toggle="modal"
-                        data-target="#exampleModalCenter"
+                        data-target="#ModalCenter"
                         onclick="fillTBoxes(null)"
-                        style="position: absolute; right: 550px; height: 50px"
+                        style="
+                            position: fixed;
+                            bottom: 30px;
+                            right: 30px;
+                            height: 70px;
+                            width: 70px;
+                            border-radius: 70px;
+                            font-size: 31px;
+                        "
                     >
-                        Add New Book
+                        +
                     </button>
                 </thead>
                 <tbody id="tbody"></tbody>
@@ -47,18 +55,16 @@
         <!-- Edit and Add book Popup -->
         <div
             class="modal fade"
-            id="exampleModalCenter"
+            id="ModalCenter"
             tabindex="-1"
             role="dialog"
-            aria-labelledby="exampleModalCenterTitle"
+            aria-labelledby="ModalTitle"
             aria-hidden="true"
         >
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">
-                            Add Book
-                        </h5>
+                        <h5 class="modal-title" id="ModalTitle">Add A Book</h5>
                         <button
                             type="button"
                             class="close"
@@ -101,6 +107,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Edit Book Popup -->
     </body>
 </html>
@@ -130,8 +137,8 @@
         get,
         onValue,
     } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
-    import { firebaseConfig } from "../keys.js";
 
+    import { firebaseConfig } from "../keys.js";
     let number = 0; // Index for table
     let tbody = document.getElementById("tbody");
     let bookList = []; // So that the edit book popup can get the info
@@ -165,7 +172,7 @@
         td3.innerHTML = genre;
         td4.innerHTML = inventory;
         td5.innerHTML = inventoryWanted;
-        td6.innerHTML = price;
+        td6.innerHTML = "$" + price;
 
         tableRow.appendChild(td1);
         tableRow.appendChild(td2);
@@ -180,6 +187,10 @@
         btn.classList.add("btn");
         btn.classList.add("btn-primary");
         btn.classList.add("my-2");
+        btn.classList.add("container");
+        btn.classList.add("mt-3");
+        btn.classList.add("table");
+        btn.style="position: relative; up:30px;"
         btn.id = "btn" + number;
 
         btn.onclick = function () {
@@ -217,7 +228,9 @@
             priceMod.value = bookList[index][5];
         }
 
-        $("#exampleModalCenter").modal("show"); // Bring up the popup
+        let popupTitle = document.getElementById("ModalTitle");
+        popupTitle.innerHTML = "Edit This Book";
+        $("#ModalCenter").modal("show"); // Bring up the popup
     }
 
     async function addToTable(book) {
