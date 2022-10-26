@@ -224,6 +224,14 @@
     let bookIndex;
     async function fillTBoxes(index) {
         if (index != null) bookIndex = index.replace("btn", ""); // The books id is set to its index in the table so we have to remove btn
+        try {
+            let test =
+                bookIndex == -1 ||
+                bookList[bookIndex][0] == undefined ||
+                bookIndex == null;
+        } catch {
+            return;
+        }
         if (
             bookIndex == -1 ||
             bookList[bookIndex][0] == undefined ||
@@ -285,8 +293,15 @@
     };
 
     async function getDataRealTime() {
+        number = 0;
+        tbody.innerHTML = "";
+        books = [];
+
         const dbRef = ref(db, "/");
         await onValue(dbRef, (snapshot) => {
+            number = 0;
+            tbody.innerHTML = "";
+            books = [];
             snapshot.forEach((childSnapshot) => {
                 books.push(childSnapshot.val());
             });
@@ -295,7 +310,7 @@
     }
 
     async function addBook() {
-        set(ref(db, "/" + 275), {
+        set(ref(db, "/" + books.length + 1), {
             Title: titleMod.value,
             Genre: genreMod.value,
             Inventory: inventoryMod.value,
@@ -304,9 +319,11 @@
         })
             .then(() => {
                 console.log("Book Added Successfully");
+                $("#ModalCenter").modal("hide");
             })
             .catch((error) => {
                 console.log("Book failed to add");
+                $("#ModalCenter").modal("hide");
             });
     }
 
@@ -320,12 +337,14 @@
         })
             .then(() => {
                 console.log("Book Added Successfully");
+
+                $("#ModalCenter").modal("hide");
             })
             .catch((error) => {
                 console.log("Book failed to add");
+
+                $("#ModalCenter").modal("hide");
             });
-        getDataRealTime();
-        $("#ModalCenter").modal("hide");
     }
     window.onload = await getDataRealTime();
 </script>
