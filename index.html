@@ -140,6 +140,20 @@
     let tbody = document.getElementById("tbody");
     let table = document.getElementById("table");
     let bookList = []; // So that the edit book popup can get the info
+    let bookIndex; // So that the edit book popup can get the info
+    let numOfBooks = 0;
+
+    // All these are for the info to be passed into the edit book popup
+    let titleMod = document.getElementById("TitleMod");
+    let genreMod = document.getElementById("GenreMod");
+    let inventoryMod = document.getElementById("InventoryMod");
+    let inventoryWantedMod = document.getElementById("InventoryWantedMod");
+    let priceMod = document.getElementById("PriceMod");
+    let popupTitle = document.getElementById("ModalTitle");
+
+    let addModButton = document.getElementById("AddModButton");
+    let editModButton = document.getElementById("EditModButton");
+    let addBookButton = document.getElementById("AddBookButton");
 
     async function addItemToTable(
         title,
@@ -165,6 +179,7 @@
             inventoryWanted,
             price,
         ]);
+
         td1.innerHTML = number;
         td2.innerHTML = title;
         td3.innerHTML = genre;
@@ -196,18 +211,6 @@
         tbody.appendChild(tableRow);
     }
 
-    // All these are for the info to be passed into the edit book popup
-    let titleMod = document.getElementById("TitleMod");
-    let genreMod = document.getElementById("GenreMod");
-    let inventoryMod = document.getElementById("InventoryMod");
-    let inventoryWantedMod = document.getElementById("InventoryWantedMod");
-    let priceMod = document.getElementById("PriceMod");
-    let popupTitle = document.getElementById("ModalTitle");
-
-    let addModButton = document.getElementById("AddModButton");
-    let editModButton = document.getElementById("EditModButton");
-    let addBookButton = document.getElementById("AddBookButton");
-
     addModButton.onclick = function () {
         // Blegh
         addBook();
@@ -221,7 +224,6 @@
         fillTBoxes("btn-1");
     };
 
-    let bookIndex;
     async function fillTBoxes(index) {
         if (index != null) bookIndex = index.replace("btn", ""); // The books id is set to its index in the table so we have to remove btn
         try {
@@ -281,17 +283,6 @@
     const db = getDatabase();
     let books = [];
 
-    let bookEx = {
-        AmazonLink: "",
-        Genre: "Laugh",
-        Inventory: 1,
-        InventoryWanted: 3,
-        Price: 6.99,
-        SubGenre: "C-Laugh/Cartoon (Red)",
-        Timestamp: "10/16/2022 15:40:37",
-        Title: "1, 2, 3… By the sea",
-    };
-
     async function getDataRealTime() {
         number = 0;
         tbody.innerHTML = "";
@@ -303,6 +294,7 @@
             tbody.innerHTML = "";
             books = [];
             snapshot.forEach((childSnapshot) => {
+                numOfBooks++;
                 books.push(childSnapshot.val());
             });
             addToTable(books);
@@ -310,7 +302,7 @@
     }
 
     async function addBook() {
-        set(ref(db, "/" + books.length + 1), {
+        set(ref(db, "/" + (numOfBooks + 1)), {
             Title: titleMod.value,
             Genre: genreMod.value,
             Inventory: inventoryMod.value,
@@ -318,11 +310,10 @@
             Price: priceMod.value,
         })
             .then(() => {
-                console.log("Book Added Successfully");
                 $("#ModalCenter").modal("hide");
             })
             .catch((error) => {
-                console.log("Book failed to add");
+                alert("Book failed to add");
                 $("#ModalCenter").modal("hide");
             });
     }
@@ -336,13 +327,10 @@
             Price: priceMod.value,
         })
             .then(() => {
-                console.log("Book Added Successfully");
-
                 $("#ModalCenter").modal("hide");
             })
             .catch((error) => {
-                console.log("Book failed to add");
-
+                alert("Book failed to edit");
                 $("#ModalCenter").modal("hide");
             });
     }
