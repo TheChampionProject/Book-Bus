@@ -41,7 +41,7 @@
                             height: 70px;
                             width: 70px;
                             border-radius: 70px;
-                            font-size: 31px;
+                            font-size: 30px;
                         "
                     >
                         +
@@ -125,6 +125,10 @@
 ></script>
 <!-- Table Code (Will Organize Later) -->
 <script type="module">
+    // TODO:
+    // - Fix buttons not being in table
+    // - Make dummy proof
+    // - Sort after GET Request
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
     import {
         getDatabase,
@@ -139,7 +143,6 @@
     let number = 0; // Index for table
     let tbody = document.getElementById("tbody");
     let table = document.getElementById("table");
-    let bookList = []; // So that the edit book popup can get the info
     let bookIndex; // So that the edit book popup can get the info
     let numOfBooks = 0;
 
@@ -171,21 +174,19 @@
         let td5 = document.createElement("td");
         let td6 = document.createElement("td");
 
-        await bookList.push([
-            number,
-            title,
-            genre,
-            inventory,
-            inventoryWanted,
-            price,
-        ]);
-
         td1.innerHTML = number;
         td2.innerHTML = title;
         td3.innerHTML = genre;
         td4.innerHTML = inventory;
         td5.innerHTML = inventoryWanted;
         td6.innerHTML = "$" + price;
+
+        td1.id = "number" + number;
+        td2.id = "title" + number;
+        td3.id = "genre" + number;
+        td4.id = "inventory" + number;
+        td5.id = "inventoryWanted" + number;
+        td6.id = "price" + number;
 
         tableRow.appendChild(td1);
         tableRow.appendChild(td2);
@@ -201,9 +202,10 @@
         btn.classList.add("tableClass");
         btn.classList.add("btn-primary");
         btn.classList.add("my-2");
-        btn.id = "btn" + number;
+        btn.id = number;
 
         btn.onclick = function () {
+            // When the edit button is clicked, it will open the edit book popup
             fillTBoxes(btn.id);
         };
 
@@ -212,33 +214,28 @@
     }
 
     addModButton.onclick = function () {
-        // Blegh
+        // Inside of add book popup
         addBook();
     };
     editModButton.onclick = function () {
-        // Blegh
+        // When you submit the edits from the popup
         editBook();
     };
     addBookButton.onclick = function () {
-        // Blegh
-        fillTBoxes("btn-1");
+        // When you click the add book button from the home page
+        fillTBoxes(addBookButton.id);
     };
 
     async function fillTBoxes(index) {
-        if (index != null) bookIndex = index.replace("btn", ""); // The books id is set to its index in the table so we have to remove btn
+        bookIndex = index;
+        //if (index !== "AddBookButton") bookIndex = index.slice(-1); // The books id is set to its index in the table so we have to remove btn
         try {
-            let test =
-                bookIndex == -1 ||
-                bookList[bookIndex][0] == undefined ||
-                bookIndex == null;
+            let test = bookIndex == null;
         } catch {
             return;
         }
-        if (
-            bookIndex == -1 ||
-            bookList[bookIndex][0] == undefined ||
-            bookIndex == null
-        ) {
+        if (index == "AddBookButton") {
+            console.log("Add Book Interface");
             titleMod.value = "";
             genreMod.value = "";
             inventoryMod.value = "";
@@ -248,12 +245,18 @@
             addModButton.style.display = "inline-block";
             popupTitle.innerHTML = "Add A Book";
         } else {
-            bookIndex--;
-            titleMod.value = bookList[bookIndex][1];
-            genreMod.value = bookList[bookIndex][2];
-            inventoryMod.value = bookList[bookIndex][3];
-            inventoryWantedMod.value = bookList[bookIndex][4];
-            priceMod.value = bookList[bookIndex][5];
+            console.log("index " + index);
+            titleMod.value = document.getElementById("title" + index).innerHTML;
+            genreMod.value = document.getElementById("genre" + index).innerHTML;
+            inventoryMod.value = document.getElementById(
+                "inventory" + index
+            ).innerHTML;
+            inventoryWantedMod.value = document.getElementById(
+                "inventoryWanted" + index
+            ).innerHTML;
+            priceMod.value = document
+                .getElementById("price" + index)
+                .innerHTML.substring(1);
             editModButton.style.display = "inline-block";
             addModButton.style.display = "none";
             popupTitle.innerHTML = "Edit This Book";
@@ -289,20 +292,38 @@
         books = [];
 
         const dbRef = ref(db, "/");
-        await onValue(dbRef, (snapshot) => {
+        await onValue(dbRef, async (snapshot) => {
             number = 0;
             tbody.innerHTML = "";
             books = [];
+            numOfBooks = 0;
             snapshot.forEach((childSnapshot) => {
                 numOfBooks++;
                 books.push(childSnapshot.val());
             });
+
+            console.log(books);
+            //addToTable(await removeDuplicatesFromArrayByProperty(books, "Title"));
             addToTable(books);
         });
     }
+    const removeDuplicatesFromArrayByProperty = async (arr, prop) =>
+        arr.reduce((accumulator, currentValue) => {
+            if (!accumulator.find((obj) => obj[prop] === currentValue[prop])) {
+                accumulator.push(currentValue);
+            }
+            return accumulator;
+        }, []);
 
     async function addBook() {
-        set(ref(db, "/" + (numOfBooks + 1)), {
+        if (titleMod.value == "") {
+            alert("Every book needs a title!");
+            return;
+        }
+
+        console.log("Num of Books " + numOfBooks);
+
+        set(ref(db, "/" + numOfBooks), {
             Title: titleMod.value,
             Genre: genreMod.value,
             Inventory: inventoryMod.value,
@@ -311,6 +332,7 @@
         })
             .then(() => {
                 $("#ModalCenter").modal("hide");
+                //window.location.reload();
             })
             .catch((error) => {
                 alert("Book failed to add");
@@ -319,6 +341,7 @@
     }
 
     async function editBook() {
+        console.log("Book Index: " + bookIndex--);
         set(ref(db, "/" + bookIndex), {
             Title: titleMod.value,
             Genre: genreMod.value,
