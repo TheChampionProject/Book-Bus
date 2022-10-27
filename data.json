@@ -1,0 +1,2752 @@
+[
+    {
+        "Timestamp": "10/16/2022 15:40:37",
+        "Title": "1, 2, 3… By the sea",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:49:25",
+        "Title": "100 Days of Cool",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:01:42",
+        "Title": "5 Minute Marvel Stories",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.48,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:28",
+        "Title": "5,000 Awesome Facts (About Everything)",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 19.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:53",
+        "Title": "642 Things To Color",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 16.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:03:34",
+        "Title": "A Bear Called Paddington",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:44:06",
+        "Title": "A Pig, A Fox, and Stinky Socks",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:11",
+        "Title": "A Royal Visit (Frozen)",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:21:00",
+        "Title": "Allegiant",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:26:26",
+        "Title": "Allegiant - book 3",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:29",
+        "Title": "Animal Joke Book",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:47:07",
+        "Title": "Animal Kids Cubs, Chicks, and Pups",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 1,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:36",
+        "Title": "Animals on Board",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:41",
+        "Title": "Are You A Cheeseburger?",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 17.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:45:19",
+        "Title": "Ark Angel (Alex Rider Adventure)",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:23:31",
+        "Title": "Ashanti to Zulu",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:04",
+        "Title": "Bad Food Game of Scones",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:57:28",
+        "Title": "Bad Kitty: Gets a Bath",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:45",
+        "Title": "Bad Kitty: Happy Birthday Bad Kitty",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:34",
+        "Title": "Bad Kitty: vs. Uncle Murray",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:43:58",
+        "Title": "Ballpark Mysteries Book 1: The Fenway Foul-Up",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:45:11",
+        "Title": "Ballpark Mysteries Book 2: The Pinstripe Ghost",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:46:04",
+        "Title": "Ballpark Mysteries Book 3: The L.A. Dodger",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:47:12",
+        "Title": "Ballpark Mysteries Book: The Astro Outlaw",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:04",
+        "Title": "Bear Grylls Adventure",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:46:44",
+        "Title": "Belly Up",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:26",
+        "Title": "Best Friends (Frozen)",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:18",
+        "Title": "Big Nate on a Roll",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:09",
+        "Title": "Bruce's Big Move",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:48:02",
+        "Title": "Bruce’s Big Move",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 17.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:49:49",
+        "Title": "Bruce’s Bug Storm",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 17.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:37",
+        "Title": "By the Shores of Silver Lake",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:57:32",
+        "Title": "Captain Underpants and the attack of the talking toilets",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:58",
+        "Title": "Captain Underpants and the big, bad battle of the bionic booger boy part 1: the night of the nasty nostril nuggets",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:46",
+        "Title": "Captain Underpants and the big, bad battle of the bionic booger boy part 2: the revenge of the ridiculous robo-boogers",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:53",
+        "Title": "Captain underpants and the invasion of the incredibly naughty cafeteria ladies from outer space (and the subsequent assault of the equally evil lunchroom zombie nerds)",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:41",
+        "Title": "Captain Underpants and the perilous plot of professor poopypants",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:55",
+        "Title": "Captain underpants and the preposterous plight of the purple potty people",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 9.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:48",
+        "Title": "Captain underpants and the preposterous plight of the purple potty people",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:33",
+        "Title": "Captain Underpants and the terrifying return of tippy tinkletousers",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:30",
+        "Title": "Captain Underpants and the wicked wedgie woman",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:26:03",
+        "Title": "Catching Fire -Book Two of The Hunger Games",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:44:26",
+        "Title": "Click, clack, moo. Cows that type",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:15",
+        "Title": "Clifford the Big Red Dog",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:49:56",
+        "Title": "Coyotes All Around",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:29",
+        "Title": "Crankenstein",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:08",
+        "Title": "Cross word Puzzels",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:47:15",
+        "Title": "Day at the Beach",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 17.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:09:53",
+        "Title": "Diary of a Minecraft zombie",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.84,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:02:07",
+        "Title": "Diary of a wimpy kid - Big shot",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 14.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:57",
+        "Title": "Diary of a Wimpy Kid: The Meltdown",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:01:50",
+        "Title": "Diary of a Wimpy Kid: Wrecking Ball",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 14.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:14",
+        "Title": "Dinosaur",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 25.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:23:19",
+        "Title": "Divergent",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:25:25",
+        "Title": "Divergent - Book 1",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:58",
+        "Title": "Doctor Grundy’s Undies",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:03:35",
+        "Title": "Dog Breath, The Horrible Trouble with Hally Tosis",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:32",
+        "Title": "Dog Man",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:30",
+        "Title": "Dog Man",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:48:03",
+        "Title": "Dog Man - Lord of the fleas",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:08",
+        "Title": "Dog Man and Cat Kid",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:39",
+        "Title": "Dog Man Grime and Punishment",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:50",
+        "Title": "Dog Man Mothering Heights",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:02",
+        "Title": "Dog Man Unleashed",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:54",
+        "Title": "Dog Man: A Tale of Two Kitties",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:09",
+        "Title": "Dog Man: Brawl of the Wild",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:03",
+        "Title": "Dog Man: Unleashed",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 9.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:46",
+        "Title": "Dragons Love Tacos",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 18.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:49:04",
+        "Title": "Eerie Elementary - Recess is a Jungle",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:09:09",
+        "Title": "Elf Pets, A Saint Bernard Tradition",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 10,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:49:51",
+        "Title": "Elsa’s Magic (Frozen)",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:17:09",
+        "Title": "Encyclopedia Brown and the case is the dead eagles - Book 12",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:21:15",
+        "Title": "Encyclopedia Brown and the case of the secret pitch - book 2",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:20:18",
+        "Title": "Encyclopedia Brown boy detective - book 1",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:21:56",
+        "Title": "Encyclopedia Brown finds the clues - book 3",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 4.5,
+        "AmazonLink": "",
+        "Price": 4.5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:22:36",
+        "Title": "Encyclopedia Brown gets his man - book 4",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:18:36",
+        "Title": "Encyclopedia Brown Keeps The Peace - 6",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:19:36",
+        "Title": "Encyclopedia Brown lends a hand - book 11",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:17:32",
+        "Title": "Encyclopedia Brown Saves The Day",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:17:58",
+        "Title": "Encyclopedia Brown shows the way - book 9",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:19:28",
+        "Title": "Encyclopedia Brown Solves Then All - 5",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:18:41",
+        "Title": "Encyclopedia Brown takes the case - book 10",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:17:02",
+        "Title": "Encyclopedia Brown Tracks Them Down",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:22:47",
+        "Title": "Eragon - Book One - The Inheritance Cycle",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 15.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:03",
+        "Title": "Fancy Nancy Sees Stars",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:28",
+        "Title": "Fancy Nancy The Dazzling Book Report",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:35",
+        "Title": "Flat Stanley",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.08,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:20:12",
+        "Title": "Four - A Divergent Collection",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:34",
+        "Title": "Freckle Juice",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:36",
+        "Title": "Get Up and Go",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:05:59",
+        "Title": "Ginger Pye",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:47",
+        "Title": "Good Morning Snowplow!",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 17.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:06:04",
+        "Title": "Goodnight Moon",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 17.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:45",
+        "Title": "Guess How Much I Love You",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 16.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:18:31",
+        "Title": "Guess how much i love you",
+        "Genre": "Laugh",
+        "SubGenre": "G - Laugh/Graphic (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 10:58:43",
+        "Title": "Harry Potter",
+        "Genre": "",
+        "SubGenre": "",
+        "Inventory": "",
+        "AmazonLink": "",
+        "Price": "",
+        "InventoryWanted": ""
+    },
+    {
+        "Timestamp": "10/16/2022 15:46:32",
+        "Title": "Harry Potter and the Order of the Phoenix (Book 5)",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:14",
+        "Title": "Haunted Hayride",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:16",
+        "Title": "Honeydukes, A Scratch & Sniff Adventure",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:36",
+        "Title": "Hot Rod Hamster and the Haunted Halloween Party",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:43",
+        "Title": "Hotel Bruce",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 17.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:35",
+        "Title": "How Christmas Began",
+        "Genre": "Inspirational",
+        "SubGenre": "P - Inspirational/People (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 33.77,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:50",
+        "Title": "How Not to Babysit Your Brother",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:45:41",
+        "Title": "How Not to Start Third Grade",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:14",
+        "Title": "How to Catch Santa",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:23:23",
+        "Title": "I am Malala",
+        "Genre": "Inspirational",
+        "SubGenre": "P - Inspirational/People (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 18.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:45:56",
+        "Title": "I am not a chair!",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:41:37",
+        "Title": "I broke my butt!",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:33",
+        "Title": "I Can’t Believe You SAID That!",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 10.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:39",
+        "Title": "I Don't Want to Read This Book",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 17.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:58",
+        "Title": "I Love Animals Wild, Scary, Cute, Or Cuddly",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.23,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:03:25",
+        "Title": "I Survived the Attack Of The Grizzlies,1967",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:03:55",
+        "Title": "I Survived The California Wildfires, 2018",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:01:41",
+        "Title": "I Survived the Children’s Blizzard, 1888",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:01:50",
+        "Title": "I Survived The Eruption Of Mount St. Helens, 1980",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:02:42",
+        "Title": "I Survived the Great Chicago Fire,1871",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:03:11",
+        "Title": "I Survived The Great Molasses Flood, 1919",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:41",
+        "Title": "I Survived the Japanese Tsunami, 2011",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:36",
+        "Title": "I Survived The Joplin Tornado, 2011",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:03",
+        "Title": "I Survived The San Francisco Earthquake 1906",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:05:44",
+        "Title": "I Survived the Shark Attacks of 1916",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:43",
+        "Title": "I Want to Be a Veterinarian",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:54",
+        "Title": "If I Built a Car",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:02",
+        "Title": "Inspector Flytrap",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:23:50",
+        "Title": "Insurgent",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:25:54",
+        "Title": "Insurgent - book 2",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:33",
+        "Title": "Interpreting Chicken",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:14",
+        "Title": "It’s Not My Fault",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 10.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:49:33",
+        "Title": "Jackpot: A Swindle Mystery",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:19:57",
+        "Title": "Jumanji",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 18.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:37",
+        "Title": "Knuffle Bunny",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 15.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:01:28",
+        "Title": "Letters to Santa",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 29.5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:01",
+        "Title": "Life of Pi",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 15.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:20:57",
+        "Title": "Magic Tree House Fact Tracker - Pandas and Other Endangered Species",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:08:50",
+        "Title": "Magic Treehouse - # 36 Sunlight on the Snow Leopard",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 13.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:06:15",
+        "Title": "Magic Treehouse - #11 Lions at Lunchtime",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:07:06",
+        "Title": "Magic Treehouse - #12 Polar Bears Past Bedtime",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:07:51",
+        "Title": "Magic Treehouse - #28 High Tide in Hawaii",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:57:59",
+        "Title": "Magic Treehouse - #3 Mummies in the Morning",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 3,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:53",
+        "Title": "Magic Treehouse - #4 Pirates Past Noon",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 3,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:48",
+        "Title": "Magic Treehouse - #6 Afternoon on the Amazon",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:03:55",
+        "Title": "Magic Treehouse -#10 Ghost Town at Sundown",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:01:46",
+        "Title": "Magic Treehouse -#7 Sunset of the Sabertooth",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:02:28",
+        "Title": "Magic Treehouse -#8 Midnight on the Moon",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:57:05",
+        "Title": "Magic Treehouse #1 Dinosaurs Before Dark",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 3,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:30",
+        "Title": "Magic Treehouse #30 Hurricane Heros in Texas",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 13.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:09:51",
+        "Title": "Magic Treehouse Merlin Missions - # 8 Blizzard of the Blue Moon",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:10:58",
+        "Title": "Magic Treehouse The Graphic Novel - The Knight at Dawn",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 9.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:17",
+        "Title": "Magic Treehouse- #2 The Knight at Dawn",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 3,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:48",
+        "Title": "Magic Treehouse- #5 Night of the Ninjas",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:03:10",
+        "Title": "Magic Treehouse-#9 Dolphins at Daybreak",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:47:50",
+        "Title": "Mall Mania",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:24:28",
+        "Title": "Mary Poppins",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:25:17",
+        "Title": "Mary Poppins comes back",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:25:27",
+        "Title": "Mary Poppins In The Park - 4",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:25:48",
+        "Title": "Mary Poppins opens the door",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:46:16",
+        "Title": "Meet Batman",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 1.98,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:02:58",
+        "Title": "Meet the Bobs and Tweets",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:25",
+        "Title": "Memoirs of a Tortoise",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 16.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:24",
+        "Title": "Mercy Watson Something Wonky This Way Comes",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:49:57",
+        "Title": "Mercy Watson to the Rescue",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:00",
+        "Title": "Midnight for Charlie Bone",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 10.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:36",
+        "Title": "Mikey and the Dragons",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 16.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:01:47",
+        "Title": "Milk Goes To School",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:19:05",
+        "Title": "Mirette on the high wire",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:47",
+        "Title": "Miss Nelson is Missing!",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:28",
+        "Title": "Mister Shivers - Beneath the Bed and Other Scary Stories",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:26:47",
+        "Title": "Mockingjay - Final book of The Hunger Games",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:02:28",
+        "Title": "More About Paddingto",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:10",
+        "Title": "Mother Bruce",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:07:28",
+        "Title": "Mr Cooper is super!",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": "",
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:45:49",
+        "Title": "Mr. Freeze",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 1.98,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:07:58",
+        "Title": "Ms. Cuddly is nutty!",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": "",
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:46:16",
+        "Title": "My Life as a Cartoonist",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 13.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:12",
+        "Title": "My Mouth Is A Volcano",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 10.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:49:16",
+        "Title": "Nate the Great",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:57:29",
+        "Title": "Ninja Farts Silent But Deadly",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 9.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:05",
+        "Title": "No One Likes a Fart",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 9.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:22",
+        "Title": "Not Quite Narwhal",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:47:05",
+        "Title": "Oh, the places you’ll go",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 18.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:56",
+        "Title": "Olaf’s Dream (Frozen)",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:06",
+        "Title": "Oliver Twist",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:57:59",
+        "Title": "On the Banks of Plum Creek",
+        "Genre": "Explore",
+        "SubGenre": "H - Explore/Historical Fiction (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:03:52",
+        "Title": "Paddington Helps Out",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:48:45",
+        "Title": "Peanut Butter & Cupcake",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 18,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:35",
+        "Title": "Pepper's Journal",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 11:00:32",
+        "Title": "Percy Jackson",
+        "Genre": "",
+        "SubGenre": "",
+        "Inventory": "",
+        "AmazonLink": "",
+        "Price": "",
+        "InventoryWanted": ""
+    },
+    {
+        "Timestamp": "10/16/2022 15:57:32",
+        "Title": "Percy Jackson and the Olympians",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:13",
+        "Title": "Pete the Cat Super Pete",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:46:51",
+        "Title": "Picture day perfection",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:39",
+        "Title": "Pinkalicious Eggstraordinary Easter",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:48:15",
+        "Title": "Plankton is Plushy",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:07:47",
+        "Title": "Press Start! Game Over, Super Rabbit Boy!",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:27",
+        "Title": "Princess Sparkle",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 6.46,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:42",
+        "Title": "Racing Around",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:48:52",
+        "Title": "Random Acts of Fun",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 16.51,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:22:21",
+        "Title": "Ranger’s Apprentice Oakleaf Bearers - book 4",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:20:51",
+        "Title": "Ranger’s Apprentice The Burning Bridge - book 2",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:21:35",
+        "Title": "Ranger’s Apprentice The Icebound Land - book 3",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:20:08",
+        "Title": "Ranger’s Apprentice The Ruins of Gorlan - book 1",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:23:59",
+        "Title": "Ranger’s Apprentice The Siege of Macindaw - book 6",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:23:10",
+        "Title": "Ranger’s Apprentice The Sorcerer in the North - book 5",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:42",
+        "Title": "Same Old Horse",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:32",
+        "Title": "Snow Angels (Frozen)",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:08",
+        "Title": "Spunky Monkeys on Parade",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:01:23",
+        "Title": "Stink Moody in Master of Disaster",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:41",
+        "Title": "Super Sand Castle Saturday",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:03",
+        "Title": "Tally O'Malley",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:52",
+        "Title": "Ten-Second Tongue Twisters",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:05",
+        "Title": "The adventures of Captain Underpants",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:47",
+        "Title": "The Amusement Park from the Black Lagoon",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 10.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:43",
+        "Title": "The Baby Bible Study Book For Boys",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 9.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:03",
+        "Title": "The Bad Guys",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 3,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:31",
+        "Title": "The Bad Guys: Cut to the Chase",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:57",
+        "Title": "The Bad Guys: Guide to Being Good",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:40",
+        "Title": "The Bad Guys: The Baddest Day Ever",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:06",
+        "Title": "The Bad Seed",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:05",
+        "Title": "The Batman",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:38",
+        "Title": "The Beginners Bible Time Less Children’s Stories",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 16.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:08",
+        "Title": "The Best Vacation Ever",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:24:48",
+        "Title": "The Book Thief",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 14.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:42:19",
+        "Title": "The Boy Who Never Gave Up",
+        "Genre": "Inspirational",
+        "SubGenre": "P - Inspirational/People (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.13,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:17",
+        "Title": "The Boys Doodle Book",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:57:13",
+        "Title": "The Brain is Kind of a Big Deal",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:24:15",
+        "Title": "The day Jimmy’s boa ate the wash",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:23:04",
+        "Title": "The Eleventh Hour Curious Mystery",
+        "Genre": "Solve",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 8.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:47:39",
+        "Title": "The Fascinating Animal Book for Kids 500 Wild Facts!",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 15.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:21",
+        "Title": "The Fascinating Ocean Book for Kids",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 15.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:50",
+        "Title": "The Fascinating Science Book for Kids",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 15.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:24:22",
+        "Title": "The fault in our stars",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:24",
+        "Title": "The Football Man",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 16.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:50",
+        "Title": "The Fourteenth Goldfish",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 16.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:23:40",
+        "Title": "The Great Gatsby",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.97,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:27:04",
+        "Title": "The Hate U Give",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 14.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:07:48",
+        "Title": "The Hero’s Guide to Saving your kingdom",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:25:15",
+        "Title": "The Hunger Games",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:11",
+        "Title": "The Island of Dragons - Tye twelfth Adventures in the Kingdom of Fantasy",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 14.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:41:41",
+        "Title": "The Last Kids on Earth",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 13.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:10:01",
+        "Title": "The Last of Really Great Whangdoodles",
+        "Genre": "Explore",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:48:14",
+        "Title": "The loud house - volume 1",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 14.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:18",
+        "Title": "The loud house - Volume 2",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 0,
+        "AmazonLink": "",
+        "Price": 14.98,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:56:39",
+        "Title": "The Mandalorian",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:47:37",
+        "Title": "The Mouse and the Motorcycle",
+        "Genre": "Laugh",
+        "SubGenre": "C-Laugh/Cartoon (Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:08:44",
+        "Title": "The Narnia Trivia Book",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 23,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:34",
+        "Title": "The Never Girls - From the Mist",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:58:07",
+        "Title": "The Never Girls - The Space Between",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:50:51",
+        "Title": "The Official Bob Ross Coloring Book",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 16.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:07:42",
+        "Title": "The Penderwicks at Point Mouette",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:08:28",
+        "Title": "The Penderwicks on Gardam Street",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:07:12",
+        "Title": "The Penderwicks, A Summer Tale of Four Sisters, Two Rabbits, and A Very Interesting Boy",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:21:07",
+        "Title": "The Perks of Being a Wallflower",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 15.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:32",
+        "Title": "The Pigeon Needs a Bath",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 16.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:30",
+        "Title": "The Science Fair from the Black Lagoon",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:07",
+        "Title": "The Snow Day from the Black Lagoon",
+        "Genre": "Laugh",
+        "SubGenre": "G-Laugh/Graphic(Red)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:22:44",
+        "Title": "The Sun Also Rises",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:26:32",
+        "Title": "The Sun Is Also A Star",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 3,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:06:55",
+        "Title": "The Thief Lord",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:54",
+        "Title": "The Tiny Geniuses",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:02:03",
+        "Title": "The Twenty-One Balloons",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:45:09",
+        "Title": "The world according to Humphrey",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:09:46",
+        "Title": "The Year Without Santa Claus",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 9.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/20/2022 18:21:38",
+        "Title": "Throne of Glass",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 2,
+        "AmazonLink": "",
+        "Price": 11.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:45:20",
+        "Title": "Toy Story 4 Made To Play",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:55:09",
+        "Title": "Tractors",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 9.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:37",
+        "Title": "Treasure Hunters",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 7.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:51:47",
+        "Title": "Troll Troubles (Frozen)",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 16:00:51",
+        "Title": "True Tales Shark Attack Young Survivors",
+        "Genre": "Inspirational",
+        "SubGenre": "E - Inspirational/Event (Blue)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 5.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:53",
+        "Title": "Wayside School Gets a Little Stranger",
+        "Genre": "Laugh",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 3.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:45:40",
+        "Title": "Weird But True 300 Outrageous Facts From History",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.95,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:31",
+        "Title": "Weird But True! 6 300 Outrageous Facts",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 6.96,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:54:53",
+        "Title": "What if You Had Animal Ears",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 4.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:59:48",
+        "Title": "Why Not You?",
+        "Genre": "Explore",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 18.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:57:52",
+        "Title": "WHY? Over 1,111 Answers to Everything",
+        "Genre": "Inspirational",
+        "SubGenre": "",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 19.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:53:54",
+        "Title": "Wings of Fire",
+        "Genre": "Explore",
+        "SubGenre": "F - Explore/Fantasy (White)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 12.99,
+        "InventoryWanted": 3
+    },
+    {
+        "Timestamp": "10/16/2022 15:52:31",
+        "Title": "Wreck This Journal",
+        "Genre": "Solve",
+        "SubGenre": "A - Solve/Activity (Black)",
+        "Inventory": 1,
+        "AmazonLink": "",
+        "Price": 15,
+        "InventoryWanted": 3
+    }
+]

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
+        <title>Library</title>
+    </head>
+
+    <style>
+        .EditBookPopup {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+    <body>
+        <div class="container mt-3">
+            <table class="table">
+                <thead>
+                    <th>Number</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Current Inventory</th>
+                    <th>Wanted Inventory</th>
+                    <th>Price</th>
+                    <th>Control Center</th>
+                    <button
+                        type="button"
+                        class="btn btn-primary my-2"
+                        id="AddBookButton"
+                        style="
+                            position: fixed;
+                            bottom: 30px;
+                            right: 30px;
+                            height: 70px;
+                            width: 70px;
+                            border-radius: 70px;
+                            font-size: 30px;
+                        "
+                    >
+                        +
+                    </button>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+        <!-- Edit and Add book Popup -->
+        <div
+            class="modal fade"
+            id="ModalCenter"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="ModalTitle"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalTitle">Add A Book</h5>
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label class="EditBookPopup">Title: </label>
+                        <input type="text" id="TitleMod" /> <br />
+                        <label class="EditBookPopup">Genre: </label>
+                        <input type="text" id="GenreMod" /> <br />
+                        <label class="EditBookPopup">C. Inventory: </label>
+                        <input type="text" id="InventoryMod" /> <br />
+                        <label class="EditBookPopup">W. Inventory: </label>
+                        <input type="text" id="InventoryWantedMod" /> <br />
+                        <label class="EditBookPopup">Price: </label>
+                        <input type="text" id="PriceMod" /> <br />
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="AddModButton"
+                        >
+                            Add Book
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-success"
+                            id="EditModButton"
+                        >
+                            Edit Book
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Book Popup -->
+    </body>
+</html>
+<!-- For Bootstrapped JS -->
+<script
+    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"
+></script>
+<!-- Table Code (Will Organize Later) -->
+<script type="module">
+    // TODO:
+    // - Fix buttons not being in table
+    // - Sort after GET Request
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+    import {
+        getDatabase,
+        ref,
+        child,
+        get,
+        set,
+        onValue,
+    } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+    import { firebaseConfig } from "../keys.js";
+
+    let number = 0; // Index for table
+    let tbody = document.getElementById("tbody");
+    let table = document.getElementById("table");
+    let bookIndex; // So that the edit book popup can get the info
+    let numOfBooks = 0;
+
+    // All these are for the info to be passed into the edit book popup
+    let titleMod = document.getElementById("TitleMod");
+    let genreMod = document.getElementById("GenreMod");
+    let inventoryMod = document.getElementById("InventoryMod");
+    let inventoryWantedMod = document.getElementById("InventoryWantedMod");
+    let priceMod = document.getElementById("PriceMod");
+    let popupTitle = document.getElementById("ModalTitle");
+
+    let addModButton = document.getElementById("AddModButton");
+    let editModButton = document.getElementById("EditModButton");
+    let addBookButton = document.getElementById("AddBookButton");
+
+    async function addItemToTable(
+        title,
+        genre,
+        inventory,
+        inventoryWanted,
+        price
+    ) {
+        number++;
+        let tableRow = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        let td3 = document.createElement("td");
+        let td4 = document.createElement("td");
+        let td5 = document.createElement("td");
+        let td6 = document.createElement("td");
+
+        td1.innerHTML = number;
+        td2.innerHTML = title;
+        td3.innerHTML = genre;
+        td4.innerHTML = inventory;
+        td5.innerHTML = inventoryWanted;
+        td6.innerHTML = "$" + price;
+
+        td1.id = "number" + number;
+        td2.id = "title" + number;
+        td3.id = "genre" + number;
+        td4.id = "inventory" + number;
+        td5.id = "inventoryWanted" + number;
+        td6.id = "price" + number;
+
+        tableRow.appendChild(td1);
+        tableRow.appendChild(td2);
+        tableRow.appendChild(td3);
+        tableRow.appendChild(td4);
+        tableRow.appendChild(td5);
+        tableRow.appendChild(td6);
+
+        // Code for adding and editing books. Number is passed in so that it can auto complete the fields
+        var btn = document.createElement("button");
+        btn.innerHTML = "Edit Book";
+        btn.classList.add("btn");
+        btn.classList.add("tableClass");
+        btn.classList.add("btn-primary");
+        btn.classList.add("my-2");
+        btn.id = number;
+
+        btn.onclick = function () {
+            // When the edit button is clicked, it will open the edit book popup
+            fillTBoxes(btn.id);
+        };
+
+        tableRow.appendChild(btn);
+        tbody.appendChild(tableRow);
+    }
+
+    addModButton.onclick = function () {
+        // Inside of add book popup
+        addBook();
+    };
+    editModButton.onclick = function () {
+        // When you submit the edits from the popup
+        editBook();
+    };
+    addBookButton.onclick = function () {
+        // When you click the add book button from the home page
+        fillTBoxes(addBookButton.id);
+    };
+
+    async function fillTBoxes(index) {
+        bookIndex = index;
+        //if (index !== "AddBookButton") bookIndex = index.slice(-1); // The books id is set to its index in the table so we have to remove btn
+        try {
+            let test = bookIndex == null;
+        } catch {
+            return;
+        }
+        if (index == "AddBookButton") {
+            console.log("Add Book Interface");
+            titleMod.value = "";
+            genreMod.value = "";
+            inventoryMod.value = "";
+            inventoryWantedMod.value = "";
+            priceMod.value = "";
+            editModButton.style.display = "none";
+            addModButton.style.display = "inline-block";
+            popupTitle.innerHTML = "Add A Book";
+        } else {
+            console.log("index " + index);
+            titleMod.value = document.getElementById("title" + index).innerHTML;
+            genreMod.value = document.getElementById("genre" + index).innerHTML;
+            inventoryMod.value = document.getElementById(
+                "inventory" + index
+            ).innerHTML;
+            inventoryWantedMod.value = document.getElementById(
+                "inventoryWanted" + index
+            ).innerHTML;
+            priceMod.value = document
+                .getElementById("price" + index)
+                .innerHTML.substring(1);
+            editModButton.style.display = "inline-block";
+            addModButton.style.display = "none";
+            popupTitle.innerHTML = "Edit This Book";
+        }
+
+        $("#ModalCenter").modal("show"); // Bring up the popup
+    }
+
+    async function addToTable(book) {
+        number = 0;
+        tbody.innerHTML = "";
+
+        for (let i = 0; i < books.length; i++) {
+            // Loop through all books that are in the database and add them to the table
+            await addItemToTable(
+                book[i].Title,
+                book[i].Genre,
+                book[i].Inventory,
+                book[i].InventoryWanted,
+                book[i].Price
+            );
+        }
+    }
+
+    // Firebase Code
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    let books = [];
+    let sortedBooks = "Hi";
+
+    async function getDataRealTime() {
+        number = 0;
+        tbody.innerHTML = "";
+        books = [];
+        let sortedBooks;
+
+        const dbRef = ref(db, "/");
+        await onValue(dbRef, async (snapshot) => {
+            number = 0;
+            tbody.innerHTML = "";
+            books = [];
+            numOfBooks = 0;
+            await snapshot.forEach((childSnapshot) => {
+                numOfBooks++;
+                books.push(childSnapshot.val());
+            });
+
+            //console.log(books);
+            //addToTable(await removeDuplicatesFromArrayByProperty(books, "Title"));
+            //await sortBooks();
+
+            console.log(books);
+            addToTable(books);
+        });
+    }
+
+    async function sortBooks() {
+        //console.log("Function Call");
+        //console.log("Unsorted Books" + data);
+        sortedBooks = await books.sort((a, b) => {
+            if (a.Title < b.Title) {
+                console.log(a.Title + " is less than " + b.Title);
+                return -1;
+            }
+        });
+    }
+    const removeDuplicatesFromArrayByProperty = async (arr, prop) =>
+        arr.reduce((accumulator, currentValue) => {
+            if (!accumulator.find((obj) => obj[prop] === currentValue[prop])) {
+                accumulator.push(currentValue);
+            }
+            return accumulator;
+        }, []);
+
+    async function addBook() {
+        if (titleMod.value == "") {
+            alert("Every book needs a title!");
+            return;
+        }
+
+        console.log("Num of Books " + numOfBooks);
+
+        set(ref(db, "/" + numOfBooks), {
+            Title: titleMod.value,
+            Genre: genreMod.value,
+            Inventory: inventoryMod.value,
+            InventoryWanted: inventoryWantedMod.value,
+            Price: priceMod.value,
+        })
+            .then(() => {
+                $("#ModalCenter").modal("hide");
+                //window.location.reload();
+            })
+            .catch((error) => {
+                alert("Book failed to add");
+                $("#ModalCenter").modal("hide");
+            });
+    }
+
+    async function editBook() {
+        console.log("Book Index: " + bookIndex--);
+        set(ref(db, "/" + bookIndex), {
+            Title: titleMod.value,
+            Genre: genreMod.value,
+            Inventory: inventoryMod.value,
+            InventoryWanted: inventoryWantedMod.value,
+            Price: priceMod.value,
+        })
+            .then(() => {
+                $("#ModalCenter").modal("hide");
+            })
+            .catch((error) => {
+                alert("Book failed to edit");
+                $("#ModalCenter").modal("hide");
+            });
+    }
+    window.onload = await getDataRealTime();
+</script>

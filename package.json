@@ -1,0 +1,23 @@
+{
+    "name": "bookmanagementsystem",
+    "version": "1.0.0",
+    "description": "Application for managing the inventory on The Champion Project Book Bus.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TheChampionProject/BookManagementSystem.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/TheChampionProject/BookManagementSystem/issues"
+    },
+    "homepage": "https://github.com/TheChampionProject/BookManagementSystem#readme",
+    "dependencies": {
+        "firebase": "^9.12.1"
+    }
+}
