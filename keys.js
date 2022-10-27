@@ -3,8 +3,7 @@ export const firebaseConfig = {
 
     authDomain: process.env.AUTH_DOMAIN,
 
-    databaseURL:
-        process.env.DATABASE_URL,
+    databaseURL: process.env.DATABASE_URL,
 
     projectId: process.env.PROJECT_ID,
 
