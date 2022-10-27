@@ -127,7 +127,6 @@
 <script type="module">
     // TODO:
     // - Fix buttons not being in table
-    // - Make dummy proof
     // - Sort after GET Request
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
     import {
@@ -285,11 +284,13 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase();
     let books = [];
+    let sortedBooks = "Hi";
 
     async function getDataRealTime() {
         number = 0;
         tbody.innerHTML = "";
         books = [];
+        let sortedBooks;
 
         const dbRef = ref(db, "/");
         await onValue(dbRef, async (snapshot) => {
@@ -297,14 +298,28 @@
             tbody.innerHTML = "";
             books = [];
             numOfBooks = 0;
-            snapshot.forEach((childSnapshot) => {
+            await snapshot.forEach((childSnapshot) => {
                 numOfBooks++;
                 books.push(childSnapshot.val());
             });
 
-            console.log(books);
+            //console.log(books);
             //addToTable(await removeDuplicatesFromArrayByProperty(books, "Title"));
+            //await sortBooks();
+
+            console.log(books);
             addToTable(books);
+        });
+    }
+
+    async function sortBooks() {
+        //console.log("Function Call");
+        //console.log("Unsorted Books" + data);
+        sortedBooks = await books.sort((a, b) => {
+            if (a.Title < b.Title) {
+                console.log(a.Title + " is less than " + b.Title);
+                return -1;
+            }
         });
     }
     const removeDuplicatesFromArrayByProperty = async (arr, prop) =>
