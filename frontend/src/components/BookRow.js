@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function BookRow() {
-  return (
-    <div>BookRow</div>
-  )
+export default function BookRow({ book }) {
+    return <div>{book.Title}</div>;
 }
