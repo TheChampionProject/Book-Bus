@@ -26,6 +26,8 @@ export default function BookTable() {
         setBooks(books);
     });
 
+    let table = React.useRef();
+
     // async function addItemToTable(
     //     title,
     //     genre,
@@ -196,7 +198,7 @@ export default function BookTable() {
     // }
 
     return books.map((book, index) => {
-        return <BookRow key={index} book={book} />;
+        return <BookRow key={index} book={book} index={index}/>;
     });
 }
 //<Popup show={showAddBook} handleShow={handleShowAddBook} />;
