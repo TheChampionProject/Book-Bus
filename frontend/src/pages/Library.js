@@ -6,8 +6,8 @@ import Table from "react-bootstrap/Table";
 export default function Library() {
     return (
         <>
-            <div className="container mt-3" id="booktable">
-                <Table striped bordered hover className="table">
+            <div className="container mt-3">
+                <Table striped bordered hover>
                     <TableHeader />
 
                     <tbody>

@@ -1,6 +1,4 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
-import App from "../App.css";
 
 export default function TableHeader({ table }) {
     return (
@@ -12,7 +10,7 @@ export default function TableHeader({ table }) {
                 <th>Current Inventory</th>
                 <th>Wanted Inventory</th>
                 <th>Price</th>
-                <th>Edit</th>
+                <th>Manage</th>
             </tr>
         </thead>
     );
