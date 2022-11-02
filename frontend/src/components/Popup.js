@@ -4,11 +4,11 @@ import { useRef } from "https://cdn.skypack.dev/react";
 
 
 export default function Popup({ show, handleShow }) {
-    const TitleMod = useRef();
-    const GenreMod = useRef();
-    const InventoryMod = useRef();
-    const InventoryWantedMod = useRef();
-    const PriceMod = useRef();
+    const TitleMod = React.useRef();
+    const GenreMod = React.useRef();
+    const InventoryMod = React.useRef();
+    const InventoryWantedMod = React.useRef();
+    const PriceMod = React.useRef();
     return (
         <>
             <div
