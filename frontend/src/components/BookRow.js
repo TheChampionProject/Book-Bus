@@ -1,11 +1,13 @@
 import React from "react";
 import Popup from "./Popup.js";
-
+import App from "../App.css";
 export default function BookRow({ book, index }) {
     let editButton = React.useRef();
+    let showPopup = false
 
     editButton = () => {
-        <Popup show={true} />;
+        showPopup = !showPopup
+        console.log(showPopup)
     };
     return (
         <>
@@ -13,8 +15,8 @@ export default function BookRow({ book, index }) {
                 <td>{index}</td>
                 <td>{book.Title}</td>
                 <td>{book.Genre}</td>
-                <td>{book.Inventory}</td>
-                <td>{book.InventoryWanted}</td>
+                <td className="Inventory">{book.Inventory}</td>
+                <td className="Inventory">{book.InventoryWanted}</td>
                 <td>${book.Price}</td>
                 <td>
                     <button
@@ -25,8 +27,7 @@ export default function BookRow({ book, index }) {
                     </button>
                 </td>
                 <td>
-                    {" "}
-                    <Popup show={true} />
+                    <Popup show={showPopup} />
                 </td>
             </tr>
         </>

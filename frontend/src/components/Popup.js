@@ -3,7 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 import { useRef } from "https://cdn.skypack.dev/react";
 
 
-export default function Popup({ show, handleShow }) {
+export default function Popup({ show }) {
     const TitleMod = React.useRef();
     const GenreMod = React.useRef();
     const InventoryMod = React.useRef();
@@ -39,7 +39,7 @@ export default function Popup({ show, handleShow }) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleShow}>
+                    <Button variant="secondary" >
                         Add Book
                     </Button>
                 </Modal.Footer>

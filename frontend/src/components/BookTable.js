@@ -9,6 +9,7 @@ import {
 import { firebaseConfig } from "../keys.js";
 
 import BookRow from "./BookRow.js";
+//require('dotenv').config()
 
 export default function BookTable() {
     // Firebase Code
@@ -25,7 +26,6 @@ export default function BookTable() {
         });
         setBooks(books);
     });
-
 
     //     btn.onclick = function () {
     //         // When the edit button is clicked, it will open the edit book popup
@@ -151,7 +151,7 @@ export default function BookTable() {
     // }
 
     return books.map((book, index) => {
-        return <BookRow key={index} book={book} index={index}/>;
+        return <BookRow key={index} book={book} index={index} />;
     });
 }
 //<Popup show={showAddBook} handleShow={handleShowAddBook} />;
