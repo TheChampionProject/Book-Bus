@@ -24,7 +24,7 @@ export default function Library() {
                 </Table>
                 <button
                     type="button"
-                    className="btn btn-primary my-2 AddBookButton"
+                    className=" AddBookButton"
                     onClick={handleAddBook}
                 >
                     +

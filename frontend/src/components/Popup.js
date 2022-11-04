@@ -1,6 +1,5 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import { useRef } from "https://cdn.skypack.dev/react";
 import App from "../App.css";
 
 export default function Popup({ show, setShow, book }) {
@@ -26,17 +25,19 @@ export default function Popup({ show, setShow, book }) {
         buttonName = "Add Book";
     }
 
+    console.log(autoFillTitle);
     let [title, setTitle] = React.useState(autoFillTitle);
     let [genre, setGenre] = React.useState(autoFillGenre);
     let [wantedI, setWantedI] = React.useState(autoFillWantedI);
     let [currentI, setCurrentI] = React.useState(autoFillCurrentI);
     let [price, setPrice] = React.useState(autoFillPrice);
+    console.log(title);
 
-    let previousTitle = React.useRef(autoFillTitle);
-    let previousGenre = React.useRef(autoFillGenre);
-    let previousWantedI = React.useRef(autoFillWantedI);
-    let previousCurrentI = React.useRef(autoFillCurrentI);
-    let previousPrice = React.useRef(autoFillPrice);
+    let previousTitle = React.useRef();
+    let previousGenre = React.useRef();
+    let previousWantedI = React.useRef();
+    let previousCurrentI = React.useRef();
+    let previousPrice = React.useRef();
 
     React.useEffect(() => {
         previousTitle.current = title;
@@ -45,6 +46,15 @@ export default function Popup({ show, setShow, book }) {
         previousCurrentI.current = currentI;
         previousPrice.current = price;
     }, [title, genre, wantedI, currentI, price]);
+
+    React.useEffect(() => {
+        setTitle(autoFillTitle);
+        setGenre(autoFillGenre);
+        setWantedI(autoFillWantedI);
+        setCurrentI(autoFillCurrentI);
+        setPrice(autoFillPrice);
+
+    }, [autoFillCurrentI, autoFillGenre, autoFillPrice, autoFillTitle, autoFillWantedI, book]);
 
     return (
         <>

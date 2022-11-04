@@ -1,5 +1,4 @@
 import React from "react";
-import Popup from "./Popup.js";
 import App from "../App.css";
 export default function BookRow({ book, index, setBook, setShow }) {
     function click() {
