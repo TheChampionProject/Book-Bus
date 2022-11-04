@@ -8,24 +8,19 @@ import Popup from "../components/Popup.js";
 export default function Library() {
     const [show, setShow] = React.useState(false);
 
-    function toogleShow() {
-        setShow(!show);
-        //console.log(show);
-    }
-
     return (
         <>
             <div className="container mt-3">
-                {/* <Table striped bordered hover>
+                <Table striped bordered hover>
                     <TableHeader />
                     <tbody>
                         <BookTable />
                     </tbody>
-                </Table> */}
+                </Table>
                 <button
                     type="button"
                     className="btn btn-primary my-2 AddBookButton"
-                    onClick={toogleShow}
+                    onClick={() => setShow(true)}
                 >
                     +
                 </button>

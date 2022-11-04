@@ -3,9 +3,6 @@ import { Modal, Button } from "react-bootstrap";
 import { useRef } from "https://cdn.skypack.dev/react";
 
 export default function Popup({ show, setShow, book }) {
-    function setShowFalse() {
-        setShow(false);
-    }
     return (
         <>
             <div
@@ -13,7 +10,7 @@ export default function Popup({ show, setShow, book }) {
                 style={{ height: "100vh" }}
             ></div>
 
-            <Modal show={show} onHide={setShowFalse}>
+            <Modal show={show} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add a Book</Modal.Title>
                 </Modal.Header>

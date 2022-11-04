@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
 import {
     getDatabase,
@@ -7,24 +7,28 @@ import {
     onValue,
 } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
 import { firebaseConfig } from "../keys.js";
-
 import BookRow from "./BookRow.js";
-//require('dotenv').config()
 
 export default function BookTable() {
     // Firebase Code
     initializeApp(firebaseConfig);
     const db = getDatabase();
+    const dbRef = ref(db, "/");
+    let databaseBooks = [];
 
     let [books, setBooks] = React.useState([]);
 
-    const dbRef = ref(db, "/");
-    onValue(dbRef, async (snapshot) => {
-        books = []; // Everytime a book is edited or add, reset the books array and query the database again
-        await snapshot.forEach((childSnapshot) => {
-            books.push(childSnapshot.val());
+   
+
+    useEffect(() => {
+        onValue(dbRef, async (snapshot) => {
+            // this no work :(
+            //books = []; // Everytime a book is edited or add, reset the books array and query the database again
+            await snapshot.forEach((childSnapshot) => {
+                databaseBooks.push(childSnapshot.val());
+                setBooks(databaseBooks);
+            });
         });
-        setBooks(books);
     });
 
     async function addBook() {
