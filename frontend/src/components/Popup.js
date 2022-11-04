@@ -1,14 +1,27 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useRef } from "https://cdn.skypack.dev/react";
+import App from "../App.css";
 
 export default function Popup({ show, setShow, book }) {
-    console.log(book);
     let modalTitle = "";
     let buttonName = "";
+
+    let titleValue = "";
+    let genreValue = "";
+    let wantedIValue = "";
+    let currentIValue = "";
+    let priceValue = "";
+
     if (book !== null) {
         modalTitle = "Edit This Book";
         buttonName = "Edit Book";
+
+        titleValue = book.Title;
+        genreValue = book.Genre;
+        wantedIValue = book.InventoryWanted;
+        currentIValue = book.Inventory;
+        priceValue = book.Price;
     } else {
         modalTitle = "Add a Book";
         buttonName = "Add Book";
@@ -22,24 +35,23 @@ export default function Popup({ show, setShow, book }) {
 
                 <Modal.Body>
                     <>
-                        {/* <div className="modal-body">
-                            <label className="EditBookPopup">Title: </label>
-                            <input type="text" value={book.Title} />
+                        <div className="modal-body EditBookPopup">
+                            <label>Title: </label>
+                            <input type="text" defaultValue={titleValue} />
                             <br />
-                            <label className="EditBookPopup">Genre: </label>
-                            <input type="text" value={book.Genre} /> <br />
-                            <label className="EditBookPopup">
-                                C. Inventory:
-                            </label>
-                            <input type="text" value={book.Inventory} /> <br />
-                            <label className="EditBookPopup">
-                                W. Inventory:
-                            </label>
-                            <input type="text" value={book.InventoryWanted} />
+                            <label>Genre: </label>
+                            <input type="text" defaultValue={genreValue} />
                             <br />
-                            <label className="EditBookPopup">Price: </label>
-                            <input type="text" value={book.Price} /> <br />
-                        </div> */}
+                            <label>C. Inventory:</label>
+                            <input type="text" defaultValue={wantedIValue} />
+                            <br />
+                            <label>W. Inventory:</label>
+                            <input type="text" defaultValue={currentIValue} />
+                            <br />
+                            <label>Price: </label>
+                            <input type="text" defaultValue={priceValue} />
+                            <br />
+                        </div>
                     </>
                 </Modal.Body>
 
