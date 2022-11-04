@@ -3,16 +3,21 @@ import { Modal, Button } from "react-bootstrap";
 import { useRef } from "https://cdn.skypack.dev/react";
 
 export default function Popup({ show, setShow, book }) {
+    console.log(book);
+    let modalTitle = "";
+    let buttonName = "";
+    if (book !== null) {
+        modalTitle = "Edit This Book";
+        buttonName = "Edit Book";
+    } else {
+        modalTitle = "Add a Book";
+        buttonName = "Add Book";
+    }
     return (
         <>
-            <div
-                className="d-flex align-items-center justify-content-center"
-                style={{ height: "100vh" }}
-            ></div>
-
             <Modal show={show} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add a Book</Modal.Title>
+                    <Modal.Title>{modalTitle}</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -39,7 +44,7 @@ export default function Popup({ show, setShow, book }) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary">Add Book</Button>
+                    <Button variant="secondary">{buttonName}</Button>
                 </Modal.Footer>
             </Modal>
         </>

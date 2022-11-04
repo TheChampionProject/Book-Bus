@@ -6,26 +6,31 @@ import App from "../App.css";
 import Popup from "../components/Popup.js";
 
 export default function Library() {
+    const [book, setBook] = React.useState(null);
     const [show, setShow] = React.useState(false);
 
+    let handleAddBook = () => {
+        setBook(null);
+        setShow(true);
+    };
     return (
         <>
             <div className="container mt-3">
                 <Table striped bordered hover>
                     <TableHeader />
                     <tbody>
-                        <BookTable />
+                        <BookTable setBook={setBook} setShow={setShow} />
                     </tbody>
                 </Table>
                 <button
                     type="button"
                     className="btn btn-primary my-2 AddBookButton"
-                    onClick={() => setShow(true)}
+                    onClick={handleAddBook}
                 >
                     +
                 </button>
             </div>
-            <Popup show={show} setShow={setShow}/>
+            <Popup show={show} book={book} setShow={setShow} />
         </>
     );
 }
