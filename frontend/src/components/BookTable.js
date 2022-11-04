@@ -11,16 +11,14 @@ import BookRow from "./BookRow.js";
 
 export default function BookTable() {
     // Firebase Code
-    initializeApp(firebaseConfig);
-    const db = getDatabase();
-    const dbRef = ref(db, "/");
-    let databaseBooks = [];
 
     let [books, setBooks] = React.useState([]);
 
-   
-
     useEffect(() => {
+        initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const dbRef = ref(db, "/");
+        let databaseBooks = [];
         onValue(dbRef, async (snapshot) => {
             // this no work :(
             //books = []; // Everytime a book is edited or add, reset the books array and query the database again
@@ -29,24 +27,7 @@ export default function BookTable() {
                 setBooks(databaseBooks);
             });
         });
-    });
-
-    async function addBook() {
-        set(ref(db, "/" + books.length), {
-            // Title: titleMod.value, Need to pass in props
-            // Genre: genreMod.value,
-            // Inventory: inventoryMod.value,
-            // InventoryWanted: inventoryWantedMod.value,
-            // Price: priceMod.value,
-        });
-        // .then(() => {
-        //     document.getElementById("#ModalCenter").modal("hide");
-        // })
-        // .catch((error) => {
-        //     alert("Book failed to add");
-        //     document.getElementById("#ModalCenter").modal("hide");
-        // });
-    }
+    }, []);
 
     async function editBook() {
         // set(ref(db, "/" + bookID), {
