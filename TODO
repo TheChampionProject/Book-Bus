@@ -1,10 +1,3 @@
-- Popups have input fields. But can't define Ref in component, and how to send data to main function? Pass multiple refs into BookTable and have it manipulate stuff from there?
-- Where should Firebase code go? Do we need to static serve it with Express?
-- Adding table elements?
+-   Where should Firebase code go? Do we need to static serve it with Express? / API keys
 
-- Each row is component, instantiated by Table component. 
-- Popup component, props for data
-- Mapover data returned by firebase and create row for each
-- Leave app.js mostly blank of raw html
-
-- How to hide API keys
+-   Popup component, props for data

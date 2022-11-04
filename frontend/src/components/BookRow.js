@@ -2,13 +2,9 @@ import React from "react";
 import Popup from "./Popup.js";
 import App from "../App.css";
 export default function BookRow({ book, index }) {
-    let editButton = React.useRef();
-    let showPopup = false
-
-    editButton = () => {
-        showPopup = !showPopup
-        console.log(showPopup)
-    };
+    function click() {
+        console.log("clicked");
+    }
     return (
         <>
             <tr>
@@ -21,13 +17,10 @@ export default function BookRow({ book, index }) {
                 <td>
                     <button
                         className="btn btn-primary my-2 EditButton"
-                        onClick={editButton}
+                        onClick={click}
                     >
                         Edit
                     </button>
-                </td>
-                <td>
-                    <Popup show={showPopup} />
                 </td>
             </tr>
         </>
