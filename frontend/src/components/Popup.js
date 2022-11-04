@@ -7,25 +7,45 @@ export default function Popup({ show, setShow, book }) {
     let modalTitle = "";
     let buttonName = "";
 
-    let titleValue = "";
-    let genreValue = "";
-    let wantedIValue = "";
-    let currentIValue = "";
-    let priceValue = "";
+    let autoFillTitle = "";
+    let autoFillGenre = "";
+    let autoFillWantedI = "";
+    let autoFillCurrentI = "";
+    let autoFillPrice = "";
 
     if (book !== null) {
         modalTitle = "Edit This Book";
         buttonName = "Edit Book";
-
-        titleValue = book.Title;
-        genreValue = book.Genre;
-        wantedIValue = book.InventoryWanted;
-        currentIValue = book.Inventory;
-        priceValue = book.Price;
+        autoFillTitle = book.Title;
+        autoFillGenre = book.Genre;
+        autoFillWantedI = book.InventoryWanted;
+        autoFillCurrentI = book.Inventory;
+        autoFillPrice = book.Price;
     } else {
         modalTitle = "Add a Book";
         buttonName = "Add Book";
     }
+
+    let [title, setTitle] = React.useState(autoFillTitle);
+    let [genre, setGenre] = React.useState(autoFillGenre);
+    let [wantedI, setWantedI] = React.useState(autoFillWantedI);
+    let [currentI, setCurrentI] = React.useState(autoFillCurrentI);
+    let [price, setPrice] = React.useState(autoFillPrice);
+
+    let previousTitle = React.useRef(autoFillTitle);
+    let previousGenre = React.useRef(autoFillGenre);
+    let previousWantedI = React.useRef(autoFillWantedI);
+    let previousCurrentI = React.useRef(autoFillCurrentI);
+    let previousPrice = React.useRef(autoFillPrice);
+
+    React.useEffect(() => {
+        previousTitle.current = title;
+        previousGenre.current = genre;
+        previousWantedI.current = wantedI;
+        previousCurrentI.current = currentI;
+        previousPrice.current = price;
+    }, [title, genre, wantedI, currentI, price]);
+
     return (
         <>
             <Modal show={show} onHide={() => setShow(false)}>
@@ -37,19 +57,39 @@ export default function Popup({ show, setShow, book }) {
                     <>
                         <div className="modal-body EditBookPopup">
                             <label>Title: </label>
-                            <input type="text" defaultValue={titleValue} />
+                            <input
+                                type="text"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
                             <br />
                             <label>Genre: </label>
-                            <input type="text" defaultValue={genreValue} />
+                            <input
+                                type="text"
+                                value={genre}
+                                onChange={(e) => setGenre(e.target.value)}
+                            />
                             <br />
                             <label>C. Inventory:</label>
-                            <input type="text" defaultValue={wantedIValue} />
+                            <input
+                                type="text"
+                                value={wantedI}
+                                onChange={(e) => setWantedI(e.target.value)}
+                            />
                             <br />
                             <label>W. Inventory:</label>
-                            <input type="text" defaultValue={currentIValue} />
+                            <input
+                                type="text"
+                                value={currentI}
+                                onChange={(e) => setCurrentI(e.target.value)}
+                            />
                             <br />
                             <label>Price: </label>
-                            <input type="text" defaultValue={priceValue} />
+                            <input
+                                type="text"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                            />
                             <br />
                         </div>
                     </>
