@@ -10,13 +10,16 @@ import { firebaseConfig } from "../keys.js";
 import BookRow from "./BookRow.js";
 
 export default function BookTable({ setBook, setShow, managedBook }) {
+    initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const dbRef = ref(db, "/");
+
     let [books, setBooks] = useState([]);
     let updateBooks = 0;
 
+    let index;
+
     useEffect(() => {
-        initializeApp(firebaseConfig);
-        const db = getDatabase();
-        const dbRef = ref(db, "/");
         let databaseBooks = [];
         onValue(dbRef, async (snapshot) => {
             await snapshot.forEach((childSnapshot) => {
@@ -28,19 +31,22 @@ export default function BookTable({ setBook, setShow, managedBook }) {
 
     useEffect(() => {
         if (managedBook == null) return;
-        console.log(managedBook);
-        initializeApp(firebaseConfig);
-        const db = getDatabase();
-        set(ref(db, "/" + managedBook[1]), { // The index of the book
+        if (managedBook[1] == null) index = books.length++;
+        else index = managedBook[1];
+
+        set(ref(db, "/" + index), {
             Title: managedBook[0].Title,
             Genre: managedBook[0].Genre,
             Inventory: managedBook[0].Inventory,
             InventoryWanted: managedBook[0].InventoryWanted,
             Price: managedBook[0].Price,
-        }).then(() => {updateBooks++})
-        .catch((e) => {
-            alert("Book failed to edit");
-        });
+        })
+            .then(() => {
+                updateBooks++;
+            }) // I have to do this to force a re-render. Will clean up later
+            .catch((e) => {
+                alert("Book failed to edit");
+            });
     }, [managedBook]);
 
     return books.map((book, index) => {
