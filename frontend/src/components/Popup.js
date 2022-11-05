@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
-import App from "../App.css";
+import "../App.css";
 
-export default function Popup({ show, setShow, book }) {
+export default function Popup({ show, setShow, book, setManagedBook }) {
     let modalTitle = "";
     let buttonName = "";
 
@@ -15,31 +15,29 @@ export default function Popup({ show, setShow, book }) {
     if (book !== null) {
         modalTitle = "Edit This Book";
         buttonName = "Edit Book";
-        autoFillTitle = book.Title;
-        autoFillGenre = book.Genre;
-        autoFillWantedI = book.InventoryWanted;
-        autoFillCurrentI = book.Inventory;
-        autoFillPrice = book.Price;
+        autoFillTitle = book[0].Title;
+        autoFillGenre = book[0].Genre;
+        autoFillWantedI = book[0].InventoryWanted;
+        autoFillCurrentI = book[0].Inventory;
+        autoFillPrice = book[0].Price;
     } else {
         modalTitle = "Add a Book";
         buttonName = "Add Book";
     }
 
-    console.log(autoFillTitle);
-    let [title, setTitle] = React.useState(autoFillTitle);
-    let [genre, setGenre] = React.useState(autoFillGenre);
-    let [wantedI, setWantedI] = React.useState(autoFillWantedI);
-    let [currentI, setCurrentI] = React.useState(autoFillCurrentI);
-    let [price, setPrice] = React.useState(autoFillPrice);
-    console.log(title);
+    let [title, setTitle] = useState(autoFillTitle);
+    let [genre, setGenre] = useState(autoFillGenre);
+    let [wantedI, setWantedI] = useState(autoFillWantedI);
+    let [currentI, setCurrentI] = useState(autoFillCurrentI);
+    let [price, setPrice] = useState(autoFillPrice);
 
-    let previousTitle = React.useRef();
-    let previousGenre = React.useRef();
-    let previousWantedI = React.useRef();
-    let previousCurrentI = React.useRef();
-    let previousPrice = React.useRef();
+    let previousTitle = useRef();
+    let previousGenre = useRef();
+    let previousWantedI = useRef();
+    let previousCurrentI = useRef();
+    let previousPrice = useRef();
 
-    React.useEffect(() => {
+    useEffect(() => {
         previousTitle.current = title;
         previousGenre.current = genre;
         previousWantedI.current = wantedI;
@@ -47,14 +45,21 @@ export default function Popup({ show, setShow, book }) {
         previousPrice.current = price;
     }, [title, genre, wantedI, currentI, price]);
 
-    React.useEffect(() => {
+    useEffect(() => {
+        // When there is a new book, autoFill fields will update
         setTitle(autoFillTitle);
         setGenre(autoFillGenre);
         setWantedI(autoFillWantedI);
         setCurrentI(autoFillCurrentI);
         setPrice(autoFillPrice);
-
-    }, [autoFillCurrentI, autoFillGenre, autoFillPrice, autoFillTitle, autoFillWantedI, book]);
+    }, [
+        autoFillCurrentI,
+        autoFillGenre,
+        autoFillPrice,
+        autoFillTitle,
+        autoFillWantedI,
+        book,
+    ]);
 
     return (
         <>
@@ -106,7 +111,15 @@ export default function Popup({ show, setShow, book }) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary">{buttonName}</Button>
+                    <Button
+                        variant="secondary"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setManagedBook(book);
+                        }}
+                    >
+                        {buttonName}
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </>

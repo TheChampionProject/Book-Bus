@@ -1,8 +1,8 @@
 import React from "react";
-import App from "../App.css";
+import "../App.css";
 export default function BookRow({ book, index, setBook, setShow }) {
     function click() {
-        setBook(book);
+        setBook([book, index]);
         setShow(true);
     }
     return (
