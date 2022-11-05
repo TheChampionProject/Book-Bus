@@ -12,18 +12,20 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
     let autoFillCurrentI = "";
     let autoFillPrice = "";
 
-    if (book !== null) {
-        modalTitle = "Edit This Book";
-        buttonName = "Edit Book";
-        autoFillTitle = book[0].Title;
-        autoFillGenre = book[0].Genre;
-        autoFillWantedI = book[0].InventoryWanted;
-        autoFillCurrentI = book[0].Inventory;
-        autoFillPrice = book[0].Price;
-    } else {
-        modalTitle = "Add a Book";
-        buttonName = "Add Book";
-    }
+    try { // React runs on startup for some reason so this has to be wrapped in a try catch for null to work
+        if (book !== null) {
+            modalTitle = "Edit This Book";
+            buttonName = "Edit Book";
+            autoFillTitle = book[0].Title;
+            autoFillGenre = book[0].Genre;
+            autoFillWantedI = book[0].InventoryWanted;
+            autoFillCurrentI = book[0].Inventory;
+            autoFillPrice = book[0].Price;
+        } else {
+            modalTitle = "Add a Book";
+            buttonName = "Add Book";
+        }
+    } catch {}
 
     let [title, setTitle] = useState(autoFillTitle);
     let [genre, setGenre] = useState(autoFillGenre);
