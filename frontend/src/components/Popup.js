@@ -61,6 +61,17 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         book,
     ]);
 
+    let editBook = (e) => {
+        e.preventDefault();
+        book[0].Title = title;
+        book[0].Genre = genre;
+        book[0].InventoryWanted = wantedI;
+        book[0].Inventory = currentI;
+        book[0].Price = price;
+        setManagedBook(book);
+        setShow(false);
+    };
+
     return (
         <>
             <Modal show={show} onHide={() => setShow(false)}>
@@ -114,8 +125,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                     <Button
                         variant="secondary"
                         onClick={(e) => {
-                            e.preventDefault();
-                            setManagedBook(book);
+                            editBook(e);
                         }}
                     >
                         {buttonName}
