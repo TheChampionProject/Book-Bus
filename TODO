@@ -1,8 +1,7 @@
-- Auto refresh when book added
-- Enter key for submitting popups
 - Network loss detection
-- Each book gets own entry for
+- Each book gets own entry
 - Checkout button 
 - Alphabet
 - See non checked out books and all books view
 - Fixed table header
+- Instead of wanted inventory, checkbox for need more

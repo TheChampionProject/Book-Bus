@@ -22,14 +22,6 @@ export default function BookTable({ setBook, setShow, managedBook }) {
         if (a == null || b == null) return false;
         if (a.length !== b.length) return false;
 
-        // If you don't care about the order of the elements inside
-        // the array, you should sort both arrays here.
-        // Please note that calling sort on an array will modify that array.
-        // you might want to clone your array first.
-
-        // for (var i = 0; i < a.length; ++i) {
-        //     if (a[i] !== b[i]) return false;
-        // }
         return true;
     };
 
@@ -38,12 +30,7 @@ export default function BookTable({ setBook, setShow, managedBook }) {
         await snapshot.forEach((childSnapshot) => {
             databaseBooks.push(childSnapshot.val());
         });
-        if (arraysEqual(databaseBooks, books)) {
-            console.log("No change");
-        } else {
-            console.log("Change detected");
-            setBooks(databaseBooks);
-        }
+        if (!arraysEqual(databaseBooks, books)) setBooks(databaseBooks);
     });
 
     useEffect(() => {
@@ -57,11 +44,10 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             Inventory: managedBook[0].Inventory,
             InventoryWanted: managedBook[0].InventoryWanted,
             Price: managedBook[0].Price,
-        })
-            // I have to do this to force a re-render. Will clean up later
-            .catch((e) => {
-                alert("Book failed to edit");
-            });
+        }).catch((e) => {
+            alert("Book failed to edit");
+            console.log(e);
+        });
     }, [managedBook]);
 
     return books.map((book, index) => {

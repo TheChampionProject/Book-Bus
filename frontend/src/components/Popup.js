@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, FormControl } from "react-bootstrap";
 import "../App.css";
 
 export default function Popup({ show, setShow, book, setManagedBook }) {
@@ -21,7 +21,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
     let autoFillPrice = "";
 
     try {
-        // React runs on startup for some reason so this has to be wrapped in a try catch for null to work
         if (book !== null) {
             modalTitle = "Edit This Book";
             buttonName = "Edit Book";
@@ -94,60 +93,64 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                 <Modal.Header closeButton>
                     <Modal.Title>{modalTitle}</Modal.Title>
                 </Modal.Header>
+                <form>
+                    <Modal.Body>
+                        <>
+                            <div className="modal-body EditBookPopup">
+                                <label>Title: </label>
+                                <input
+                                    type="text"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                />
+                                <br />
+                                <label>Genre: </label>
+                                <input
+                                    type="text"
+                                    value={genre}
+                                    onChange={(e) => setGenre(e.target.value)}
+                                />
+                                <br />
+                                <label>C. Inventory:</label>
+                                <input
+                                    type="text"
+                                    value={wantedI}
+                                    onChange={(e) => setWantedI(e.target.value)}
+                                />
+                                <br />
+                                <label>W. Inventory:</label>
+                                <input
+                                    type="text"
+                                    value={currentI}
+                                    onChange={(e) =>
+                                        setCurrentI(e.target.value)
+                                    }
+                                />
+                                <br />
+                                <label>Price: </label>
+                                <input
+                                    type="text"
+                                    value={price}
+                                    onChange={(e) => setPrice(e.target.value)}
+                                />
+                                <br />
+                            </div>
+                        </>
+                    </Modal.Body>
 
-                <Modal.Body>
-                    <>
-                        <div className="modal-body EditBookPopup">
-                            <label>Title: </label>
-                            <input
-                                type="text"
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                            />
-                            <br />
-                            <label>Genre: </label>
-                            <input
-                                type="text"
-                                value={genre}
-                                onChange={(e) => setGenre(e.target.value)}
-                            />
-                            <br />
-                            <label>C. Inventory:</label>
-                            <input
-                                type="text"
-                                value={wantedI}
-                                onChange={(e) => setWantedI(e.target.value)}
-                            />
-                            <br />
-                            <label>W. Inventory:</label>
-                            <input
-                                type="text"
-                                value={currentI}
-                                onChange={(e) => setCurrentI(e.target.value)}
-                            />
-                            <br />
-                            <label>Price: </label>
-                            <input
-                                type="text"
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                            />
-                            <br />
-                        </div>
-                    </>
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <Button
-                        variant="secondary"
-                        className="btn btn-success"
-                        onClick={(e) => {
-                            editBook(e);
-                        }}
-                    >
-                        {buttonName}
-                    </Button>
-                </Modal.Footer>
+                    <Modal.Footer>
+                        <Button
+                            variant="secondary"
+                            className="btn btn-success"
+                            type="submit"
+                            onClick={(e) => {
+                                editBook(e);
+                            }}
+                        >
+                            {buttonName}
+                        </Button>
+                    </Modal.Footer>
+                </form>
             </Modal>
         </>
     );
