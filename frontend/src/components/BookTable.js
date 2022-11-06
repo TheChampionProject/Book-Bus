@@ -17,20 +17,17 @@ export default function BookTable({ setBook, setShow, managedBook }) {
     const [books, setBooks] = useState([]);
     let index, databaseBooks;
 
-    let arraysEqual = (a, b) => {
-        if (a === b) return true;
-        if (a == null || b == null) return false;
-        if (a.length !== b.length) return false;
-
-        return true;
-    };
-
     onValue(dbRef, async (snapshot) => {
         databaseBooks = [];
         await snapshot.forEach((childSnapshot) => {
             databaseBooks.push(childSnapshot.val());
         });
-        if (!arraysEqual(databaseBooks, books)) setBooks(databaseBooks);
+        if (!arraysEqual(databaseBooks, books)) {
+            databaseBooks.sort(function (a, b) {
+                return alphaSortArray(a.Title, b.Title);
+            });
+            setBooks(databaseBooks);
+        }
     });
 
     useEffect(() => {
@@ -49,6 +46,20 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             console.log(e);
         });
     }, [managedBook]);
+
+    let alphaSortArray = (a, b) => {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+
+        return a < b ? -1 : a > b ? 1 : 0;
+    };
+
+    let arraysEqual = (a, b) => {
+        if (a === b) return true;
+        if (a == null || b == null) return false;
+        if (a.length !== b.length) return false;
+        return true;
+    };
 
     return books.map((book, index) => {
         return (
