@@ -18,25 +18,28 @@ export default function Library() {
 
     return (
         <>
-            <div className="container mt-3">
-                <Table striped bordered hover>
-                    <TableHeader />
-                    <tbody>
-                        <BookTable
-                            setBook={setBook}
-                            setShow={setShow}
-                            managedBook={managedBook}
-                        />
-                    </tbody>
-                </Table>
-                <button
-                    type="button"
-                    className=" AddBookButton"
-                    onClick={(e) => handleAddBook(e)}
-                >
-                    +
-                </button>
+            <div className={Table}>
+                <div className="container mt-3">
+                    <Table striped bordered hover>
+                        <TableHeader />
+                        <tbody>
+                            <BookTable
+                                setBook={setBook}
+                                setShow={setShow}
+                                managedBook={managedBook}
+                            />
+                        </tbody>
+                    </Table>
+                    <button
+                        type="button"
+                        className=" AddBookButton"
+                        onClick={(e) => handleAddBook(e)}
+                    >
+                        +
+                    </button>
+                </div>
             </div>
+
             <Popup
                 show={show}
                 setShow={setShow}

@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-export default function TableHeader({ table }) {
+export default function TableHeader() {
     return (
         <thead>
             <tr>
