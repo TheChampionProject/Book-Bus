@@ -1,21 +1,19 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-import {
-    getDatabase,
-    ref,
-    onValue,
-    set,
-} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
+dotenv.config();
 
 initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(db, "/");
+let databaseBooks = [];
 
 let getBooksFB = () => {
     onValue(dbRef, async (snapshot) => {
         databaseBooks = [];
 
-        await snapshot.forEach((childSnapshot) => {
+        snapshot.forEach((childSnapshot) => {
             databaseBooks.push(childSnapshot.val());
         });
 
@@ -46,4 +44,4 @@ let alphaSortArray = (a, b) => {
     return a < b ? -1 : a > b ? 1 : 0;
 };
 
-export default { getBooksFB, setBookFB };
+export { getBooksFB, setBookFB };

@@ -2,7 +2,8 @@ import asyncHandler from "express-async-handler";
 import { getBooksFB, setBookFB } from "./firebase.js";
 
 const getBooks = asyncHandler(async (req, res) => {
-    res.json(getBooksFB());
+    res.send("Hello World!")
+   // res.json(getBooksFB());
 });
 
 const setBook = asyncHandler(async (req, res) => {
