@@ -96,29 +96,30 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                 <form>
                     <Modal.Body>
                         <>
-                            <div className="modal-body EditBookPopup">
-                                <label>Title: </label>
+                            <div className="modal-body">
+                                <label className="Popup">Title: </label>
                                 <input
                                     type="text"
+                                    
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                 />
                                 <br />
-                                <label>Genre: </label>
+                                <label className="Popup">Genre: </label>
                                 <input
                                     type="text"
                                     value={genre}
                                     onChange={(e) => setGenre(e.target.value)}
                                 />
                                 <br />
-                                <label>C. Inventory:</label>
+                                <label className="Popup">C. Inventory:</label>
                                 <input
                                     type="text"
                                     value={wantedI}
                                     onChange={(e) => setWantedI(e.target.value)}
                                 />
                                 <br />
-                                <label>W. Inventory:</label>
+                                <label className="Popup">W. Inventory:</label>
                                 <input
                                     type="text"
                                     value={currentI}
@@ -127,7 +128,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                     }
                                 />
                                 <br />
-                                <label>Price: </label>
+                                <label className="Popup">Price: </label>
                                 <input
                                     type="text"
                                     value={price}

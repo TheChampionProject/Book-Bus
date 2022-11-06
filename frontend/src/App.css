@@ -1,6 +1,6 @@
-.EditBookPopup {
+.Popup {
     display: inline-block;
-    width: 100px;
+    width: 8em;
 }
 
 .AddBookButton {
@@ -16,7 +16,7 @@
     color: white;
 }
 
-.Inventory {
+.InventoryColumn {
     width: 0.1rem;
     max-width: 0.1rem;
 }

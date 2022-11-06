@@ -5,7 +5,7 @@ export default function TableHeader({ table }) {
     return (
         <thead>
             <tr>
-                <th>Number</th>
+                <th>Index</th>
                 <th>Title</th>
                 <th>Genre</th>
                 <th>Current Inventory</th>
