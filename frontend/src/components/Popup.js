@@ -3,6 +3,14 @@ import { Modal, Button } from "react-bootstrap";
 import "../App.css";
 
 export default function Popup({ show, setShow, book, setManagedBook }) {
+    let emptyBook = {
+        Title: "",
+        Genre: "",
+        InventoryWanted: "",
+        Inventory: "",
+        Price: "",
+    };
+    let addBook;
     let modalTitle = "";
     let buttonName = "";
 
@@ -12,7 +20,8 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
     let autoFillCurrentI = "";
     let autoFillPrice = "";
 
-    try { // React runs on startup for some reason so this has to be wrapped in a try catch for null to work
+    try {
+        // React runs on startup for some reason so this has to be wrapped in a try catch for null to work
         if (book !== null) {
             modalTitle = "Edit This Book";
             buttonName = "Edit Book";
@@ -22,6 +31,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
             autoFillCurrentI = book[0].Inventory;
             autoFillPrice = book[0].Price;
         } else {
+            addBook = true;
             modalTitle = "Add a Book";
             buttonName = "Add Book";
         }
@@ -65,6 +75,10 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
     let editBook = (e) => {
         e.preventDefault();
+        if (addBook) {
+            book = [];
+            book.push(emptyBook);
+        }
         book[0].Title = title;
         book[0].Genre = genre;
         book[0].InventoryWanted = wantedI;
@@ -126,6 +140,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                 <Modal.Footer>
                     <Button
                         variant="secondary"
+                        className="btn btn-success"
                         onClick={(e) => {
                             editBook(e);
                         }}

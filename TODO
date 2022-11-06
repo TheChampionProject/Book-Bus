@@ -1,3 +1,8 @@
--   Where should Firebase code go? Do we need to static serve it with Express? / API keys
-
--   Popup component, props for data
+- Auto refresh when book added
+- Enter key for submitting popups
+- Network loss detection
+- Each book gets own entry for
+- Checkout button 
+- Alphabet
+- See non checked out books and all books view
+- Fixed table header

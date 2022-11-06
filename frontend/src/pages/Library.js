@@ -10,7 +10,8 @@ export default function Library() {
     const [show, setShow] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
 
-    let handleAddBook = () => {
+    let handleAddBook = (e) => {
+        e.preventDefault();
         setBook(null);
         setShow(true);
     };
@@ -31,7 +32,7 @@ export default function Library() {
                 <button
                     type="button"
                     className=" AddBookButton"
-                    onClick={handleAddBook}
+                    onClick={(e) => handleAddBook(e)}
                 >
                     +
                 </button>

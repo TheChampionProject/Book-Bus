@@ -14,20 +14,37 @@ export default function BookTable({ setBook, setShow, managedBook }) {
     const db = getDatabase();
     const dbRef = ref(db, "/");
 
-    let [books, setBooks] = useState([]);
-    let updateBooks = 0;
+    const [books, setBooks] = useState([]);
+    let index, databaseBooks;
 
-    let index;
+    let arraysEqual = (a, b) => {
+        if (a === b) return true;
+        if (a == null || b == null) return false;
+        if (a.length !== b.length) return false;
 
-    useEffect(() => {
-        let databaseBooks = [];
-        onValue(dbRef, async (snapshot) => {
-            await snapshot.forEach((childSnapshot) => {
-                databaseBooks.push(childSnapshot.val());
-                setBooks(databaseBooks);
-            });
+        // If you don't care about the order of the elements inside
+        // the array, you should sort both arrays here.
+        // Please note that calling sort on an array will modify that array.
+        // you might want to clone your array first.
+
+        // for (var i = 0; i < a.length; ++i) {
+        //     if (a[i] !== b[i]) return false;
+        // }
+        return true;
+    };
+
+    onValue(dbRef, async (snapshot) => {
+        databaseBooks = [];
+        await snapshot.forEach((childSnapshot) => {
+            databaseBooks.push(childSnapshot.val());
         });
-    }, [updateBooks]);
+        if (arraysEqual(databaseBooks, books)) {
+            console.log("No change");
+        } else {
+            console.log("Change detected");
+            setBooks(databaseBooks);
+        }
+    });
 
     useEffect(() => {
         if (managedBook == null) return;
@@ -41,9 +58,7 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             InventoryWanted: managedBook[0].InventoryWanted,
             Price: managedBook[0].Price,
         })
-            .then(() => {
-                updateBooks++;
-            }) // I have to do this to force a re-render. Will clean up later
+            // I have to do this to force a re-render. Will clean up later
             .catch((e) => {
                 alert("Book failed to edit");
             });

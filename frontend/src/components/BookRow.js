@@ -1,7 +1,8 @@
 import React from "react";
 import "../App.css";
 export default function BookRow({ book, index, setBook, setShow }) {
-    function click() {
+    function click(e) {
+        e.preventDefault();
         setBook([book, index]);
         setShow(true);
     }
@@ -16,7 +17,7 @@ export default function BookRow({ book, index, setBook, setShow }) {
             <td>
                 <button
                     className="btn btn-primary my-2 EditButton"
-                    onClick={click}
+                    onClick={(e) => click(e)}
                 >
                     Edit
                 </button>
