@@ -1,0 +1,13 @@
+React Router
+            - URL Path
+                        - Page
+                                - Component (s)
+
+
+
+React Router
+            - "/library" (just "/" for now to ease development)
+                        - Library
+                                - BookTable
+                                            - BookRow (s)
+                                                        - Popup (For editing the book)

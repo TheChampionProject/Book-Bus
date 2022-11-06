@@ -18,6 +18,10 @@
     },
     "homepage": "https://github.com/TheChampionProject/BookManagementSystem#readme",
     "dependencies": {
-        "firebase": "^9.12.1"
+        "bootstrap": "^5.2.2",
+        "firebase": "^9.12.1",
+        "react-bootstrap": "^2.5.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.4.2"
     }
 }
