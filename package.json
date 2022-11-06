@@ -19,9 +19,15 @@
     "homepage": "https://github.com/TheChampionProject/BookManagementSystem#readme",
     "dependencies": {
         "bootstrap": "^5.2.2",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "express-async-handler": "^1.2.0",
         "firebase": "^9.12.1",
         "react-bootstrap": "^2.5.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.4.2"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.12"
     }
 }

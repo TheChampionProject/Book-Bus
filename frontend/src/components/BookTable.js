@@ -1,58 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-import {
-    getDatabase,
-    ref,
-    onValue,
-    set,
-} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
-import { firebaseConfig } from "../keys.js";
+
 import BookRow from "./BookRow.js";
 
 export default function BookTable({ setBook, setShow, managedBook }) {
-    initializeApp(firebaseConfig);
-    const db = getDatabase();
-    const dbRef = ref(db, "/");
+  
 
     const [books, setBooks] = useState([]);
     let index, databaseBooks;
 
-    onValue(dbRef, async (snapshot) => {
-        databaseBooks = [];
-        await snapshot.forEach((childSnapshot) => {
-            databaseBooks.push(childSnapshot.val());
-        });
-        if (!arraysEqual(databaseBooks, books)) {
-            databaseBooks.sort(function (a, b) {
-                return alphaSortArray(a.Title, b.Title);
-            });
-            setBooks(databaseBooks);
-        }
-    });
+    // onValue(dbRef, async (snapshot) => {
+    //     databaseBooks = [];
+    //     await snapshot.forEach((childSnapshot) => {
+    //         databaseBooks.push(childSnapshot.val());
+    //     });
+    //     if (!arraysEqual(databaseBooks, books)) {
+    //         databaseBooks.sort(function (a, b) {
+    //             return alphaSortArray(a.Title, b.Title);
+    //         });
+    //         setBooks(databaseBooks);
+    //     }
+    // });
 
-    useEffect(() => {
-        if (managedBook == null) return;
-        if (managedBook[1] == null) index = books.length++;
-        else index = managedBook[1];
+    // useEffect(() => {
+    //     if (managedBook == null) return;
+    //     if (managedBook[1] == null) index = books.length++;
+    //     else index = managedBook[1];
 
-        set(ref(db, "/" + index), {
-            Title: managedBook[0].Title,
-            Genre: managedBook[0].Genre,
-            Inventory: managedBook[0].Inventory,
-            InventoryWanted: managedBook[0].InventoryWanted,
-            Price: managedBook[0].Price,
-        }).catch((e) => {
-            alert("Book failed to edit");
-            console.log(e);
-        });
-    }, [managedBook]);
-
-    let alphaSortArray = (a, b) => {
-        a = a.toLowerCase();
-        b = b.toLowerCase();
-
-        return a < b ? -1 : a > b ? 1 : 0;
-    };
+    //     set(ref(db, "/" + index), {
+    //         Title: managedBook[0].Title,
+    //         Genre: managedBook[0].Genre,
+    //         Inventory: managedBook[0].Inventory,
+    //         InventoryWanted: managedBook[0].InventoryWanted,
+    //         Price: managedBook[0].Price,
+    //     }).catch((e) => {
+    //         alert("Book failed to edit");
+    //         console.log(e);
+    //     });
+    // }, [managedBook]);
 
     let arraysEqual = (a, b) => {
         if (a === b) return true;
@@ -60,6 +44,7 @@ export default function BookTable({ setBook, setShow, managedBook }) {
         if (a.length !== b.length) return false;
         return true;
     };
+
 
     return books.map((book, index) => {
         return (
