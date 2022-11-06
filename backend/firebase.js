@@ -1,7 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue, set } from "firebase/database";
+import { getDatabase, ref, get, set } from "firebase/database";
 import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
+import asyncHandler from "express-async-handler";
+
 dotenv.config();
 
 initializeApp(firebaseConfig);
@@ -9,23 +11,24 @@ const db = getDatabase();
 const dbRef = ref(db, "/");
 let databaseBooks = [];
 
-let getBooksFB = () => {
-    onValue(dbRef, async (snapshot) => {
+const getBooksFB = async () => {
+    await get(dbRef, async (snapshot) => {
         databaseBooks = [];
 
-        snapshot.forEach((childSnapshot) => {
+        console.log("Calling");
+        await snapshot.forEach((childSnapshot) => {
             databaseBooks.push(childSnapshot.val());
         });
 
         databaseBooks.sort(function (a, b) {
             return alphaSortArray(a.Title, b.Title);
         });
-
-        return databaseBooks;
-    });
+    })
+    console.log("Returning");
+    return databaseBooks;
 };
 
-let setBookFB = (book, index) => {
+const setBookFB = (book, index) => {
     set(ref(db, "/" + index), {
         Title: book.Title,
         Genre: book.Genre,
