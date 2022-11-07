@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
 import BookRow from "./BookRow.js";
 
 export default function BookTable({ setBook, setShow, managedBook }) {
-  
+    let [books, setBooks] = useState([]);
+    let index;
 
-    const [books, setBooks] = useState([]);
-    let index, databaseBooks;
-
-    // onValue(dbRef, async (snapshot) => {
-    //     databaseBooks = [];
-    //     await snapshot.forEach((childSnapshot) => {
-    //         databaseBooks.push(childSnapshot.val());
-    //     });
-    //     if (!arraysEqual(databaseBooks, books)) {
-    //         databaseBooks.sort(function (a, b) {
-    //             return alphaSortArray(a.Title, b.Title);
-    //         });
-    //         setBooks(databaseBooks);
-    //     }
-    // });
+    useEffect(() => {
+        let getBooks = async () => {
+            let databaseBooks = [];
+            await axios
+                .get(process.env.REACT_APP_BACKEND_URL + "getBooks")
+                .then((response) => databaseBooks.push(response.data[0]))
+                .then(() => {
+                    setBooks(databaseBooks[0]);
+                });
+        };
+        getBooks();
+    }, []);
 
     // useEffect(() => {
     //     if (managedBook == null) return;
     //     if (managedBook[1] == null) index = books.length++;
     //     else index = managedBook[1];
+
+    //     await axios.put(process.env.BACKEND_URL + "/manageBook")
 
     //     set(ref(db, "/" + index), {
     //         Title: managedBook[0].Title,
@@ -37,14 +37,6 @@ export default function BookTable({ setBook, setShow, managedBook }) {
     //         console.log(e);
     //     });
     // }, [managedBook]);
-
-    let arraysEqual = (a, b) => {
-        if (a === b) return true;
-        if (a == null || b == null) return false;
-        if (a.length !== b.length) return false;
-        return true;
-    };
-
 
     return books.map((book, index) => {
         return (
