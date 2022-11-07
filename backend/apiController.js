@@ -6,12 +6,13 @@ const getBooks = asyncHandler(async (req, res) => {
 });
 
 const setBook = asyncHandler(async (req, res) => {
-    if (!req.body.book) {
+    console.log(req.body.newBook);
+    if (!req.body.newBook) {
         res.status(400);
         throw new Error("Missing Book");
     }
     try {
-        await setBookFB(req.body.book, req.body.index);
+        await setBookFB(req.body.newBook);
     } catch {}
 });
 

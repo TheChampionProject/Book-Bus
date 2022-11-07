@@ -4,39 +4,49 @@ import BookRow from "./BookRow.js";
 
 export default function BookTable({ setBook, setShow, managedBook }) {
     let [books, setBooks] = useState([]);
-    let index;
+    let index, databaseBooks;
 
     useEffect(() => {
-        let getBooks = async () => {
-            let databaseBooks = [];
-            await axios
-                .get(process.env.REACT_APP_BACKEND_URL + "getBooks")
-                .then((response) => databaseBooks.push(response.data[0]))
-                .then(() => {
-                    setBooks(databaseBooks[0]);
-                });
+        // Load books from database on page load
+        async function callGetBooks() {
+            await getBooks();
+        }
+        callGetBooks();
+    });
+
+    useEffect(() => {
+        if (managedBook == null) return;
+        if (managedBook[1] == null) index = books.length++;
+        else index = managedBook[1];
+
+        let newBook = {
+            Title: managedBook[0].Title,
+            Genre: managedBook[0].Genre,
+            Inventory: managedBook[0].Inventory,
+            InventoryWanted: managedBook[0].InventoryWanted,
+            Price: managedBook[0].Price,
+            Index: index,
         };
+
+        manageBook(newBook);
         getBooks();
-    }, []);
+    }, [managedBook]);
 
-    // useEffect(() => {
-    //     if (managedBook == null) return;
-    //     if (managedBook[1] == null) index = books.length++;
-    //     else index = managedBook[1];
+    let getBooks = async () => {
+        databaseBooks = [];
+        await axios
+            .get(process.env.REACT_APP_BACKEND_URL + "getBooks")
+            .then((response) => databaseBooks.push(response.data[0]))
+            .then(() => {
+                setBooks(databaseBooks[0]);
+            });
+    };
 
-    //     await axios.put(process.env.BACKEND_URL + "/manageBook")
-
-    //     set(ref(db, "/" + index), {
-    //         Title: managedBook[0].Title,
-    //         Genre: managedBook[0].Genre,
-    //         Inventory: managedBook[0].Inventory,
-    //         InventoryWanted: managedBook[0].InventoryWanted,
-    //         Price: managedBook[0].Price,
-    //     }).catch((e) => {
-    //         alert("Book failed to edit");
-    //         console.log(e);
-    //     });
-    // }, [managedBook]);
+    let manageBook = async (newBook) => {
+        await axios.post(process.env.REACT_APP_BACKEND_URL + "manageBook", {
+            newBook,
+        });
+    };
 
     return books.map((book, index) => {
         return (

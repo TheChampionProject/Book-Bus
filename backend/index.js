@@ -15,6 +15,6 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 
 app.get("/getBooks", getBooks);
-app.put("/manageBook", setBook);
+app.post("/manageBook", setBook);
 
 app.listen(port, () => console.log(`Server started on ${port}!`));

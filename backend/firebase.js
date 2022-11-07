@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set, child } from "firebase/database";
 import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
-import asyncHandler from "express-async-handler";
 
 dotenv.config();
 
@@ -13,7 +12,7 @@ let databaseBooks = [];
 
 const getBooksFB = async () => {
     databaseBooks = [];
-    
+
     await get(child(dbRef, `/`))
         .then((snapshot) => {
             if (snapshot.exists()) {
@@ -33,8 +32,8 @@ const getBooksFB = async () => {
     return databaseBooks;
 };
 
-const setBookFB = async (book, index) => {
-    await set(ref(db, "/" + index), {
+const setBookFB = async (book) => {
+    await set(ref(db, "/" + book.index), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,
