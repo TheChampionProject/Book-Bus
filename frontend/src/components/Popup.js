@@ -9,6 +9,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         InventoryWanted: "",
         Inventory: "",
         Price: "",
+        Index: -1,
     };
     let addBook;
     let modalTitle = "";

@@ -16,7 +16,7 @@ export default function BookTable({ setBook, setShow, managedBook }) {
 
     useEffect(() => {
         if (managedBook == null) return;
-        if (managedBook[1] != null)
+        if (managedBook.Index !== -1)
             if (index.current === managedBook.Index)
                 // Editing a book
                 return; // The book has already been edited
