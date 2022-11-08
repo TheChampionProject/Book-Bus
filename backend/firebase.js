@@ -33,7 +33,7 @@ const getBooksFB = async () => {
 };
 
 const setBookFB = async (book) => {
-    await set(ref(db, "/" + book.index), {
+    await set(ref(db, "/" + book.Index), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,
