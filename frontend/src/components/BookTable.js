@@ -17,18 +17,18 @@ export default function BookTable({ setBook, setShow, managedBook }) {
     useEffect(() => {
         if (managedBook == null) return;
         if (managedBook[1] != null)
-            if (index.current === managedBook[1])
+            if (index.current === managedBook.Index)
                 // Editing a book
                 return; // The book has already been edited
-            else index.current = managedBook[1];
+            else index.current = managedBook.Index;
         else index.current = books.length; // Adding a book
 
         let newBook = {
-            Title: managedBook[0].Title,
-            Genre: managedBook[0].Genre,
-            Inventory: managedBook[0].Inventory,
-            InventoryWanted: managedBook[0].InventoryWanted,
-            Price: managedBook[0].Price,
+            Title: managedBook.Title,
+            Genre: managedBook.Genre,
+            Inventory: managedBook.Inventory,
+            InventoryWanted: managedBook.InventoryWanted,
+            Price: managedBook.Price,
             Index: index.current,
         };
 
@@ -81,12 +81,13 @@ export default function BookTable({ setBook, setShow, managedBook }) {
         return a < b ? -1 : a > b ? 1 : 0;
     };
 
-    return books.map((book, index) => {
+    return books.map((book, number) => {
+        number++;
         return (
             <BookRow
-                key={index}
+                key={number}
                 book={book}
-                index={index}
+                number={number}
                 setBook={setBook}
                 setShow={setShow}
             />
