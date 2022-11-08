@@ -16,8 +16,10 @@ export default function BookTable({ setBook, setShow, managedBook }) {
 
     useEffect(() => {
         if (managedBook == null) return;
-        if (managedBook[1] != null) // Editing a book
-            if (index.current === managedBook[1]) return; // The book has already been edited
+        if (managedBook[1] != null)
+            if (index.current === managedBook[1])
+                // Editing a book
+                return; // The book has already been edited
             else index.current = managedBook[1];
         else index.current = books.length; // Adding a book
 
@@ -42,6 +44,12 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             .then((response) => databaseBooks.push(response.data[0])) // response.data[0] is the JSON object full of books
             .then(() => {
                 for (var i in databaseBooks[0]) res.push(databaseBooks[0][i]); // In order to turn a giant JSON full of books into an array of books
+            })
+
+            .then(() => {
+                res.sort(function (a, b) {
+                    return alphaSortArray(a.Title, b.Title);
+                });
             });
 
         setBooks(res);
@@ -56,6 +64,13 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             .catch(() => {
                 console.log("error occured");
             });
+    };
+
+    let alphaSortArray = (a, b) => {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+
+        return a < b ? -1 : a > b ? 1 : 0;
     };
 
     return books.map((book, index) => {

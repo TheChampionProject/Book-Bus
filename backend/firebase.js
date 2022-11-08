@@ -25,10 +25,6 @@ const getBooksFB = async () => {
             return error;
         });
 
-    databaseBooks.sort(function (a, b) {
-        return alphaSortArray(a.Title, b.Title);
-    });
-
     return databaseBooks;
 };
 
@@ -42,13 +38,6 @@ const setBookFB = async (book) => {
     }).catch((e) => {
         return e;
     });
-};
-
-let alphaSortArray = (a, b) => {
-    a = a.toLowerCase();
-    b = b.toLowerCase();
-
-    return a < b ? -1 : a > b ? 1 : 0;
 };
 
 export { getBooksFB, setBookFB };
