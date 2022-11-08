@@ -13,7 +13,9 @@ const setBook = asyncHandler(async (req, res) => {
     }
     try {
         await setBookFB(req.body.newBook);
-    } catch {}
+    } catch (err) {
+        res.json(err);
+    }
 });
 
 export { getBooks, setBook };

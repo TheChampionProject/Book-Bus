@@ -4,7 +4,7 @@ import BookRow from "./BookRow.js";
 
 export default function BookTable({ setBook, setShow, managedBook }) {
     let [books, setBooks] = useState([]);
-    let index, databaseBooks;
+    let index;
 
     useEffect(() => {
         // Load books from database on page load
@@ -12,7 +12,7 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             await getBooks();
         }
         callGetBooks();
-    });
+    }, []);
 
     useEffect(() => {
         if (managedBook == null) return;
@@ -29,17 +29,18 @@ export default function BookTable({ setBook, setShow, managedBook }) {
         };
 
         manageBook(newBook);
-        getBooks();
     }, [managedBook]);
 
     let getBooks = async () => {
-        databaseBooks = [];
+        let res = [];
+        let databaseBooks = [];
         await axios
             .get(process.env.REACT_APP_BACKEND_URL + "getBooks")
-            .then((response) => databaseBooks.push(response.data[0]))
+            .then((response) => databaseBooks.push(response.data[0])) // response.data[0] is the JSON object full of books
             .then(() => {
-                setBooks(databaseBooks[0]);
+                for (var i in databaseBooks[0]) res.push(databaseBooks[0][i]); // In order to turn a giant JSON full of books into an array of books
             });
+        setBooks(res);
     };
 
     let manageBook = async (newBook) => {
