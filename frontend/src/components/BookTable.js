@@ -45,8 +45,18 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             .then(() => {
                 for (var i in databaseBooks[0]) res.push(databaseBooks[0][i]); // In order to turn a giant JSON full of books into an array of books
             })
-
             .then(() => {
+                for (var i = 0; i < res.length; i++) { // After the sort, the original index of the book is preserved. Neccesary bc firebase isn't reordered
+                    res[i] = {
+                        Title: res[i].Title,
+                        Genre: res[i].Genre,
+                        Inventory: res[i].Inventory,
+                        InventoryWanted: res[i].InventoryWanted,
+                        Price: res[i].Price,
+                        Index: i,
+                    };
+                }
+
                 res.sort(function (a, b) {
                     return alphaSortArray(a.Title, b.Title);
                 });
@@ -61,9 +71,7 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             .post(process.env.REACT_APP_BACKEND_URL + "manageBook", {
                 newBook,
             })
-            .catch(() => {
-                console.log("error occured");
-            });
+            .catch(() => {});
     };
 
     let alphaSortArray = (a, b) => {
