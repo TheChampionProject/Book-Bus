@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Modal, Button, FormControl } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import "../App.css";
 
 export default function Popup({ show, setShow, book, setManagedBook }) {
@@ -9,6 +9,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         InventoryWanted: "",
         Inventory: "",
         Price: "",
+        Index: -1,
     };
     let addBook;
     let modalTitle = "";
@@ -24,11 +25,11 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         if (book !== null) {
             modalTitle = "Edit This Book";
             buttonName = "Edit Book";
-            autoFillTitle = book[0].Title;
-            autoFillGenre = book[0].Genre;
-            autoFillWantedI = book[0].InventoryWanted;
-            autoFillCurrentI = book[0].Inventory;
-            autoFillPrice = book[0].Price;
+            autoFillTitle = book.Title;
+            autoFillGenre = book.Genre;
+            autoFillWantedI = book.InventoryWanted;
+            autoFillCurrentI = book.Inventory;
+            autoFillPrice = book.Price;
         } else {
             addBook = true;
             modalTitle = "Add a Book";
@@ -74,15 +75,16 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
     let editBook = (e) => {
         e.preventDefault();
+
         if (addBook) {
-            book = [];
-            book.push(emptyBook);
+            book = emptyBook; // Give book a value so it can be edited
         }
-        book[0].Title = title;
-        book[0].Genre = genre;
-        book[0].InventoryWanted = wantedI;
-        book[0].Inventory = currentI;
-        book[0].Price = price;
+
+        book.Title = title;
+        book.Genre = genre;
+        book.InventoryWanted = wantedI;
+        book.Inventory = currentI;
+        book.Price = price;
         setManagedBook(book);
         setShow(false);
     };
@@ -100,7 +102,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                 <label className="Popup">Title: </label>
                                 <input
                                     type="text"
-                                    
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                 />

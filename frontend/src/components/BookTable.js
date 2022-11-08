@@ -1,51 +1,78 @@
-import React, { useEffect, useState } from "react";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-import {
-    getDatabase,
-    ref,
-    onValue,
-    set,
-} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
-import { firebaseConfig } from "../keys.js";
+import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
 import BookRow from "./BookRow.js";
 
 export default function BookTable({ setBook, setShow, managedBook }) {
-    initializeApp(firebaseConfig);
-    const db = getDatabase();
-    const dbRef = ref(db, "/");
+    let [books, setBooks] = useState([]);
+    let index = useRef();
 
-    const [books, setBooks] = useState([]);
-    let index, databaseBooks;
-
-    onValue(dbRef, async (snapshot) => {
-        databaseBooks = [];
-        await snapshot.forEach((childSnapshot) => {
-            databaseBooks.push(childSnapshot.val());
-        });
-        if (!arraysEqual(databaseBooks, books)) {
-            databaseBooks.sort(function (a, b) {
-                return alphaSortArray(a.Title, b.Title);
-            });
-            setBooks(databaseBooks);
+    useEffect(() => {
+        // Load books from database on page load
+        async function callGetBooks() {
+            await getBooks();
         }
-    });
+        callGetBooks();
+    }, []);
 
     useEffect(() => {
         if (managedBook == null) return;
-        if (managedBook[1] == null) index = books.length++;
-        else index = managedBook[1];
+        if (managedBook.Index !== -1)
+            if (index.current === managedBook.Index)
+                // Editing a book
+                return; // The book has already been edited
+            else index.current = managedBook.Index;
+        else index.current = books.length; // Adding a book
 
-        set(ref(db, "/" + index), {
-            Title: managedBook[0].Title,
-            Genre: managedBook[0].Genre,
-            Inventory: managedBook[0].Inventory,
-            InventoryWanted: managedBook[0].InventoryWanted,
-            Price: managedBook[0].Price,
-        }).catch((e) => {
-            alert("Book failed to edit");
-            console.log(e);
-        });
-    }, [managedBook]);
+        let newBook = {
+            Title: managedBook.Title,
+            Genre: managedBook.Genre,
+            Inventory: managedBook.Inventory,
+            InventoryWanted: managedBook.InventoryWanted,
+            Price: managedBook.Price,
+            Index: index.current,
+        };
+
+        manageBook(newBook);
+    }, [books.length, managedBook]);
+
+    let getBooks = async () => {
+        let res = [];
+        let databaseBooks = [];
+        await axios
+            .get(process.env.REACT_APP_BACKEND_URL + "getBooks")
+            .catch(() => {})
+            .then((response) => databaseBooks.push(response.data[0])) // response.data[0] is the JSON object full of books
+            .then(() => {
+                for (var i in databaseBooks[0]) res.push(databaseBooks[0][i]); // In order to turn a giant JSON full of books into an array of books
+            })
+            .then(() => {
+                for (var i = 0; i < res.length; i++) { // After the sort, the original index of the book is preserved. Neccesary bc firebase isn't reordered
+                    res[i] = {
+                        Title: res[i].Title,
+                        Genre: res[i].Genre,
+                        Inventory: res[i].Inventory,
+                        InventoryWanted: res[i].InventoryWanted,
+                        Price: res[i].Price,
+                        Index: i,
+                    };
+                }
+
+                res.sort(function (a, b) {
+                    return alphaSortArray(a.Title, b.Title);
+                });
+            });
+
+        setBooks(res);
+    };
+
+    let manageBook = async (newBook) => {
+        if (newBook == null) return;
+        await axios
+            .post(process.env.REACT_APP_BACKEND_URL + "manageBook", {
+                newBook,
+            })
+            .catch(() => {});
+    };
 
     let alphaSortArray = (a, b) => {
         a = a.toLowerCase();
@@ -54,19 +81,13 @@ export default function BookTable({ setBook, setShow, managedBook }) {
         return a < b ? -1 : a > b ? 1 : 0;
     };
 
-    let arraysEqual = (a, b) => {
-        if (a === b) return true;
-        if (a == null || b == null) return false;
-        if (a.length !== b.length) return false;
-        return true;
-    };
-
-    return books.map((book, index) => {
+    return books.map((book, number) => {
+        number++;
         return (
             <BookRow
-                key={index}
+                key={number}
                 book={book}
-                index={index}
+                number={number}
                 setBook={setBook}
                 setShow={setShow}
             />
