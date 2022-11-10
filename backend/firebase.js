@@ -14,25 +14,30 @@ const getBooksFB = async () => {
     console.log("Getting Books...");
     databaseBooks = [];
     let error = false;
-    let errorMesage = "";
+    let errorMessage = "";
 
     await get(child(dbRef, `/`))
         .then((snapshot) => {
-            console.log("Adding books...");
+            console.log("Adding Books...");
             if (snapshot.exists()) {
+                console.log("Pushing Books...");
                 databaseBooks.push(snapshot.val());
             } else {
                 error = true;
-                errorMesage = "No Data Found";
+                errorMessage = "No Data Found";
+                console.log(errorMessage);
             }
         })
         .catch((error) => {
             error = true;
-            errorMesage = error;
+            errorMessage = error;
+            console.log(errorMessage);
         });
 
-    if (error) return errorMesage;
-    else {
+    if (error) {
+        console.log("Error getting books!");
+        return errorMessage;
+    } else {
         console.log("Books added!");
         return databaseBooks;
     }
