@@ -16,6 +16,9 @@ const getBooksFB = async () => {
     let error = false;
     let errorMessage = "";
 
+    await get(child(dbRef, `/`));
+    console.log("Test get succeeded");
+
     await get(child(dbRef, `/`))
         .then((snapshot) => {
             console.log("Adding Books...");
