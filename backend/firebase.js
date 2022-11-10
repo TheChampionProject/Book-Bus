@@ -11,12 +11,14 @@ const dbRef = ref(getDatabase());
 let databaseBooks = [];
 
 const getBooksFB = async () => {
+    console.log("Getting Books...");
     databaseBooks = [];
     let error = false;
     let errorMesage = "";
 
     await get(child(dbRef, `/`))
         .then((snapshot) => {
+            console.log("Adding books...");
             if (snapshot.exists()) {
                 databaseBooks.push(snapshot.val());
             } else {
@@ -30,7 +32,10 @@ const getBooksFB = async () => {
         });
 
     if (error) return errorMesage;
-    return databaseBooks;
+    else {
+        console.log("Books added!");
+        return databaseBooks;
+    }
 };
 
 const setBookFB = async (book) => {
