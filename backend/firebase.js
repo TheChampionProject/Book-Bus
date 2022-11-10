@@ -12,19 +12,24 @@ let databaseBooks = [];
 
 const getBooksFB = async () => {
     databaseBooks = [];
+    let error = false;
+    let errorMesage = "";
 
     await get(child(dbRef, `/`))
         .then((snapshot) => {
             if (snapshot.exists()) {
                 databaseBooks.push(snapshot.val());
             } else {
-                return "No Data Found";
+                error = true;
+                errorMesage = "No Data Found";
             }
         })
         .catch((error) => {
-            return error;
+            error = true;
+            errorMesage = error;
         });
 
+    if (error) return errorMesage;
     return databaseBooks;
 };
 
