@@ -12,7 +12,6 @@ export default function BookRow({ book, number, setBook, setShow }) {
             <td>{book.Title}</td>
             <td>{book.Genre}</td>
             <td className="Inventory">{book.Inventory}</td>
-            <td className="Inventory">{book.InventoryWanted}</td>
             <td>${book.Price}</td>
             <td>
                 <button

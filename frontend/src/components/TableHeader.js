@@ -8,8 +8,7 @@ export default function TableHeader() {
                 <th>Index</th>
                 <th>Title</th>
                 <th>Genre</th>
-                <th>Current Inventory</th>
-                <th>Wanted Inventory</th>
+                <th>Inventory</th>
                 <th>Price</th>
                 <th>Manage</th>
             </tr>

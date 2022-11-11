@@ -6,7 +6,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
     let emptyBook = {
         Title: "",
         Genre: "",
-        InventoryWanted: "",
         Inventory: "",
         Price: "",
         Index: -1,
@@ -17,7 +16,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
     let autoFillTitle = "";
     let autoFillGenre = "";
-    let autoFillWantedI = "";
     let autoFillCurrentI = "";
     let autoFillPrice = "";
 
@@ -27,7 +25,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
             buttonName = "Edit Book";
             autoFillTitle = book.Title;
             autoFillGenre = book.Genre;
-            autoFillWantedI = book.InventoryWanted;
             autoFillCurrentI = book.Inventory;
             autoFillPrice = book.Price;
         } else {
@@ -39,29 +36,25 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
     let [title, setTitle] = useState(autoFillTitle);
     let [genre, setGenre] = useState(autoFillGenre);
-    let [wantedI, setWantedI] = useState(autoFillWantedI);
     let [currentI, setCurrentI] = useState(autoFillCurrentI);
     let [price, setPrice] = useState(autoFillPrice);
 
     let previousTitle = useRef();
     let previousGenre = useRef();
-    let previousWantedI = useRef();
     let previousCurrentI = useRef();
     let previousPrice = useRef();
 
     useEffect(() => {
         previousTitle.current = title;
         previousGenre.current = genre;
-        previousWantedI.current = wantedI;
         previousCurrentI.current = currentI;
         previousPrice.current = price;
-    }, [title, genre, wantedI, currentI, price]);
+    }, [title, genre, currentI, price]);
 
     useEffect(() => {
         // When there is a new book, autoFill fields will update
         setTitle(autoFillTitle);
         setGenre(autoFillGenre);
-        setWantedI(autoFillWantedI);
         setCurrentI(autoFillCurrentI);
         setPrice(autoFillPrice);
     }, [
@@ -69,7 +62,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         autoFillGenre,
         autoFillPrice,
         autoFillTitle,
-        autoFillWantedI,
         book,
     ]);
 
@@ -82,7 +74,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
         book.Title = title;
         book.Genre = genre;
-        book.InventoryWanted = wantedI;
         book.Inventory = currentI;
         book.Price = price;
         setManagedBook(book);
@@ -112,15 +103,9 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                     value={genre}
                                     onChange={(e) => setGenre(e.target.value)}
                                 />
+                              
                                 <br />
-                                <label className="Popup">W. Inventory:</label>
-                                <input
-                                    type="text"
-                                    value={wantedI}
-                                    onChange={(e) => setWantedI(e.target.value)}
-                                />
-                                <br />
-                                <label className="Popup">C. Inventory:</label>
+                                <label className="Popup">Inventory: </label>
                                 <input
                                     type="text"
                                     value={currentI}

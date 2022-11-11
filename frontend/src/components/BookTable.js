@@ -27,7 +27,6 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             Title: managedBook.Title,
             Genre: managedBook.Genre,
             Inventory: managedBook.Inventory,
-            InventoryWanted: managedBook.InventoryWanted,
             Price: managedBook.Price,
             Index: index.current,
         };
@@ -51,7 +50,6 @@ export default function BookTable({ setBook, setShow, managedBook }) {
                         Title: res[i].Title,
                         Genre: res[i].Genre,
                         Inventory: res[i].Inventory,
-                        InventoryWanted: res[i].InventoryWanted,
                         Price: res[i].Price,
                         Index: i,
                     };
