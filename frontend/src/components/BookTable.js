@@ -2,7 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import BookRow from "./BookRow.js";
 
-export default function BookTable({ setBook, setShow, managedBook }) {
+export default function BookTable({
+    setBook,
+    setShow,
+    managedBook,
+    setManagedBook,
+}) {
     let [books, setBooks] = useState([]);
     let index = useRef();
 
@@ -15,6 +20,7 @@ export default function BookTable({ setBook, setShow, managedBook }) {
     }, []);
 
     useEffect(() => {
+        console.log(managedBook);
         if (managedBook == null) return;
         if (managedBook.Index !== -1)
             if (index.current === managedBook.Index)
@@ -22,6 +28,8 @@ export default function BookTable({ setBook, setShow, managedBook }) {
                 return; // The book has already been edited
             else index.current = managedBook.Index;
         else index.current = books.length; // Adding a book
+
+        console.log(managedBook);
 
         let newBook = {
             Title: managedBook.Title,
@@ -45,7 +53,8 @@ export default function BookTable({ setBook, setShow, managedBook }) {
                 for (var i in databaseBooks[0]) res.push(databaseBooks[0][i]); // In order to turn a giant JSON full of books into an array of books
             })
             .then(() => {
-                for (var i = 0; i < res.length; i++) { // After the sort, the original index of the book is preserved. Neccesary bc firebase isn't reordered
+                for (var i = 0; i < res.length; i++) {
+                    // After the sort, the original index of the book is preserved. Neccesary bc firebase isn't reordered
                     res[i] = {
                         Title: res[i].Title,
                         Genre: res[i].Genre,
@@ -88,6 +97,7 @@ export default function BookTable({ setBook, setShow, managedBook }) {
                 number={number}
                 setBook={setBook}
                 setShow={setShow}
+                setManagedBook={setManagedBook}
             />
         );
     });

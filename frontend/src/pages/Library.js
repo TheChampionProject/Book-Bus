@@ -27,6 +27,7 @@ export default function Library() {
                                 setBook={setBook}
                                 setShow={setShow}
                                 managedBook={managedBook}
+                                setManagedBook={setManagedBook}
                             />
                         </tbody>
                     </Table>
