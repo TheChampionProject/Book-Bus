@@ -113,14 +113,14 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                     onChange={(e) => setGenre(e.target.value)}
                                 />
                                 <br />
-                                <label className="Popup">C. Inventory:</label>
+                                <label className="Popup">W. Inventory:</label>
                                 <input
                                     type="text"
                                     value={wantedI}
                                     onChange={(e) => setWantedI(e.target.value)}
                                 />
                                 <br />
-                                <label className="Popup">W. Inventory:</label>
+                                <label className="Popup">C. Inventory:</label>
                                 <input
                                     type="text"
                                     value={currentI}
