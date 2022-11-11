@@ -15,8 +15,8 @@ export default function BookRow({
 
     const checkout = (e) => {
         e.preventDefault();
-        let newBook = book.Inventory--;
-        setManagedBook(newBook);
+        book.Inventory = book.Inventory--;
+        setManagedBook(book);
     };
     return (
         <tr>

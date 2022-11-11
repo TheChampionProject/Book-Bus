@@ -20,7 +20,6 @@ export default function BookTable({
     }, []);
 
     useEffect(() => {
-        console.log(managedBook);
         if (managedBook == null) return;
         if (managedBook.Index !== -1)
             if (index.current === managedBook.Index)
@@ -29,17 +28,11 @@ export default function BookTable({
             else index.current = managedBook.Index;
         else index.current = books.length; // Adding a book
 
-        console.log(managedBook);
+        //console.log(managedBook);
 
-        let newBook = {
-            Title: managedBook.Title,
-            Genre: managedBook.Genre,
-            Inventory: managedBook.Inventory,
-            Price: managedBook.Price,
-            Index: index.current,
-        };
+        managedBook.Index = index.current;
 
-        manageBook(newBook);
+        manageBook(managedBook);
     }, [books.length, managedBook]);
 
     let getBooks = async () => {
