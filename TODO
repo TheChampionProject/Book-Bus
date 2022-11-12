@@ -3,3 +3,5 @@
 - Instead of wanted inventory, checkbox for need more
 - Rerender when book added. Call the useEffect hook
 - Timestamps
+- Search bar
+- Highlight book name according to inventory need

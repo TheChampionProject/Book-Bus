@@ -31,7 +31,9 @@ thead {
     top: 0;
 }
 
-.CheckBoxes {
+.Alert {
+    position: "fixed";
+    top: 0;
 }
 
 .CheckBoxLabels {
