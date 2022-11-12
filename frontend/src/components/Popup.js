@@ -127,10 +127,52 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                 onChange={(e) => setPrice(e.target.value)}
                             />
                             <br />
-
                             <label className="Popup">Additional Need: </label>
-                            <input type="checkbox">0 - 5</input>
-                           
+
+                            <div className="form-check form-check-inline">
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="inlineCheckbox1"
+                                    value="option1"
+                                ></input>
+                                <label
+                                    className="form-check-label"
+                                    htmlFor="inlineCheckbox1"
+                                >
+                                    0 - 5
+                                </label>
+                            </div>
+
+                            <div className="form-check form-check-inline">
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="inlineCheckbox2"
+                                    value="option2"
+                                ></input>
+                                <label
+                                    className="form-check-label"
+                                    htmlFor="inlineCheckbox2"
+                                >
+                                    5 - 10
+                                </label>
+                            </div>
+
+                            <div className="form-check form-check-inline">
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="inlineCheckbox2"
+                                    value="option2"
+                                ></input>
+                                <label
+                                    className="form-check-label"
+                                    htmlFor="inlineCheckbox2"
+                                >
+                                    10 - 20
+                                </label>
+                            </div>
                         </div>
                     </Modal.Body>
 

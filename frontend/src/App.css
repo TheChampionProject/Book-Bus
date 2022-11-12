@@ -30,3 +30,11 @@ thead {
     position: sticky;
     top: 0;
 }
+
+.CheckBoxes {
+}
+
+.CheckBoxLabels {
+    margin: auto;
+    display: block;
+}
