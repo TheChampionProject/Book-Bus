@@ -40,3 +40,18 @@ thead {
     margin: auto;
     display: block;
 }
+
+.btn-group button {
+    color: white;
+}
+
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.QuantityBox {
+    margin: .1em;
+    width: 3em;
+}

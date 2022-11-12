@@ -7,7 +7,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         Title: "",
         Genre: "",
         Inventory: "",
-        Needed: "",
+        Needed: 0,
         Price: "",
         Index: -1,
     };
@@ -19,7 +19,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
     let autoFillTitle = "";
     let autoFillGenre = "";
     let autoFillInventory = "";
-    let autoFillNeeded = "";
+    let autoFillNeeded = 0;
     let autoFillPrice = "";
 
     try {
@@ -29,7 +29,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
             autoFillTitle = book.Title;
             autoFillGenre = book.Genre;
             autoFillInventory = book.Inventory;
-            autoFillNeeded = book.Needed;
+            autoFillNeeded = 0; //book.Needed;
             autoFillPrice = book.Price;
         } else {
             addBook = true;
@@ -90,16 +90,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         setShow(false);
     };
 
-    // As in 0 - 5, 5- 10, 10 - 20
-    const checkbox1 = (e) => {
-        if (e) setNeeded(5);
-    };
-    const checkbox2 = (e) => {
-        if (e) setNeeded(10);
-    };
-    const checkbox3 = (e) => {
-        if (e) setNeeded(20);
-    };
+    console.log(needed);
 
     return (
         <>
@@ -138,52 +129,37 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                             />
-                            <br />
+
                             <label className="Popup">Additional Need: </label>
 
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    checked={needed === 5}
-                                    onChange={(e) => checkbox1(e.target.value)}
-                                ></input>
-                                <label
-                                    className="form-check-label"
-                                    htmlFor="inlineCheckbox1"
-                                >
-                                    0 - 5
-                                </label>
-                            </div>
+                            <div className="btn-group modal-body">
+                                <button
+                                    type="button"
+                                    value="-"
+                                    className="btn btn-secondary"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setNeeded(needed-= 1);
+                                    }}
+                                />
 
-                            <div className="form-check form-check-inline">
                                 <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    checked={needed === 10}
-                                    onChange={(e) => checkbox2(e.target.value)}
-                                ></input>
-                                <label
-                                    className="form-check-label"
-                                    htmlFor="inlineCheckbox2"
-                                >
-                                    5 - 10
-                                </label>
-                            </div>
+                                    type="text"
+                                    value={needed}
+                                    onChange={(e) => {
+                                        setNeeded(e.target.value);
+                                    }}
+                                />
 
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    checked={needed === 20}
-                                    onChange={(e) => checkbox3(e.target.value)}
-                                ></input>
-                                <label
-                                    className="form-check-label"
-                                    htmlFor="inlineCheckbox2"
-                                >
-                                    10 - 20
-                                </label>
+                                <button
+                                    type="button"
+                                    value="+"
+                                    className="btn btn-secondary"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setNeeded(needed+= 1);
+                                    }}
+                                />
                             </div>
                         </div>
                     </Modal.Body>

@@ -33,6 +33,7 @@ export default function BookTable({
         managedBook.Index = index.current;
 
         manageBook(managedBook);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [books.length, managedBook]);
 
     // Get all the books from firebase through an API call to the backend
@@ -73,9 +74,7 @@ export default function BookTable({
             .post(process.env.REACT_APP_BACKEND_URL + "manageBook", {
                 newBook,
             })
-            .catch((e) => {
-                console.log(e);
-            });
+            .catch();
 
         try {
             if (request.data === "success");

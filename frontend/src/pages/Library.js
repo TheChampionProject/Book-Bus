@@ -23,7 +23,7 @@ export default function Library() {
                 className="fixed-top alert alert-danger"
                 style={{ display: alert.show ? "" : "none" }}
             >
-                There was a problem connecting to the database. {alert.message} was not edited/added.
+                There was a problem connecting to the database. {alert.message} was not edited/added. Please refresh the page.
             </div>
             <div className={Table}>
                 <div className="container mt-3">
