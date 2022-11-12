@@ -11,6 +11,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         Price: "",
         Index: -1,
     };
+
     let addBook;
     let modalTitle = "";
     let buttonName = "";
@@ -73,7 +74,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         book,
     ]);
 
-    let editBook = (e) => {
+    const editBook = (e) => {
         e.preventDefault();
 
         if (addBook) {
@@ -88,6 +89,19 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         setManagedBook(book);
         setShow(false);
     };
+
+    // As in 0 - 5, 5- 10, 10 - 20
+    const checkbox1 = (e) => {
+        if (e) setNeeded(5);
+    };
+    const checkbox2 = (e) => {
+        if (e) setNeeded(10);
+    };
+    const checkbox3 = (e) => {
+        if (e) setNeeded(20);
+    };
+
+    console.log(needed);
 
     return (
         <>
@@ -133,8 +147,8 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                 <input
                                     className="form-check-input"
                                     type="checkbox"
-                                    id="inlineCheckbox1"
-                                    value="option1"
+                                    checked={needed === 5}
+                                    onChange={(e) => checkbox1(e.target.value)}
                                 ></input>
                                 <label
                                     className="form-check-label"
@@ -148,8 +162,8 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                 <input
                                     className="form-check-input"
                                     type="checkbox"
-                                    id="inlineCheckbox2"
-                                    value="option2"
+                                    checked={needed === 10}
+                                    onChange={(e) => checkbox2(e.target.value)}
                                 ></input>
                                 <label
                                     className="form-check-label"
@@ -163,8 +177,8 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                 <input
                                     className="form-check-input"
                                     type="checkbox"
-                                    id="inlineCheckbox2"
-                                    value="option2"
+                                    checked={needed === 20}
+                                    onChange={(e) => checkbox3(e.target.value)}
                                 ></input>
                                 <label
                                     className="form-check-label"
