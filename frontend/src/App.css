@@ -53,7 +53,11 @@ thead {
 
 .QuantityBox {
     border-radius: 0;
-    margin-left: .1em;
-    margin-right: .1em;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
     width: 7em;
+}
+
+.NeedTitle {
+    font-weight: bold;
 }

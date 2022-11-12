@@ -24,7 +24,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
     try {
         if (book !== null) {
-            console.log(book);
             modalTitle = "Edit This Book";
             buttonName = "Edit Book";
             autoFillTitle = book.Title;

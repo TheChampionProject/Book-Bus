@@ -7,6 +7,8 @@ export default function BookRow({
     setShow,
     setManagedBook,
 }) {
+    let textColor;
+
     const edit = (e) => {
         e.preventDefault();
         setBook(book);
@@ -15,14 +17,18 @@ export default function BookRow({
 
     const checkout = (e) => {
         e.preventDefault();
-
         book.Inventory = book.Inventory - 1;
         setManagedBook(book);
     };
+
+    if (book.Needed >= 5 && book.Needed < 10) textColor = "#BDB76B";
+    else if (book.Needed >= 10 && book.Needed < 20) textColor = "orange";
+    else if (book.Needed >= 20) textColor = "red";
+
     return (
         <tr>
             <td>{number}</td>
-            <td>{book.Title}</td>
+            <td style={{ color: textColor }}>{book.Title}</td>
             <td>{book.Genre}</td>
             <td className="Inventory">{book.Inventory}</td>
             <td>${book.Price}</td>
