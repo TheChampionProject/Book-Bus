@@ -11,7 +11,6 @@ const dbRef = ref(getDatabase());
 let databaseBooks = [];
 
 const getBooksFB = async () => {
-    console.log("Getting Books...");
     databaseBooks = [];
     let error = false;
     let errorMessage = "";
@@ -26,6 +25,7 @@ const getBooksFB = async () => {
                 console.log(errorMessage);
             }
         })
+
         .catch((error) => {
             error = true;
             errorMessage = error;
@@ -36,20 +36,25 @@ const getBooksFB = async () => {
         console.log("Error getting books!");
         return errorMessage;
     } else {
-        console.log("Books added!");
         return databaseBooks;
     }
 };
 
 const setBookFB = async (book) => {
+    let error = false;
+    let errorMessage = "";
     await set(ref(db, "/" + book.Index), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,
         Price: book.Price,
     }).catch((e) => {
-        return e;
+        error = true;
+        errorMessage = e;
     });
+
+    if (error) return errorMessage;
+    else return "success";
 };
 
 export { getBooksFB, setBookFB };

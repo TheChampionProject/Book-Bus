@@ -11,11 +11,11 @@ const setBook = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error("Missing Book");
     }
-    try {
-        await setBookFB(req.body.newBook);
-        console.log("Manged Book Successfully");
-    } catch (err) {
-        res.json(err);
+
+    let fbRequest = await setBookFB(req.body.newBook);
+    if (fbRequest === "success") {
+        console.log("Firebase request successful");
+        res.send("success");
     }
 });
 
