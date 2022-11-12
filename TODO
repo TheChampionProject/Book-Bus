@@ -1,4 +1,4 @@
-- Each book gets own entry
 - See non checked out books and all books view
+    - Two JSON objs in FB, one for archive and one for current. When inventory is decremented, clone the book into archive and decrement Inventory
 - Instead of wanted inventory, checkbox for need more
 - Rerender when book added. Call the useEffect hook
