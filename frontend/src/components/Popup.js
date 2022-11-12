@@ -7,6 +7,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         Title: "",
         Genre: "",
         Inventory: "",
+        Needed: "",
         Price: "",
         Index: -1,
     };
@@ -16,7 +17,8 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
     let autoFillTitle = "";
     let autoFillGenre = "";
-    let autoFillCurrentI = "";
+    let autoFillInventory = "";
+    let autoFillNeeded = "";
     let autoFillPrice = "";
 
     try {
@@ -25,7 +27,8 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
             buttonName = "Edit Book";
             autoFillTitle = book.Title;
             autoFillGenre = book.Genre;
-            autoFillCurrentI = book.Inventory;
+            autoFillInventory = book.Inventory;
+            autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
         } else {
             addBook = true;
@@ -36,29 +39,34 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
     let [title, setTitle] = useState(autoFillTitle);
     let [genre, setGenre] = useState(autoFillGenre);
-    let [currentI, setCurrentI] = useState(autoFillCurrentI);
+    let [inventory, setInventory] = useState(autoFillInventory);
+    let [needed, setNeeded] = useState(autoFillNeeded);
     let [price, setPrice] = useState(autoFillPrice);
 
     let previousTitle = useRef();
     let previousGenre = useRef();
-    let previousCurrentI = useRef();
+    let previousInventory = useRef();
+    let previousNeeded = useRef();
     let previousPrice = useRef();
 
     useEffect(() => {
         previousTitle.current = title;
         previousGenre.current = genre;
-        previousCurrentI.current = currentI;
+        previousInventory.current = inventory;
+        previousNeeded.current = needed;
         previousPrice.current = price;
-    }, [title, genre, currentI, price]);
+    }, [title, genre, inventory, needed, price]);
 
     useEffect(() => {
         // When there is a new book, autoFill fields will update
         setTitle(autoFillTitle);
         setGenre(autoFillGenre);
-        setCurrentI(autoFillCurrentI);
+        setInventory(autoFillInventory);
+        setNeeded(autoFillNeeded);
         setPrice(autoFillPrice);
     }, [
-        autoFillCurrentI,
+        autoFillInventory,
+        autoFillNeeded,
         autoFillGenre,
         autoFillPrice,
         autoFillTitle,
@@ -74,7 +82,8 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
         book.Title = title;
         book.Genre = genre;
-        book.Inventory = currentI;
+        book.Inventory = inventory;
+        book.Needed = needed;
         book.Price = price;
         setManagedBook(book);
         setShow(false);
@@ -88,41 +97,41 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                 </Modal.Header>
                 <form>
                     <Modal.Body>
-                        <>
-                            <div className="modal-body">
-                                <label className="Popup">Title: </label>
-                                <input
-                                    type="text"
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                />
-                                <br />
-                                <label className="Popup">Genre: </label>
-                                <input
-                                    type="text"
-                                    value={genre}
-                                    onChange={(e) => setGenre(e.target.value)}
-                                />
-                              
-                                <br />
-                                <label className="Popup">Inventory: </label>
-                                <input
-                                    type="text"
-                                    value={currentI}
-                                    onChange={(e) =>
-                                        setCurrentI(e.target.value)
-                                    }
-                                />
-                                <br />
-                                <label className="Popup">Price: </label>
-                                <input
-                                    type="text"
-                                    value={price}
-                                    onChange={(e) => setPrice(e.target.value)}
-                                />
-                                <br />
-                            </div>
-                        </>
+                        <div className="modal-body">
+                            <label className="Popup">Title: </label>
+                            <input
+                                type="text"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                            <br />
+                            <label className="Popup">Genre: </label>
+                            <input
+                                type="text"
+                                value={genre}
+                                onChange={(e) => setGenre(e.target.value)}
+                            />
+
+                            <br />
+                            <label className="Popup">Inventory: </label>
+                            <input
+                                type="text"
+                                value={inventory}
+                                onChange={(e) => setInventory(e.target.value)}
+                            />
+                            <br />
+                            <label className="Popup">Price: </label>
+                            <input
+                                type="text"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                            />
+                            <br />
+
+                            <label className="Popup">Additional Need: </label>
+                            <input type="checkbox">0 - 5</input>
+                           
+                        </div>
                     </Modal.Body>
 
                     <Modal.Footer>
