@@ -25,19 +25,14 @@ const getBooksFB = async () => {
                 console.log(errorMessage);
             }
         })
-
         .catch((error) => {
             error = true;
             errorMessage = error;
             console.log(errorMessage);
         });
 
-    if (error) {
-        console.log("Error getting books!");
-        return errorMessage;
-    } else {
-        return databaseBooks;
-    }
+    if (error) return errorMessage;
+    else return databaseBooks;
 };
 
 const setBookFB = async (book) => {

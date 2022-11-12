@@ -11,8 +11,8 @@ export default function BookTable({
     let [books, setBooks] = useState([]);
     let index = useRef();
 
+    // Load books from database on page load
     useEffect(() => {
-        // Load books from database on page load
         async function callGetBooks() {
             await getBooks();
         }
@@ -28,13 +28,12 @@ export default function BookTable({
             else index.current = managedBook.Index;
         else index.current = books.length; // Adding a book
 
-        //console.log(managedBook);
-
         managedBook.Index = index.current;
 
         manageBook(managedBook);
     }, [books.length, managedBook]);
 
+    // Get all the books from firebase through an API call to the backend
     let getBooks = async () => {
         let res = [];
         let databaseBooks = [];
@@ -47,7 +46,7 @@ export default function BookTable({
             })
             .then(() => {
                 for (var i = 0; i < res.length; i++) {
-                    // After the sort, the original index of the book is preserved. Neccesary bc firebase isn't reordered
+                    // Neccesary bc firebase isn't reordered. Now after the sort the original index of the book is preserved.
                     res[i] = {
                         Title: res[i].Title,
                         Genre: res[i].Genre,
@@ -65,6 +64,7 @@ export default function BookTable({
         setBooks(res);
     };
 
+    // Add or edit book call to backend which calls firebase
     let manageBook = async (newBook) => {
         if (newBook == null) return;
         let request = await axios
@@ -76,6 +76,7 @@ export default function BookTable({
             });
 
         if (request.data === "success");
+        else if (request.data === "failure") alert("Error managing book!");
     };
 
     let alphaSortArray = (a, b) => {

@@ -39,7 +39,7 @@ export default function BookRow({
                     className="btn btn-primary my-2 EditButton"
                     onClick={(e) => checkout(e)}
                 >
-                    Checkout
+                    Gift
                 </button>
             </td>
         </tr>

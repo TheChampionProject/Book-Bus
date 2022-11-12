@@ -1,7 +1,4 @@
-- Network loss detection
 - Each book gets own entry
-- Checkout button 
 - See non checked out books and all books view
-- Pretty fixed table header
 - Instead of wanted inventory, checkbox for need more
-- Icon
+- Rerender when book added. Call the useEffect hook

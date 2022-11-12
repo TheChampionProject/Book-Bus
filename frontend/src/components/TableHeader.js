@@ -11,7 +11,7 @@ export default function TableHeader() {
                 <th>Store</th>
                 <th>Price</th>
                 <th>Edit</th>
-                <th>Checkout</th>
+                <th>Gift</th>
             </tr>
         </thead>
     );
