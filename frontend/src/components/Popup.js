@@ -101,8 +101,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         if (e) setNeeded(20);
     };
 
-    console.log(needed);
-
     return (
         <>
             <Modal show={show} onHide={() => setShow(false)}>

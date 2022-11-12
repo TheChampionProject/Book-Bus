@@ -20,14 +20,10 @@ export default function Library() {
     return (
         <>
             <div
-                className="alert alert-danger Alert"
-                role="alert"
-                style={{
-                    display: true ? "show" : "none",
-                    
-                }}
+                className="fixed-top alert alert-danger"
+                style={{ display: alert ? "" : "none" }}
             >
-                Connection to database failed!
+                There was a problem connecting to the database
             </div>
             <div className={Table}>
                 <div className="container mt-3">
@@ -39,6 +35,7 @@ export default function Library() {
                                 setShow={setShow}
                                 managedBook={managedBook}
                                 setManagedBook={setManagedBook}
+                                setAlert={setAlert}
                             />
                         </tbody>
                     </Table>

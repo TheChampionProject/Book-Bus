@@ -17,10 +17,6 @@
     color: white;
 }
 
-.TableHeader {
-    position: fixed;
-}
-
 .Table {
     overflow: auto;
 }
@@ -31,9 +27,13 @@ thead {
     top: 0;
 }
 
-.Alert {
-    position: "fixed";
-    top: 0;
+.alert-fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9999;
+    border-radius: 0px;
 }
 
 .CheckBoxLabels {

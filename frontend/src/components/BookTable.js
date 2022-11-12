@@ -7,6 +7,7 @@ export default function BookTable({
     setShow,
     managedBook,
     setManagedBook,
+    setAlert,
 }) {
     let [books, setBooks] = useState([]);
     let index = useRef();
@@ -17,6 +18,7 @@ export default function BookTable({
             await getBooks();
         }
         callGetBooks();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -75,8 +77,12 @@ export default function BookTable({
                 console.log(e);
             });
 
-        if (request.data === "success");
-        else if (request.data === "failure") alert("Error managing book!");
+        try {
+            if (request.data === "success");
+            else if (request.data === "failure") setAlert(true);
+        } catch {
+            setAlert(true);
+        }
     };
 
     let alphaSortArray = (a, b) => {
