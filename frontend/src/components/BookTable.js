@@ -20,6 +20,7 @@ export default function BookTable({
     }, []);
 
     useEffect(() => {
+        console.log(managedBook);
         if (managedBook == null) return;
         if (managedBook.Index !== -1)
             if (index.current === managedBook.Index)
@@ -71,7 +72,9 @@ export default function BookTable({
             .post(process.env.REACT_APP_BACKEND_URL + "manageBook", {
                 newBook,
             })
-            .catch(() => {});
+            .catch((e) => {
+                alert(e);
+            });
     };
 
     let alphaSortArray = (a, b) => {

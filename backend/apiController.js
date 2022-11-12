@@ -13,6 +13,7 @@ const setBook = asyncHandler(async (req, res) => {
     }
     try {
         await setBookFB(req.body.newBook);
+        console.log("Manged Book Successfully");
     } catch (err) {
         res.json(err);
     }

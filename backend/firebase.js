@@ -18,9 +18,7 @@ const getBooksFB = async () => {
 
     await get(child(dbRef, `/`))
         .then((snapshot) => {
-            console.log("Adding Books...");
             if (snapshot.exists()) {
-                console.log("Pushing Books...");
                 databaseBooks.push(snapshot.val());
             } else {
                 error = true;
@@ -48,7 +46,6 @@ const setBookFB = async (book) => {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,
-        InventoryWanted: book.InventoryWanted,
         Price: book.Price,
     }).catch((e) => {
         return e;
