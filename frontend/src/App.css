@@ -52,6 +52,8 @@ thead {
 }
 
 .QuantityBox {
-    margin: .1em;
-    width: 3em;
+    border-radius: 0;
+    margin-left: .1em;
+    margin-right: .1em;
+    width: 7em;
 }

@@ -55,6 +55,7 @@ export default function BookTable({
                         Genre: res[i].Genre,
                         Inventory: res[i].Inventory,
                         Price: res[i].Price,
+                        Needed: res[i].Needed,
                         Index: i,
                     };
                 }

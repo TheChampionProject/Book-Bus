@@ -24,12 +24,13 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
     try {
         if (book !== null) {
+            console.log(book);
             modalTitle = "Edit This Book";
             buttonName = "Edit Book";
             autoFillTitle = book.Title;
             autoFillGenre = book.Genre;
             autoFillInventory = book.Inventory;
-            autoFillNeeded = 0; //book.Needed;
+            autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
         } else {
             addBook = true;
@@ -90,8 +91,6 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         setShow(false);
     };
 
-    console.log(needed);
-
     return (
         <>
             <Modal show={show} onHide={() => setShow(false)}>
@@ -133,31 +132,32 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                             <label className="Popup">Additional Need: </label>
 
                             <div className="btn-group modal-body">
-                                <button
+                                <input
                                     type="button"
                                     value="-"
-                                    className="btn btn-secondary"
+                                    className="btn btn-danger"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        setNeeded(needed-= 1);
+                                        setNeeded(--needed); // It has to be clicked twice to work
                                     }}
                                 />
 
                                 <input
                                     type="text"
+                                    className="QuantityBox"
                                     value={needed}
                                     onChange={(e) => {
                                         setNeeded(e.target.value);
                                     }}
                                 />
 
-                                <button
+                                <input
                                     type="button"
                                     value="+"
-                                    className="btn btn-secondary"
+                                    className="btn btn-success"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        setNeeded(needed+= 1);
+                                        setNeeded(++needed);
                                     }}
                                 />
                             </div>

@@ -43,6 +43,7 @@ const setBookFB = async (book) => {
         Genre: book.Genre,
         Inventory: book.Inventory,
         Price: book.Price,
+        Needed: book.Needed,
     }).catch((e) => {
         error = true;
         errorMessage = e;
