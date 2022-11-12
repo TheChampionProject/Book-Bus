@@ -79,9 +79,10 @@ export default function BookTable({
 
         try {
             if (request.data === "success");
-            else if (request.data === "failure") setAlert(true);
+            else if (request.data === "failure")
+                setAlert({ show: true, message: newBook.Title });
         } catch {
-            setAlert(true);
+            setAlert({ show: true, message: newBook.Title });
         }
     };
 
