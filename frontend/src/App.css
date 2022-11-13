@@ -1,6 +1,7 @@
 .Popup {
     display: inline-block;
     width: 8em;
+    margin: 0.3em;
 }
 
 .AddBookButton {
@@ -16,17 +17,7 @@
     color: white;
 }
 
-.InventoryColumn {
-    width: 0.1rem;
-    max-width: 0.1rem;
-}
-
-.TableHeader {
-    position: fixed;
-}
-
 .Table {
-    max-height: 500px;
     overflow: auto;
 }
 
@@ -34,4 +25,39 @@ thead {
     background: white;
     position: sticky;
     top: 0;
-  }
+}
+
+.alert-fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9999;
+    border-radius: 0px;
+}
+
+.CheckBoxLabels {
+    margin: auto;
+    display: block;
+}
+
+.btn-group button {
+    color: white;
+}
+
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.QuantityBox {
+    border-radius: 0;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    width: 7em;
+}
+
+.NeedTitle {
+    font-weight: bold;
+}

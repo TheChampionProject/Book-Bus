@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+
 export const firebaseConfig = {
     apiKey: process.env.API_KEY,
 
@@ -17,4 +18,6 @@ export const firebaseConfig = {
     appId: process.env.APP_ID,
 
     measurementId: process.env.MEASUREMENT_ID,
+    
 };
+

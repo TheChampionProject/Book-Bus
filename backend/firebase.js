@@ -12,32 +12,45 @@ let databaseBooks = [];
 
 const getBooksFB = async () => {
     databaseBooks = [];
+    let error = false;
+    let errorMessage = "";
 
     await get(child(dbRef, `/`))
         .then((snapshot) => {
             if (snapshot.exists()) {
                 databaseBooks.push(snapshot.val());
             } else {
-                return "No Data Found";
+                error = true;
+                errorMessage = "No Data Found";
+                console.log(errorMessage);
             }
         })
         .catch((error) => {
-            return error;
+            error = true;
+            errorMessage = error;
+            console.log(errorMessage);
         });
 
-    return databaseBooks;
+    if (error) return errorMessage;
+    else return databaseBooks;
 };
 
 const setBookFB = async (book) => {
+    let error = false;
+    let errorMessage = "";
     await set(ref(db, "/" + book.Index), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,
-        InventoryWanted: book.InventoryWanted,
         Price: book.Price,
+        Needed: book.Needed,
     }).catch((e) => {
-        return e;
+        error = true;
+        errorMessage = e;
     });
+
+    if (error) return errorMessage;
+    else return "success";
 };
 
 export { getBooksFB, setBookFB };

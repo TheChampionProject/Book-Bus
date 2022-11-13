@@ -2,16 +2,23 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import BookRow from "./BookRow.js";
 
-export default function BookTable({ setBook, setShow, managedBook }) {
+export default function BookTable({
+    setBook,
+    setShow,
+    managedBook,
+    setManagedBook,
+    setAlert,
+}) {
     let [books, setBooks] = useState([]);
     let index = useRef();
 
+    // Load books from database on page load
     useEffect(() => {
-        // Load books from database on page load
         async function callGetBooks() {
             await getBooks();
         }
         callGetBooks();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -23,18 +30,13 @@ export default function BookTable({ setBook, setShow, managedBook }) {
             else index.current = managedBook.Index;
         else index.current = books.length; // Adding a book
 
-        let newBook = {
-            Title: managedBook.Title,
-            Genre: managedBook.Genre,
-            Inventory: managedBook.Inventory,
-            InventoryWanted: managedBook.InventoryWanted,
-            Price: managedBook.Price,
-            Index: index.current,
-        };
+        managedBook.Index = index.current;
 
-        manageBook(newBook);
+        manageBook(managedBook);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [books.length, managedBook]);
 
+    // Get all the books from firebase through an API call to the backend
     let getBooks = async () => {
         let res = [];
         let databaseBooks = [];
@@ -46,13 +48,14 @@ export default function BookTable({ setBook, setShow, managedBook }) {
                 for (var i in databaseBooks[0]) res.push(databaseBooks[0][i]); // In order to turn a giant JSON full of books into an array of books
             })
             .then(() => {
-                for (var i = 0; i < res.length; i++) { // After the sort, the original index of the book is preserved. Neccesary bc firebase isn't reordered
+                for (var i = 0; i < res.length; i++) {
+                    // Neccesary bc firebase isn't reordered. Now after the sort the original index of the book is preserved.
                     res[i] = {
                         Title: res[i].Title,
                         Genre: res[i].Genre,
                         Inventory: res[i].Inventory,
-                        InventoryWanted: res[i].InventoryWanted,
                         Price: res[i].Price,
+                        Needed: res[i].Needed,
                         Index: i,
                     };
                 }
@@ -65,13 +68,22 @@ export default function BookTable({ setBook, setShow, managedBook }) {
         setBooks(res);
     };
 
+    // Add or edit book call to backend which calls firebase
     let manageBook = async (newBook) => {
         if (newBook == null) return;
-        await axios
+        let request = await axios
             .post(process.env.REACT_APP_BACKEND_URL + "manageBook", {
                 newBook,
             })
-            .catch(() => {});
+            .catch();
+
+        try {
+            if (request.data === "success");
+            else if (request.data === "failure")
+                setAlert({ show: true, message: newBook.Title });
+        } catch {
+            setAlert({ show: true, message: newBook.Title });
+        }
     };
 
     let alphaSortArray = (a, b) => {
@@ -90,6 +102,7 @@ export default function BookTable({ setBook, setShow, managedBook }) {
                 number={number}
                 setBook={setBook}
                 setShow={setShow}
+                setManagedBook={setManagedBook}
             />
         );
     });

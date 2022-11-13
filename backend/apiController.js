@@ -6,16 +6,14 @@ const getBooks = asyncHandler(async (req, res) => {
 });
 
 const setBook = asyncHandler(async (req, res) => {
-    console.log(req.body.newBook);
     if (!req.body.newBook) {
         res.status(400);
         throw new Error("Missing Book");
     }
-    try {
-        await setBookFB(req.body.newBook);
-    } catch (err) {
-        res.json(err);
-    }
+
+    let fbRequest = await setBookFB(req.body.newBook);
+    if (fbRequest === "success") res.send("success"); // This feels crude
+    else res.send("failure");
 });
 
 export { getBooks, setBook };
