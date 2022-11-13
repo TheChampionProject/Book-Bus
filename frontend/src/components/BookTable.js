@@ -14,25 +14,30 @@ export default function BookTable({
 
     // Load books from database on page load
     useEffect(() => {
-        async function callGetBooks() {
+        const callGetBooks = async () => {
             await getBooks();
-        }
+        };
         callGetBooks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
-        if (managedBook == null) return;
-        if (managedBook.Index !== -1)
-            if (index.current === managedBook.Index)
-                // Editing a book
-                return; // The book has already been edited
-            else index.current = managedBook.Index;
-        else index.current = books.length; // Adding a book
+        const asyncManageBook = async () => {
+            if (managedBook == null) return;
+            if (managedBook.Index !== -1)
+                if (index.current === managedBook.Index)
+                    // Editing a book
+                    return; // The book has already been edited
+                else index.current = managedBook.Index;
+            else index.current = books.length; // Adding a book
 
-        managedBook.Index = index.current;
+            managedBook.Index = index.current;
 
-        manageBook(managedBook);
+            await manageBook(managedBook);
+            await getBooks();
+        };
+        
+        asyncManageBook();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [books.length, managedBook]);
 
