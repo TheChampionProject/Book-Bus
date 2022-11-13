@@ -11,16 +11,13 @@ const dbRef = ref(getDatabase());
 let databaseBooks = [];
 
 const getBooksFB = async () => {
-    console.log("Getting Books...");
     databaseBooks = [];
     let error = false;
     let errorMessage = "";
 
     await get(child(dbRef, `/`))
         .then((snapshot) => {
-            console.log("Adding Books...");
             if (snapshot.exists()) {
-                console.log("Pushing Books...");
                 databaseBooks.push(snapshot.val());
             } else {
                 error = true;
@@ -34,25 +31,26 @@ const getBooksFB = async () => {
             console.log(errorMessage);
         });
 
-    if (error) {
-        console.log("Error getting books!");
-        return errorMessage;
-    } else {
-        console.log("Books added!");
-        return databaseBooks;
-    }
+    if (error) return errorMessage;
+    else return databaseBooks;
 };
 
 const setBookFB = async (book) => {
+    let error = false;
+    let errorMessage = "";
     await set(ref(db, "/" + book.Index), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,
-        InventoryWanted: book.InventoryWanted,
         Price: book.Price,
+        Needed: book.Needed,
     }).catch((e) => {
-        return e;
+        error = true;
+        errorMessage = e;
     });
+
+    if (error) return errorMessage;
+    else return "success";
 };
 
 export { getBooksFB, setBookFB };

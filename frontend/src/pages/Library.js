@@ -9,6 +9,7 @@ export default function Library() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [show, setShow] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
+    const [alert, setAlert] = useState({show: false, message: ""}); // Show the alert
 
     let handleAddBook = (e) => {
         e.preventDefault();
@@ -18,6 +19,12 @@ export default function Library() {
 
     return (
         <>
+            <div
+                className="fixed-top alert alert-danger"
+                style={{ display: alert.show ? "" : "none" }}
+            >
+                There was a problem connecting to the database. {alert.message} was not edited/added. Please refresh the page.
+            </div>
             <div className={Table}>
                 <div className="container mt-3">
                     <Table striped bordered hover>
@@ -27,6 +34,8 @@ export default function Library() {
                                 setBook={setBook}
                                 setShow={setShow}
                                 managedBook={managedBook}
+                                setManagedBook={setManagedBook}
+                                setAlert={setAlert}
                             />
                         </tbody>
                     </Table>

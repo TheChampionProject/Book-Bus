@@ -6,19 +6,20 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
     let emptyBook = {
         Title: "",
         Genre: "",
-        InventoryWanted: "",
         Inventory: "",
+        Needed: 0,
         Price: "",
         Index: -1,
     };
+
     let addBook;
     let modalTitle = "";
     let buttonName = "";
 
     let autoFillTitle = "";
     let autoFillGenre = "";
-    let autoFillWantedI = "";
-    let autoFillCurrentI = "";
+    let autoFillInventory = "";
+    let autoFillNeeded = 0;
     let autoFillPrice = "";
 
     try {
@@ -27,8 +28,8 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
             buttonName = "Edit Book";
             autoFillTitle = book.Title;
             autoFillGenre = book.Genre;
-            autoFillWantedI = book.InventoryWanted;
-            autoFillCurrentI = book.Inventory;
+            autoFillInventory = book.Inventory;
+            autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
         } else {
             addBook = true;
@@ -39,41 +40,41 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
     let [title, setTitle] = useState(autoFillTitle);
     let [genre, setGenre] = useState(autoFillGenre);
-    let [wantedI, setWantedI] = useState(autoFillWantedI);
-    let [currentI, setCurrentI] = useState(autoFillCurrentI);
+    let [inventory, setInventory] = useState(autoFillInventory);
+    let [needed, setNeeded] = useState(autoFillNeeded);
     let [price, setPrice] = useState(autoFillPrice);
 
     let previousTitle = useRef();
     let previousGenre = useRef();
-    let previousWantedI = useRef();
-    let previousCurrentI = useRef();
+    let previousInventory = useRef();
+    let previousNeeded = useRef();
     let previousPrice = useRef();
 
     useEffect(() => {
         previousTitle.current = title;
         previousGenre.current = genre;
-        previousWantedI.current = wantedI;
-        previousCurrentI.current = currentI;
+        previousInventory.current = inventory;
+        previousNeeded.current = needed;
         previousPrice.current = price;
-    }, [title, genre, wantedI, currentI, price]);
+    }, [title, genre, inventory, needed, price]);
 
     useEffect(() => {
         // When there is a new book, autoFill fields will update
         setTitle(autoFillTitle);
         setGenre(autoFillGenre);
-        setWantedI(autoFillWantedI);
-        setCurrentI(autoFillCurrentI);
+        setInventory(autoFillInventory);
+        setNeeded(autoFillNeeded);
         setPrice(autoFillPrice);
     }, [
-        autoFillCurrentI,
+        autoFillInventory,
+        autoFillNeeded,
         autoFillGenre,
         autoFillPrice,
         autoFillTitle,
-        autoFillWantedI,
         book,
     ]);
 
-    let editBook = (e) => {
+    const editBook = (e) => {
         e.preventDefault();
 
         if (addBook) {
@@ -82,8 +83,8 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
 
         book.Title = title;
         book.Genre = genre;
-        book.InventoryWanted = wantedI;
-        book.Inventory = currentI;
+        book.Inventory = inventory;
+        book.Needed = needed;
         book.Price = price;
         setManagedBook(book);
         setShow(false);
@@ -97,47 +98,69 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                 </Modal.Header>
                 <form>
                     <Modal.Body>
-                        <>
-                            <div className="modal-body">
-                                <label className="Popup">Title: </label>
+                        <div className="modal-body">
+                            <label className="Popup">Title: </label>
+                            <input
+                                type="text"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                            <br />
+                            <label className="Popup">Genre: </label>
+                            <input
+                                type="text"
+                                value={genre}
+                                onChange={(e) => setGenre(e.target.value)}
+                            />
+
+                            <br />
+                            <label className="Popup">Inventory: </label>
+                            <input
+                                type="text"
+                                value={inventory}
+                                onChange={(e) => setInventory(e.target.value)}
+                            />
+                            <br />
+                            <label className="Popup">Price: </label>
+                            <input
+                                type="text"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                            />
+
+                            <label className="Popup">Additional Need: </label>
+
+                            <div className="btn-group modal-body">
+                                <input
+                                    type="button"
+                                    value="-"
+                                    className="btn btn-danger"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setNeeded(--needed); // It has to be clicked twice to work
+                                    }}
+                                />
+
                                 <input
                                     type="text"
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
+                                    className="QuantityBox"
+                                    value={needed}
+                                    onChange={(e) => {
+                                        setNeeded(e.target.value);
+                                    }}
                                 />
-                                <br />
-                                <label className="Popup">Genre: </label>
+
                                 <input
-                                    type="text"
-                                    value={genre}
-                                    onChange={(e) => setGenre(e.target.value)}
+                                    type="button"
+                                    value="+"
+                                    className="btn btn-success"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setNeeded(++needed);
+                                    }}
                                 />
-                                <br />
-                                <label className="Popup">W. Inventory:</label>
-                                <input
-                                    type="text"
-                                    value={wantedI}
-                                    onChange={(e) => setWantedI(e.target.value)}
-                                />
-                                <br />
-                                <label className="Popup">C. Inventory:</label>
-                                <input
-                                    type="text"
-                                    value={currentI}
-                                    onChange={(e) =>
-                                        setCurrentI(e.target.value)
-                                    }
-                                />
-                                <br />
-                                <label className="Popup">Price: </label>
-                                <input
-                                    type="text"
-                                    value={price}
-                                    onChange={(e) => setPrice(e.target.value)}
-                                />
-                                <br />
                             </div>
-                        </>
+                        </div>
                     </Modal.Body>
 
                     <Modal.Footer>
