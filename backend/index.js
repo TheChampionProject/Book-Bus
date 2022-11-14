@@ -1,6 +1,6 @@
 import express, { json, urlencoded } from "express";
 import cors from "cors";
-import { getBooks, setBook } from "./apiController.js";
+import { getBooks, setBook, searchForBook } from "./apiController.js";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,5 +16,6 @@ app.use(urlencoded({ extended: false }));
 
 app.get("/getBooks", getBooks);
 app.post("/manageBook", setBook);
+app.post("/searchForBook", searchForBook)
 
 app.listen(port, () => console.log(`Server started on ${port}!`));
