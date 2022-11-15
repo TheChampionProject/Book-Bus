@@ -26,43 +26,29 @@ const setBook = asyncHandler(async (req, res) => {
     else res.send("failure");
 });
 
-const searchForBook = asyncHandler(async (req, res) => {
+const getSearchQueryBooks = asyncHandler(async (req, res) => {
     if (!req.body.title) {
         res.status(400);
         throw new Error("Missing Title");
     }
 
-    let searchRequest = await axios.get(
-        GOOGLE_BOOKS_API_BASE_URL + req.body.title
-    );
-
-    ISBN =
-        searchRequest.data.items[3].volumeInfo.industryIdentifiers[0]
-            .identifier;
-
-    try { // If Google Books has the list price already
-        price =
-            "Google Price " +
-            searchRequest.data.items[3].saleInfo.listPrice.amount;
-    } catch { // Ask BooksRun API for the list price or used price
-        let priceRequest = await axios.get(
-            BOOKS_RUN_API_BASE_URL +
-                ISBN +
-                "?key=" +
-                process.env.BOOKS_RUN_API_KEY
-        );
-
-        if ((price = priceRequest.data.result.offers.booksrun.new !== "none"))
-            price = "new price " + priceRequest.data.result.offers.booksrun.new;
-        else if (
-            (price = priceRequest.data.result.offers.booksrun.used !== "none")
-        )
-            price =
-                "used price " + priceRequest.data.result.offers.booksrun.used;
-        else price = "Price Not Found";
-    }
-
-    console.log(price);
+    return await axios.get(GOOGLE_BOOKS_API_BASE_URL + req.body.title);
 });
 
-export { getBooks, setBook, searchForBook };
+const getBookPrice = asyncHandler(async (req, res) => {
+    ISBN = req.body.industryidentifier;
+
+    let priceRequest = await axios.get(
+        BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
+    );
+
+    if ((price = priceRequest.data.result.offers.booksrun.new !== "none"))
+        price = "new price " + priceRequest.data.result.offers.booksrun.new;
+    else if ((price = priceRequest.data.result.offers.booksrun.used !== "none"))
+        price = "used price " + priceRequest.data.result.offers.booksrun.used;
+    else price = "Price Not Found";
+
+    res.send(price);
+});
+
+export { getBooks, setBook, getSearchQueryBooks, getBookPrice };
