@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import axios from "axios";
 dotenv.config();
 
-let ISBN;
+let ISBN, price;
 
 const GOOGLE_BOOKS_API_BASE_URL =
     "https://www.googleapis.com/books/v1/volumes?q=";
@@ -36,14 +36,33 @@ const searchForBook = asyncHandler(async (req, res) => {
         GOOGLE_BOOKS_API_BASE_URL + req.body.title
     );
 
-    ISBN = searchRequest.data.items[3].volumeInfo.industryIdentifiers[0].identifier;
+    ISBN =
+        searchRequest.data.items[3].volumeInfo.industryIdentifiers[0]
+            .identifier;
 
+    try { // If Google Books has the list price already
+        price =
+            "Google Price " +
+            searchRequest.data.items[3].saleInfo.listPrice.amount;
+    } catch { // Ask BooksRun API for the list price or used price
+        let priceRequest = await axios.get(
+            BOOKS_RUN_API_BASE_URL +
+                ISBN +
+                "?key=" +
+                process.env.BOOKS_RUN_API_KEY
+        );
 
-    let price = await axios.get(
-        BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
-    );
+        if ((price = priceRequest.data.result.offers.booksrun.new !== "none"))
+            price = "new price " + priceRequest.data.result.offers.booksrun.new;
+        else if (
+            (price = priceRequest.data.result.offers.booksrun.used !== "none")
+        )
+            price =
+                "used price " + priceRequest.data.result.offers.booksrun.used;
+        else price = "Price Not Found";
+    }
 
-    console.log(price.data.result.offers.booksrun.new.price);
+    console.log(price);
 });
 
 export { getBooks, setBook, searchForBook };
