@@ -9,7 +9,7 @@ let ISBN;
 const GOOGLE_BOOKS_API_BASE_URL =
     "https://www.googleapis.com/books/v1/volumes?q=";
 
-const BOOKS_RUN_API_BASE_URL = `https://booksrun.com/api/v3/price/buy/0439887453?key=${process.env.BOOKS_RUN_API_KEY}`;
+const BOOKS_RUN_API_BASE_URL = "https://booksrun.com/api/v3/price/buy/";
 
 const getBooks = asyncHandler(async (req, res) => {
     res.send(await getBooksFB());
@@ -22,7 +22,7 @@ const setBook = asyncHandler(async (req, res) => {
     }
 
     let fbRequest = await setBookFB(req.body.newBook);
-    if (fbRequest === "success") res.send("success"); // This feels crude
+    if (fbRequest === "success") res.send("success");
     else res.send("failure");
 });
 
@@ -36,15 +36,14 @@ const searchForBook = asyncHandler(async (req, res) => {
         GOOGLE_BOOKS_API_BASE_URL + req.body.title
     );
 
-    ISBN =
-        searchRequest.data.items[0].volumeInfo.industryIdentifiers[0]
-            .identifier;
+    ISBN = searchRequest.data.items[3].volumeInfo.industryIdentifiers[0].identifier;
 
-    console.log(ISBN);
 
-    let price = await axios.get(BOOKS_RUN_API_BASE_URL);
+    let price = await axios.get(
+        BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
+    );
 
-    console.log(price.data.result.offers.booksrun);
+    console.log(price.data.result.offers.booksrun.new.price);
 });
 
 export { getBooks, setBook, searchForBook };
