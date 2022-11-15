@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "../App.css";
 
-export default function Popup({ show, setShow, book, setManagedBook }) {
+export default function Popup({ show, setShow, book, setManagedBook, setArchiveRequest, archiveRequest }) {
     let emptyBook = {
         Title: "",
         Genre: "",
@@ -21,6 +21,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
     let autoFillInventory = "";
     let autoFillNeeded = 0;
     let autoFillPrice = "";
+    let firstInventory = 0;
 
     try {
         if (book !== null) {
@@ -29,6 +30,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
             autoFillTitle = book.Title;
             autoFillGenre = book.Genre;
             autoFillInventory = book.Inventory;
+            firstInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
         } else {
@@ -86,6 +88,10 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
         book.Inventory = inventory;
         book.Needed = needed;
         book.Price = price;
+
+        if (book.Price !== firstInventory) setArchiveRequest({needsArchive: true, book: book, inventory: firstInventory});
+        else setArchiveRequest({needsArchive: false, book: null, inventory: null});
+
         setManagedBook(book);
         setShow(false);
     };

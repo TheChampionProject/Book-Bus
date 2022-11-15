@@ -8,6 +8,8 @@ export default function BookTable({
     managedBook,
     setManagedBook,
     setAlert,
+    setArchiveRequest,
+    archiveRequest,
 }) {
     let [books, setBooks] = useState([]);
     let index = useRef();
@@ -25,10 +27,11 @@ export default function BookTable({
         const asyncManageBook = async () => {
             if (managedBook == null) return;
             if (managedBook.Index !== -1) index.current = managedBook.Index;
-            else index.current = books.length; // Adding a book
+            else index.current = books.length; // Adding a book. Give it the next available index
 
             managedBook.Index = index.current;
 
+            if (archiveRequest.needsArchive) archiveBook(managedBook);
             await manageBook(managedBook);
             await getBooks();
         };
@@ -38,7 +41,7 @@ export default function BookTable({
     }, [books.length, managedBook]);
 
     // Get all the books from firebase through an API call to the backend
-    let getBooks = async () => {
+    const getBooks = async () => {
         let res = [];
         let databaseBooks = [];
         await axios
@@ -70,7 +73,7 @@ export default function BookTable({
     };
 
     // Add or edit book call to backend which calls firebase
-    let manageBook = async (newBook) => {
+    const manageBook = async (newBook) => {
         if (newBook == null) return;
         let request = await axios
             .post(process.env.REACT_APP_BACKEND_URL + "manageBook", {
@@ -89,7 +92,17 @@ export default function BookTable({
         }
     };
 
-    let alphaSortArray = (a, b) => {
+    const archiveBook = (archiveBook) => {
+        axios
+            .post(process.env.REACT_APP_BACKEND_URL + "archiveBook", {
+                archiveBook,
+            })
+            .catch(() => {
+                setAlert({ show: true, message: archiveBook.Title });
+            });
+    };
+
+    const alphaSortArray = (a, b) => {
         a = a.toLowerCase();
         b = b.toLowerCase();
 

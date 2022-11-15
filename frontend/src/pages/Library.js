@@ -9,7 +9,8 @@ export default function Library() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [show, setShow] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
-    const [alert, setAlert] = useState({show: false, message: ""}); // Show the alert
+    const [archiveRequest, setArchiveRequest] = useState({needsArchive: false, book: null, inventory: null});
+    const [alert, setAlert] = useState({ show: false, message: "" }); // Show the alert
 
     let handleAddBook = (e) => {
         e.preventDefault();
@@ -23,7 +24,8 @@ export default function Library() {
                 className="fixed-top alert alert-danger"
                 style={{ display: alert.show ? "" : "none" }}
             >
-                There was a problem connecting to the database. {alert.message} was not edited/added. Please refresh the page.
+                There was a problem connecting to the database. {alert.message}
+                was not edited/added. Please refresh the page.
             </div>
             <div className={Table}>
                 <div className="container mt-3">
@@ -36,6 +38,8 @@ export default function Library() {
                                 managedBook={managedBook}
                                 setManagedBook={setManagedBook}
                                 setAlert={setAlert}
+                                setArchiveRequest={setArchiveRequest}
+                                archiveRequest={archiveRequest}
                             />
                         </tbody>
                     </Table>
@@ -54,6 +58,8 @@ export default function Library() {
                 setShow={setShow}
                 book={book}
                 setManagedBook={setManagedBook}
+                setArchiveRequest={setArchiveRequest}
+                archiveRequest={archiveRequest}
             />
         </>
     );

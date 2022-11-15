@@ -1,13 +1,11 @@
 - See non checked out books and all books view
     - Two JSON objs in FB, one for archive and one for current. When inventory is decremented, clone the book into archive and decrement Inventory
-- Instead of wanted inventory, checkbox for need more
-- Rerender when book added. Call the useEffect hook
 - Timestamps
 - Search bar
-- Highlight book name according to inventory need
 - Search national book database
-- List for genre
-- Gift confirmation
+- Popup for genre (Anish)
+- Gift confirmation (Anish)
+- Edit confirmation (Anish)
 - Book queue in database
 - List of approved volunteers
 - volunteer name, organization, date they want to volunteer

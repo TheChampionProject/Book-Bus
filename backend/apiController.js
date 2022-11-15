@@ -4,26 +4,15 @@ import dotenv from "dotenv";
 import axios from "axios";
 dotenv.config();
 
-let ISBN, price;
+let ISBN, price, fbRequest;
 
 const GOOGLE_BOOKS_API_BASE_URL =
     "https://www.googleapis.com/books/v1/volumes?q=";
 
 const BOOKS_RUN_API_BASE_URL = "https://booksrun.com/api/v3/price/buy/";
 
-const getBooks = asyncHandler(async (req, res) => {
+const getAllBooks = asyncHandler(async (req, res) => {
     res.send(await getBooksFB());
-});
-
-const setBook = asyncHandler(async (req, res) => {
-    if (!req.body.newBook) {
-        res.status(400);
-        throw new Error("Missing Book");
-    }
-
-    let fbRequest = await setBookFB(req.body.newBook);
-    if (fbRequest === "success") res.send("success");
-    else res.send("failure");
 });
 
 const getSearchQueryBooks = asyncHandler(async (req, res) => {
@@ -36,7 +25,7 @@ const getSearchQueryBooks = asyncHandler(async (req, res) => {
 });
 
 const getBookPrice = asyncHandler(async (req, res) => {
-    ISBN = req.body.industryidentifier;
+    //ISBN = req.body.industryidentifier;
 
     let priceRequest = await axios.get(
         BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
@@ -51,4 +40,25 @@ const getBookPrice = asyncHandler(async (req, res) => {
     res.send(price);
 });
 
-export { getBooks, setBook, getSearchQueryBooks, getBookPrice };
+// Can update a book, add a book, and archive a book
+const setBook = asyncHandler(async (req, res) => {
+    if (!req.body.newBook) {
+        res.status(400);
+        throw new Error("Missing Book");
+    }
+
+    if (req.body.archive) {
+        fbRequest = await setBookFB(req.body.newBook, "archive");
+
+        if (fbRequest === "success") res.send("success");
+        else res.send("failure");
+    }
+
+    fbRequest = await setBookFB(req.body.newBook, "active");
+
+    if (fbRequest === "success") res.send("success");
+    else res.send("failure");
+    
+});
+
+export { getAllBooks, setBook, getSearchQueryBooks, getBookPrice };

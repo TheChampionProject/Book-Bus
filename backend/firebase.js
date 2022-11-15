@@ -15,7 +15,7 @@ const getBooksFB = async () => {
     let error = false;
     let errorMessage = "";
 
-    await get(child(dbRef, `/`))
+    await get(child(dbRef, `/active`))
         .then((snapshot) => {
             if (snapshot.exists()) {
                 databaseBooks.push(snapshot.val());
@@ -35,10 +35,12 @@ const getBooksFB = async () => {
     else return databaseBooks;
 };
 
-const setBookFB = async (book) => {
+
+const setBookFB = async (book, location) => {
     let error = false;
     let errorMessage = "";
-    await set(ref(db, "/" + book.Index), {
+    
+    await set(ref(db, "/" + location + book.Index), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,

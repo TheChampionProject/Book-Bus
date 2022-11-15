@@ -1,6 +1,11 @@
 import express, { json, urlencoded } from "express";
 import cors from "cors";
-import { getBooks, setBook, getSearchQueryBooks, getBookPrice } from "./apiController.js";
+import {
+    getAllBooks,
+    setBook,
+    getSearchQueryBooks,
+    getBookPrice,
+} from "./apiController.js";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,9 +19,9 @@ app.use(
 app.use(json());
 app.use(urlencoded({ extended: false }));
 
-app.get("/getBooks", getBooks);
-app.post("/manageBook", setBook);
-app.get("/getSearchQueryBooks", getSearchQueryBooks)
-app.post("/getBookPrice", getBookPrice)
+app.get("/getAllBooks", getAllBooks);
+app.get("/getSearchQueryBooks", getSearchQueryBooks);
+app.put("/getBookPrice", getBookPrice);
+app.put("/setBook", setBook);
 
 app.listen(port, () => console.log(`Server started on ${port}!`));
