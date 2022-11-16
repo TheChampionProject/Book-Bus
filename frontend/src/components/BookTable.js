@@ -31,8 +31,7 @@ export default function BookTable({
 
             managedBook.Index = index.current;
 
-            if (archiveRequest.needsArchive) archiveBook(managedBook);
-            await manageBook(managedBook);
+            await manageBook({managedBook: managedBook, archive: archiveRequest.needsArchive});
             await getBooks();
         };
 
@@ -45,8 +44,10 @@ export default function BookTable({
         let res = [];
         let databaseBooks = [];
         await axios
-            .get(process.env.REACT_APP_BACKEND_URL + "getBooks")
-            .catch(() => {})
+            .get(process.env.REACT_APP_BACKEND_URL + "getallbooks")
+            .catch(() => {
+                setAlert({ show: true, message: "" });
+            })
             .then((response) => databaseBooks.push(response.data[0])) // response.data[0] is the JSON object full of books
             .then(() => {
                 for (var i in databaseBooks[0]) res.push(databaseBooks[0][i]); // In order to turn a giant JSON full of books into an array of books
@@ -76,11 +77,11 @@ export default function BookTable({
     const manageBook = async (newBook) => {
         if (newBook == null) return;
         let request = await axios
-            .post(process.env.REACT_APP_BACKEND_URL + "manageBook", {
+            .post(process.env.REACT_APP_BACKEND_URL + "setBook", {
                 newBook,
             })
             .catch(() => {
-                setAlert({ show: true, message: newBook.Title });
+                setAlert({ show: true, message: newBook.Title + " was not edited/added" });
             });
 
         try {
@@ -92,15 +93,7 @@ export default function BookTable({
         }
     };
 
-    const archiveBook = (archiveBook) => {
-        axios
-            .post(process.env.REACT_APP_BACKEND_URL + "archiveBook", {
-                archiveBook,
-            })
-            .catch(() => {
-                setAlert({ show: true, message: archiveBook.Title });
-            });
-    };
+ 
 
     const alphaSortArray = (a, b) => {
         a = a.toLowerCase();
@@ -119,6 +112,7 @@ export default function BookTable({
                 setBook={setBook}
                 setShow={setShow}
                 setManagedBook={setManagedBook}
+                setArchiveRequest={setArchiveRequest}
             />
         );
     });

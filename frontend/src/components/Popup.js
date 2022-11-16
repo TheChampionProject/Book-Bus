@@ -2,7 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "../App.css";
 
-export default function Popup({ show, setShow, book, setManagedBook, setArchiveRequest, archiveRequest }) {
+export default function Popup({
+    show,
+    setShow,
+    book,
+    setManagedBook,
+    setArchiveRequest,
+    archiveRequest,
+}) {
     let emptyBook = {
         Title: "",
         Genre: "",
@@ -21,7 +28,6 @@ export default function Popup({ show, setShow, book, setManagedBook, setArchiveR
     let autoFillInventory = "";
     let autoFillNeeded = 0;
     let autoFillPrice = "";
-    let firstInventory = 0;
 
     try {
         if (book !== null) {
@@ -30,7 +36,6 @@ export default function Popup({ show, setShow, book, setManagedBook, setArchiveR
             autoFillTitle = book.Title;
             autoFillGenre = book.Genre;
             autoFillInventory = book.Inventory;
-            firstInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
         } else {
@@ -79,18 +84,13 @@ export default function Popup({ show, setShow, book, setManagedBook, setArchiveR
     const editBook = (e) => {
         e.preventDefault();
 
-        if (addBook) {
-            book = emptyBook; // Give book a value so it can be edited
-        }
+        if (addBook) book = emptyBook; // Give book a value so it can be edited
 
         book.Title = title;
         book.Genre = genre;
         book.Inventory = inventory;
         book.Needed = needed;
         book.Price = price;
-
-        if (book.Price !== firstInventory) setArchiveRequest({needsArchive: true, book: book, inventory: firstInventory});
-        else setArchiveRequest({needsArchive: false, book: null, inventory: null});
 
         setManagedBook(book);
         setShow(false);

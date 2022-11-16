@@ -9,7 +9,7 @@ export default function Library() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [show, setShow] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
-    const [archiveRequest, setArchiveRequest] = useState({needsArchive: false, book: null, inventory: null});
+    const [archiveRequest, setArchiveRequest] = useState({needsArchive: false, book: managedBook});
     const [alert, setAlert] = useState({ show: false, message: "" }); // Show the alert
 
     let handleAddBook = (e) => {
@@ -25,7 +25,7 @@ export default function Library() {
                 style={{ display: alert.show ? "" : "none" }}
             >
                 There was a problem connecting to the database. {alert.message}
-                was not edited/added. Please refresh the page.
+                Please refresh the page.
             </div>
             <div className={Table}>
                 <div className="container mt-3">
