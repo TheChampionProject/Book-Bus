@@ -21,7 +21,13 @@ const getSearchQueryBooks = asyncHandler(async (req, res) => {
         throw new Error("Missing Title");
     }
 
-    return await axios.get(GOOGLE_BOOKS_API_BASE_URL + req.body.title);
+    let booksRequest = await axios.get(
+        GOOGLE_BOOKS_API_BASE_URL + req.body.title
+    );
+
+    for (let i = 0; i < booksRequest.data.items.length; i++) {
+        console.log(booksRequest.data.items[i].volumeInfo.title);
+    }
 });
 
 const getBookPrice = asyncHandler(async (req, res) => {
@@ -58,7 +64,6 @@ const setBook = asyncHandler(async (req, res) => {
 
     if (fbRequest === "success") res.send("success");
     else res.send("failure");
-    
 });
 
 export { getAllBooks, setBook, getSearchQueryBooks, getBookPrice };
