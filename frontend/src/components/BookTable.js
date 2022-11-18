@@ -50,7 +50,12 @@ export default function BookTable({
         await axios
             .get(process.env.REACT_APP_BACKEND_URL + "getAllBooks")
             .catch(() => {
-                setAlert({ show: true, message: "" });
+                setAlert({
+                    show: true,
+                    message:
+                        "There was a problem connecting to the database. Please refresh the page",
+                    success: false,
+                });
             })
             .then((response) => {
                 databaseBooks.push(response.data[0]); // response.data[0] is the JSON object full of books
@@ -87,16 +92,47 @@ export default function BookTable({
             .catch(() => {
                 setAlert({
                     show: true,
-                    message: newBook.Title + " was not edited/added",
+                    message:
+                        "There was a problem connecting to the database." +
+                        newBook.Title +
+                        " was not edited/added",
+                    success: false,
                 });
             });
 
         try {
-            if (request.data === "success");
-            else if (request.data === "failure")
-                setAlert({ show: true, message: newBook.Title });
+            if (request.data === "success") {
+                setAlert({
+                    show: true,
+                    message:
+                        "Successfully edited/added " +
+                        newBook.managedBook.Title,
+                    success: true,
+                });
+
+                setTimeout(() => {
+                    setAlert({
+                        show: false,
+                    });
+                }, 3000);
+            } else if (request.data === "failure")
+                setAlert({
+                    show: true,
+                    message:
+                        "There was a problem connecting to the database." +
+                        newBook.Title +
+                        " was not edited/added. Please refresh the page.",
+                    success: false,
+                });
         } catch {
-            setAlert({ show: true, message: newBook.Title });
+            setAlert({
+                show: true,
+                message:
+                    "There was a problem connecting to the database." +
+                    newBook.Title +
+                    " was not edited/added. Please refresh the page.",
+                success: false,
+            });
         }
     };
 
