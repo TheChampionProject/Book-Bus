@@ -5,11 +5,14 @@ import Table from "react-bootstrap/Table";
 import "../App.css";
 import Popup from "../components/Popup.js";
 
-export default function Library() {
+export default function GiftPage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [show, setShow] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
-    const [archiveRequest, setArchiveRequest] = useState({needsArchive: false, book: managedBook});
+    const [archiveRequest, setArchiveRequest] = useState({
+        needsArchive: false,
+        book: managedBook,
+    });
     const [alert, setAlert] = useState({ show: false, message: "" }); // Show the alert
 
     let handleAddBook = (e) => {

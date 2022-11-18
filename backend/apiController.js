@@ -16,6 +16,7 @@ const getAllBooks = asyncHandler(async (req, res) => {
 });
 
 const getSearchQueryBooks = asyncHandler(async (req, res) => {
+    let books = [];
     if (!req.body.title) {
         res.status(400);
         throw new Error("Missing Title");
@@ -26,8 +27,10 @@ const getSearchQueryBooks = asyncHandler(async (req, res) => {
     );
 
     for (let i = 0; i < booksRequest.data.items.length; i++) {
-        console.log(booksRequest.data.items[i].volumeInfo.title);
+        books.push(booksRequest.data.items[i].volumeInfo);
     }
+
+    res.send(books);
 });
 
 const getBookPrice = asyncHandler(async (req, res) => {

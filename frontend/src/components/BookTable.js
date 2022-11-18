@@ -31,7 +31,10 @@ export default function BookTable({
 
             managedBook.Index = index.current;
 
-            await manageBook({managedBook: managedBook, archive: archiveRequest.needsArchive});
+            await manageBook({
+                managedBook: managedBook,
+                archive: archiveRequest.needsArchive,
+            });
             await getBooks();
         };
 
@@ -41,16 +44,19 @@ export default function BookTable({
 
     // Get all the books from firebase through an API call to the backend
     const getBooks = async () => {
+        console.log(process.env.REACT_APP_BACKEND_URL);
         let res = [];
         let databaseBooks = [];
         await axios
-            .get(process.env.REACT_APP_BACKEND_URL + "getallbooks")
+            .get(process.env.REACT_APP_BACKEND_URL + "getbooks")
             .catch(() => {
                 setAlert({ show: true, message: "" });
             })
             .then((response) => databaseBooks.push(response.data[0])) // response.data[0] is the JSON object full of books
             .then(() => {
-                for (var i in databaseBooks[0]) res.push(databaseBooks[0][i]); // In order to turn a giant JSON full of books into an array of books
+                console.log(databaseBooks);
+                for (var i in databaseBooks[0].active)
+                    res.push(databaseBooks[0].active[i]); // In order to turn a giant JSON full of books into an array of books
             })
             .then(() => {
                 for (var i = 0; i < res.length; i++) {
@@ -81,7 +87,10 @@ export default function BookTable({
                 newBook,
             })
             .catch(() => {
-                setAlert({ show: true, message: newBook.Title + " was not edited/added" });
+                setAlert({
+                    show: true,
+                    message: newBook.Title + " was not edited/added",
+                });
             });
 
         try {
@@ -92,8 +101,6 @@ export default function BookTable({
             setAlert({ show: true, message: newBook.Title });
         }
     };
-
- 
 
     const alphaSortArray = (a, b) => {
         a = a.toLowerCase();

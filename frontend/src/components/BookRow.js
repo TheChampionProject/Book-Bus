@@ -6,8 +6,8 @@ export default function BookRow({
     setBook,
     setShow,
     setManagedBook,
-    setArchiveRequest
-
+    setArchiveRequest,
+    mode,
 }) {
     let textColor;
 
@@ -20,7 +20,7 @@ export default function BookRow({
     const gift = (e) => {
         e.preventDefault();
         book.Inventory = Math.max(0, book.Inventory - 1);
-        setArchiveRequest({needsArchive: true, book: book});
+        setArchiveRequest({ needsArchive: true, book: book });
         setManagedBook(book);
     };
 
@@ -43,7 +43,7 @@ export default function BookRow({
                     Edit
                 </button>
             </td>
-            <td>
+            <td style={{ display: mode === "manage" ? "" : "none" }}>
                 <button
                     className="btn btn-primary my-2 EditButton"
                     onClick={(e) => gift(e)}
