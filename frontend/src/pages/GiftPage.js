@@ -9,6 +9,10 @@ export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [show, setShow] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
+    const [archiveRequest, setArchiveRequest] = useState({
+        needsArchive: false,
+        book: null,
+    });
     const [alert, setAlert] = useState({ show: false, message: "" }); // Show the alert
 
     let handleAddBook = (e) => {
@@ -37,6 +41,8 @@ export default function ManagePage() {
                                 managedBook={managedBook}
                                 setManagedBook={setManagedBook}
                                 setAlert={setAlert}
+                                setArchiveRequest={setArchiveRequest}
+                                archiveRequest={archiveRequest}
                                 mode={"gift"}
                             />
                         </tbody>

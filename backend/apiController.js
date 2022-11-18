@@ -61,12 +61,12 @@ const setBook = asyncHandler(async (req, res) => {
 
         if (fbRequest === "success") res.send("success");
         else res.send("failure");
+    } else {
+        fbRequest = await setBookFB(req.body.newBook, "active");
+
+        if (fbRequest === "success") res.send("success");
+        else res.send("failure");
     }
-
-    fbRequest = await setBookFB(req.body.newBook, "active");
-
-    if (fbRequest === "success") res.send("success");
-    else res.send("failure");
 });
 
 export { getAllBooks, setBook, getSearchQueryBooks, getBookPrice };

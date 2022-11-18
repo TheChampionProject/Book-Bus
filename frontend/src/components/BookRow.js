@@ -20,7 +20,7 @@ export default function BookRow({
     const gift = (e) => {
         e.preventDefault();
         book.Inventory = Math.max(0, book.Inventory - 1);
-        setArchiveRequest({ needsArchive: true, book: book });
+        //setArchiveRequest({ needsArchive: true, book: book });
         setManagedBook(book);
     };
 
@@ -35,7 +35,7 @@ export default function BookRow({
             <td>{book.Genre}</td>
             <td className="Inventory">{book.Inventory}</td>
             <td>${book.Price}</td>
-            <td>
+            <td style={{ display: mode === "gift" ? "none" : "" }}>
                 <button
                     className="btn btn-primary my-2 EditButton"
                     onClick={(e) => edit(e)}

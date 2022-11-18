@@ -45,22 +45,19 @@ export default function BookTable({
 
     // Get all the books from firebase through an API call to the backend
     const getBooks = async () => {
-        console.log(process.env.REACT_APP_BACKEND_URL);
         let res = [];
         let databaseBooks = [];
         await axios
-            .get(process.env.REACT_APP_BACKEND_URL + "getbooks")
+            .get(process.env.REACT_APP_BACKEND_URL + "getAllBooks")
             .catch(() => {
                 setAlert({ show: true, message: "" });
             })
-            .then((response) => databaseBooks.push(response.data[0])) // response.data[0] is the JSON object full of books
-            .then(() => {
-                console.log(databaseBooks);
-                for (var i in databaseBooks[0].active)
-                    res.push(databaseBooks[0].active[i]); // In order to turn a giant JSON full of books into an array of books
-            })
-            .then(() => {
-                for (var i = 0; i < res.length; i++) {
+            .then((response) => {
+                databaseBooks.push(response.data[0]); // response.data[0] is the JSON object full of books
+
+                for (let j in databaseBooks[0]) res.push(databaseBooks[0][j]); // In order to turn a giant JSON full of books into an array of books
+
+                for (let i = 0; i < res.length; i++) {
                     // Neccesary bc firebase isn't reordered. Now after the sort the original index of the book is preserved.
                     res[i] = {
                         Title: res[i].Title,
@@ -84,7 +81,7 @@ export default function BookTable({
     const manageBook = async (newBook) => {
         if (newBook == null) return;
         let request = await axios
-            .post(process.env.REACT_APP_BACKEND_URL + "setBook", {
+            .put(process.env.REACT_APP_BACKEND_URL + "setBook", {
                 newBook,
             })
             .catch(() => {

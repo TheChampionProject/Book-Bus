@@ -35,12 +35,12 @@ const getBooksFB = async () => {
     else return databaseBooks;
 };
 
-
 const setBookFB = async (book, location) => {
+    book = book.managedBook;
     let error = false;
     let errorMessage = "";
-    
-    await set(ref(db, "/" + location + book.Index), {
+
+    await set(ref(db, "/" + location + "/" + book.Index), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,

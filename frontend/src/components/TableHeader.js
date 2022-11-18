@@ -10,7 +10,7 @@ export default function TableHeader({mode}) {
                 <th>Genre</th>
                 <th>Store</th>
                 <th>Price</th>
-                <th>Edit</th>
+                <th style={{ display: mode === "gift" ? "none" : "" }}>Edit</th>
                 <th style={{ display: mode === "gift" ? "" : "none" }}>
                     Gift
                 </th>
