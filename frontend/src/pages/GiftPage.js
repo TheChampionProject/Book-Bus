@@ -17,6 +17,9 @@ export default function ManagePage() {
 
     return (
         <>
+            <div className={`SearchBar`}>
+                <input type="text" placeholder="Search.."></input>
+            </div>
             <div
                 className={`fixed-top alert alert-${
                     alert.success ? "success" : "danger"
@@ -25,6 +28,7 @@ export default function ManagePage() {
             >
                 {alert.message}
             </div>
+
             <div className={Table}>
                 <div className="container mt-3">
                     <Table striped bordered hover>

@@ -29,7 +29,7 @@ export default function BookRow({
 
     let search;
 
-    if (book.Title.toLowerCase().includes("s")) {
+    if (book.Title.toLowerCase().startsWith("s")) {
         search = true;
     }
 

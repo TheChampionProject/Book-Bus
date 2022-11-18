@@ -19,6 +19,7 @@
 
 .Table {
     overflow: auto;
+    top: 3em;
 }
 
 thead {
@@ -60,4 +61,11 @@ thead {
 
 .NeedTitle {
     font-weight: bold;
+}
+
+.SearchBar {
+    display: inline-block;
+    left:3em;
+    top: 1em;
+ 
 }
