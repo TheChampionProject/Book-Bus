@@ -15,11 +15,8 @@ const getBooksFB = async () => {
     let error = false;
     let errorMessage = "";
 
-    console.log("Getting books");
     await get(child(dbRef, `/`))
         .then((snapshot) => {
-            console.log(snapshot);
-
             if (snapshot.exists()) {
                 databaseBooks.push(snapshot.val());
             } else {

@@ -9,7 +9,6 @@ export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [show, setShow] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
-
     const [alert, setAlert] = useState({
         show: false,
         message: "",

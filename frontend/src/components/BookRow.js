@@ -6,7 +6,6 @@ export default function BookRow({
     setBook,
     setShow,
     setManagedBook,
-    setArchiveRequest,
     mode,
 }) {
     let textColor;
@@ -20,7 +19,7 @@ export default function BookRow({
     const gift = (e) => {
         e.preventDefault();
         book.Inventory = Math.max(0, book.Inventory - 1);
-        //setArchiveRequest({ needsArchive: true, book: book });
+        book.Archive = true;
         setManagedBook(book);
     };
 
@@ -30,9 +29,7 @@ export default function BookRow({
 
     let search;
 
-    console.log(book.Title.toLowerCase())
     if (book.Title.toLowerCase().includes("s")) {
-        console.log(book.Title);
         search = true;
     }
 

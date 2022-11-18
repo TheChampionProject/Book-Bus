@@ -56,7 +56,7 @@ const setBook = asyncHandler(async (req, res) => {
         throw new Error("Missing Book");
     }
 
-    if (req.body.archive)
+    if (req.body.newBook.Archive)
         fbRequest = await setBookFB(req.body.newBook, "archive");
     else fbRequest = await setBookFB(req.body.newBook, "active");
 
