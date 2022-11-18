@@ -10,6 +10,7 @@ export default function BookTable({
     setAlert,
     setArchiveRequest,
     archiveRequest,
+    mode,
 }) {
     let [books, setBooks] = useState([]);
     let index = useRef();
@@ -120,6 +121,7 @@ export default function BookTable({
                 setShow={setShow}
                 setManagedBook={setManagedBook}
                 setArchiveRequest={setArchiveRequest}
+                mode={mode}
             />
         );
     });

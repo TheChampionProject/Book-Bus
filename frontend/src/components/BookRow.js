@@ -43,7 +43,7 @@ export default function BookRow({
                     Edit
                 </button>
             </td>
-            <td style={{ display: mode === "manage" ? "" : "none" }}>
+            <td style={{ display: mode === "gift" ? "" : "none" }}>
                 <button
                     className="btn btn-primary my-2 EditButton"
                     onClick={(e) => gift(e)}

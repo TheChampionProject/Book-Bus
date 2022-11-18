@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-export default function TableHeader(mode) {
+export default function TableHeader({mode}) {
     return (
         <thead>
             <tr>
@@ -11,9 +11,9 @@ export default function TableHeader(mode) {
                 <th>Store</th>
                 <th>Price</th>
                 <th>Edit</th>
-                {/*<th style={{ display: "none" }}>
+                <th style={{ display: mode === "gift" ? "" : "none" }}>
                     Gift
-                </th>*/}
+                </th>
             </tr>
         </thead>
     );
