@@ -17,15 +17,13 @@
     color: white;
 }
 
-.Table {
+.BookTable {
     overflow: auto;
-    top: 3em;
 }
 
 thead {
     background: white;
     position: sticky;
-    top: 0;
 }
 
 .alert-fixed {
@@ -64,8 +62,9 @@ thead {
 }
 
 .SearchBar {
-    display: inline-block;
-    left:3em;
-    top: 1em;
- 
+    right: 70em;
+}
+
+.Inventory {
+    width: 2em;
 }
