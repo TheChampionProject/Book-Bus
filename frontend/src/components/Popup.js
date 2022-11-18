@@ -7,8 +7,6 @@ export default function Popup({
     setShow,
     book,
     setManagedBook,
-    setArchiveRequest,
-    archiveRequest,
 }) {
     let emptyBook = {
         Title: "",

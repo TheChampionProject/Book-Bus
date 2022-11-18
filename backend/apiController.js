@@ -56,17 +56,12 @@ const setBook = asyncHandler(async (req, res) => {
         throw new Error("Missing Book");
     }
 
-    if (req.body.archive) {
+    if (req.body.archive)
         fbRequest = await setBookFB(req.body.newBook, "archive");
+    else fbRequest = await setBookFB(req.body.newBook, "active");
 
-        if (fbRequest === "success") res.send("success");
-        else res.send("failure");
-    } else {
-        fbRequest = await setBookFB(req.body.newBook, "active");
-
-        if (fbRequest === "success") res.send("success");
-        else res.send("failure");
-    }
+    if (fbRequest === "success") res.send("success");
+    else res.send("failure");
 });
 
 export { getAllBooks, setBook, getSearchQueryBooks, getBookPrice };

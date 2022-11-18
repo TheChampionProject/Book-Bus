@@ -9,22 +9,19 @@ export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [show, setShow] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
-    const [archiveRequest, setArchiveRequest] = useState({
-        needsArchive: false,
-        book: null,
-    });
-    const [alert, setAlert] = useState({ show: false, message: "", success: false }); // Show the alert
 
-    let handleAddBook = (e) => {
-        e.preventDefault();
-        setBook(null);
-        setShow(true);
-    };
+    const [alert, setAlert] = useState({
+        show: false,
+        message: "",
+        success: false,
+    }); // Show the alert
 
     return (
         <>
             <div
-                className={`fixed-top alert alert-${alert.success ? 'success' : 'danger'}`}
+                className={`fixed-top alert alert-${
+                    alert.success ? "success" : "danger"
+                }`}
                 style={{ display: alert.show ? "" : "none" }}
             >
                 {alert.message}
@@ -40,19 +37,10 @@ export default function ManagePage() {
                                 managedBook={managedBook}
                                 setManagedBook={setManagedBook}
                                 setAlert={setAlert}
-                                setArchiveRequest={setArchiveRequest}
-                                archiveRequest={archiveRequest}
                                 mode={"gift"}
                             />
                         </tbody>
                     </Table>
-                    <button
-                        type="button"
-                        className=" AddBookButton"
-                        onClick={(e) => handleAddBook(e)}
-                    >
-                        +
-                    </button>
                 </div>
             </div>
 

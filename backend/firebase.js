@@ -15,20 +15,21 @@ const getBooksFB = async () => {
     let error = false;
     let errorMessage = "";
 
-    await get(child(dbRef, `/active`))
+    console.log("Getting books");
+    await get(child(dbRef, `/`))
         .then((snapshot) => {
+            console.log(snapshot);
+
             if (snapshot.exists()) {
                 databaseBooks.push(snapshot.val());
             } else {
                 error = true;
                 errorMessage = "No Data Found";
-                console.log(errorMessage);
             }
         })
         .catch((error) => {
             error = true;
             errorMessage = error;
-            console.log(errorMessage);
         });
 
     if (error) return errorMessage;

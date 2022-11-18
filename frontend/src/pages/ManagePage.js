@@ -9,7 +9,11 @@ export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [show, setShow] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
-    const [alert, setAlert] = useState({ show: false, message: "" }); // Show the alert
+    const [alert, setAlert] = useState({
+        show: false,
+        message: "",
+        success: false,
+    }); // Show the alert
 
     let handleAddBook = (e) => {
         e.preventDefault();
@@ -20,11 +24,12 @@ export default function ManagePage() {
     return (
         <>
             <div
-                className="fixed-top alert alert-danger"
+                className={`fixed-top alert alert-${
+                    alert.success ? "success" : "danger"
+                }`}
                 style={{ display: alert.show ? "" : "none" }}
             >
-                There was a problem connecting to the database. {alert.message}
-                Please refresh the page.
+                {alert.message}
             </div>
             <div className={Table}>
                 <div className="container mt-3">

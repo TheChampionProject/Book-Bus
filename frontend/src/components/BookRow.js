@@ -28,8 +28,16 @@ export default function BookRow({
     else if (book.Needed >= 10 && book.Needed < 20) textColor = "orange";
     else if (book.Needed >= 20) textColor = "red";
 
+    let search;
+
+    console.log(book.Title.toLowerCase())
+    if (book.Title.toLowerCase().includes("s")) {
+        console.log(book.Title);
+        search = true;
+    }
+
     return (
-        <tr>
+        <tr style={{ display: search ? "" : "none" }}>
             <td>{number}</td>
             <td style={{ color: textColor }}>{book.Title}</td>
             <td>{book.Genre}</td>
