@@ -1,10 +1,12 @@
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Table } from "react-bootstrap";
 import React, { useRef } from "react";
 import axios from "axios";
+import QueryResults from "./QueryResults.js";
 import "../App.css";
 
-export default function AddPopup({ showAddPopup, setShowAddPopup }) {
+export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
     const searchQuery = useRef();
+    let showTable = false;
 
     const searchForBook = async (e) => {
         e.preventDefault();
@@ -12,9 +14,15 @@ export default function AddPopup({ showAddPopup, setShowAddPopup }) {
             .post(process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks", {
                 title: searchQuery.current.value,
             })
-            .catch((e) => {
-                console.log(e);
+            .catch(() => {
+                setAlert({
+                    show: true,
+                    message: "There was a problem connecting to the database.",
+                    success: false,
+                });
             });
+
+        showTable = true;
 
         console.log(query.data);
     };
@@ -45,6 +53,19 @@ export default function AddPopup({ showAddPopup, setShowAddPopup }) {
                         </Button>
                     </Modal.Body>
                 </form>
+                <Modal.Footer>
+                    <Table style={{ display: showTable ? "" : "none" }}>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Add</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <QueryResults />
+                        </tbody>
+                    </Table>
+                </Modal.Footer>
             </Modal>
         </>
     );

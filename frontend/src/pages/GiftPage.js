@@ -46,6 +46,7 @@ export default function ManagePage() {
                         <tbody>
                             <BookTable
                                 setBook={setBook}
+                                book={book}
                                 managedBook={managedBook}
                                 setManagedBook={setManagedBook}
                                 setAlert={setAlert}
