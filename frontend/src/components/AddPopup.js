@@ -24,9 +24,7 @@ export default function AddPopup({ showAddPopup, setShowAddPopup }) {
                             className="AddPopup"
                             ref={searchQuery}
                         />
-                    </Modal.Body>
 
-                    <Modal.Footer>
                         <Button
                             variant="secondary"
                             className="btn btn-success"
@@ -37,7 +35,7 @@ export default function AddPopup({ showAddPopup, setShowAddPopup }) {
                         >
                             Search
                         </Button>
-                    </Modal.Footer>
+                    </Modal.Body>
                 </form>
             </Modal>
         </>
