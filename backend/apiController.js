@@ -17,6 +17,7 @@ const getAllBooks = asyncHandler(async (req, res) => {
 
 const getSearchQueryBooks = asyncHandler(async (req, res) => {
     let books = [];
+
     if (!req.body.title) {
         res.status(400);
         throw new Error("Missing Title");

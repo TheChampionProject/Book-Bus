@@ -20,7 +20,7 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 
 app.get("/getAllBooks", getAllBooks);
-app.get("/getSearchQueryBooks", getSearchQueryBooks);
+app.post("/getSearchQueryBooks", getSearchQueryBooks);
 app.put("/getBookPrice", getBookPrice);
 app.put("/setBook", setBook);
 

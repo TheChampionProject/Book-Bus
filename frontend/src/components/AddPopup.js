@@ -1,15 +1,23 @@
 import { Modal, Button } from "react-bootstrap";
 import React, { useRef } from "react";
+import axios from "axios";
 import "../App.css";
 
 export default function AddPopup({ showAddPopup, setShowAddPopup }) {
     const searchQuery = useRef();
 
-    const searchForBook = (e) => {
+    const searchForBook = async (e) => {
         e.preventDefault();
-        console.log(searchQuery.current.value);
-    };
+        let query = await axios
+            .post(process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks", {
+                title: searchQuery.current.value,
+            })
+            .catch((e) => {
+                console.log(e);
+            });
 
+        console.log(query.data);
+    };
     return (
         <>
             <Modal show={showAddPopup} onHide={() => setShowAddPopup(false)}>
@@ -20,7 +28,7 @@ export default function AddPopup({ showAddPopup, setShowAddPopup }) {
                     <Modal.Body>
                         <input
                             type="text"
-                            placeholder="Search"
+                            placeholder="Search For a Title"
                             className="AddPopup"
                             ref={searchQuery}
                         />
