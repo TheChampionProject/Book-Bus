@@ -8,6 +8,7 @@ export default function BookTable({
     managedBook,
     setManagedBook,
     setAlert,
+    searchQuery,
     mode,
 }) {
     let [books, setBooks] = useState([]);
@@ -148,6 +149,7 @@ export default function BookTable({
                 setBook={setBook}
                 setShow={setShow}
                 setManagedBook={setManagedBook}
+                searchQuery={searchQuery}
                 mode={mode}
             />
         );

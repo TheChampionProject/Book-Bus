@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import BookTable from "../components/BookTable.js";
 import TableHeader from "../components/TableHeader.js";
 import Table from "react-bootstrap/Table";
@@ -14,6 +14,7 @@ export default function ManagePage() {
         message: "",
         success: false,
     }); // Show the alert
+    const [searchQuery, setSearchQuery] = useState("");
 
     return (
         <>
@@ -22,7 +23,7 @@ export default function ManagePage() {
 
                 <div className="justify-content-end">
                     <div>
-                        <input type="text" placeholder="Search" />
+                        <input type="text" placeholder="Search" onChange={(e) => setSearchQuery(e.target.value)}/>
                     </div>
                 </div>
             </div>
@@ -47,6 +48,7 @@ export default function ManagePage() {
                                 managedBook={managedBook}
                                 setManagedBook={setManagedBook}
                                 setAlert={setAlert}
+                                searchQuery={searchQuery}
                                 mode={"gift"}
                             />
                         </tbody>

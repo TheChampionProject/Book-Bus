@@ -6,6 +6,7 @@ export default function BookRow({
     setBook,
     setShow,
     setManagedBook,
+    searchQuery,
     mode,
 }) {
     let textColor;
@@ -29,7 +30,7 @@ export default function BookRow({
 
     let search;
 
-    if (book.Title.toLowerCase().startsWith("s")) {
+    if (book.Title.toLowerCase().startsWith(searchQuery.toLowerCase())) {
         search = true;
     }
 
