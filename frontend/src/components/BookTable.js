@@ -71,8 +71,6 @@ export default function BookTable({
                     };
                 }
 
-               
-
                 res.sort(function (a, b) {
                     return alphaSortArray(a.Title, b.Title);
                 });
@@ -83,6 +81,7 @@ export default function BookTable({
 
     // Add or edit book call to backend which calls firebase
     const manageBook = async (newBook) => {
+        let message = "";
         if (newBook == null) return;
         let request = await axios
             .put(process.env.REACT_APP_BACKEND_URL + "setBook", {
@@ -101,10 +100,12 @@ export default function BookTable({
 
         try {
             if (request.data === "success") {
+                if (mode === "gift") message = "Gifted ";
+                else message = "Edited/Added ";
                 setAlert({
                     show: true,
                     message:
-                        "Successfully edited/added " +
+                        "Successfully " + message + 
                         newBook.managedBook.Title,
                     success: true,
                 });

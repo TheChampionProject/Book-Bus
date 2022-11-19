@@ -19,14 +19,17 @@
 
 .BookTable {
     position: relative;
-    top: 70px;
+    overflow: hidden;
+    top: 5.6rem;
 }
 
 .TableHeader {
     position: sticky;
     top: 0;
-    z-index: 2;
-  }
+    background: #fff;
+    z-index: 1;
+}
+
 
 .alert-fixed {
     position: fixed;
