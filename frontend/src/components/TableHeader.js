@@ -4,8 +4,8 @@ import "../App.css";
 export default function TableHeader({ mode }) {
     return (
         <thead className="TopBar">
+           
             <tr>
-                <th>Index</th>
                 <th>Title</th>
                 <th>Genre</th>
                 <th>Store</th>

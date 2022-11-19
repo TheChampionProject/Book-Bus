@@ -17,15 +17,15 @@ export default function ManagePage() {
 
     return (
         <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <h1 className="navbar-brand">Manage Books</h1>
-            
-            <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div className="navbar-nav">
-                   <input type="text" placeholder="Search" />
+            <div className="navbar">
+                <a href="/manage">Go to Manage Page</a>
+
+                <div className="justify-content-end">
+                    <div>
+                        <input type="text" placeholder="Search" />
+                    </div>
                 </div>
             </div>
-        </nav>
 
             <div
                 className={`fixed-top alert alert-${

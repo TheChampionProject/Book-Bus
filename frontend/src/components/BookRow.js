@@ -35,7 +35,6 @@ export default function BookRow({
 
     return (
         <tr style={{ display: search ? "" : "none" }}>
-            <td>{number}</td>
             <td style={{ color: textColor }}>{book.Title}</td>
             <td>{book.Genre}</td>
             <td className="Inventory">{book.Inventory}</td>
