@@ -93,3 +93,8 @@
     padding: 14px 16px;
     text-decoration: none;
 }
+
+.AddPopup {
+    margin: 1em;
+    width: 10em;
+}

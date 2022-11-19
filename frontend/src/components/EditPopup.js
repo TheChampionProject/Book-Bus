@@ -8,19 +8,6 @@ export default function EditPopup({
     book,
     setManagedBook,
 }) {
-    let emptyBook = {
-        Title: "",
-        Genre: "",
-        Inventory: "",
-        Needed: 0,
-        Price: "",
-        Index: -1,
-    };
-
-    let addBook;
-    let modalTitle = "";
-    let buttonName = "";
-
     let autoFillTitle = "";
     let autoFillGenre = "";
     let autoFillInventory = "";
@@ -29,19 +16,15 @@ export default function EditPopup({
 
     try {
         if (book !== null) {
-            modalTitle = "Edit This Book";
-            buttonName = "Edit Book";
             autoFillTitle = book.Title;
             autoFillGenre = book.Genre;
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
-        } else {
-            addBook = true;
-            modalTitle = "Add a Book";
-            buttonName = "Add Book";
         }
-    } catch {}
+    } catch {
+        // Show error message
+    }
 
     let [title, setTitle] = useState(autoFillTitle);
     let [genre, setGenre] = useState(autoFillGenre);
@@ -82,8 +65,6 @@ export default function EditPopup({
     const editBook = (e) => {
         e.preventDefault();
 
-        if (addBook) book = emptyBook; // Give book a value so it can be edited
-
         book.Title = title;
         book.Genre = genre;
         book.Inventory = inventory;
@@ -98,7 +79,7 @@ export default function EditPopup({
         <>
             <Modal show={showEditPopup} onHide={() => setShowEditPopup(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>{modalTitle}</Modal.Title>
+                    <Modal.Title>Edit This Book</Modal.Title>
                 </Modal.Header>
                 <form>
                     <Modal.Body>
@@ -176,7 +157,7 @@ export default function EditPopup({
                                 editBook(e);
                             }}
                         >
-                            {buttonName}
+                            Edit
                         </Button>
                     </Modal.Footer>
                 </form>

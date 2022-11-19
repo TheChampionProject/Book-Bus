@@ -4,10 +4,12 @@ import TableHeader from "../components/TableHeader.js";
 import Table from "react-bootstrap/Table";
 import "../App.css";
 import EditPopup from "../components/EditPopup.js";
+import AddPopup from "../components/AddPopup.js";
 
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [showEditPoup, setShowEditPopup] = useState(false); // Show the popup
+    const [showAddPopup, setShowAddPopup] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
     const [alert, setAlert] = useState({
         show: false,
@@ -18,8 +20,7 @@ export default function ManagePage() {
 
     let handleAddBook = (e) => {
         e.preventDefault();
-        setBook(null);
-        setShowEditPopup(true);
+        setShowAddPopup(true);
     };
 
     return (
@@ -77,6 +78,12 @@ export default function ManagePage() {
                 showEditPopup={showEditPoup}
                 setShowEditPopup={setShowEditPopup}
                 book={book}
+                setManagedBook={setManagedBook}
+            />
+
+            <AddPopup
+                showAddPopup={showAddPopup}
+                setShowAddPopup={setShowAddPopup}
                 setManagedBook={setManagedBook}
             />
         </>
