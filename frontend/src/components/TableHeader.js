@@ -3,7 +3,7 @@ import "../App.css";
 
 export default function TableHeader({ mode }) {
     return (
-        <thead className="TopBar">
+        <thead className="TableHeader">
             <tr>
                 <th>Title</th>
                 <th className="BiggerCell">Genre</th>

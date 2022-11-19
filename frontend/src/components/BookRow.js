@@ -2,7 +2,6 @@ import React from "react";
 import "../App.css";
 export default function BookRow({
     book,
-    number,
     setBook,
     setShow,
     setManagedBook,

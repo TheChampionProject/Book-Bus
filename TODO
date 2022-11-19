@@ -3,6 +3,6 @@
 - Timestamps
 - Search bar
 - Search national book database
-- Popup for genre (Anish)
-- Gift confirmation (Anish)
+- Dropdown for genre (Anish)
+- Error that book was already gifted. (don't show things with inventory 0)
 - Book queue in database

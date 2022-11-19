@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import BookTable from "../components/BookTable.js";
 import TableHeader from "../components/TableHeader.js";
 import Table from "react-bootstrap/Table";
@@ -18,12 +18,16 @@ export default function ManagePage() {
 
     return (
         <>
-            <div className="navbar">
+            <div className="fixed-top navbar">
                 <a href="/manage">Go to Manage Page</a>
 
                 <div className="justify-content-end">
                     <div>
-                        <input type="text" placeholder="Search" onChange={(e) => setSearchQuery(e.target.value)}/>
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
                     </div>
                 </div>
             </div>
@@ -41,6 +45,7 @@ export default function ManagePage() {
                 <div className="container mt-3">
                     <Table striped bordered hover>
                         <TableHeader mode={"gift"} />
+
                         <tbody>
                             <BookTable
                                 setBook={setBook}

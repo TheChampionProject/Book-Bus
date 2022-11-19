@@ -56,7 +56,8 @@ export default function BookTable({
             .then((response) => {
                 databaseBooks.push(response.data[0]); // response.data[0] is the JSON object full of books
 
-                for (let j in databaseBooks[0].active) res.push(databaseBooks[0].active[j]); // In order to turn a giant JSON full of books into an array of books
+                for (let j in databaseBooks[0].active)
+                    res.push(databaseBooks[0].active[j]); // In order to turn a giant JSON full of books into an array of books
 
                 for (let i = 0; i < res.length; i++) {
                     // Neccesary bc firebase isn't reordered. Now after the sort the original index of the book is preserved.
@@ -69,6 +70,8 @@ export default function BookTable({
                         Index: i,
                     };
                 }
+
+               
 
                 res.sort(function (a, b) {
                     return alphaSortArray(a.Title, b.Title);
