@@ -1,15 +1,18 @@
 import { Modal, Button, Table } from "react-bootstrap";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import QueryResults from "./QueryResults.js";
 import "../App.css";
 
 export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
-    const searchQuery = useRef();
-    let showTable = false;
+    const [queryList, setQueryList] = useState([]);
+    const [showTable, setShowTable] = useState(false);
+    const searchQuery = useRef("");
 
     const searchForBook = async (e) => {
         e.preventDefault();
+
+        console.log(showTable);
         let query = await axios
             .post(process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks", {
                 title: searchQuery.current.value,
@@ -17,14 +20,16 @@ export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
             .catch(() => {
                 setAlert({
                     show: true,
-                    message: "There was a problem connecting to the database.",
+                    message:
+                        "There was a problem with your search query. Please refresh and try again.",
                     success: false,
                 });
             });
 
-        showTable = true;
+        setShowTable(true);
+        setQueryList(query.data);
 
-        console.log(query.data);
+        console.log(queryList);
     };
     return (
         <>
@@ -62,7 +67,7 @@ export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
                             </tr>
                         </thead>
                         <tbody>
-                            <QueryResults />
+                            <QueryResults queryList={queryList} />
                         </tbody>
                     </Table>
                 </Modal.Footer>
