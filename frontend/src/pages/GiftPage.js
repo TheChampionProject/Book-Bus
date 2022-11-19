@@ -18,17 +18,16 @@ export default function ManagePage() {
 
     return (
         <>
-            <div className="fixed-top navbar">
+            <div className="fixed-top navbar NavHead">
                 <a href="/manage">Go to Manage Page</a>
 
-                <div className="justify-content-end">
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Search"
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                    </div>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        style={{ margin: "1em" }}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
                 </div>
             </div>
 

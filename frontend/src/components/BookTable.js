@@ -82,6 +82,9 @@ export default function BookTable({
     // Add or edit book call to backend which calls firebase
     const manageBook = async (newBook) => {
         let message = "";
+        if (mode === "gift") message = "Gifted ";
+        else message = "Edited/Added ";
+
         if (newBook == null) return;
         let request = await axios
             .put(process.env.REACT_APP_BACKEND_URL + "setBook", {
@@ -93,20 +96,18 @@ export default function BookTable({
                     message:
                         "There was a problem connecting to the database." +
                         newBook.Title +
-                        " was not edited/added",
+                        " was not " +
+                        message,
                     success: false,
                 });
             });
 
         try {
             if (request.data === "success") {
-                if (mode === "gift") message = "Gifted ";
-                else message = "Edited/Added ";
                 setAlert({
                     show: true,
                     message:
-                        "Successfully " + message + 
-                        newBook.managedBook.Title,
+                        "Successfully " + message + newBook.managedBook.Title,
                     success: true,
                 });
 
@@ -121,7 +122,9 @@ export default function BookTable({
                     message:
                         "There was a problem connecting to the database." +
                         newBook.Title +
-                        " was not edited/added. Please refresh the page.",
+                        " was not " +
+                        message +
+                        ". Please refresh the page.",
                     success: false,
                 });
         } catch {
@@ -130,7 +133,9 @@ export default function BookTable({
                 message:
                     "There was a problem connecting to the database." +
                     newBook.Title +
-                    " was not edited/added. Please refresh the page.",
+                    " was not " +
+                    message +
+                    ". Please refresh the page.",
                 success: false,
             });
         }

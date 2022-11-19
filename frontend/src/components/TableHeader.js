@@ -7,7 +7,7 @@ export default function TableHeader({ mode }) {
             <tr>
                 <th>Title</th>
                 <th className="BiggerCell">Genre</th>
-                <th className="TableCell">Store</th>
+                <th className="TableCell">Stock</th>
                 <th className="TableCell">Price</th>
                 <th
                     style={{ display: mode === "gift" ? "none" : "" }}

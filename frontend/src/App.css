@@ -23,10 +23,10 @@
     top: 5.6rem;
 }
 
-.TableHeader {
+.NavHead {
     position: sticky;
     top: 0;
-    background: #fff;
+    background: #F2F2F2;
     z-index: 1;
 }
 
