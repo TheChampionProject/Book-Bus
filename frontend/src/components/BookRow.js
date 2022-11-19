@@ -3,7 +3,7 @@ import "../App.css";
 export default function BookRow({
     book,
     setBook,
-    setShow,
+    setShowEditPopup,
     setManagedBook,
     searchQuery,
     mode,
@@ -13,7 +13,7 @@ export default function BookRow({
     const edit = (e) => {
         e.preventDefault();
         setBook(book);
-        setShow(true);
+        setShowEditPopup(true);
     };
 
     const gift = (e) => {
@@ -47,8 +47,10 @@ export default function BookRow({
                     Edit
                 </button>
             </td>
-            <td style={{ display: mode === "gift" ? "" : "none" }}
-            className="Inventory">
+            <td
+                style={{ display: mode === "gift" ? "" : "none" }}
+                className="Inventory"
+            >
                 <button
                     className="btn btn-primary my-2 EditButton"
                     onClick={(e) => gift(e)}

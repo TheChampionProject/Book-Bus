@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "../App.css";
 
-export default function Popup({
-    show,
-    setShow,
+export default function EditPopup({
+    showEditPopup,
+    setShowEditPopup,
     book,
     setManagedBook,
 }) {
@@ -91,12 +91,12 @@ export default function Popup({
         book.Price = price;
 
         setManagedBook(book);
-        setShow(false);
+        setShowEditPopup(false);
     };
 
     return (
         <>
-            <Modal show={show} onHide={() => setShow(false)}>
+            <Modal show={showEditPopup} onHide={() => setShowEditPopup(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>{modalTitle}</Modal.Title>
                 </Modal.Header>

@@ -3,11 +3,11 @@ import BookTable from "../components/BookTable.js";
 import TableHeader from "../components/TableHeader.js";
 import Table from "react-bootstrap/Table";
 import "../App.css";
-import Popup from "../components/Popup.js";
+import EditPopup from "../components/EditPopup.js";
 
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
-    const [show, setShow] = useState(false); // Show the popup
+    const [showEditPoup, setShowEditPopup] = useState(false); // Show the popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
     const [alert, setAlert] = useState({
         show: false,
@@ -19,7 +19,7 @@ export default function ManagePage() {
     let handleAddBook = (e) => {
         e.preventDefault();
         setBook(null);
-        setShow(true);
+        setShowEditPopup(true);
     };
 
     return (
@@ -49,17 +49,17 @@ export default function ManagePage() {
             <div className={"BookTable"}>
                 <div className="container mt-3">
                     <Table striped bordered hover>
-                        <TableHeader mode={"gift"} />
+                        <TableHeader mode={"manage"} />
 
                         <tbody>
                             <BookTable
                                 setBook={setBook}
-                                setShow={setShow}
+                                setShowEditPopup={setShowEditPopup}
                                 managedBook={managedBook}
                                 setManagedBook={setManagedBook}
                                 setAlert={setAlert}
                                 searchQuery={searchQuery}
-                                mode={"gift"}
+                                mode={"manage"}
                             />
                         </tbody>
                     </Table>
@@ -73,9 +73,9 @@ export default function ManagePage() {
                 </button>
             </div>
 
-            <Popup
-                show={show}
-                setShow={setShow}
+            <EditPopup
+                showEditPopup={showEditPoup}
+                setShowEditPopup={setShowEditPopup}
                 book={book}
                 setManagedBook={setManagedBook}
             />

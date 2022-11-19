@@ -4,7 +4,7 @@ import BookRow from "./BookRow.js";
 
 export default function BookTable({
     setBook,
-    setShow,
+    setShowEditPopup,
     managedBook,
     setManagedBook,
     setAlert,
@@ -156,7 +156,7 @@ export default function BookTable({
                 book={book}
                 number={number}
                 setBook={setBook}
-                setShow={setShow}
+                setShowEditPopup={setShowEditPopup}
                 setManagedBook={setManagedBook}
                 searchQuery={searchQuery}
                 mode={mode}
