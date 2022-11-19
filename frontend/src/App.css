@@ -65,8 +65,12 @@ thead {
     right: 70em;
 }
 
-.Inventory {
+.TableCell {
     width: 2em;
+}
+
+.BiggerCell {
+    width: 3em;
 }
 
 .navbar {
