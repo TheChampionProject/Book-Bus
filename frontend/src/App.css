@@ -94,6 +94,17 @@
     text-decoration: none;
 }
 
+.FakeLink {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font-family: arial, sans-serif;
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+    right: -50px;
+  }
+
 .AddPopup {
     margin: 1em;
     width: 20em;

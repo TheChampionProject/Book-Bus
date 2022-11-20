@@ -19,6 +19,13 @@ export default function AddPopup({
         setShowTable(false);
     }, [showAddPopup]);
 
+    const manuallyAdd = (e) => {
+        e.preventDefault();
+        setShowAddPopup(false);
+        setShowEditPopup(true);
+        setBook(null);
+    }
+
     const searchForBook = async (e) => {
         e.preventDefault();
 
@@ -67,6 +74,14 @@ export default function AddPopup({
                     </Modal.Body>
                 </form>
                 <Modal.Footer style={{ display: showTable ? "" : "none" }}>
+                    <button
+                        className="FakeLink"
+                        onClick={(e) => {
+                            manuallyAdd(e);
+                        }}
+                    >
+                        Can't Find It? Manually Add
+                    </button>
                     <Table>
                         <thead>
                             <tr>

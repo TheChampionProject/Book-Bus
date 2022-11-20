@@ -14,6 +14,7 @@ export default function EditPopup({
     let autoFillInventory = "";
     let autoFillNeeded = 0;
     let autoFillPrice = "";
+    let addBook = false;
 
     try {
         if (book !== null) {
@@ -22,12 +23,12 @@ export default function EditPopup({
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
-        }
+        } else addBook = true;
     } catch {
         setAlert({
             show: true,
             message:
-                "There was a problem with your search query. Please refresh and try again.",
+                "There was a problem with your edit. Please refresh and try again.",
             success: false,
         });
     }
@@ -72,6 +73,8 @@ export default function EditPopup({
         e.preventDefault();
 
         if (price.startsWith("$")) price = price.slice(1);
+
+        if (addBook) book = {};
 
         book.Title = title;
         book.Genre = genre;
