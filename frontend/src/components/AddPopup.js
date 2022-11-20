@@ -7,13 +7,12 @@ import "../App.css";
 export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
-    const searchQuery = useRef("");
+    const searchQuery = useRef();
 
     const searchForBook = async (e) => {
         e.preventDefault();
 
-        console.log(showTable);
-        let query = await axios
+        await axios
             .post(process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks", {
                 title: searchQuery.current.value,
             })
@@ -24,12 +23,11 @@ export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
                         "There was a problem with your search query. Please refresh and try again.",
                     success: false,
                 });
+            })
+            .then((response) => {
+                setShowTable(true);
+                setQueryList(response.data);
             });
-
-        setShowTable(true);
-        setQueryList(query.data);
-
-        console.log(queryList);
     };
     return (
         <>

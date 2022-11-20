@@ -8,7 +8,7 @@ export default function QueryRow({ book }) {
 
     return (
         <tr>
-            <td>{book.Title}</td>
+            <td>{book.title}</td>
             <td>
                 <button
                     className="btn btn-primary my-2 EditButton"
