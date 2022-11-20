@@ -67,7 +67,7 @@ export default function ManagePage() {
                 </div>
                 <button
                     type="button"
-                    className=" AddBookButton"
+                    className="AddBookButton"
                     onClick={(e) => handleAddBook(e)}
                 >
                     +
@@ -79,13 +79,15 @@ export default function ManagePage() {
                 setShowEditPopup={setShowEditPopup}
                 book={book}
                 setManagedBook={setManagedBook}
+                setAlert={setAlert}
             />
 
             <AddPopup
                 showAddPopup={showAddPopup}
                 setShowAddPopup={setShowAddPopup}
-                setManagedBook={setManagedBook}
+                setBook={setBook}
                 setAlert={setAlert}
+                setShowEditPopup={setShowEditPopup}
             />
         </>
     );

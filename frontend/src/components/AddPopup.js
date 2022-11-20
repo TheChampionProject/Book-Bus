@@ -4,15 +4,20 @@ import axios from "axios";
 import QueryResults from "./QueryResults.js";
 import "../App.css";
 
-export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
+export default function AddPopup({
+    showAddPopup,
+    setShowAddPopup,
+    setAlert,
+    setShowEditPopup,
+    setBook,
+}) {
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
     const searchQuery = useRef();
 
     useEffect(() => {
         setShowTable(false);
-
-    }, [showAddPopup])
+    }, [showAddPopup]);
 
     const searchForBook = async (e) => {
         e.preventDefault();
@@ -61,8 +66,8 @@ export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
                         </Button>
                     </Modal.Body>
                 </form>
-                <Modal.Footer>
-                    <Table style={{ display: showTable ? "" : "none" }}>
+                <Modal.Footer style={{ display: showTable ? "" : "none" }}>
+                    <Table>
                         <thead>
                             <tr>
                                 <th>Title</th>
@@ -70,7 +75,12 @@ export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
                             </tr>
                         </thead>
                         <tbody>
-                            <QueryResults queryList={queryList} />
+                            <QueryResults
+                                queryList={queryList}
+                                setShowAddPopup={setShowAddPopup}
+                                setShowEditPopup={setShowEditPopup}
+                                setBook={setBook}
+                            />
                         </tbody>
                     </Table>
                 </Modal.Footer>

@@ -7,6 +7,7 @@ export default function EditPopup({
     setShowEditPopup,
     book,
     setManagedBook,
+    setAlert,
 }) {
     let autoFillTitle = "";
     let autoFillGenre = "";
@@ -23,7 +24,12 @@ export default function EditPopup({
             autoFillPrice = book.Price;
         }
     } catch {
-        // Show error message
+        setAlert({
+            show: true,
+            message:
+                "There was a problem with your search query. Please refresh and try again.",
+            success: false,
+        });
     }
 
     let [title, setTitle] = useState(autoFillTitle);
@@ -157,7 +163,7 @@ export default function EditPopup({
                                 editBook(e);
                             }}
                         >
-                            Edit
+                            Save
                         </Button>
                     </Modal.Footer>
                 </form>
