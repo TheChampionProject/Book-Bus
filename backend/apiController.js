@@ -28,23 +28,23 @@ const getSearchQueryBooks = asyncHandler(async (req, res) => {
     );
 
     for (let i = 0; i < booksRequest.data.items.length; i++) {
-        books.push(booksRequest.data.items[i].volumeInfo);
+        books.push(booksRequest.data.items[i]);
     }
 
     res.send(books);
 });
 
 const getBookPrice = asyncHandler(async (req, res) => {
-    //ISBN = req.body.industryidentifier;
+    ISBN = req.body.ISBN;
 
     let priceRequest = await axios.get(
         BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
     );
 
     if ((price = priceRequest.data.result.offers.booksrun.new !== "none"))
-        price = "new price " + priceRequest.data.result.offers.booksrun.new;
+        price = priceRequest.data.result.offers.booksrun.new;
     else if ((price = priceRequest.data.result.offers.booksrun.used !== "none"))
-        price = "used price " + priceRequest.data.result.offers.booksrun.used;
+        price = priceRequest.data.result.offers.booksrun.used;
     else price = "Price Not Found";
 
     res.send(price);
