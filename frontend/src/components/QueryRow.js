@@ -13,8 +13,6 @@ export default function QueryRow({
         e.preventDefault();
         setShowAddPopup(false);
 
-        console.log(book);
-
         refinedBook.Title = book.volumeInfo.title;
         refinedBook.Genre = "N/A";
         refinedBook.Inventory = 1;
@@ -22,16 +20,24 @@ export default function QueryRow({
         refinedBook.Index = -1; // So that when book table sees it it knows its a new book and will give it the next available index.
 
         if (book.saleInfo.saleability === "NOT_FOR_SALE") {
+            // Google Books doesn't have a price for this book
             let ISBN = book.volumeInfo.industryIdentifiers[0].identifier;
-            let booksRunPrice = await axios.post(
-                process.env.REACT_APP_BACKEND_URL + "getBookPrice",
-                { ISBN }
-            );
+            try {
+                let booksRunPrice = await axios.post(
+                    // Ask another API for the price
+                    process.env.REACT_APP_BACKEND_URL + "getBookPrice",
+                    { ISBN }
+                );
 
-            if (typeof booksRunPrice.data.price === "number")
-                refinedBook.Price = booksRunPrice.data.price;
-            else refinedBook.Price = "N/A";
+                if (typeof booksRunPrice.data.price === "number")
+                    // If they have the price
+                    refinedBook.Price = booksRunPrice.data.price;
+                else refinedBook.Price = "N/A"; // No one has the price :(
+            } catch {
+                refinedBook.Price = "N/A"; // No one has the price :(
+            }
         } else refinedBook.Price = book.saleInfo.listPrice.amount;
+
         setBook(refinedBook);
         setShowEditPopup(true);
     };
