@@ -25,6 +25,7 @@ export default function BookTable({
 
     useEffect(() => {
         const asyncManageBook = async () => {
+            console.log(managedBook);
             if (managedBook == null) return;
             if (managedBook.Index !== -1) index.current = managedBook.Index;
             else index.current = books.length; // Adding a book. Give it the next available index
@@ -58,6 +59,8 @@ export default function BookTable({
 
                 for (let j in databaseBooks[0].active)
                     res.push(databaseBooks[0].active[j]); // In order to turn a giant JSON full of books into an array of books
+
+                console.log(res);
 
                 for (let i = 0; i < res.length; i++) {
                     // Neccesary bc firebase isn't reordered. Now after the sort the original index of the book is preserved.
