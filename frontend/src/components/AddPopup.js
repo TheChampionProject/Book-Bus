@@ -1,5 +1,5 @@
 import { Modal, Button, Table } from "react-bootstrap";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import QueryResults from "./QueryResults.js";
 import "../App.css";
@@ -8,6 +8,11 @@ export default function AddPopup({ showAddPopup, setShowAddPopup, setAlert }) {
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
     const searchQuery = useRef();
+
+    useEffect(() => {
+        setShowTable(false);
+
+    }, [showAddPopup])
 
     const searchForBook = async (e) => {
         e.preventDefault();
