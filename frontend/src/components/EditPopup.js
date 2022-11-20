@@ -71,6 +71,10 @@ export default function EditPopup({
     const editBook = (e) => {
         e.preventDefault();
 
+        if (price.startsWith("$")) {
+            console.log("Price starts with $");
+            price = price.slice(1);
+        }
         book.Title = title;
         book.Genre = genre;
         book.Inventory = inventory;
