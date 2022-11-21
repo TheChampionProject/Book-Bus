@@ -34,7 +34,6 @@
 .ActualBookTable {
     position: relative;
     width: 100%;
-
 }
 
 .TableHeaderCell {
@@ -44,13 +43,13 @@
     padding-right: 1.5rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-    background-color: #ffffff !important;
+    background-color: #f6efef !important;
 }
 
 .NavHead {
     position: sticky;
     top: 0;
-    background: #f2f2f2;
+    background: #fcd032;
     z-index: 1;
 }
 
@@ -121,7 +120,7 @@
     border: none;
     padding: 0 !important;
     font-family: arial, sans-serif;
-    color: #069;
+    color: rgb(255, 255, 255);
     text-decoration: underline;
     cursor: pointer;
     right: -50px;
@@ -133,6 +132,11 @@
 .AddPopup {
     margin: 1em;
     width: 20em;
+}
+
+.CPStyle {
+    color: #A70102;
+    font-family: Apple Chancery, cursive;
 }
 
 

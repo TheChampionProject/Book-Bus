@@ -27,7 +27,7 @@ export default function ManagePage() {
         <>
             <div className="fixed-top navbar NavHead">
                 <a href="/gift">Go to Gift Page</a>
-
+                <h3 className="CPStyle">The Champion Project</h3>
                 <div>
                     <input
                         type="text"
@@ -50,7 +50,12 @@ export default function ManagePage() {
             <div className="BookTableParent">
                 <div className="BookTable">
                     <div className="container mt-3">
-                        <Table striped bordered hover className="ActualBookTable">
+                        <Table
+                            striped
+                            bordered
+                            hover
+                            className="ActualBookTable"
+                        >
                             <TableHeader
                                 mode={"manage"}
                                 className="fixed-top"
