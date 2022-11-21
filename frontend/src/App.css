@@ -26,10 +26,9 @@
 .NavHead {
     position: sticky;
     top: 0;
-    background: #F2F2F2;
+    background: #f2f2f2;
     z-index: 1;
 }
-
 
 .alert-fixed {
     position: fixed;
@@ -95,15 +94,18 @@
 }
 
 .FakeLink {
-    background: none!important;
+    background: none !important;
     border: none;
-    padding: 0!important;
+    padding: 0 !important;
     font-family: arial, sans-serif;
     color: #069;
     text-decoration: underline;
     cursor: pointer;
     right: -50px;
-  }
+    position: absolute;
+    left: 4%;
+    top: 17%;
+}
 
 .AddPopup {
     margin: 1em;

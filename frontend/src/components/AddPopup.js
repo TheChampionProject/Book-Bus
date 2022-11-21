@@ -24,7 +24,7 @@ export default function AddPopup({
         setShowAddPopup(false);
         setShowEditPopup(true);
         setBook(null);
-    }
+    };
 
     const searchForBook = async (e) => {
         e.preventDefault();

@@ -28,7 +28,7 @@ export default function EditPopup({
         setAlert({
             show: true,
             message:
-                "There was a problem with your edit. Please refresh and try again.",
+                "There was a problem with your book changes. Please refresh and try again.",
             success: false,
         });
     }
@@ -39,11 +39,11 @@ export default function EditPopup({
     let [needed, setNeeded] = useState(autoFillNeeded);
     let [price, setPrice] = useState(autoFillPrice);
 
-    let previousTitle = useRef();
-    let previousGenre = useRef();
-    let previousInventory = useRef();
-    let previousNeeded = useRef();
-    let previousPrice = useRef();
+    let previousTitle = useRef("");
+    let previousGenre = useRef("");
+    let previousInventory = useRef("");
+    let previousNeeded = useRef("");
+    let previousPrice = useRef("");
 
     useEffect(() => {
         previousTitle.current = title;
