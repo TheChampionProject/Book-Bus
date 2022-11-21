@@ -18,9 +18,33 @@
 }
 
 .BookTable {
+    flex-grow: 1;
+    overflow: auto;
     position: relative;
-    overflow: hidden;
+    height: auto;
     top: 5.6rem;
+}
+
+.BookTableParent {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.ActualBookTable {
+    position: relative;
+    width: 100%;
+
+}
+
+.TableHeaderCell {
+    position: sticky;
+    top: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: #ffffff !important;
 }
 
 .NavHead {
@@ -78,7 +102,6 @@
 }
 
 .navbar {
-    overflow: hidden;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
@@ -111,3 +134,5 @@
     margin: 1em;
     width: 20em;
 }
+
+

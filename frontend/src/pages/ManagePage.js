@@ -47,31 +47,35 @@ export default function ManagePage() {
                 {alert.message}
             </div>
 
-            <div className={"BookTable"}>
-                <div className="container mt-3">
-                    <Table striped bordered hover>
-                        <TableHeader mode={"manage"} />
-
-                        <tbody>
-                            <BookTable
-                                setBook={setBook}
-                                setShowEditPopup={setShowEditPopup}
-                                managedBook={managedBook}
-                                setManagedBook={setManagedBook}
-                                setAlert={setAlert}
-                                searchQuery={searchQuery}
+            <div className="BookTableParent">
+                <div className="BookTable">
+                    <div className="container mt-3">
+                        <Table striped bordered hover className="ActualBookTable">
+                            <TableHeader
                                 mode={"manage"}
+                                className="fixed-top"
                             />
-                        </tbody>
-                    </Table>
+                            <tbody>
+                                <BookTable
+                                    setBook={setBook}
+                                    setShowEditPopup={setShowEditPopup}
+                                    managedBook={managedBook}
+                                    setManagedBook={setManagedBook}
+                                    setAlert={setAlert}
+                                    searchQuery={searchQuery}
+                                    mode={"manage"}
+                                />
+                            </tbody>
+                        </Table>
+                    </div>
+                    <button
+                        type="button"
+                        className="AddBookButton"
+                        onClick={(e) => handleAddBook(e)}
+                    >
+                        +
+                    </button>
                 </div>
-                <button
-                    type="button"
-                    className="AddBookButton"
-                    onClick={(e) => handleAddBook(e)}
-                >
-                    +
-                </button>
             </div>
 
             <EditPopup
