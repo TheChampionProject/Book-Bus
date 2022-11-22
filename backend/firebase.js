@@ -34,34 +34,48 @@ const getBooksFB = async () => {
 };
 
 const setBookFB = async (book, location) => {
+    await getBooksFB();
     let error = false,
         errorMessage = "";
     let archiveDates = [],
         archiveDate;
-    let archivedBooks = [];
+    let prevArchivedBooks = [];
 
     if (location === "archive") {
         archiveDate = new Date().toISOString();
 
-        archivedBooks = databaseBooks[0].archive;
+        console.log(Object.keys(databaseBooks[0])); // It doesn't throw a bug when I do this
+        prevArchivedBooks = Object.values(databaseBooks[0].archive); // Get all archived books with JSONs in array
 
-        let possibleIndex = archivedBooks.findIndex(
+        let possibleIndex = prevArchivedBooks.findIndex(
             (searchBook) =>
                 String(searchBook.Title).toLowerCase() ===
                 String(book.Title).toLowerCase()
         );
 
+        console.log("PI " + possibleIndex);
 
         if (possibleIndex !== -1) {
-            let prevArchivedBook = archivedBooks[possibleIndex];
-            if (Object.keys(prevArchivedBook).indexOf("ArchiveDates") !== -1) {
-                prevArchivedBook.ArchiveDates = []; // Doesn't already have an array, fb will remove empty arrays to save space
+            let prevArchivedBook = prevArchivedBooks[possibleIndex];
+            console.log("Prev archive dates " + prevArchivedBook.ArchiveDates);
+
+            if (prevArchivedBook.ArchiveDates !== -1) {
+                console.log("Wow, found prev date");
             }
-            prevArchivedBook.ArchiveDates.push(archiveDate);
-            book = archivedBooks[possibleIndex]; // Now fb will update the prior archive entry
-        } else archiveDates.push(archiveDate);
 
+            for (let i = 0; i < prevArchivedBook.ArchiveDates.length; i++) {
+                archiveDates.push(prevArchivedBook.ArchiveDates[i]);
+            }
+            archiveDates.push(archiveDate);
 
+            book = prevArchivedBooks[possibleIndex]; // Now fb will update the prior archive entry
+            console.log(archiveDates);
+            book.Index = possibleIndex;
+        } else {
+            // The first time the book is being archived. No other archive dates and reset its index
+            archiveDates.push(archiveDate);
+            book.Index = prevArchivedBooks.length;
+        }
     }
 
     const editedBook = {
