@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import BookTable from "../components/BookTable.js";
 import TableHeader from "../components/TableHeader.js";
+import GiftConfirmation from "../components/GiftConfirmation.js";
 import Table from "react-bootstrap/Table";
 import "../App.css";
 
 export default function ManagePage() {
-    const [book, setBook] = useState(null); // The book that gets passed to popup
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
     const [alert, setAlert] = useState({
         show: false,
@@ -13,12 +13,14 @@ export default function ManagePage() {
         success: false,
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
+    const [showGC, setShowGC] = useState(false);
+    const [book, setBook] = useState(null);
 
     return (
         <>
             <div className="fixed-top navbar NavHead">
-                <a href="/manage">Go to Manage Page</a>
-
+                <a href="/manage">Go to the Manage Page</a>
+                <h3 className="CPStyle">The Champion Project</h3>
                 <div>
                     <input
                         type="text"
@@ -28,7 +30,6 @@ export default function ManagePage() {
                     />
                 </div>
             </div>
-
             <div
                 className={`fixed-top alert alert-${
                     alert.success ? "success" : "danger"
@@ -37,26 +38,38 @@ export default function ManagePage() {
             >
                 {alert.message}
             </div>
-
-            <div className={"BookTable"}>
-                <div className="container mt-3">
-                    <Table striped bordered hover>
-                        <TableHeader mode={"gift"} />
-
-                        <tbody>
-                            <BookTable
-                                setBook={setBook}
-                                book={book}
-                                managedBook={managedBook}
-                                setManagedBook={setManagedBook}
-                                setAlert={setAlert}
-                                searchQuery={searchQuery}
-                                mode={"gift"}
-                            />
-                        </tbody>
-                    </Table>
+            <div className="BookTableParent">
+                <div className="BookTable">
+                    <div className="container mt-3">
+                        <Table
+                            striped
+                            bordered
+                            hover
+                            className="ActualBookTable"
+                        >
+                            <TableHeader mode={"gift"} className="fixed-top" />
+                            <tbody>
+                                <BookTable
+                                    managedBook={managedBook}
+                                    setManagedBook={setManagedBook}
+                                    setBook={setBook}
+                                    setAlert={setAlert}
+                                    searchQuery={searchQuery}
+                                    mode={"gift"}
+                                    setShowGC={setShowGC}
+                                />
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
             </div>
+
+            <GiftConfirmation
+                showGC={showGC}
+                setShowGC={setShowGC}
+                book={book}
+                setManagedBook={setManagedBook}
+            />
         </>
     );
 }

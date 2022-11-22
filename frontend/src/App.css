@@ -139,3 +139,9 @@
     font-family: "Permanent Marker", cursive;
     font-size: 2em;
 }
+
+.GiftButtons{
+    position: relative;
+    right: -17em;
+    margin: 0.5em;
+}

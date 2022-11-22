@@ -10,6 +10,7 @@ export default function BookTable({
     setAlert,
     searchQuery,
     mode,
+    setShowGC,
 }) {
     let [books, setBooks] = useState([]);
     let index = useRef();
@@ -58,7 +59,6 @@ export default function BookTable({
 
                 for (let j in databaseBooks[0].active)
                     res.push(databaseBooks[0].active[j]); // In order to turn a giant JSON full of books into an array of books
-
 
                 for (let i = 0; i < res.length; i++) {
                     // Neccesary bc firebase isn't reordered. Now after the sort the original index of the book is preserved.
@@ -161,6 +161,7 @@ export default function BookTable({
                 setManagedBook={setManagedBook}
                 searchQuery={searchQuery}
                 mode={mode}
+                setShowGC={setShowGC}
             />
         );
     });

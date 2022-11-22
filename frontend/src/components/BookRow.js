@@ -4,9 +4,9 @@ export default function BookRow({
     book,
     setBook,
     setShowEditPopup,
-    setManagedBook,
     searchQuery,
     mode,
+    setShowGC,
 }) {
     let textColor;
 
@@ -18,9 +18,8 @@ export default function BookRow({
 
     const gift = (e) => {
         e.preventDefault();
-        book.Inventory = Math.max(0, book.Inventory - 1);
-        book.Archive = true;
-        setManagedBook(book);
+        setBook(book);
+        setShowGC(true);
     };
 
     if (book.Needed >= 5 && book.Needed < 10) textColor = "#BDB76B";
