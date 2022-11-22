@@ -8,7 +8,8 @@ export default function BookRow({
     mode,
     setShowGC,
 }) {
-    let textColor, search;
+    let textColor,
+        search = false;
 
     const edit = (e) => {
         e.preventDefault();
@@ -22,13 +23,15 @@ export default function BookRow({
         setShowGC(true);
     };
 
+
     if (book.Needed >= 5 && book.Needed < 10) textColor = "#BDB76B";
     else if (book.Needed >= 10 && book.Needed < 20) textColor = "orange";
     else if (book.Needed >= 20) textColor = "red";
 
-    if (book.Inventory <= 0) search = false;
-
-    if (book.Title.toLowerCase().startsWith(searchQuery.toLowerCase())) {
+    if (
+        book.Title.toLowerCase().startsWith(searchQuery.toLowerCase()) &&
+        parseInt(book.Inventory) > 0
+    ) {
         search = true;
     }
 
