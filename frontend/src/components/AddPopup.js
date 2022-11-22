@@ -21,9 +21,9 @@ export default function AddPopup({
 
     const manuallyAdd = (e) => {
         e.preventDefault();
+        setBook(null);
         setShowAddPopup(false);
         setShowEditPopup(true);
-        setBook(null);
     };
 
     const searchForBook = async (e) => {

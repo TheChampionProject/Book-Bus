@@ -6,6 +6,7 @@ export default function EditPopup({
     showEditPopup,
     setShowEditPopup,
     book,
+    setBook,
     setManagedBook,
     setAlert,
 }) {
@@ -23,7 +24,10 @@ export default function EditPopup({
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
-        } else addBook = true;
+        } else {
+            console.log("Adding");
+            addBook = true;
+        }
     } catch {
         setAlert({
             show: true,
@@ -83,12 +87,21 @@ export default function EditPopup({
         book.Price = price;
 
         setManagedBook(book);
+        close();
+    };
+
+    const close = () => {
+        setTitle("");
+        setGenre("");
+        setInventory("");
+        setNeeded(0);
+        setPrice("");
         setShowEditPopup(false);
     };
 
     return (
         <>
-            <Modal show={showEditPopup} onHide={() => setShowEditPopup(false)}>
+            <Modal show={showEditPopup} onHide={() => close()}>
                 <Modal.Header closeButton>
                     <Modal.Title>Edit This Book</Modal.Title>
                 </Modal.Header>

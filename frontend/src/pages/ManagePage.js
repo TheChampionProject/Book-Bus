@@ -87,6 +87,7 @@ export default function ManagePage() {
                 showEditPopup={showEditPoup}
                 setShowEditPopup={setShowEditPopup}
                 book={book}
+                setBook={setBook}
                 setManagedBook={setManagedBook}
                 setAlert={setAlert}
             />
