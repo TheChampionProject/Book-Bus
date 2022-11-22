@@ -82,8 +82,17 @@ export default function EditPopup({
         book.Needed = needed;
         book.Price = price;
 
-        setManagedBook(book);
-        close();
+        if (
+            autoFillInventory !== inventory &&
+            autoFillNeeded !== needed &&
+            autoFillTitle !== title &&
+            autoFillGenre !== genre &&
+            autoFillPrice !== price
+        ) {
+            setManagedBook(book);
+        }
+
+        setShowEditPopup(false);
     };
 
     const close = () => {
