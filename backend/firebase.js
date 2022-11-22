@@ -34,12 +34,16 @@ const getBooksFB = async () => {
 };
 
 const setBookFB = async (book, location) => {
-    let error = false, errorMessage = "";
-    let numberArchived = -1, archiveDate = "";
+    let error = false,
+        errorMessage = "";
+    let archiveDates = ["null"],
+        foundPriorArchive = false,
+        archiveDate;
     let archiveBooks = [],
         rawBooks = [];
 
     if (location === "archive") {
+        book.Inventory = -1;
         archiveDate = new Date().toISOString();
 
         rawBooks.push(databaseBooks[0]);
@@ -50,23 +54,37 @@ const setBookFB = async (book, location) => {
             if (
                 String(archiveBooks[i].Title).toLowerCase() ===
                 String(book.Title).toLowerCase()
-            )
-                console.log("Found");
-        }
-        
-        numberArchived = 1;
-        book.Inventory = -1;
-    }
+            ) {
+                archiveBooks[i].numberArchived++;
+                if (archiveBooks[i].archiveDates === "null")
+                    archiveBooks[i].archiveDates = []; // Doesn't already have an array, fb will remove empty arrays to save space
+                archiveBooks[i].archiveDates.push(archiveDate);
+                book = archiveBooks[i]; // Now fb will update the prior archive entry
+                foundPriorArchive = true;
+            }
 
-    await set(ref(db, `/${location}/${book.Index}`), {
+            if (!foundPriorArchive) archiveDates.push(archiveDate);
+        }
+    } else {
+        rawBooks.push(databaseBooks[0]);
+        for (let j in rawBooks[0].active)
+            archiveBooks.push(databaseBooks[0].active[j]); // In order to turn a giant JSON full of books into an array of books
+
+        for (let i = 0; i < archiveBooks.length; i++) {
+            if (
+                String(archiveBooks[i].Title).toLowerCase() ===
+                String(book.Title).toLowerCase()
+            )
+                console.log("Found one, adding to inventory");
+        }
+    }
+    let editBook = {
         Title: book.Title,
         Genre: book.Genre,
-        Inventory: book.Inventory,
         Price: book.Price,
-        Needed: book.Needed,
-        ArchiveDate: archiveDate,
-        NumberArchived: numberArchived,
-    }).catch((e) => {
+        ArchiveDates: archiveDates,
+    };
+    await set(ref(db, `/${location}/${book.Index}`), location==="archive" ? editBook :{...editBook, Inventory: book.Inventory, Needed: book.Needed}).catch((e) => {
         console.log(e);
         error = true;
         errorMessage = e;
