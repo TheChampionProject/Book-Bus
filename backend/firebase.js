@@ -36,47 +36,32 @@ const getBooksFB = async () => {
 const setBookFB = async (book, location) => {
     let error = false,
         errorMessage = "";
-    let archiveDates = ["00/00/0000"],
-        foundPriorArchive = false,
+    let archiveDates = [],
         archiveDate;
-    let archivedBooks = [],
-        rawBooks = [];
+    let archivedBooks = [];
 
     if (location === "archive") {
         archiveDate = new Date().toISOString();
 
-        for (let j in databaseBooks[0].archive)
-            archivedBooks.push(databaseBooks[0].archive[j]); // In order to turn a giant JSON full of books into an array of books
+        archivedBooks = databaseBooks[0].archive;
 
-        for (let i = 0; i < archivedBooks.length; i++) {
-            if (
-                String(archivedBooks[i].Title).toLowerCase() ===
-                    String(book.Title).toLowerCase() &&
-                !foundPriorArchive
-            ) {
-                archivedBooks[i].numberArchived++;
-                if (archivedBooks[i].archiveDates !== undefined)
-                    archivedBooks[i].archiveDates = []; // Doesn't already have an array, fb will remove empty arrays to save space
-                archivedBooks[i].archiveDates.push(archiveDate);
-                book = archivedBooks[i]; // Now fb will update the prior archive entry
-                foundPriorArchive = true;
-                console.log("Found Prior Archive")
-            }
-
-            if (!foundPriorArchive) archiveDates.push(archiveDate);
-        }
-    } else {
-        rawBooks.push(databaseBooks[0]);
-        for (let j in rawBooks[0].active)
-            archivedBooks.push(databaseBooks[0].active[j]); // In order to turn a giant JSON full of books into an array of books
-
-        for (let i = 0; i < archivedBooks.length; i++) {
-            if (
-                String(archivedBooks[i].Title).toLowerCase() ===
+        let possibleIndex = archivedBooks.findIndex(
+            (searchBook) =>
+                String(searchBook.Title).toLowerCase() ===
                 String(book.Title).toLowerCase()
-            )
-                console.log("Found one, adding to inventory");
-        }
+        );
+
+
+        if (possibleIndex !== -1) {
+            let prevArchivedBook = archivedBooks[possibleIndex];
+            if (Object.keys(prevArchivedBook).indexOf("ArchiveDates") !== -1) {
+                prevArchivedBook.ArchiveDates = []; // Doesn't already have an array, fb will remove empty arrays to save space
+            }
+            prevArchivedBook.ArchiveDates.push(archiveDate);
+            book = archivedBooks[possibleIndex]; // Now fb will update the prior archive entry
+        } else archiveDates.push(archiveDate);
+
+
     }
 
     const editedBook = {
