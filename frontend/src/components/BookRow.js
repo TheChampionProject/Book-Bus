@@ -8,7 +8,7 @@ export default function BookRow({
     mode,
     setShowGC,
 }) {
-    let textColor;
+    let textColor, search;
 
     const edit = (e) => {
         e.preventDefault();
@@ -26,7 +26,7 @@ export default function BookRow({
     else if (book.Needed >= 10 && book.Needed < 20) textColor = "orange";
     else if (book.Needed >= 20) textColor = "red";
 
-    let search;
+    if (book.Inventory <= 0) search = false;
 
     if (book.Title.toLowerCase().startsWith(searchQuery.toLowerCase())) {
         search = true;
