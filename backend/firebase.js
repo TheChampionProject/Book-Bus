@@ -78,13 +78,15 @@ const setBookFB = async (book, location) => {
                 console.log("Found one, adding to inventory");
         }
     }
-    let editBook = {
+
+    let editedBook = {
         Title: book.Title,
         Genre: book.Genre,
         Price: book.Price,
         ArchiveDates: archiveDates,
     };
-    await set(ref(db, `/${location}/${book.Index}`), location==="archive" ? editBook :{...editBook, Inventory: book.Inventory, Needed: book.Needed}).catch((e) => {
+
+    await set(ref(db, `/${location}/${book.Index}`), location==="archive" ? editedBook :{...editedBook, Inventory: book.Inventory, Needed: book.Needed}).catch((e) => {
         console.log(e);
         error = true;
         errorMessage = e;

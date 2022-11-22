@@ -119,19 +119,45 @@ export default function EditPopup({
                             />
 
                             <br />
-                            <label className="Popup">Inventory: </label>
-                            <input
-                                type="text"
-                                value={inventory}
-                                onChange={(e) => setInventory(e.target.value)}
-                            />
-                            <br />
                             <label className="Popup">Price: </label>
                             <input
                                 type="text"
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                             />
+
+                            <label className="Popup">Inventory: </label>
+
+                            <div className="btn-group modal-body">
+                                <input
+                                    type="button"
+                                    value="-"
+                                    className="btn btn-danger"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setInventory(--inventory);
+                                    }}
+                                />
+
+                                <input
+                                    type="text"
+                                    className="QuantityBox"
+                                    value={inventory}
+                                    onChange={(e) => {
+                                        setInventory(e.target.value);
+                                    }}
+                                />
+
+                                <input
+                                    type="button"
+                                    value="+"
+                                    className="btn btn-success"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setInventory(++inventory); // It has to be clicked twice to work
+                                    }}
+                                />
+                            </div>
 
                             <label className="Popup">Additional Need: </label>
 
