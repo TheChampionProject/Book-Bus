@@ -6,7 +6,6 @@ export default function EditPopup({
     showEditPopup,
     setShowEditPopup,
     book,
-    setBook,
     setManagedBook,
     setAlert,
 }) {
@@ -24,10 +23,7 @@ export default function EditPopup({
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
-        } else {
-            console.log("Adding");
-            addBook = true;
-        }
+        } else addBook = true;
     } catch {
         setAlert({
             show: true,
@@ -76,7 +72,7 @@ export default function EditPopup({
     const editBook = (e) => {
         e.preventDefault();
 
-        if (price.startsWith("$")) price = price.slice(1);
+        if (String(price).startsWith("$")) price = price.slice(1);
 
         if (addBook) book = {};
 

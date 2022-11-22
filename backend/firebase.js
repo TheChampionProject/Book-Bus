@@ -34,17 +34,19 @@ const getBooksFB = async () => {
 };
 
 const setBookFB = async (book, location) => {
-    book = book.managedBook;
     let error = false;
     let errorMessage = "";
+    let archiveDate = "";
 
-    await set(ref(db, "/" + location + "/" + book.Index), {
+    console.log(book);
+    await set(ref(db, `/${location}/${book.Index}`), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,
         Price: book.Price,
         Needed: book.Needed,
     }).catch((e) => {
+        console.log(e);
         error = true;
         errorMessage = e;
     });

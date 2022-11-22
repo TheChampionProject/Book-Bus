@@ -25,6 +25,7 @@ export default function BookTable({
     }, []);
 
     useEffect(() => {
+        console.log(managedBook);
         const asyncManageBook = async () => {
             if (managedBook == null) return;
             if (managedBook.Index !== -1) index.current = managedBook.Index;
@@ -83,8 +84,15 @@ export default function BookTable({
     // Add or edit book call to backend which calls firebase
     const manageBook = async (newBook) => {
         let message = "";
-        if (mode === "gift") message = "Gifted ";
-        else message = "Edited/Added ";
+        if (mode === "gift") {
+            message = "Gifted ";
+            newBook.gift = true;
+        } else {
+            message = "Edited/Added ";
+            newBook.gift = false;
+        }
+
+        console.log(newBook);
 
         if (newBook == null) return;
         let request = await axios

@@ -8,14 +8,10 @@ export default function GiftConfirmation({
 }) {
     const confirmGC = (e) => {
         e.preventDefault();
-        book.Inventory = Math.max(0, book.Inventory - 1);
-        setManagedBook(book);
+        setManagedBook({ ...book, Inventory: --book.Inventory });
         setShowGC(false);
     };
 
-    try {
-        if (book === null) return;
-    } catch {}
     return (
         <>
             <Modal show={showGC} onHide={() => setShowGC(false)}>
@@ -24,7 +20,7 @@ export default function GiftConfirmation({
                 </Modal.Header>
 
                 <Modal.Body>
-                    <h4>Would you like to gift {book.Title}?</h4>
+                    <h4>Would you like to gift {book?.Title}?</h4>
                     <Button
                         variant="secondary"
                         className="btn btn-danger GiftButtons"
