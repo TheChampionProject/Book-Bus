@@ -49,7 +49,7 @@
 .NavHead {
     position: sticky;
     top: 0;
-    background: #fcd032;
+    background: #ffffff;
     z-index: 1;
 }
 
@@ -120,13 +120,12 @@
     border: none;
     padding: 0 !important;
     font-family: arial, sans-serif;
-    color: rgb(255, 255, 255);
+    color: rgb(11, 11, 245);
     text-decoration: underline;
     cursor: pointer;
-    right: -50px;
     position: absolute;
-    left: 4%;
-    top: 17%;
+    bottom: 1em;
+    left: 1em;
 }
 
 .AddPopup {
@@ -135,8 +134,7 @@
 }
 
 .CPStyle {
-    color: #A70102;
-    font-family: Apple Chancery, cursive;
+    color: #a70102;
+    font-family: "Permanent Marker", cursive;
+    font-size: 2em;
 }
-
-

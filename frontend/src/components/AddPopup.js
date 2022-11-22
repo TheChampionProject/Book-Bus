@@ -74,14 +74,6 @@ export default function AddPopup({
                     </Modal.Body>
                 </form>
                 <Modal.Footer style={{ display: showTable ? "" : "none" }}>
-                    <button
-                        className="FakeLink"
-                        onClick={(e) => {
-                            manuallyAdd(e);
-                        }}
-                    >
-                        Can't Find It? Manually Add
-                    </button>
                     <Table>
                         <thead>
                             <tr>
@@ -98,6 +90,14 @@ export default function AddPopup({
                             />
                         </tbody>
                     </Table>
+                    <button
+                        className="FakeLink"
+                        onClick={(e) => {
+                            manuallyAdd(e);
+                        }}
+                    >
+                        Can't Find It? Manually Add
+                    </button>
                 </Modal.Footer>
             </Modal>
         </>
