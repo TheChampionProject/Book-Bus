@@ -24,7 +24,7 @@ export default function GiftConfirmation({
                 </Modal.Header>
 
                 <Modal.Body>
-                    <h3>Would you like to gift {book.Title}?</h3>
+                    <h4>Would you like to gift {book.Title}?</h4>
                     <Button
                         variant="secondary"
                         className="btn btn-danger GiftButtons"
