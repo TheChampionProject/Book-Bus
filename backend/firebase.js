@@ -38,13 +38,18 @@ const setBookFB = async (book, location) => {
     let errorMessage = "";
     let archiveDate = "";
 
-    console.log(book);
+    if (location === "archive") {
+        archiveDate = new Date().toISOString();
+        book.Inventory = 1;
+    }
+
     await set(ref(db, `/${location}/${book.Index}`), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,
         Price: book.Price,
         Needed: book.Needed,
+        ArchiveDate: archiveDate,
     }).catch((e) => {
         console.log(e);
         error = true;

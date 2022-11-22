@@ -25,7 +25,6 @@ export default function BookTable({
     }, []);
 
     useEffect(() => {
-        console.log(managedBook);
         const asyncManageBook = async () => {
             if (managedBook == null) return;
             if (managedBook.Index !== -1) index.current = managedBook.Index;
@@ -91,8 +90,6 @@ export default function BookTable({
             message = "Edited/Added ";
             newBook.gift = false;
         }
-
-        console.log(newBook);
 
         if (newBook == null) return;
         let request = await axios

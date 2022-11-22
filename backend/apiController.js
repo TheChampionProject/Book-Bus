@@ -59,11 +59,9 @@ const setBook = asyncHandler(async (req, res) => {
     }
 
     fbRequest = await setBookFB(req.body.newBook.managedBook, "active");
-    
-    if (req.body.newBook.gift) {
-        req.body.newBook.archiveDate = new Date().toISOString();
+
+    if (req.body.newBook.gift)
         fbRequest = await setBookFB(req.body.newBook.managedBook, "archive");
-    }
 
     if (fbRequest === "success") res.send("success");
     else res.send("failure");
