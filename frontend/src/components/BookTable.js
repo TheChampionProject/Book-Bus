@@ -154,13 +154,12 @@ export default function BookTable({
         return a < b ? -1 : a > b ? 1 : 0;
     };
 
-    return books.map((book, number) => {
-        number++;
-        return (
+    return books
+        .filter((book) => book.Inventory > 0)
+        .map((book, number) => (
             <BookRow
                 key={number}
                 book={book}
-                number={number}
                 setBook={setBook}
                 setShowEditPopup={setShowEditPopup}
                 setManagedBook={setManagedBook}
@@ -168,6 +167,5 @@ export default function BookTable({
                 mode={mode}
                 setShowGC={setShowGC}
             />
-        );
-    });
+        ));
 }
