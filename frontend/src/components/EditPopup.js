@@ -2,41 +2,36 @@ import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "../App.css";
 
-export default function Popup({ show, setShow, book, setManagedBook }) {
-    let emptyBook = {
-        Title: "",
-        Genre: "",
-        Inventory: "",
-        Needed: 0,
-        Price: "",
-        Index: -1,
-    };
-
-    let addBook;
-    let modalTitle = "";
-    let buttonName = "";
-
+export default function EditPopup({
+    showEditPopup,
+    setShowEditPopup,
+    book,
+    setManagedBook,
+    setAlert,
+}) {
     let autoFillTitle = "";
     let autoFillGenre = "";
     let autoFillInventory = "";
     let autoFillNeeded = 0;
     let autoFillPrice = "";
+    let addBook = false;
 
     try {
         if (book !== null) {
-            modalTitle = "Edit This Book";
-            buttonName = "Edit Book";
             autoFillTitle = book.Title;
             autoFillGenre = book.Genre;
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
-        } else {
-            addBook = true;
-            modalTitle = "Add a Book";
-            buttonName = "Add Book";
-        }
-    } catch {}
+        } else addBook = true;
+    } catch {
+        setAlert({
+            show: true,
+            message:
+                "There was a problem with your book changes. Please refresh and try again.",
+            success: false,
+        });
+    }
 
     let [title, setTitle] = useState(autoFillTitle);
     let [genre, setGenre] = useState(autoFillGenre);
@@ -44,11 +39,11 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
     let [needed, setNeeded] = useState(autoFillNeeded);
     let [price, setPrice] = useState(autoFillPrice);
 
-    let previousTitle = useRef();
-    let previousGenre = useRef();
-    let previousInventory = useRef();
-    let previousNeeded = useRef();
-    let previousPrice = useRef();
+    let previousTitle = useRef("");
+    let previousGenre = useRef("");
+    let previousInventory = useRef("");
+    let previousNeeded = useRef("");
+    let previousPrice = useRef("");
 
     useEffect(() => {
         previousTitle.current = title;
@@ -77,24 +72,34 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
     const editBook = (e) => {
         e.preventDefault();
 
-        if (addBook) {
-            book = emptyBook; // Give book a value so it can be edited
-        }
+        if (String(price).startsWith("$")) price = price.slice(1);
+
+        if (addBook) book = {};
 
         book.Title = title;
         book.Genre = genre;
         book.Inventory = inventory;
         book.Needed = needed;
         book.Price = price;
+
         setManagedBook(book);
-        setShow(false);
+        close();
+    };
+
+    const close = () => {
+        setTitle("");
+        setGenre("");
+        setInventory("");
+        setNeeded(0);
+        setPrice("");
+        setShowEditPopup(false);
     };
 
     return (
         <>
-            <Modal show={show} onHide={() => setShow(false)}>
+            <Modal show={showEditPopup} onHide={() => close()}>
                 <Modal.Header closeButton>
-                    <Modal.Title>{modalTitle}</Modal.Title>
+                    <Modal.Title>Edit This Book</Modal.Title>
                 </Modal.Header>
                 <form>
                     <Modal.Body>
@@ -172,7 +177,7 @@ export default function Popup({ show, setShow, book, setManagedBook }) {
                                 editBook(e);
                             }}
                         >
-                            {buttonName}
+                            Save
                         </Button>
                     </Modal.Footer>
                 </form>

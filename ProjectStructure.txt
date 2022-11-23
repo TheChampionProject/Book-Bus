@@ -6,8 +6,13 @@ React Router
 
 
 React Router
-            - "/library" (just "/" for now to ease development)
-                        - Library
+            - "/manage"
+                        - ManagePage
+                                - BookTable
+                                            - BookRow (s)
+                                                        - Popup (For editing the book)
+             - "/gift"                                     
+                        - GiftPage
                                 - BookTable
                                             - BookRow (s)
                                                         - Popup (For editing the book)

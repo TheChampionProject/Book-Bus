@@ -2,37 +2,43 @@ import React from "react";
 import "../App.css";
 export default function BookRow({
     book,
-    number,
     setBook,
-    setShow,
-    setManagedBook,
+    setShowEditPopup,
+    searchQuery,
+    mode,
+    setShowGC,
 }) {
     let textColor;
 
     const edit = (e) => {
         e.preventDefault();
         setBook(book);
-        setShow(true);
+        setShowEditPopup(true);
     };
 
-    const checkout = (e) => {
+    const gift = (e) => {
         e.preventDefault();
-        book.Inventory = Math.max(0, book.Inventory - 1);
-        setManagedBook(book);
+        setBook(book);
+        setShowGC(true);
     };
 
     if (book.Needed >= 5 && book.Needed < 10) textColor = "#BDB76B";
     else if (book.Needed >= 10 && book.Needed < 20) textColor = "orange";
     else if (book.Needed >= 20) textColor = "red";
 
+    let search;
+
+    if (book.Title.toLowerCase().startsWith(searchQuery.toLowerCase())) {
+        search = true;
+    }
+
     return (
-        <tr>
-            <td>{number}</td>
+        <tr style={{ display: search ? "" : "none" }}>
             <td style={{ color: textColor }}>{book.Title}</td>
             <td>{book.Genre}</td>
             <td className="Inventory">{book.Inventory}</td>
             <td>${book.Price}</td>
-            <td>
+            <td style={{ display: mode === "gift" ? "none" : "" }}>
                 <button
                     className="btn btn-primary my-2 EditButton"
                     onClick={(e) => edit(e)}
@@ -40,10 +46,13 @@ export default function BookRow({
                     Edit
                 </button>
             </td>
-            <td>
+            <td
+                style={{ display: mode === "gift" ? "" : "none" }}
+                className="Inventory"
+            >
                 <button
                     className="btn btn-primary my-2 EditButton"
-                    onClick={(e) => checkout(e)}
+                    onClick={(e) => gift(e)}
                 >
                     Gift
                 </button>
