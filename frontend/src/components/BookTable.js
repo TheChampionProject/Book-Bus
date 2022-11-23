@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import BookRow from "./BookRow.js";
-
+import Fuse from "fuse.js";
 export default function BookTable({
     setBook,
     setShowEditPopup,
@@ -14,6 +14,7 @@ export default function BookTable({
 }) {
     let [books, setBooks] = useState([]);
     let index = useRef();
+    let searchResult = [];
 
     // Load books from database on page load
     useEffect(() => {
@@ -154,8 +155,25 @@ export default function BookTable({
         return a < b ? -1 : a > b ? 1 : 0;
     };
 
+    useEffect(() => {
+        const searchOptions = {
+            keys: ["Title"],
+            minMatchCharLength: 3,
+            threshold: 0.3,
+        };
+        let searchArray = new Fuse(books, searchOptions);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        searchResult = searchArray.search(searchQuery);
+        console.log(searchResult);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchQuery]);
+
     return books
-        .filter((book) => book.Inventory > 0)
+        .filter((book) =>
+            book.Inventory > 0 && searchQuery === ""
+                ? true
+                : searchResult.includes(book)
+        )
         .map((book, number) => (
             <BookRow
                 key={number}

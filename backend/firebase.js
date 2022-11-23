@@ -57,11 +57,6 @@ const setBookFB = async (book, location) => {
 
         if (possibleIndex !== -1) {
             let prevArchivedBook = prevArchivedBooks[possibleIndex];
-            console.log("Prev archive dates " + prevArchivedBook.ArchiveDates);
-
-            if (prevArchivedBook.ArchiveDates !== -1) {
-                console.log("Wow, found prev date");
-            }
 
             for (let i = 0; i < prevArchivedBook.ArchiveDates.length; i++) {
                 archiveDates.push(prevArchivedBook.ArchiveDates[i]);
