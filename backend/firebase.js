@@ -22,29 +22,36 @@ const getBooksFB = async () => {
             } else {
                 error = true;
                 errorMessage = "No Data Found";
-                console.log(errorMessage);
             }
         })
         .catch((error) => {
             error = true;
             errorMessage = error;
-            console.log(errorMessage);
         });
 
     if (error) return errorMessage;
     else return databaseBooks;
 };
 
-const setBookFB = async (book) => {
+const setBookFB = async (book, location) => {
     let error = false;
     let errorMessage = "";
-    await set(ref(db, "/" + book.Index), {
+    let archiveDate = "";
+
+    if (location === "archive") {
+        archiveDate = new Date().toISOString();
+        book.Inventory = 1;
+    }
+
+    await set(ref(db, `/${location}/${book.Index}`), {
         Title: book.Title,
         Genre: book.Genre,
         Inventory: book.Inventory,
         Price: book.Price,
         Needed: book.Needed,
+        ArchiveDate: archiveDate,
     }).catch((e) => {
+        console.log(e);
         error = true;
         errorMessage = e;
     });

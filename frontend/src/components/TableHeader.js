@@ -1,17 +1,26 @@
 import React from "react";
 import "../App.css";
 
-export default function TableHeader() {
+export default function TableHeader({ mode }) {
     return (
         <thead>
             <tr>
-                <th>Index</th>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Store</th>
-                <th>Price</th>
-                <th>Edit</th>
-                <th>Gift</th>
+                <th className="TableHeaderCell">Title</th>
+                <th className="BiggerCell TableHeaderCell">Genre</th>
+                <th className="TableCell TableHeaderCell">Stock</th>
+                <th className="TableCell TableHeaderCell">Price</th>
+                <th
+                    style={{ display: mode === "gift" ? "none" : "" }}
+                    className="TableCell TableHeaderCell"
+                >
+                    Edit
+                </th>
+                <th
+                    style={{ display: mode === "gift" ? "" : "none" }}
+                    className="TableCell TableHeaderCell"
+                >
+                    Gift
+                </th>
             </tr>
         </thead>
     );
