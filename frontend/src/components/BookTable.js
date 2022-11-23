@@ -164,15 +164,21 @@ export default function BookTable({
         let searchArray = new Fuse(books, searchOptions);
         // eslint-disable-next-line react-hooks/exhaustive-deps
         searchResult = searchArray.search(searchQuery);
-        console.log(searchResult);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchQuery]);
 
+    const testFunc = () => {
+        return books.filter((book) => {});
+    };
+
+    testFunc();
+
     return books
+        .filter((book) => book.Inventory > 0)
         .filter((book) =>
-            book.Inventory > 0 && searchQuery === ""
+            searchQuery === ""
                 ? true
-                : searchResult.includes(book)
+                : book.Title.toLowerCase().includes(searchQuery.toLowerCase())
         )
         .map((book, number) => (
             <BookRow

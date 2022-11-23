@@ -21,7 +21,6 @@ export default function BookRow({
         setShowGC(true);
     };
 
-
     if (book.Needed >= 5 && book.Needed < 10) textColor = "#BDB76B";
     else if (book.Needed >= 10 && book.Needed < 20) textColor = "orange";
     else if (book.Needed >= 20) textColor = "red";
