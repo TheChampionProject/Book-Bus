@@ -13,6 +13,7 @@ export default function AddPopup({
 }) {
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
+
     const searchQuery = useRef();
 
     useEffect(() => {
@@ -42,8 +43,10 @@ export default function AddPopup({
                 });
             })
             .then((response) => {
-                setShowTable(true);
-                setQueryList(response.data);
+                if (response.success && response.data) {
+                    setShowTable(true);
+                    setQueryList(response.data);
+                }
             });
     };
     return (
@@ -52,8 +55,8 @@ export default function AddPopup({
                 <Modal.Header closeButton>
                     <Modal.Title>Add a Book</Modal.Title>
                 </Modal.Header>
-                <form>
-                    <Modal.Body>
+                <Modal.Body>
+                    <form>
                         <input
                             type="text"
                             placeholder="Search For a Title"
@@ -71,8 +74,21 @@ export default function AddPopup({
                         >
                             Search
                         </Button>
-                    </Modal.Body>
-                </form>
+
+                        <button
+                            className="FakeLink"
+                            onClick={(e) => {
+                                manuallyAdd(e);
+                            }}
+                            style={{
+                                display: true ? "" : "none",
+                                marginLeft: "1rem",
+                            }}
+                        >
+                            Can't Find It? Manually Add
+                        </button>
+                    </form>
+                </Modal.Body>
                 <Modal.Footer style={{ display: showTable ? "" : "none" }}>
                     <Table>
                         <thead>
@@ -89,17 +105,10 @@ export default function AddPopup({
                                 setShowEditPopup={setShowEditPopup}
                                 setBook={setBook}
                                 setAlert={setAlert}
+                                setShowTable={setShowTable}
                             />
                         </tbody>
                     </Table>
-                    <button
-                        className="FakeLink"
-                        onClick={(e) => {
-                            manuallyAdd(e);
-                        }}
-                    >
-                        Can't Find It? Manually Add
-                    </button>
                 </Modal.Footer>
             </Modal>
         </>

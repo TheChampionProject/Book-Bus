@@ -5,6 +5,7 @@ export default function QueryResults({
     setBook,
     setShowEditPopup,
     setAlert,
+    setShowTable,
 }) {
     if (queryList.length === 0) return;
     return queryList.map((book, number) => {
@@ -17,6 +18,7 @@ export default function QueryResults({
                 setBook={setBook}
                 setShowEditPopup={setShowEditPopup}
                 setAlert={setAlert}
+                setShowTable={setShowTable}
             />
         );
     });
