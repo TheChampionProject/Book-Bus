@@ -43,10 +43,8 @@ export default function AddPopup({
                 });
             })
             .then((response) => {
-                if (response.success && response.data) {
-                    setShowTable(true);
-                    setQueryList(response.data);
-                }
+                setShowTable(true);
+                setQueryList(response.data);
             });
     };
     return (

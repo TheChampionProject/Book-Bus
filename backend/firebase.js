@@ -53,8 +53,6 @@ const setBookFB = async (book, location) => {
                 String(book.Title).toLowerCase()
         );
 
-        console.log("PI " + possibleIndex);
-
         if (possibleIndex !== -1) {
             let prevArchivedBook = prevArchivedBooks[possibleIndex];
 
@@ -83,7 +81,12 @@ const setBookFB = async (book, location) => {
         ref(db, `/${location}/${book.Index}`),
         location === "archive"
             ? { ...editedBook, ArchiveDates: archiveDates }
-            : { ...editedBook, Inventory: book.Inventory, Needed: book.Needed } // Active books have inventory and needed
+            : {
+                  ...editedBook,
+                  Inventory: book.Inventory,
+                  Needed: book.Needed,
+                  AddDates: book.AddDates,
+              } // Active books have inventory and needed
     ).catch((e) => {
         console.log(e);
         error = true;
