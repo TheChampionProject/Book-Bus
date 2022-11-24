@@ -25,9 +25,6 @@ export default function BookTable({
 
     useEffect(() => {
         const asyncManageBook = async () => {
-            console.log("useEffect called");
-
-            console.log(managedBook);
             if (managedBook == null) return;
             if (managedBook.Index !== -1) index.current = managedBook.Index;
             else index.current = books.length; // Adding a book. Give it the next available index
@@ -74,17 +71,24 @@ export default function BookTable({
                     };
                 }
 
-                res.sort(function (a, b) {
-                    return alphaSortArray(a.Title, b.Title);
-                });
+                if (mode === "gift" || mode === "manage") {
+                    res.sort((a, b) => {
+                        return alphaSortArray(a.Title, b.Title);
+                    });
+                } else {
+                    res.sort((a, b) => {
+                        return neededSortArray(a.Needed, b.Needed);
+                    });
+                }
             });
+
+        console.log(res);
 
         setBooks(res);
     };
 
     // Add or edit book call to backend which calls firebase
     const manageBook = async (newBook) => {
-        console.log("manageBook called");
         let message = "";
         if (mode === "gift") {
             message = "Gifted ";
@@ -155,6 +159,10 @@ export default function BookTable({
         b = b.toLowerCase();
 
         return a < b ? -1 : a > b ? 1 : 0;
+    };
+
+    const neededSortArray = (a, b) => {
+        return a < b ? 1 : a > b ? -1 : 0;
     };
 
     return books

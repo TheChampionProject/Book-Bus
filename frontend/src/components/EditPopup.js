@@ -87,14 +87,12 @@ export default function EditPopup({
         book.Price = price;
 
         if (
-            autoFillInventory !== inventory && // Only if stuff was changed
-            autoFillNeeded !== needed &&
-            autoFillTitle !== title &&
-            autoFillGenre !== genre &&
+            autoFillInventory !== inventory || // Only if stuff was changed
+            autoFillNeeded !== needed ||
+            autoFillTitle !== title ||
+            autoFillGenre !== genre ||
             autoFillPrice !== price
         ) {
-            console.log(book);
-            console.log("Setting book");
             setManagedBook(book);
         }
 
