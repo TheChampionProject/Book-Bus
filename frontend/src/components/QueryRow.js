@@ -6,6 +6,7 @@ export default function QueryRow({
     setShowAddPopup,
     setBook,
     setShowEditPopup,
+    setAlert,
 }) {
     const refinedBook = {}; // In order to get the Google Books autocomplete to work with our book-object format.
 
@@ -44,6 +45,17 @@ export default function QueryRow({
         setBook(refinedBook);
         setShowEditPopup(true);
     };
+
+    if (!book.volumeInfo.title || !book.volumeInfo.authors[0]) {
+        setAlert({
+            show: true,
+            message:
+                "There was a problem with your search query. Please refresh and try again.",
+            success: false,
+        });
+
+        return null;
+    }
 
     return (
         <tr>

@@ -72,12 +72,17 @@ export default function EditPopup({
     const editBook = (e) => {
         e.preventDefault();
 
+        if (genre === "N/A") {
+            alert("Please select a genre");
+            return;
+        }
+
         if (String(price).startsWith("$")) price = price.slice(1);
 
         if (addBook) {
             book = {};
             book.AddDates = [];
-            book.AddDates.push(new Date().toISOString()); // Date for when book is added. Some books already with this name so can't pick a better one :(
+            book.AddDates.push(new Date().toISOString()); // Date for when book is added
         }
 
         book.Title = title;

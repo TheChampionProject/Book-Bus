@@ -88,6 +88,7 @@ export default function AddPopup({
                                 setShowAddPopup={setShowAddPopup}
                                 setShowEditPopup={setShowEditPopup}
                                 setBook={setBook}
+                                setAlert={setAlert}
                             />
                         </tbody>
                     </Table>

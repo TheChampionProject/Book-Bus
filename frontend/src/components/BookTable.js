@@ -82,8 +82,6 @@ export default function BookTable({
                 }
             });
 
-        console.log(res);
-
         setBooks(res);
     };
 
