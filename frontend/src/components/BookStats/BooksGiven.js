@@ -36,32 +36,23 @@ export default function BooksGiven() {
         let giftDatesAllTime = [];
 
         for (let i = 0; i < archivedBooks.length; i++) {
-            for (let j = 0; j < archivedBooks[i].ArchiveDates; j++) {
-                if (
-                    new Date(archivedBooks[i].ArchiveDates[j]).getMonth() ===
-                    currentMonth
-                ) {
-                    console.log("wow");
+            for (let j = 0; j < archivedBooks[i].ArchiveDates.length; j++) {
+                let giftDate = new Date(archivedBooks[i].ArchiveDates[j]);
+                if (giftDate.getMonth() === currentMonth) {
+                    giftDatesThisMonth.push(archivedBooks);
                 }
+
+                if (giftDate.getFullYear() === currentYear) {
+                    giftDatesThisYear.push(archivedBooks);
+                }
+
+                giftDatesAllTime.push(archivedBooks);
             }
-            let giftDate = new Date(archivedBooks[i].ArchiveDates);
-
-            if (giftDate.getMonth() === currentMonth) {
-                giftDatesThisMonth.push(archivedBooks);
-            }
-
-            if (giftDate.getFullYear() === currentYear) {
-                giftDatesThisYear.push(archivedBooks);
-            }
-
-            giftDatesAllTime.push(archivedBooks);
-
         }
 
         console.log(giftDatesThisMonth);
         console.log(giftDatesThisYear);
         console.log(giftDatesAllTime);
-
     };
 
     return;

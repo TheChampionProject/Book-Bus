@@ -40,6 +40,7 @@ const setBookFB = async (book, location) => {
     let archiveDates = [],
         archiveDate;
     let prevArchivedBooks = [];
+    let sendAddDates = "";
 
     if (location === "archive") {
         archiveDate = new Date().toISOString();
@@ -77,6 +78,8 @@ const setBookFB = async (book, location) => {
         Price: book.Price,
     };
 
+    if (book.AddDates) sendAddDates = book.AddDates;
+
     await set(
         ref(db, `/${location}/${book.Index}`),
         location === "archive"
@@ -85,7 +88,7 @@ const setBookFB = async (book, location) => {
                   ...editedBook,
                   Inventory: book.Inventory,
                   Needed: book.Needed,
-                  AddDates: book.AddDates,
+                  AddDates: sendAddDates,
               } // Active books have inventory and needed
     ).catch((e) => {
         console.log(e);
