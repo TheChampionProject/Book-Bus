@@ -7,7 +7,9 @@ export default function BookRow({
     mode,
     setShowGC,
 }) {
-    let textColor;
+    let textColor,
+        button,
+        AMAZON_BASE_URL = "https://www.amazon.com/s?k=";
 
     const edit = (e) => {
         e.preventDefault();
@@ -21,6 +23,39 @@ export default function BookRow({
         setShowGC(true);
     };
 
+    const buy = (e) => {
+        e.preventDefault();
+        window.open(AMAZON_BASE_URL + book.Title, "_blank");
+    };
+
+    if (mode === "gift") {
+        button = (
+            <button
+                className="btn btn-primary my-2 EditButton"
+                onClick={(e) => gift(e)}
+            >
+                Gift
+            </button>
+        );
+    } else if (mode === "manage") {
+        button = (
+            <button
+                className="btn btn-primary my-2 EditButton"
+                onClick={(e) => edit(e)}
+            >
+                Edit
+            </button>
+        );
+    } else
+        button = (
+            <button
+                className="btn btn-primary my-2 EditButton"
+                onClick={(e) => buy(e)}
+            >
+                Buy
+            </button>
+        );
+
     if (book.Needed >= 5 && book.Needed < 10) textColor = "#BDB76B";
     else if (book.Needed >= 10 && book.Needed < 20) textColor = "orange";
     else if (book.Needed >= 20) textColor = "red";
@@ -31,25 +66,7 @@ export default function BookRow({
             <td>{book.Genre}</td>
             <td className="Inventory">{book.Inventory}</td>
             <td>${book.Price}</td>
-            <td style={{ display: mode === "gift" ? "none" : "" }}>
-                <button
-                    className="btn btn-primary my-2 EditButton"
-                    onClick={(e) => edit(e)}
-                >
-                    Edit
-                </button>
-            </td>
-            <td
-                style={{ display: mode === "gift" ? "" : "none" }}
-                className="Inventory"
-            >
-                <button
-                    className="btn btn-primary my-2 EditButton"
-                    onClick={(e) => gift(e)}
-                >
-                    Gift
-                </button>
-            </td>
+            <td> {button}</td>
         </tr>
     );
 }

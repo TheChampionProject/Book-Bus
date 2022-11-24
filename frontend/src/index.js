@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 import ManagePage from "./pages/ManagePage.js";
 import GiftPage from "./pages/GiftPage.js";
+import DonatePage from "./pages/DonatePage.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
@@ -11,6 +12,7 @@ root.render(
         <Routes>
             <Route path="/manage" element={<ManagePage />} />
             <Route path="/gift" element={<GiftPage />} />
+            <Route path="/donate" element={<DonatePage />} />
         </Routes>
     </Router>
 );
