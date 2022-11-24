@@ -74,7 +74,11 @@ export default function EditPopup({
 
         if (String(price).startsWith("$")) price = price.slice(1);
 
-        if (addBook) book = {};
+        if (addBook) {
+            book = {};
+            book.AddDates = [];
+            book.AddDates.push(new Date().toISOString()); // Date for when book is added. Some books already with this name so can't pick a better one :(
+        }
 
         book.Title = title;
         book.Genre = genre;
@@ -83,12 +87,14 @@ export default function EditPopup({
         book.Price = price;
 
         if (
-            autoFillInventory !== inventory &&
+            autoFillInventory !== inventory && // Only if stuff was changed
             autoFillNeeded !== needed &&
             autoFillTitle !== title &&
             autoFillGenre !== genre &&
             autoFillPrice !== price
         ) {
+            console.log(book);
+            console.log("Setting book");
             setManagedBook(book);
         }
 

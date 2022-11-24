@@ -10,6 +10,9 @@ export default function QueryRow({
     const refinedBook = {}; // In order to get the Google Books autocomplete to work with our book-object format.
 
     const add = async (e) => {
+        refinedBook.AddDates = []; // Date for when book is added. Some books already with this name so can't pick a better one :(
+        refinedBook.AddDates.push(new Date().toISOString());
+
         e.preventDefault();
         setShowAddPopup(false);
 
@@ -45,7 +48,7 @@ export default function QueryRow({
     return (
         <tr>
             <td>{book.volumeInfo.title}</td>
-            <td>{book.volumeInfo.authors}</td>
+            <td>{book.volumeInfo.authors.join(", ")}</td>
             <td>
                 <button
                     className="btn btn-primary my-2 EditButton"

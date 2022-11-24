@@ -25,6 +25,9 @@ export default function BookTable({
 
     useEffect(() => {
         const asyncManageBook = async () => {
+            console.log("useEffect called");
+
+            console.log(managedBook);
             if (managedBook == null) return;
             if (managedBook.Index !== -1) index.current = managedBook.Index;
             else index.current = books.length; // Adding a book. Give it the next available index
@@ -81,6 +84,7 @@ export default function BookTable({
 
     // Add or edit book call to backend which calls firebase
     const manageBook = async (newBook) => {
+        console.log("manageBook called");
         let message = "";
         if (mode === "gift") {
             message = "Gifted ";
@@ -152,7 +156,6 @@ export default function BookTable({
 
         return a < b ? -1 : a > b ? 1 : 0;
     };
-
 
     return books
         .filter((book) => book.Inventory > 0)
