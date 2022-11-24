@@ -78,6 +78,7 @@ export default function AddPopup({
                         <thead>
                             <tr>
                                 <th>Title</th>
+                                <th>Author</th>
                                 <th>Add</th>
                             </tr>
                         </thead>

@@ -45,6 +45,7 @@ export default function QueryRow({
     return (
         <tr>
             <td>{book.volumeInfo.title}</td>
+            <td>{book.volumeInfo.authors}</td>
             <td>
                 <button
                     className="btn btn-primary my-2 EditButton"

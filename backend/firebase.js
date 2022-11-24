@@ -34,23 +34,57 @@ const getBooksFB = async () => {
 };
 
 const setBookFB = async (book, location) => {
-    let error = false;
-    let errorMessage = "";
-    let archiveDate = "";
+    await getBooksFB();
+    let error = false,
+        errorMessage = "";
+    let archiveDates = [],
+        archiveDate;
+    let prevArchivedBooks = [];
 
     if (location === "archive") {
         archiveDate = new Date().toISOString();
-        book.Inventory = 1;
+
+        console.log(Object.keys(databaseBooks[0])); // It doesn't throw a bug when I do this
+        prevArchivedBooks = Object.values(databaseBooks[0].archive); // Get all archived books with JSONs in array
+
+        let possibleIndex = prevArchivedBooks.findIndex(
+            (searchBook) =>
+                String(searchBook.Title).toLowerCase() ===
+                String(book.Title).toLowerCase()
+        );
+
+        console.log("PI " + possibleIndex);
+
+        if (possibleIndex !== -1) {
+            let prevArchivedBook = prevArchivedBooks[possibleIndex];
+
+            for (let i = 0; i < prevArchivedBook.ArchiveDates.length; i++) {
+                archiveDates.push(prevArchivedBook.ArchiveDates[i]);
+            }
+            archiveDates.push(archiveDate);
+
+            book = prevArchivedBooks[possibleIndex]; // Now fb will update the prior archive entry
+            console.log(archiveDates);
+            book.Index = possibleIndex;
+        } else {
+            // The first time the book is being archived. No other archive dates and reset its index
+            archiveDates.push(archiveDate);
+            book.Index = prevArchivedBooks.length;
+        }
     }
 
-    await set(ref(db, `/${location}/${book.Index}`), {
+    const editedBook = {
         Title: book.Title,
         Genre: book.Genre,
-        Inventory: book.Inventory,
         Price: book.Price,
-        Needed: book.Needed,
-        ArchiveDate: archiveDate,
-    }).catch((e) => {
+    };
+
+    await set(
+        ref(db, `/${location}/${book.Index}`),
+        location === "archive"
+            ? { ...editedBook, ArchiveDates: archiveDates }
+            : { ...editedBook, Inventory: book.Inventory, Needed: book.Needed } // Active books have inventory and needed
+    ).catch((e) => {
         console.log(e);
         error = true;
         errorMessage = e;
