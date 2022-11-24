@@ -20,6 +20,7 @@ export default function DonatePage() {
                 <a href="https://thechampionproject.org/">Go to Our Website</a>
 
                 <h3 className="CPStyle">The Champion Project</h3>
+
                 <div>
                     <input
                         type="text"
@@ -28,6 +29,13 @@ export default function DonatePage() {
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
                 </div>
+            </div>
+
+            <div>
+                <em className="Center">
+                    Please send books to the Junior League Office at 8686 New
+                    Trails Dr, The Woodlands, TX 77381
+                </em>
             </div>
 
             <div
