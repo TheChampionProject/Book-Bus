@@ -140,8 +140,15 @@
     font-size: 2em;
 }
 
-.GiftButtons{
+.GiftButtons {
     position: relative;
     right: -17em;
     margin: 0.5em;
+}
+
+.Center {
+    position: relative;
+    top: 5em;
+    left: 25%;
+    transform: translateX(-50%);
 }

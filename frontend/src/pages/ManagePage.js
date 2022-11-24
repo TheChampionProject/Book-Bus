@@ -5,6 +5,7 @@ import Table from "react-bootstrap/Table";
 import "../App.css";
 import EditPopup from "../components/EditPopup.js";
 import AddPopup from "../components/AddPopup.js";
+import { classNames } from "@hkamran/utility-web";
 
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
@@ -39,9 +40,10 @@ export default function ManagePage() {
             </div>
 
             <div
-                className={`fixed-top alert alert-${
-                    alert.success ? "success" : "danger"
-                }`}
+                className={classNames(
+                    "fixed-top alert",
+                    alert.success ? "alert-success" : "alert-danger"
+                )}
                 style={{ display: alert.show ? "" : "none" }}
             >
                 {alert.message}

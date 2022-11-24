@@ -52,13 +52,13 @@ const getBookPrice = asyncHandler(async (req, res) => {
 
 // Can update a book, add a book, and archive a book
 const setBook = asyncHandler(async (req, res) => {
-    //if (req.body.newBook.gift) console.log(req.body.newBook);
     if (!req.body.newBook) {
         res.status(400);
         throw new Error("Missing Book");
     }
 
     fbRequest = await setBookFB(req.body.newBook.managedBook, "active");
+    if (fbRequest === "failure") res.send("failure");
 
     if (req.body.newBook.gift)
         fbRequest = await setBookFB(req.body.newBook.managedBook, "archive");

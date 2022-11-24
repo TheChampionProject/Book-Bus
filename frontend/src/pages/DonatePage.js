@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import BookTable from "../components/BookTable.js";
 import TableHeader from "../components/TableHeader.js";
-import GiftConfirmation from "../components/GiftConfirmation.js";
 import Table from "react-bootstrap/Table";
 import "../App.css";
 import { classNames } from "@hkamran/utility-web";
 
-export default function ManagePage() {
+export default function DonatePage() {
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
     const [alert, setAlert] = useState({
         show: false,
@@ -14,14 +13,14 @@ export default function ManagePage() {
         success: false,
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
-    const [showGC, setShowGC] = useState(false);
-    const [book, setBook] = useState(null);
 
     return (
         <>
             <div className="fixed-top navbar NavHead">
-                <a href="/manage">Go to the Manage Page</a>
+                <a href="https://thechampionproject.org/">Go to Our Website</a>
+
                 <h3 className="CPStyle">The Champion Project</h3>
+
                 <div>
                     <input
                         type="text"
@@ -30,6 +29,13 @@ export default function ManagePage() {
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
                 </div>
+            </div>
+
+            <div>
+                <em className="Center">
+                    Please send books to the Junior League Office at 8686 New
+                    Trails Dr, The Woodlands, TX 77381
+                </em>
             </div>
 
             <div
@@ -50,29 +56,23 @@ export default function ManagePage() {
                             hover
                             className="ActualBookTable"
                         >
-                            <TableHeader mode={"gift"} className="fixed-top" />
+                            <TableHeader
+                                mode={"donate"}
+                                className="fixed-top"
+                            />
                             <tbody>
                                 <BookTable
                                     managedBook={managedBook}
                                     setManagedBook={setManagedBook}
-                                    setBook={setBook}
                                     setAlert={setAlert}
                                     searchQuery={searchQuery}
-                                    mode={"gift"}
-                                    setShowGC={setShowGC}
+                                    mode={"donate"}
                                 />
                             </tbody>
                         </Table>
                     </div>
                 </div>
             </div>
-
-            <GiftConfirmation
-                showGC={showGC}
-                setShowGC={setShowGC}
-                book={book}
-                setManagedBook={setManagedBook}
-            />
         </>
     );
 }
