@@ -9,7 +9,8 @@ export default function BookRow({
 }) {
     let textColor,
         button,
-        AMAZON_BASE_URL = "https://www.amazon.com/s?k=";
+        AMAZON_BASE_URL = "https://www.amazon.com/s?k=",
+        neededOrGenre;
 
     const edit = (e) => {
         e.preventDefault();
@@ -37,6 +38,8 @@ export default function BookRow({
                 Gift
             </button>
         );
+
+        neededOrGenre = <td>{book.Genre}</td>;
     } else if (mode === "manage") {
         button = (
             <button
@@ -46,7 +49,8 @@ export default function BookRow({
                 Edit
             </button>
         );
-    } else
+        neededOrGenre = <td>{book.Genre}</td>;
+    } else {
         button = (
             <button
                 className="btn btn-primary my-2 EditButton"
@@ -56,6 +60,8 @@ export default function BookRow({
             </button>
         );
 
+        neededOrGenre = <td>{book.Needed}</td>;
+    }
     if (book.Needed >= 5 && book.Needed < 10) textColor = "#BDB76B";
     else if (book.Needed >= 10 && book.Needed < 20) textColor = "orange";
     else if (book.Needed >= 20) textColor = "red";
@@ -63,7 +69,7 @@ export default function BookRow({
     return (
         <tr>
             <td style={{ color: textColor }}>{book.Title}</td>
-            <td>{book.Genre}</td>
+            {neededOrGenre}
             <td className="Inventory">{book.Inventory}</td>
             <td>${book.Price}</td>
             <td> {button}</td>
