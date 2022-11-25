@@ -9,6 +9,10 @@ export default function BooksGiven() {
     const [giftDatesThisYear, setGiftDatesThisYear] = useState([]);
     const [giftDatesAllTime, setGiftDatesAllTime] = useState([]);
 
+    const [thisMonthValue, setThisMonthValue] = useState([]);
+    const [thisYearValue, setThisYearValue] = useState([]);
+    const [allTimeValue, setAllTimeValue] = useState([]);
+
     // Load books from database on page load
     useEffect(() => {
         const callGetBooks = async () => {
@@ -41,6 +45,10 @@ export default function BooksGiven() {
                         ...giftDatesThisMonth,
                         archivedBook,
                     ]);
+                    setThisMonthValue((thisMonthValue) => [
+                        ...thisMonthValue,
+                        archivedBook.Price,
+                    ]);
                 }
 
                 if (giftDate.getFullYear() === currentYear) {
@@ -48,38 +56,51 @@ export default function BooksGiven() {
                         ...giftDatesThisYear,
                         archivedBook,
                     ]);
+                    setThisYearValue((thisYearValue) => [
+                        ...thisYearValue,
+                        archivedBook.Price,
+                    ]);
                 }
 
                 setGiftDatesAllTime((giftDatesAllTime) => [
                     ...giftDatesAllTime,
                     archivedBook,
                 ]);
+                setAllTimeValue((allTimeValue) => [
+                    ...allTimeValue,
+                    archivedBook.Price,
+                ]);
             }
         }
-
-        console.log(giftDatesThisMonth);
     };
 
     return (
-        <>
-            <div className="BookStats">
+        <div className="StatsArea">
+            <div className="Statistic">
                 <p>Books Given This Month</p>
-                <p style={{ fontWeight: "bold", textSize: "36px" }}>
-                    {giftDatesThisMonth.length}
-                </p>
+                <p className="StatText">{giftDatesThisMonth.length}</p>
             </div>
-            <div className="BookStats">
+            <div className="Statistic">
                 <p>Books Given This Year</p>
-                <p style={{ fontWeight: "bold", textSize: "36px" }}>
-                    {giftDatesThisYear.length}
-                </p>
+                <p className="StatText">{giftDatesThisYear.length}</p>
             </div>
-            <div className="BookStats">
+            <div className="Statistic">
                 <p>Books Given All Time</p>
-                <p style={{ fontWeight: "bold", textSize: "36px" }}>
-                    {giftDatesAllTime.length}
-                </p>
+                <p className="StatText">{giftDatesAllTime.length}</p>
             </div>
-        </>
+
+            <div className="Statistic">
+                <p>Amount Gifted This Month</p>
+                <p className="StatText">{thisMonthValue.length}</p>
+            </div>
+            <div className="Statistic">
+                <p>Amount Gifted This Year</p>
+                <p className="StatText">{thisYearValue.length}</p>
+            </div>
+            <div className="Statistic">
+                <p>Amount Gifted All Time</p>
+                <p className="StatText">{allTimeValue.length}</p>
+            </div>
+        </div>
     );
 }
