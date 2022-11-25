@@ -24,11 +24,6 @@ export default function BookRow({
         setShowGC(true);
     };
 
-    const buy = (e) => {
-        e.preventDefault();
-        window.open(AMAZON_BASE_URL + book.Title, "_blank");
-    };
-
     if (mode === "gift") {
         button = (
             <button
@@ -39,7 +34,7 @@ export default function BookRow({
             </button>
         );
 
-        neededOrGenre = <td>{book.Genre}</td>;
+        neededOrGenre = book.Genre;
     } else if (mode === "manage") {
         button = (
             <button
@@ -49,30 +44,37 @@ export default function BookRow({
                 Edit
             </button>
         );
-        neededOrGenre = <td>{book.Genre}</td>;
+
+        neededOrGenre = book.Genre;
     } else {
         button = (
-            <button
+            <a
+                href={AMAZON_BASE_URL + book.Title}
+                target="_blank"
                 className="btn btn-primary my-2 EditButton"
-                onClick={(e) => buy(e)}
+                rel="noopener noreferrer"
             >
                 Buy
-            </button>
+            </a>
         );
 
-        neededOrGenre = <td>{book.Needed}</td>;
+        neededOrGenre = book.Needed;
     }
+
     if (book.Needed >= 5 && book.Needed < 10) textColor = "#BDB76B";
     else if (book.Needed >= 10 && book.Needed < 20) textColor = "orange";
     else if (book.Needed >= 20) textColor = "red";
 
+    const paddingRight = "1rem";
+
     return (
         <tr>
             <td style={{ color: textColor }}>{book.Title}</td>
-            {neededOrGenre}
-            <td className="Inventory">{book.Inventory}</td>
-            <td>${book.Price}</td>
-            <td> {button}</td>
+            <td style={{ paddingRight }}>{neededOrGenre}</td>
+            <td className="Inventory" style={{ paddingRight }}>
+                {book.Inventory}
+            </td>
+            <td style={{ paddingRight }}>{button}</td>
         </tr>
     );
 }

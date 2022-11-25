@@ -40,11 +40,11 @@ const setBookFB = async (book, location) => {
     let archiveDates = [],
         archiveDate;
     let prevArchivedBooks = [];
+    let sendAddDates = "";
 
     if (location === "archive") {
         archiveDate = new Date().toISOString();
 
-        console.log(Object.keys(databaseBooks[0])); // It doesn't throw a bug when I do this
         prevArchivedBooks = Object.values(databaseBooks[0].archive); // Get all archived books with JSONs in array
 
         let possibleIndex = prevArchivedBooks.findIndex(
@@ -53,18 +53,16 @@ const setBookFB = async (book, location) => {
                 String(book.Title).toLowerCase()
         );
 
-        console.log("PI " + possibleIndex);
-
         if (possibleIndex !== -1) {
             let prevArchivedBook = prevArchivedBooks[possibleIndex];
 
             for (let i = 0; i < prevArchivedBook.ArchiveDates.length; i++) {
                 archiveDates.push(prevArchivedBook.ArchiveDates[i]);
             }
+
             archiveDates.push(archiveDate);
 
             book = prevArchivedBooks[possibleIndex]; // Now fb will update the prior archive entry
-            console.log(archiveDates);
             book.Index = possibleIndex;
         } else {
             // The first time the book is being archived. No other archive dates and reset its index
@@ -79,11 +77,18 @@ const setBookFB = async (book, location) => {
         Price: book.Price,
     };
 
+    if (book.AddDates) sendAddDates = book.AddDates;
+
     await set(
         ref(db, `/${location}/${book.Index}`),
         location === "archive"
             ? { ...editedBook, ArchiveDates: archiveDates }
-            : { ...editedBook, Inventory: book.Inventory, Needed: book.Needed } // Active books have inventory and needed
+            : {
+                  ...editedBook,
+                  Inventory: book.Inventory,
+                  Needed: book.Needed,
+                  AddDates: sendAddDates,
+              } // Active books have inventory and needed
     ).catch((e) => {
         console.log(e);
         error = true;

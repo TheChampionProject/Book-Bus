@@ -21,7 +21,6 @@ export default function TableHeader({ mode }) {
                 <th className="TableHeaderCell">Title</th>
                 {neededOrGenre}
                 <th className="TableCell TableHeaderCell">Stock</th>
-                <th className="TableCell TableHeaderCell">Price</th>
                 {lastCell}
             </tr>
         </thead>

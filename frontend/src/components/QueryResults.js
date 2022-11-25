@@ -1,7 +1,13 @@
 import QueryRow from "./QueryRow.js";
-export default function QueryResults({ queryList, setShowAddPopup, setBook, setShowEditPopup }) {
+export default function QueryResults({
+    queryList,
+    setShowAddPopup,
+    setBook,
+    setShowEditPopup,
+    setAlert,
+    setShowTable,
+}) {
     if (queryList.length === 0) return;
-
     return queryList.map((book, number) => {
         number++;
         return (
@@ -11,6 +17,8 @@ export default function QueryResults({ queryList, setShowAddPopup, setBook, setS
                 setShowAddPopup={setShowAddPopup}
                 setBook={setBook}
                 setShowEditPopup={setShowEditPopup}
+                setAlert={setAlert}
+                setShowTable={setShowTable}
             />
         );
     });
