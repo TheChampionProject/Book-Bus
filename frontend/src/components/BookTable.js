@@ -71,9 +71,15 @@ export default function BookTable({
                     };
                 }
 
-                res.sort(function (a, b) {
-                    return alphaSortArray(a.Title, b.Title);
-                });
+                if (mode === "gift" || mode === "manage") {
+                    res.sort((a, b) => {
+                        return alphaSortArray(a.Title, b.Title);
+                    });
+                } else {
+                    res.sort((a, b) => {
+                        return neededSortArray(a.Needed, b.Needed);
+                    });
+                }
             });
 
         setBooks(res);
@@ -153,6 +159,9 @@ export default function BookTable({
         return a < b ? -1 : a > b ? 1 : 0;
     };
 
+    const neededSortArray = (a, b) => {
+        return a < b ? 1 : a > b ? -1 : 0;
+    };
 
     return books
         .filter((book) => book.Inventory > 0)

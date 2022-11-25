@@ -4879,11 +4879,10 @@
     },
     "archive": {
         "0": {
+            "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
             "Genre": "Laugh (Red)",
             "Price": 6.99,
-            "Sub-Genre": "C-Laugh/Cartoon (Red)",
-            "Timestamp": "10/16/2022 15:40:37",
-            "Title": "Pete The Cat"
+            "Title": "Blank"
         }
     }
 }
