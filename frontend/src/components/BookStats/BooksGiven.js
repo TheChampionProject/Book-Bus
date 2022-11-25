@@ -1,8 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import "../../App.css";
 
 export default function BooksGiven() {
     let archivedBooks = [];
+
+    const [giftDatesThisMonth, setGiftDatesThisMonth] = useState([]);
+    const [giftDatesThisYear, setGiftDatesThisYear] = useState([]);
+    const [giftDatesAllTime, setGiftDatesAllTime] = useState([]);
 
     // Load books from database on page load
     useEffect(() => {
@@ -14,46 +19,67 @@ export default function BooksGiven() {
     }, []);
 
     const getBooks = async () => {
-        let res = [];
         await axios
             .get(process.env.REACT_APP_BACKEND_URL + "getAllBooks")
-            .then((response) => {
-                res.push(response.data[0]); // response.data[0] is the JSON object full of books
-
-                for (let j in res[0].archive)
-                    archivedBooks.push(res[0].archive[j]); // In order to turn a giant JSON full of books into an array of books
-
-                findGiftDates();
+            .then(async (response) => {
+                archivedBooks = response.data[0].archive;
+                await findGiftDates();
             });
     };
 
-    const findGiftDates = () => {
+    const findGiftDates = async () => {
         const currentMonth = new Date().getMonth();
         const currentYear = new Date().getFullYear();
 
-        let giftDatesThisMonth = [];
-        let giftDatesThisYear = [];
-        let giftDatesAllTime = [];
-
         for (let i = 0; i < archivedBooks.length; i++) {
-            for (let j = 0; j < archivedBooks[i].ArchiveDates.length; j++) {
-                let giftDate = new Date(archivedBooks[i].ArchiveDates[j]);
+            const archivedBook = archivedBooks[i];
+            for (let j = 0; j < archivedBook.ArchiveDates.length; j++) {
+                let giftDate = new Date(archivedBook.ArchiveDates[j]);
+
                 if (giftDate.getMonth() === currentMonth) {
-                    giftDatesThisMonth.push(archivedBooks);
+                    setGiftDatesThisMonth((giftDatesThisMonth) => [
+                        ...giftDatesThisMonth,
+                        archivedBook,
+                    ]);
                 }
 
                 if (giftDate.getFullYear() === currentYear) {
-                    giftDatesThisYear.push(archivedBooks);
+                    setGiftDatesThisYear((giftDatesThisYear) => [
+                        ...giftDatesThisYear,
+                        archivedBook,
+                    ]);
                 }
 
-                giftDatesAllTime.push(archivedBooks);
+                setGiftDatesAllTime((giftDatesAllTime) => [
+                    ...giftDatesAllTime,
+                    archivedBook,
+                ]);
             }
         }
 
         console.log(giftDatesThisMonth);
-        console.log(giftDatesThisYear);
-        console.log(giftDatesAllTime);
     };
 
-    return;
+    return (
+        <>
+            <div className="BookStats">
+                <p>Books Given This Month</p>
+                <p style={{ fontWeight: "bold", textSize: "36px" }}>
+                    {giftDatesThisMonth.length}
+                </p>
+            </div>
+            <div className="BookStats">
+                <p>Books Given This Year</p>
+                <p style={{ fontWeight: "bold", textSize: "36px" }}>
+                    {giftDatesThisYear.length}
+                </p>
+            </div>
+            <div className="BookStats">
+                <p>Books Given All Time</p>
+                <p style={{ fontWeight: "bold", textSize: "36px" }}>
+                    {giftDatesAllTime.length}
+                </p>
+            </div>
+        </>
+    );
 }

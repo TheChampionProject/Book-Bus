@@ -25,7 +25,6 @@ export default function BookTable({
 
     useEffect(() => {
         const asyncManageBook = async () => {
-            console.log(managedBook);
             if (managedBook == null) return;
             if (managedBook.Index !== -1) index.current = managedBook.Index;
             else index.current = books.length; // Adding a book. Give it the next available index

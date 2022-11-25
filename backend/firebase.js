@@ -45,7 +45,6 @@ const setBookFB = async (book, location) => {
     if (location === "archive") {
         archiveDate = new Date().toISOString();
 
-        console.log(Object.keys(databaseBooks[0])); // It doesn't throw a bug when I do this
         prevArchivedBooks = Object.values(databaseBooks[0].archive); // Get all archived books with JSONs in array
 
         let possibleIndex = prevArchivedBooks.findIndex(
@@ -60,10 +59,10 @@ const setBookFB = async (book, location) => {
             for (let i = 0; i < prevArchivedBook.ArchiveDates.length; i++) {
                 archiveDates.push(prevArchivedBook.ArchiveDates[i]);
             }
+
             archiveDates.push(archiveDate);
 
             book = prevArchivedBooks[possibleIndex]; // Now fb will update the prior archive entry
-            console.log(archiveDates);
             book.Index = possibleIndex;
         } else {
             // The first time the book is being archived. No other archive dates and reset its index
