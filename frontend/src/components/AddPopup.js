@@ -10,6 +10,7 @@ export default function AddPopup({
     setAlert,
     setShowEditPopup,
     setBook,
+    books,
 }) {
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
@@ -29,7 +30,6 @@ export default function AddPopup({
 
     const searchForBook = async (e) => {
         e.preventDefault();
-
         await axios
             .post(process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks", {
                 title: searchQuery.current.value,
@@ -104,6 +104,7 @@ export default function AddPopup({
                                 setBook={setBook}
                                 setAlert={setAlert}
                                 setShowTable={setShowTable}
+                                books={books}
                             />
                         </tbody>
                     </Table>

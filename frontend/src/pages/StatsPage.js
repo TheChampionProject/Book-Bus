@@ -1,5 +1,5 @@
 import React from "react";
-import BooksGiven from "../components/BookStats/BooksGiven"
+import BookStats from "../components/BookStats.js";
 export default function StatsPage() {
-    return <BooksGiven />;
+    return <BookStats />;
 }

@@ -13,6 +13,7 @@ export default function DonatePage() {
         success: false,
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
+    let [books, setBooks] = useState([]);
 
     return (
         <>
@@ -67,6 +68,8 @@ export default function DonatePage() {
                                     setAlert={setAlert}
                                     searchQuery={searchQuery}
                                     mode={"donate"}
+                                    books={books}
+                                    setBooks={setBooks}
                                 />
                             </tbody>
                         </Table>

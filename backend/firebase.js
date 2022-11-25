@@ -41,6 +41,7 @@ const setBookFB = async (book, location) => {
         archiveDate;
     let prevArchivedBooks = [];
     let sendAddDates = "";
+    let params;
 
     if (location === "archive") {
         archiveDate = new Date().toISOString();
@@ -79,17 +80,18 @@ const setBookFB = async (book, location) => {
 
     if (book.AddDates) sendAddDates = book.AddDates;
 
-    await set(
-        ref(db, `/${location}/${book.Index}`),
-        location === "archive"
-            ? { ...editedBook, ArchiveDates: archiveDates }
-            : {
-                  ...editedBook,
-                  Inventory: book.Inventory,
-                  Needed: book.Needed,
-                  AddDates: sendAddDates,
-              } // Active books have inventory and needed
-    ).catch((e) => {
+    if (location === "archive") {
+        params = { ...editedBook, ArchiveDates: archiveDates };
+    } else {
+        params = {
+            ...editedBook,
+            Inventory: book.Inventory,
+            Needed: book.Needed,
+            AddDates: sendAddDates,
+        };
+    }
+
+    await set(ref(db, `/${location}/${book.Index}`), params).catch((e) => {
         console.log(e);
         error = true;
         errorMessage = e;

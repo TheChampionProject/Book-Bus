@@ -10,8 +10,9 @@ export default function BookTable({
     searchQuery,
     mode,
     setShowGC,
+    books,
+    setBooks,
 }) {
-    let [books, setBooks] = useState([]);
     let index = useRef();
 
     // Load books from database on page load
@@ -37,7 +38,7 @@ export default function BookTable({
 
         asyncManageBook();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [books.length, managedBook]);
+    }, [managedBook]);
 
     // Get all the books from firebase through an API call to the backend
     const getBooks = async () => {
@@ -163,23 +164,29 @@ export default function BookTable({
         return a < b ? 1 : a > b ? -1 : 0;
     };
 
-    return books
-        .filter((book) => book.Inventory > 0)
-        .filter((book) =>
-            searchQuery === ""
-                ? true
-                : book.Title.toLowerCase().includes(searchQuery.toLowerCase())
-        )
-        .map((book, number) => (
-            <BookRow
-                key={number}
-                book={book}
-                setBook={setBook}
-                setShowEditPopup={setShowEditPopup}
-                setManagedBook={setManagedBook}
-                searchQuery={searchQuery}
-                mode={mode}
-                setShowGC={setShowGC}
-            />
-        ));
+    return books === null ? (
+        <tr><td>Loading...</td></tr>
+    ) : (
+        books
+            .filter((book) => book.Inventory > 0)
+            .filter((book) =>
+                searchQuery === ""
+                    ? true
+                    : book.Title.toLowerCase().includes(
+                          searchQuery.toLowerCase()
+                      )
+            )
+            .map((book, number) => (
+                <BookRow
+                    key={number}
+                    book={book}
+                    setBook={setBook}
+                    setShowEditPopup={setShowEditPopup}
+                    setManagedBook={setManagedBook}
+                    searchQuery={searchQuery}
+                    mode={mode}
+                    setShowGC={setShowGC}
+                />
+            ))
+    );
 }
