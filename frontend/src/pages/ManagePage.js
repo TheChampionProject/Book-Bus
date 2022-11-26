@@ -18,6 +18,7 @@ export default function ManagePage() {
         success: false,
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
+    let [books, setBooks] = useState(null);
 
     let handleAddBook = (e) => {
         e.preventDefault();
@@ -71,6 +72,8 @@ export default function ManagePage() {
                                     setAlert={setAlert}
                                     searchQuery={searchQuery}
                                     mode={"manage"}
+                                    books={books}
+                                    setBooks={setBooks}
                                 />
                             </tbody>
                         </Table>
@@ -100,6 +103,7 @@ export default function ManagePage() {
                 setBook={setBook}
                 setAlert={setAlert}
                 setShowEditPopup={setShowEditPopup}
+                books={books}
             />
         </>
     );

@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set, child } from "firebase/database";
 import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
+import { v4 as uuid4 } from "uuid";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ const getBooksFB = async () => {
     await get(child(dbRef, `/`))
         .then((snapshot) => {
             if (snapshot.exists()) {
+                console.debug(snapshot.val());
                 databaseBooks.push(snapshot.val());
             } else {
                 error = true;
@@ -41,6 +43,7 @@ const setBookFB = async (book, location) => {
         archiveDate;
     let prevArchivedBooks = [];
     let sendAddDates = "";
+    let params;
 
     if (location === "archive") {
         archiveDate = new Date().toISOString();
@@ -69,6 +72,8 @@ const setBookFB = async (book, location) => {
             archiveDates.push(archiveDate);
             book.Index = prevArchivedBooks.length;
         }
+    } else if (location == "active") {
+        book.UUID = uuid4();
     }
 
     const editedBook = {
@@ -79,17 +84,22 @@ const setBookFB = async (book, location) => {
 
     if (book.AddDates) sendAddDates = book.AddDates;
 
-    await set(
-        ref(db, `/${location}/${book.Index}`),
-        location === "archive"
-            ? { ...editedBook, ArchiveDates: archiveDates }
-            : {
-                  ...editedBook,
-                  Inventory: book.Inventory,
-                  Needed: book.Needed,
-                  AddDates: sendAddDates,
-              } // Active books have inventory and needed
-    ).catch((e) => {
+    if (location === "archive") {
+        params = { ...editedBook, ArchiveDates: archiveDates };
+    } else {
+        if (book.Inventory === 0) {
+            console.log("deleting " + book);
+            params = null;
+        } else
+            params = {
+                ...editedBook,
+                Inventory: book.Inventory,
+                Needed: book.Needed,
+                AddDates: sendAddDates,
+            };
+    }
+
+    await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
         console.log(e);
         error = true;
         errorMessage = e;

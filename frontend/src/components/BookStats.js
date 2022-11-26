@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "../../App.css";
+import "../App.css";
 
 export default function BooksGiven() {
     let archivedBooks = [];
@@ -43,7 +43,7 @@ export default function BooksGiven() {
             amountGivenThisYear = [],
             amountGivenAllTime = [];
 
-        for (let i = 0; i < archivedBooks.length; i++) {
+        for (let i in archivedBooks) {
             const archivedBook = archivedBooks[i];
             for (let j = 0; j < archivedBook.ArchiveDates.length; j++) {
                 let giftDate = new Date(archivedBook.ArchiveDates[j]);
@@ -81,31 +81,31 @@ export default function BooksGiven() {
     return (
         <div className="StatsArea">
             <div className="Statistic">
-                <p>Books Gifted This Month</p>
                 <p className="StatText">{giftDatesThisMonth.length}</p>
+                <p className="StatDescription">Books Gifted (This Month)</p>
             </div>
 
             <div className="Statistic">
-                <p>Books Gifted This Year</p>
                 <p className="StatText">{giftDatesThisYear.length}</p>
+                <p className="StatDescription">Books Gifted (This Year)</p>
             </div>
 
             <div className="Statistic">
-                <p>Books Gifted All Time</p>
                 <p className="StatText">{giftDatesAllTime.length}</p>
+                <p className="StatDescription">Books Gifted (All Time)</p>
             </div>
 
             <div className="Statistic">
-                <p>Amount Gifted This Month</p>
                 <p className="StatText">${thisMonthValue.length}</p>
+                <p className="StatDescription">Amount Gifted (This Month)</p>
             </div>
             <div className="Statistic">
-                <p>Amount Gifted This Year</p>
                 <p className="StatText">${thisYearValue.length}</p>
+                <p className="StatDescription">Amount Gifted (This Year)</p>
             </div>
             <div className="Statistic">
-                <p>Amount Gifted All Time</p>
                 <p className="StatText">${allTimeValue.length}</p>
+                <p className="StatDescription">Amount Gifted (All Time)</p>
             </div>
         </div>
     );
