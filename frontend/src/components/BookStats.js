@@ -81,31 +81,31 @@ export default function BooksGiven() {
     return (
         <div className="StatsArea">
             <div className="Statistic">
-                <p>Books Gifted This Month</p>
                 <p className="StatText">{giftDatesThisMonth.length}</p>
+                <p className="StatDescription">Books Gifted (This Month)</p>
             </div>
 
             <div className="Statistic">
-                <p>Books Gifted This Year</p>
                 <p className="StatText">{giftDatesThisYear.length}</p>
+                <p className="StatDescription">Books Gifted (This Year)</p>
             </div>
 
             <div className="Statistic">
-                <p>Books Gifted All Time</p>
                 <p className="StatText">{giftDatesAllTime.length}</p>
+                <p className="StatDescription">Books Gifted (All Time)</p>
             </div>
 
             <div className="Statistic">
-                <p>Amount Gifted This Month</p>
                 <p className="StatText">${thisMonthValue.length}</p>
+                <p className="StatDescription">Amount Gifted (This Month)</p>
             </div>
             <div className="Statistic">
-                <p>Amount Gifted This Year</p>
                 <p className="StatText">${thisYearValue.length}</p>
+                <p className="StatDescription">Amount Gifted (This Year)</p>
             </div>
             <div className="Statistic">
-                <p>Amount Gifted All Time</p>
                 <p className="StatText">${allTimeValue.length}</p>
+                <p className="StatDescription">Amount Gifted (All Time)</p>
             </div>
         </div>
     );
