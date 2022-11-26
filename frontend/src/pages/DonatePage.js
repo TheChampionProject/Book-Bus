@@ -13,7 +13,7 @@ export default function DonatePage() {
         success: false,
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
-    let [books, setBooks] = useState([]);
+    let [books, setBooks] = useState(null);
 
     return (
         <>

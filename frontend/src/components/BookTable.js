@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import axios from "axios";
 import BookRow from "./BookRow.js";
 export default function BookTable({
@@ -57,8 +57,11 @@ export default function BookTable({
             .then((response) => {
                 databaseBooks.push(response.data[0]); // response.data[0] is the JSON object full of books
 
-                for (let j in databaseBooks[0].active)
-                    res.push(databaseBooks[0].active[j]); // In order to turn a giant JSON full of books into an array of books
+                for (let j in databaseBooks[0].active) {
+                    res.push({ ...databaseBooks[0].active[j], UUID: j }); // In order to turn a giant JSON full of books into an array of books
+                }
+
+                res = res.filter((n) => n); // Remove null entries which is what deleted books are
 
                 for (let i = 0; i < res.length; i++) {
                     // Neccesary bc firebase isn't reordered. Now after the sort the original index of the book is preserved.
@@ -68,6 +71,7 @@ export default function BookTable({
                         Inventory: res[i].Inventory,
                         Price: res[i].Price,
                         Needed: res[i].Needed,
+                        UUID: res[i].UUID,
                         Index: i,
                     };
                 }
@@ -89,11 +93,12 @@ export default function BookTable({
     // Add or edit book call to backend which calls firebase
     const manageBook = async (newBook) => {
         let message = "";
+
         if (mode === "gift") {
-            message = "Gifted ";
+            message = "gifted ";
             newBook.gift = true;
         } else {
-            message = "Edited/Added ";
+            message = "updated the database with ";
             newBook.gift = false;
         }
 
@@ -119,7 +124,9 @@ export default function BookTable({
                 setAlert({
                     show: true,
                     message:
-                        "Successfully " + message + newBook.managedBook.Title,
+                        "Successfully " +
+                        message +
+                        `"${newBook.managedBook.Title}"`,
                     success: true,
                 });
 
@@ -165,7 +172,9 @@ export default function BookTable({
     };
 
     return books === null ? (
-        <tr><td>Loading...</td></tr>
+        <tr>
+            <td>Loading...</td>
+        </tr>
     ) : (
         books
             .filter((book) => book.Inventory > 0)

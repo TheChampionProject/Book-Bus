@@ -43,7 +43,7 @@ export default function BooksGiven() {
             amountGivenThisYear = [],
             amountGivenAllTime = [];
 
-        for (let i = 0; i < archivedBooks.length; i++) {
+        for (let i in archivedBooks) {
             const archivedBook = archivedBooks[i];
             for (let j = 0; j < archivedBook.ArchiveDates.length; j++) {
                 let giftDate = new Date(archivedBook.ArchiveDates[j]);

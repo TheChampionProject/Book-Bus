@@ -18,7 +18,7 @@ export default function ManagePage() {
         success: false,
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
-    let [books, setBooks] = useState("null");
+    let [books, setBooks] = useState(null);
 
     let handleAddBook = (e) => {
         e.preventDefault();
