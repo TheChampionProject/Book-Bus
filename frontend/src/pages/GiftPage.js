@@ -16,6 +16,7 @@ export default function ManagePage() {
     const [searchQuery, setSearchQuery] = useState("");
     const [showGC, setShowGC] = useState(false);
     const [book, setBook] = useState(null);
+    const [books, setBooks] = useState(null);
 
     return (
         <>
@@ -60,6 +61,8 @@ export default function ManagePage() {
                                     searchQuery={searchQuery}
                                     mode={"gift"}
                                     setShowGC={setShowGC}
+                                    books={books}
+                                    setBooks={setBooks}
                                 />
                             </tbody>
                         </Table>

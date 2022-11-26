@@ -13,7 +13,7 @@ export default function EditPopup({
     let autoFillGenre = "";
     let autoFillInventory = "";
     let autoFillNeeded = 0;
-    let autoFillPrice = "";
+    let autoFillPrice = 0;
     let addBook = false;
 
     try {
@@ -85,6 +85,15 @@ export default function EditPopup({
             book.AddDates.push(new Date().toISOString()); // Date for when book is added
         }
 
+        if (inventory > book.Inventory) {
+            book.AddDates = [
+                ...(book.AddDates ?? []),
+                ...Array(inventory - book.Inventory).fill(
+                    new Date().toISOString()
+                ),
+            ];
+        }
+
         book.Title = title;
         book.Genre = genre;
         book.Inventory = inventory;
@@ -109,7 +118,7 @@ export default function EditPopup({
         setGenre("");
         setInventory("");
         setNeeded(0);
-        setPrice("");
+        setPrice(0);
         setShowEditPopup(false);
     };
 
