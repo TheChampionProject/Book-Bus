@@ -19,7 +19,6 @@ const getBooksFB = async () => {
     await get(child(dbRef, `/`))
         .then((snapshot) => {
             if (snapshot.exists()) {
-                console.debug(snapshot.val());
                 databaseBooks.push(snapshot.val());
             } else {
                 error = true;
@@ -109,4 +108,26 @@ const setBookFB = async (book, location) => {
     else return "success";
 };
 
-export { getBooksFB, setBookFB };
+const getVolunteerDatesFB = async () => {
+    let dates;
+    let error = false;
+    let errorMessage = "";
+    await get(child(dbRef, `/volunteer-dates`))
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                dates = snapshot.val();
+            } else {
+                error = true;
+                errorMessage = "No Data Found";
+            }
+        })
+        .catch((error) => {
+            error = true;
+            errorMessage = error;
+        });
+
+    if (error) return errorMessage;
+    else return dates;
+};
+
+export { getBooksFB, setBookFB, getVolunteerDatesFB };

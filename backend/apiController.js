@@ -1,5 +1,9 @@
 import asyncHandler from "express-async-handler";
-import { getBooksFB, setBookFB } from "./firebase.js";
+import {
+    getBooksFB,
+    setBookFB,
+    getVolunteerDatesFB,
+} from "./firebase.js";
 import dotenv from "dotenv";
 import axios from "axios";
 dotenv.config();
@@ -67,4 +71,14 @@ const setBook = asyncHandler(async (req, res) => {
     else res.send("failure");
 });
 
-export { getAllBooks, setBook, getSearchQueryBooks, getBookPrice };
+const getVolunteerDates = asyncHandler(async (req, res) => {
+    res.send(await getVolunteerDatesFB());
+});
+
+export {
+    getAllBooks,
+    setBook,
+    getSearchQueryBooks,
+    getBookPrice,
+    getVolunteerDates,
+};

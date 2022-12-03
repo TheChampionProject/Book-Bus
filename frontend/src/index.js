@@ -3,6 +3,7 @@ import ManagePage from "./pages/ManagePage.js";
 import GiftPage from "./pages/GiftPage.js";
 import DonatePage from "./pages/DonatePage.js";
 import StatsPage from "./pages/StatsPage.js";
+import HomePage from "./pages/HomePage.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
@@ -15,6 +16,7 @@ root.render(
             <Route path="/gift" element={<GiftPage />} />
             <Route path="/donate" element={<DonatePage />} />
             <Route path="/stats" element={<StatsPage />} />
+            <Route path="/home" element={<HomePage />} />
         </Routes>
     </Router>
 );

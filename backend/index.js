@@ -5,6 +5,7 @@ import {
     setBook,
     getSearchQueryBooks,
     getBookPrice,
+    getVolunteerDates,
 } from "./apiController.js";
 
 const app = express();
@@ -23,5 +24,6 @@ app.get("/getAllBooks", getAllBooks);
 app.post("/getSearchQueryBooks", getSearchQueryBooks);
 app.post("/getBookPrice", getBookPrice);
 app.put("/setBook", setBook);
+app.get("/getDates", getVolunteerDates);
 
 app.listen(port, () => console.log(`Server started on ${port}!`));
