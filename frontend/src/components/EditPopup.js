@@ -87,7 +87,7 @@ export default function EditPopup({
 
         if (inventory > book.Inventory) {
             book.AddDates = [
-                ...(book.AddDates ?? []),
+                ...(book.AddDates === "null" ? [] : book.AddDates),
                 ...Array(inventory - book.Inventory).fill(
                     new Date().toISOString()
                 ),

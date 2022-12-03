@@ -1,4 +1,5 @@
 import QueryRow from "./QueryRow.js";
+import React from "react";
 export default function QueryResults({
     queryList,
     setShowAddPopup,

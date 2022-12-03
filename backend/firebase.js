@@ -1,14 +1,25 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set, child } from "firebase/database";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+} from "firebase/auth";
+import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
+import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
 import { v4 as uuid4 } from "uuid";
 
 dotenv.config();
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
+const auth = getAuth(app);
+const firestoredb = getFirestore(app);
+const storage = getStorage();
 let databaseBooks = [];
 
 const getBooksFB = async () => {
@@ -19,7 +30,6 @@ const getBooksFB = async () => {
     await get(child(dbRef, `/`))
         .then((snapshot) => {
             if (snapshot.exists()) {
-                console.debug(snapshot.val());
                 databaseBooks.push(snapshot.val());
             } else {
                 error = true;
@@ -109,4 +119,83 @@ const setBookFB = async (book, location) => {
     else return "success";
 };
 
-export { getBooksFB, setBookFB };
+const signUpAuth = async (email, password, first, last) => {
+    const currentUser = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+    ).catch((e) => {
+        return e;
+    });
+    await setDoc(doc(firestoredb, "users", currentUser.user.uid), {
+        email: email,
+        name: first + " " + last,
+        password: password,
+        watchedVideo: false,
+        uploadedForm: false,
+    }).catch((e) => {
+        return e;
+    });
+    return currentUser;
+};
+
+const signInAuth = async (email, password) => {
+    const currentUser = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+    ).catch((e) => {
+        return e;
+    });
+    return currentUser;
+};
+
+const resetPasswordAuth = async (email) => {
+    await sendPasswordResetEmail(auth, email).catch((e) => {
+        return e;
+    });
+};
+
+const bookBusVerify = async (verificationFile) => {
+    console.log("hello");
+    const targetRef = storageRef(storage, `test/img1`);
+    await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
+        console.log("hello");
+        await updateDoc(doc(firestoredb, "users", auth.currentUser.uid), {
+            watchedVideo: true,
+            uploadedForm: true,
+        });
+    });
+};
+
+const getVolunteerDatesFB = async () => {
+    let dates;
+    let error = false;
+    let errorMessage = "";
+    await get(child(dbRef, `/volunteer-dates`))
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                dates = snapshot.val();
+            } else {
+                error = true;
+                errorMessage = "No Data Found";
+            }
+        })
+        .catch((error) => {
+            error = true;
+            errorMessage = error;
+        });
+
+    if (error) return errorMessage;
+    else return dates;
+};
+
+export {
+    getBooksFB,
+    setBookFB,
+    signUpAuth,
+    signInAuth,
+    resetPasswordAuth,
+    bookBusVerify,
+    getVolunteerDatesFB,
+};
