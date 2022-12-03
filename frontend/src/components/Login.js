@@ -1,30 +1,85 @@
-import "../App.css";
-import React from "react";
+import React, { useState } from 'react';
+import { Grid,Paper, TextField, Button, Link, Stack, DialogActions, Dialog, DialogTitle, DialogContent } from '@mui/material';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
-    const SignUp = () => {};
-    const login = () => {};
+const Login=({handleChange})=>{
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [resetEmail, setResetEmail] = useState('');
+    const [open, setOpen] = useState(false);
+    let navigate = useNavigate();
 
-    return (
-        <div style={{ textAlign: "center" }}>
-            <div>
-                <h1>Email</h1>
-                <input id="email" placeholder="Enter Email..." type="text" />
-            </div>
-            <div>
-                <h1>Password</h1>
-                <input
-                    id="password"
-                    placeholder="Enter Passoword..."
-                    type="text"
-                />
-            </div>
-            <button style={{ margin: "10px" }} onClick={login}>
-                Login
-            </button>
-            <button style={{ margin: "10px" }} onClick={SignUp}>
-                SignUp
-            </button>
-        </div>
-    );
+    const handleClickOpen = () => {
+        setOpen(true);
+    }
+
+    async function handleLogin() {
+        if (!(email && password)) {
+            alert("Fill in all fields!")
+        } else {
+            try {
+                await axios.post(process.env.REACT_APP_BACKEND_URL + "login", {email: email, password: password})
+                    .then(() => {
+                        navigate("/verification")
+                    }) 
+            } catch (err) {
+                alert("Invalid username or password!")
+            }
+        }
+    }
+
+    async function handleReset() {
+        
+        try {
+            setOpen(false);
+            await axios.post(process.env.REACT_APP_BACKEND_URL + "reset", {email: resetEmail})
+                .then(() => alert("success"))
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    return(
+        <Grid>
+            <Paper style={{padding: 20, width: 450, margin:'0 auto'}}>
+                <Grid align='center'>
+                    <h2>Volunteer Login</h2>
+                </Grid>
+                <TextField label='Email' placeholder='Enter email' margin='dense' onChange={(e) => setEmail(e.target.value)} fullWidth required/>
+                <Stack spacing={2}>
+                    <TextField label='Password' placeholder='Enter password' type='password' margin='dense' onChange={(e) => setPassword(e.target.value)} fullWidth required/>
+                    <Button onClick={handleLogin} type='submit' color='primary' variant="contained" style={{margin: '8px 0'}} fullWidth>Login</Button>
+                    <Stack direction={'row'} justifyContent='space-between'>
+                        <Link onClick={handleClickOpen} >
+                            Forgot password?
+                        </Link>
+                        <Link onClick={()=>handleChange("event","1")}>
+                            Sign up
+                        </Link>
+                    </Stack>
+                </Stack>
+                <Dialog open={open}>
+                <DialogTitle>Send Reset Password Link</DialogTitle>
+                <DialogContent>
+                    <TextField
+                        margin="dense"
+                        label="Email Address"
+                        type="email"
+                        required
+                        fullWidth
+                        placeholder="Enter your email"
+                        onChange={(e) => setResetEmail(e.target.value)}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleReset}>Send Email</Button>
+                    <Button onClick={() => {setOpen(false)}} color="error">Close</Button>
+                </DialogActions>
+            </Dialog>
+            </Paper>
+        </Grid>
+    )
 }
+
+export default Login;
