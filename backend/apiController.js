@@ -2,12 +2,8 @@ import asyncHandler from "express-async-handler";
 import {
     getBooksFB,
     setBookFB,
-    signUpAuth,
-    signInAuth,
-    resetPasswordAuth,
-    bookBusVerify,
+    getVolunteerDatesFB,
 } from "./firebase.js";
-
 import dotenv from "dotenv";
 import axios from "axios";
 dotenv.config();
@@ -75,42 +71,6 @@ const setBook = asyncHandler(async (req, res) => {
     else res.send("failure");
 });
 
-const signup = asyncHandler(async (req, res) => {
-    try {
-        res.send(
-            await signUpAuth(
-                req.body.email,
-                req.body.password,
-                req.body.first,
-                req.body.last
-            )
-        );
-    } catch (err) {
-        res.json(err);
-    }
-});
-
-const login = asyncHandler(async (req, res) => {
-    try {
-        res.send(await signInAuth(req.body.email, req.body.password));
-    } catch (err) {
-        res.json(err);
-    }
-});
-
-const resetPassword = asyncHandler(async (req, res) => {
-    try {
-        await resetPasswordAuth(req.body.email);
-    } catch (err) {
-        res.json(err);
-    }
-});
-
-const verify = asyncHandler(async (req, res) => {
-    await bookBusVerify(req.file);
-    res.send("success");
-});
-
 const getVolunteerDates = asyncHandler(async (req, res) => {
     res.send(await getVolunteerDatesFB());
 });
@@ -120,9 +80,5 @@ export {
     setBook,
     getSearchQueryBooks,
     getBookPrice,
-    signup,
-    login,
-    resetPassword,
-    verify,
     getVolunteerDates,
 };

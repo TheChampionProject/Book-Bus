@@ -5,13 +5,8 @@ import {
     setBook,
     getSearchQueryBooks,
     getBookPrice,
-    signup,
-    login,
-    resetPassword,
-    verify,
     getVolunteerDates,
 } from "./apiController.js";
-import multer from "multer";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -35,11 +30,6 @@ app.get("/getAllBooks", getAllBooks);
 app.post("/getSearchQueryBooks", getSearchQueryBooks);
 app.post("/getBookPrice", getBookPrice);
 app.put("/setBook", setBook);
-
-app.post("/signup", signup);
-app.post("/login", login);
-app.post("/reset", resetPassword);
-app.post("/verify", upload.single("verificationFile"), verify);
 app.get("/getDates", getVolunteerDates);
 
 app.listen(port, () => console.log(`Server started on ${port}!`));
