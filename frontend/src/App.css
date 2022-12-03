@@ -153,6 +153,12 @@
     transform: translateX(-50%);
 }
 
+.TextCenterDiv {
+    position: relative;
+    top: 5em;
+    text-align: center;
+}
+
 .Statistic {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -203,4 +209,10 @@
 .statsNav .navItem {
     flex: 1 1 0%;
     text-decoration: none;
+}
+
+.CenterHomePage {
+    margin: auto;
+    width: 50%;
+    top: 0px;
 }

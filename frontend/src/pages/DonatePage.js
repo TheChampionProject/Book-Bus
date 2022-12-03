@@ -22,18 +22,11 @@ export default function DonatePage() {
 
                 <h3 className="CPStyle">The Champion Project</h3>
 
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        style={{ margin: "1em" }}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                </div>
+                <a href="/home">Sign In/Up to Volunteer</a>
             </div>
 
-            <div>
-                <em className="Center">
+            <div className="TextCenterDiv">
+                <em >
                     Please send books to the Junior League Office at 8686 New
                     Trails Dr, The Woodlands, TX 77381
                 </em>
@@ -50,23 +43,21 @@ export default function DonatePage() {
             </div>
             <div className="BookTableParent">
                 <div className="BookTable">
-                    <div className="container mt-3">
+                    <div className="container">
                         <Table
                             striped
                             bordered
                             hover
                             className="ActualBookTable"
                         >
-                            <TableHeader
-                                mode={"donate"}
-                                className="fixed-top"
-                            />
+                            <TableHeader mode={"donate"} />
                             <tbody>
                                 <BookTable
                                     managedBook={managedBook}
                                     setManagedBook={setManagedBook}
                                     setAlert={setAlert}
                                     searchQuery={searchQuery}
+                                    setSearchQuery={setSearchQuery}
                                     mode={"donate"}
                                     books={books}
                                     setBooks={setBooks}

@@ -111,6 +111,10 @@ const verify = asyncHandler(async (req, res) => {
     res.send("success");
 });
 
+const getVolunteerDates = asyncHandler(async (req, res) => {
+    res.send(await getVolunteerDatesFB());
+});
+
 export {
     getAllBooks,
     setBook,
@@ -120,4 +124,5 @@ export {
     login,
     resetPassword,
     verify,
+    getVolunteerDates,
 };

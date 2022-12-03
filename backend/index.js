@@ -9,6 +9,7 @@ import {
     login,
     resetPassword,
     verify,
+    getVolunteerDates,
 } from "./apiController.js";
 import multer from "multer";
 
@@ -39,5 +40,6 @@ app.post("/signup", signup);
 app.post("/login", login);
 app.post("/reset", resetPassword);
 app.post("/verify", upload.single("verificationFile"), verify);
+app.get("/getDates", getVolunteerDates);
 
 app.listen(port, () => console.log(`Server started on ${port}!`));
