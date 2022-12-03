@@ -1,6 +1,7 @@
 .Popup {
     display: inline-block;
     width: 8em;
+    margin: 0.3em;
 }
 
 .AddBookButton {
@@ -16,22 +17,190 @@
     color: white;
 }
 
-.InventoryColumn {
-    width: 0.1rem;
-    max-width: 0.1rem;
-}
-
-.TableHeader {
-    position: fixed;
-}
-
-.Table {
-    max-height: 500px;
+.BookTable {
+    flex-grow: 1;
     overflow: auto;
+    position: relative;
+    height: auto;
+    top: 5.6rem;
 }
 
-thead {
-    background: white;
+.BookTableParent {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.ActualBookTable {
+    position: relative;
+    width: 100%;
+}
+
+.TableHeaderCell {
     position: sticky;
     top: 0;
-  }
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: #f6efef !important;
+}
+
+.NavHead {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    z-index: 1;
+}
+
+.alert-fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 9999;
+    border-radius: 0px;
+}
+
+.CheckBoxLabels {
+    margin: auto;
+    display: block;
+}
+
+.btn-group button {
+    color: white;
+}
+
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.QuantityBox {
+    border-radius: 0;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    width: 7em;
+}
+
+.NeedTitle {
+    font-weight: bold;
+}
+
+.SearchBar {
+    right: 70em;
+}
+
+.TableCell {
+    width: 2em;
+}
+
+.BiggerCell {
+    width: 3em;
+}
+
+.navbar {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.FakeLink {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    font-family: arial, sans-serif;
+    color: rgb(11, 11, 245);
+    text-decoration: underline;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0.3em;
+    left: 1em;
+}
+
+.AddPopup {
+    margin: 1em;
+    width: 20em;
+}
+
+.CPStyle {
+    color: #a70102;
+    font-family: "Permanent Marker", cursive;
+    font-size: 2em;
+}
+
+.GiftButtons {
+    position: relative;
+    right: -17em;
+    margin: 0.5em;
+}
+
+.Center {
+    position: relative;
+    top: 5em;
+    left: 25%;
+    transform: translateX(-50%);
+}
+
+.Statistic {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: #f5f5f5;
+    /*width: 25%;*/
+    width: 100%;
+}
+
+.StatDescription {
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.StatText {
+    font-weight: bold;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.StatsArea {
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .StatsArea {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+.statsNav {
+    display: flex;
+    padding: 14px 16px;
+}
+.statsNav .navItem {
+    flex: 1 1 0%;
+    text-decoration: none;
+}
