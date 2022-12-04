@@ -5,7 +5,7 @@ import { Tab, Paper } from "@mui/material";
 import { TabPanel, TabContext, TabList } from "@mui/lab";
 
 export default function AuthPage() {
-    const [value, setValue] = React.useState("0");
+    const [value, setValue] = React.useState(true);
     const handleChange = (newValue) => {
         setValue(newValue);
     };
@@ -14,18 +14,18 @@ export default function AuthPage() {
         <Paper elevation={10} style={{ width: 500, margin: "60px auto" }}>
             <TabContext value={value}>
                 <TabList
-                    onChange={handleChange}
+                    onChange={() => handleChange(!value)}
                     aria-label="auth tabs"
                     centered
                     variant="fullWidth"
                 >
-                    <Tab label="Sign In" value="0" />
-                    <Tab label="Sign Up" value="1" />
+                    <Tab label="Sign In" value={true} />
+                    <Tab label="Sign Up" value={false} />
                 </TabList>
-                <TabPanel value="0">
+                <TabPanel value={true}>
                     <Login handleChange={handleChange} />
                 </TabPanel>
-                <TabPanel value="1">
+                <TabPanel value={false}>
                     <Signup handleChange={handleChange} />
                 </TabPanel>
             </TabContext>

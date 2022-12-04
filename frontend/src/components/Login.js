@@ -1,16 +1,5 @@
 import React, { useState } from "react";
-import {
-    Grid,
-    Paper,
-    TextField,
-    Button,
-    Link,
-    Stack,
-    DialogActions,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-} from "@mui/material";
+import {Grid, Paper, TextField,Button,Link,Stack,DialogActions,Dialog,DialogTitle,DialogContent,} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -45,15 +34,20 @@ const Login = ({ handleChange }) => {
     }
 
     async function handleReset() {
-        try {
-            setOpen(false);
-            await axios
-                .post(process.env.REACT_APP_BACKEND_URL + "reset", {
-                    email: resetEmail,
-                })
-                .then(() => alert("success"));
-        } catch (err) {
-            console.log(err);
+        if (!resetEmail) {
+            alert("please fill in all fields")
+        }
+        else {
+            try {
+                setOpen(false);
+                await axios
+                    .post(process.env.REACT_APP_BACKEND_URL + "reset", {
+                        email: resetEmail,
+                    })
+                    .then(() => alert("success"));
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 
@@ -92,8 +86,8 @@ const Login = ({ handleChange }) => {
                         Login
                     </Button>
                     <Stack direction={"row"} justifyContent="space-between">
-                        <Link onClick={handleClickOpen}>Forgot password?</Link>
-                        <Link onClick={() => handleChange("event", "1")}>
+                        <Link href="#" onClick={handleClickOpen}>Forgot password?</Link>
+                        <Link href="#" onClick={() => handleChange(false)}>
                             Sign up
                         </Link>
                     </Stack>

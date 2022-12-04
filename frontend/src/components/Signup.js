@@ -101,7 +101,7 @@ const Signup = ({ handleChange }) => {
                 </Button>
                 <Stack direction={"row"} justifyContent="space-between">
                     <Typography>Already have an account?</Typography>
-                    <Link href="#" onClick={() => handleChange("event", "0")}>
+                    <Link href="#" onClick={() => handleChange(true)}>
                         Login
                     </Link>
                 </Stack>
