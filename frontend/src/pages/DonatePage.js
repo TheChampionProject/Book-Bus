@@ -22,7 +22,7 @@ export default function DonatePage() {
 
                 <h3 className="CPStyle">The Champion Project</h3>
 
-                <a href="/home">Sign In/Up to Volunteer</a>
+                <a href="/login">Sign In/Up to Volunteer</a>
             </div>
 
             <div className="TextCenterDiv">

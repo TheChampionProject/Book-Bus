@@ -19,6 +19,7 @@ root.render(
             <Route path="/manage" element={<ManagePage />} />
             <Route path="/gift" element={<GiftPage />} />
             <Route path="/donate" element={<DonatePage />} />
+            <Route path="/" element={<DonatePage />} />
             <Route path="/stats" element={<StatsPage />} />
             <Route path="/home" element={<HomePage />} />
         </Routes>
