@@ -24,7 +24,6 @@ let databaseBooks = [];
 
 const getBooksFB = async () => {
     databaseBooks = [];
-    let error = false;
     let errorMessage = "";
 
     await get(child(dbRef, `/`))
@@ -32,22 +31,19 @@ const getBooksFB = async () => {
             if (snapshot.exists()) {
                 databaseBooks.push(snapshot.val());
             } else {
-                error = true;
                 errorMessage = "No Data Found";
             }
         })
         .catch((error) => {
-            error = true;
             errorMessage = error;
         });
 
-    if (error) return errorMessage;
+    if (errorMessage !== "") return errorMessage;
     else return databaseBooks;
 };
 
 const setBookFB = async (book, location) => {
     await getBooksFB();
-    let error = false,
         errorMessage = "";
     let archiveDates = [],
         archiveDate;
@@ -111,11 +107,10 @@ const setBookFB = async (book, location) => {
 
     await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
         console.log(e);
-        error = true;
         errorMessage = e;
     });
 
-    if (error) return errorMessage;
+    if (errorMessage !== "") return errorMessage;
     else return "success";
 };
 
@@ -157,10 +152,8 @@ const resetPasswordAuth = async (email) => {
 };
 
 const bookBusVerify = async (verificationFile) => {
-    console.log("hello");
     const targetRef = storageRef(storage, `test/img1`);
     await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
-        console.log("hello");
         await updateDoc(doc(firestoredb, "users", auth.currentUser.uid), {
             watchedVideo: true,
             uploadedForm: true,
@@ -170,25 +163,34 @@ const bookBusVerify = async (verificationFile) => {
 
 const getVolunteerDatesFB = async () => {
     let dates;
-    let error = false;
     let errorMessage = "";
     await get(child(dbRef, `/volunteer-dates`))
         .then((snapshot) => {
             if (snapshot.exists()) {
                 dates = snapshot.val();
             } else {
-                error = true;
                 errorMessage = "No Data Found";
             }
         })
         .catch((error) => {
-            error = true;
             errorMessage = error;
         });
 
-    if (error) return errorMessage;
+    if (errorMessage !== "") return errorMessage;
     else return dates;
 };
+
+const updateVolunteerDateFB = async () => {
+    let errorMessage = "";
+    await set(ref(db, `/volunteer-dates`), {
+        date: new Date().toISOString(),
+    }).catch((e) => {
+        errorMessage = e;
+    });
+
+    if (errorMessage !== "") return errorMessage;
+    else return "success";
+}
 
 export {
     getBooksFB,
@@ -198,4 +200,5 @@ export {
     resetPasswordAuth,
     bookBusVerify,
     getVolunteerDatesFB,
+    updateVolunteerDateFB,
 };

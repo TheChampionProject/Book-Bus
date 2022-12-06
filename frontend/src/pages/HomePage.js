@@ -1,23 +1,48 @@
 import Button from "react-bootstrap/Button";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import VolunteerDates from "../components/VolunteerDates";
+import axios from "axios";
 
 export default function HomePage() {
     const [selectedDate, setSelectedDate] = useState("");
     const [dates, setDates] = useState([]);
-    let startDates = [];
+    let startDates = [],
+        dateIDs = [],
+        selectedDateID,
+        okayToProceed = false;
 
-    const selectDate = (e) => {
-        e.preventDefault();
-        setSelectedDate(e.target.value);
+    let dateField = useRef();
 
+    const tryToSelectStartDate = (newDate) => {
         for (let i = 0; i < dates.length; i++) {
             startDates.push(dates[i].startDate.slice(0, 10));
+            dateIDs.push(dates[i].id);
         }
 
-        if (!startDates.includes(selectedDate) && startDates.length > 0) {
+        let dateIndex = startDates.indexOf(newDate);
+        if (
+            (!startDates.includes(newDate) && newDate !== "") ||
+            dateIndex === -1
+        ) {
             alert("Please select an available date");
+            setSelectedDate("");
+        } else {
+            okayToProceed = true;
+            selectedDateID = dateIDs[dateIndex];
+            setSelectedDate(newDate);
         }
+    };
+
+    const submit = async (e) => {
+        tryToSelectStartDate(dateField.current.value);
+        if (okayToProceed) {
+            await axios.post(
+                process.env.REACT_APP_BACKEND_URL + "signUpForDate",
+                {
+                    dateID: selectedDateID,
+                }
+            );
+        } else alert("There was an error with your request");
     };
     return (
         <>
@@ -51,11 +76,19 @@ export default function HomePage() {
                 <h4>Select a date:</h4>
                 <input
                     type="date"
-                    defaultValue={new Date().toISOString().split("T")[0]}
+                    value={selectedDate}
+                    ref={dateField}
                     onChange={(e) => {
-                        selectDate(e);
+                        tryToSelectStartDate(e.target.value);
                     }}
                 />
+                <Button
+                    variant="primary"
+                    onClick={submit}
+                    className="DateSubmitButton"
+                >
+                    Submit
+                </Button>
             </div>
         </>
     );

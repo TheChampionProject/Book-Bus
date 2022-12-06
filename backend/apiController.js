@@ -7,6 +7,7 @@ import {
     resetPasswordAuth,
     bookBusVerify,
     getVolunteerDatesFB,
+    updateVolunteerDateFB,
 } from "./firebase.js";
 
 import dotenv from "dotenv";
@@ -116,6 +117,11 @@ const getVolunteerDates = asyncHandler(async (req, res) => {
     res.send(await getVolunteerDatesFB());
 });
 
+const signUpForDate = asyncHandler(async (req, res) => {
+    console.log(req.body)
+    //res.send(await updateVolunteerDateFB());
+});
+
 export {
     getAllBooks,
     setBook,
@@ -126,4 +132,5 @@ export {
     resetPassword,
     verify,
     getVolunteerDates,
+    signUpForDate,
 };

@@ -13,7 +13,6 @@ export default function VolunteerVerify() {
 
     async function handleSubmit() {
         if (videoEnded && selectedFile) {
-            console.log(selectedFile);
             bodyFormData.append("verificationFile", selectedFile);
             try {
                 await axios({
