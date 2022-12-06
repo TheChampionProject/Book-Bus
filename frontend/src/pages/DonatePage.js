@@ -18,22 +18,15 @@ export default function DonatePage() {
     return (
         <>
             <div className="fixed-top navbar NavHead">
-                <a href="https://thechampionproject.org/">Go to Our Website</a>
+                <a href="https://thechampionproject.org/">Want to learn more about us?</a>
 
                 <h3 className="CPStyle">The Champion Project</h3>
 
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        style={{ margin: "1em" }}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                </div>
+                <a href="/login">Sign in/up to volunteer</a>
             </div>
 
-            <div>
-                <em className="Center">
+            <div className="TextCenterDiv">
+                <em >
                     Please send books to the Junior League Office at 8686 New
                     Trails Dr, The Woodlands, TX 77381
                 </em>
@@ -50,23 +43,21 @@ export default function DonatePage() {
             </div>
             <div className="BookTableParent">
                 <div className="BookTable">
-                    <div className="container mt-3">
+                    <div className="container">
                         <Table
                             striped
                             bordered
                             hover
                             className="ActualBookTable"
                         >
-                            <TableHeader
-                                mode={"donate"}
-                                className="fixed-top"
-                            />
+                            <TableHeader mode={"donate"} />
                             <tbody>
                                 <BookTable
                                     managedBook={managedBook}
                                     setManagedBook={setManagedBook}
                                     setAlert={setAlert}
                                     searchQuery={searchQuery}
+                                    setSearchQuery={setSearchQuery}
                                     mode={"donate"}
                                     books={books}
                                     setBooks={setBooks}

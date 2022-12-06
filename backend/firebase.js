@@ -1,44 +1,50 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set, child } from "firebase/database";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+} from "firebase/auth";
+import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
+import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
 import { v4 as uuid4 } from "uuid";
 
 dotenv.config();
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
+const auth = getAuth(app);
+const firestoredb = getFirestore(app);
+const storage = getStorage();
 let databaseBooks = [];
 
 const getBooksFB = async () => {
     databaseBooks = [];
-    let error = false;
     let errorMessage = "";
 
     await get(child(dbRef, `/`))
         .then((snapshot) => {
             if (snapshot.exists()) {
-                console.debug(snapshot.val());
                 databaseBooks.push(snapshot.val());
             } else {
-                error = true;
                 errorMessage = "No Data Found";
             }
         })
         .catch((error) => {
-            error = true;
             errorMessage = error;
         });
 
-    if (error) return errorMessage;
+    if (errorMessage !== "") return errorMessage;
     else return databaseBooks;
 };
 
 const setBookFB = async (book, location) => {
     await getBooksFB();
-    let error = false,
-        errorMessage = "";
+    errorMessage = "";
     let archiveDates = [],
         archiveDate;
     let prevArchivedBooks = [];
@@ -101,12 +107,122 @@ const setBookFB = async (book, location) => {
 
     await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
         console.log(e);
-        error = true;
         errorMessage = e;
     });
 
-    if (error) return errorMessage;
+    if (errorMessage !== "") return errorMessage;
     else return "success";
 };
 
-export { getBooksFB, setBookFB };
+const signUpAuth = async (email, password, first, last) => {
+    const currentUser = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+    ).catch((e) => {
+        return e;
+    });
+    await setDoc(doc(firestoredb, "users", auth.currentUser.user.uid), {
+        email: email,
+        name: first + " " + last,
+        password: password,
+        watchedVideo: false,
+        uploadedForm: false,
+    }).catch((e) => {
+        return e;
+    });
+    return currentUser;
+};
+
+const signInAuth = async (email, password) => {
+    const currentUser = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+    ).catch((e) => {
+        return e;
+    });
+    return currentUser;
+};
+
+const resetPasswordAuth = async (email) => {
+    await sendPasswordResetEmail(auth, email).catch((e) => {
+        return e;
+    });
+};
+
+const bookBusVerify = async (verificationFile) => {
+    const auth = getAuth();
+
+    const targetRef = storageRef(
+        storage,
+        `verificationForms/${auth.currentUser.uid}`
+    );
+    await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
+        await updateDoc(doc(firestoredb, "users", auth.currentUser.uid), {
+            watchedVideo: true,
+            uploadedForm: true,
+        });
+    });
+};
+
+const getVolunteerDatesFB = async () => {
+    let dates = [];
+    let errorMessage = "";
+    await get(child(dbRef, `/volunteer-dates`))
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                dates.push(snapshot.val());
+            } else {
+                errorMessage = "No Data Found";
+            }
+        })
+        .catch((error) => {
+            errorMessage = error;
+        });
+
+    if (errorMessage !== "") return errorMessage;
+    else return dates;
+};
+
+const updateVolunteerDateFB = async (dateID) => {
+    let dates = await getVolunteerDatesFB();
+    let errorMessage = "",
+        data;
+
+    for (let i in dates[0]) {
+        if (dates[0][i].id === dateID) {
+            data = dates[0][i];
+        }
+    }
+    const auth = getAuth();
+
+    if (data.volunteers.includes(auth.currentUser.uid))
+        return "You are already signed up for this date.";
+
+    data.volunteers.push(auth.currentUser.uid);
+
+    await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
+        (e) => {
+            errorMessage = e;
+        }
+    );
+
+    if (errorMessage !== "") return errorMessage;
+    else return "success";
+};
+
+export const getSignedInUserFB = async () => {
+    return getAuth();
+};
+
+export {
+    getBooksFB,
+    setBookFB,
+    signUpAuth,
+    signInAuth,
+    resetPasswordAuth,
+    bookBusVerify,
+    getVolunteerDatesFB,
+    updateVolunteerDateFB,
+};

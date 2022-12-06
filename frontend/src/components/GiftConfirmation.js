@@ -1,4 +1,5 @@
 import { Modal, Button } from "react-bootstrap";
+import React from "react";
 
 export default function GiftConfirmation({
     showGC,
@@ -12,6 +13,12 @@ export default function GiftConfirmation({
         setShowGC(false);
     };
 
+    let info = "";
+
+    try {
+        info = book.Title;
+    } catch {}
+
     return (
         <>
             <Modal show={showGC} onHide={() => setShowGC(false)}>
@@ -20,7 +27,7 @@ export default function GiftConfirmation({
                 </Modal.Header>
 
                 <Modal.Body>
-                    <h4>Would you like to gift {book?.Title}?</h4>
+                    <h4>Would you like to gift {info}?</h4>
                     <Button
                         variant="secondary"
                         className="btn btn-danger GiftButtons"
