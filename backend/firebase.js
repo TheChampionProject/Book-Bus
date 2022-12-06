@@ -24,7 +24,6 @@ let databaseBooks = [];
 
 const getBooksFB = async () => {
     databaseBooks = [];
-    let error = false;
     let errorMessage = "";
 
     await get(child(dbRef, `/`))
@@ -32,23 +31,20 @@ const getBooksFB = async () => {
             if (snapshot.exists()) {
                 databaseBooks.push(snapshot.val());
             } else {
-                error = true;
                 errorMessage = "No Data Found";
             }
         })
         .catch((error) => {
-            error = true;
             errorMessage = error;
         });
 
-    if (error) return errorMessage;
+    if (errorMessage !== "") return errorMessage;
     else return databaseBooks;
 };
 
 const setBookFB = async (book, location) => {
     await getBooksFB();
-    let error = false,
-        errorMessage = "";
+    errorMessage = "";
     let archiveDates = [],
         archiveDate;
     let prevArchivedBooks = [];
@@ -111,11 +107,10 @@ const setBookFB = async (book, location) => {
 
     await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
         console.log(e);
-        error = true;
         errorMessage = e;
     });
 
-    if (error) return errorMessage;
+    if (errorMessage !== "") return errorMessage;
     else return "success";
 };
 
@@ -127,7 +122,7 @@ const signUpAuth = async (email, password, first, last) => {
     ).catch((e) => {
         return e;
     });
-    await setDoc(doc(firestoredb, "users", currentUser.user.uid), {
+    await setDoc(doc(firestoredb, "users", auth.currentUser.user.uid), {
         email: email,
         name: first + " " + last,
         password: password,
@@ -157,10 +152,13 @@ const resetPasswordAuth = async (email) => {
 };
 
 const bookBusVerify = async (verificationFile) => {
-    console.log("hello");
-    const targetRef = storageRef(storage, `test/img1`);
+    const auth = getAuth();
+
+    const targetRef = storageRef(
+        storage,
+        `verificationForms/${auth.currentUser.uid}`
+    );
     await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
-        console.log("hello");
         await updateDoc(doc(firestoredb, "users", auth.currentUser.uid), {
             watchedVideo: true,
             uploadedForm: true,
@@ -169,25 +167,53 @@ const bookBusVerify = async (verificationFile) => {
 };
 
 const getVolunteerDatesFB = async () => {
-    let dates;
-    let error = false;
+    let dates = [];
     let errorMessage = "";
     await get(child(dbRef, `/volunteer-dates`))
         .then((snapshot) => {
             if (snapshot.exists()) {
-                dates = snapshot.val();
+                dates.push(snapshot.val());
             } else {
-                error = true;
                 errorMessage = "No Data Found";
             }
         })
         .catch((error) => {
-            error = true;
             errorMessage = error;
         });
 
-    if (error) return errorMessage;
+    if (errorMessage !== "") return errorMessage;
     else return dates;
+};
+
+const updateVolunteerDateFB = async (dateID) => {
+    let dates = await getVolunteerDatesFB();
+    let errorMessage = "",
+        data;
+
+    for (let i in dates[0]) {
+        if (dates[0][i].id === dateID) {
+            data = dates[0][i];
+        }
+    }
+    const auth = getAuth();
+
+    if (data.volunteers.includes(auth.currentUser.uid))
+        return "You are already signed up for this date.";
+
+    data.volunteers.push(auth.currentUser.uid);
+
+    await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
+        (e) => {
+            errorMessage = e;
+        }
+    );
+
+    if (errorMessage !== "") return errorMessage;
+    else return "success";
+};
+
+export const getSignedInUserFB = async () => {
+    return getAuth();
 };
 
 export {
@@ -198,4 +224,5 @@ export {
     resetPasswordAuth,
     bookBusVerify,
     getVolunteerDatesFB,
+    updateVolunteerDateFB,
 };

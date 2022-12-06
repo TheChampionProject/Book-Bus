@@ -6,6 +6,9 @@ import {
     signInAuth,
     resetPasswordAuth,
     bookBusVerify,
+    getVolunteerDatesFB,
+    updateVolunteerDateFB,
+    getSignedInUserFB
 } from "./firebase.js";
 
 import dotenv from "dotenv";
@@ -115,6 +118,14 @@ const getVolunteerDates = asyncHandler(async (req, res) => {
     res.send(await getVolunteerDatesFB());
 });
 
+const signUpForDate = asyncHandler(async (req, res) => {
+    res.send(await updateVolunteerDateFB(req.body.dateID));
+});
+
+const getSignedInUser = asyncHandler(async (req, res) => {
+    res.send(await getSignedInUserFB());
+});
+
 export {
     getAllBooks,
     setBook,
@@ -125,4 +136,6 @@ export {
     resetPassword,
     verify,
     getVolunteerDates,
+    signUpForDate,
+    getSignedInUser
 };

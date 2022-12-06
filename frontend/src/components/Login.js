@@ -35,7 +35,7 @@ const Login = ({ handleChange }) => {
 
     async function handleReset() {
         if (!resetEmail) {
-            alert("please fill in all fields")
+            alert("Please fill in all fields")
         }
         else {
             try {
@@ -87,9 +87,7 @@ const Login = ({ handleChange }) => {
                     </Button>
                     <Stack direction={"row"} justifyContent="space-between">
                         <Link href="#" onClick={handleClickOpen}>Forgot password?</Link>
-                        <Link href="#" onClick={() => handleChange(false)}>
-                            Sign up
-                        </Link>
+                        
                     </Stack>
                 </Stack>
                 <Dialog open={open}>

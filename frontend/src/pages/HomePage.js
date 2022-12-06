@@ -1,25 +1,56 @@
-import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
-import React from "react";
+import React, { useState, useRef } from "react";
+import VolunteerDates from "../components/VolunteerDates";
+import axios from "axios";
 
 export default function HomePage() {
-    useEffect(() => {
-        const getDates = async () => {
-            const dates = await fetch(
-                process.env.REACT_APP_BACKEND_URL + "getDates"
-            )
-                .then((response) => response.json())
-                .then((data) => console.log(data));
-        };
-        getDates();
-    }, []);
+    const [selectedDate, setSelectedDate] = useState("");
+    const [dates, setDates] = useState([]);
+    let startDates = [],
+        dateIDs = [],
+        selectedDateID,
+        okayToProceed = false;
+
+    let dateField = useRef();
+
+    const tryToSelectStartDate = (newDate) => {
+        for (let i = 0; i < dates.length; i++) {
+            startDates.push(dates[i].startDate.slice(0, 10));
+            dateIDs.push(dates[i].id);
+        }
+
+        let dateIndex = startDates.indexOf(newDate);
+        if (
+            (!startDates.includes(newDate) && newDate !== "") ||
+            dateIndex === -1
+        ) {
+            alert("Please select an available date");
+            setSelectedDate("");
+        } else {
+            okayToProceed = true;
+            selectedDateID = dateIDs[dateIndex];
+            setSelectedDate(newDate);
+        }
+    };
+
+    const submit = async (e) => {
+        tryToSelectStartDate(dateField.current.value);
+        if (okayToProceed) {
+            await axios.post(
+                process.env.REACT_APP_BACKEND_URL + "signUpForDate",
+                {
+                    dateID: selectedDateID,
+                }
+            );
+        } else alert("There was an error with your request");
+    };
     return (
         <>
             <div className="CenterHomePage">
                 <h1>Thank you for volunteering for the Champion Project!</h1>
                 <br />
                 <h2>Chose a page to go to: </h2>
-                <br />
+
                 <Button variant="primary" href="/manage">
                     Manage the book database
                 </Button>
@@ -35,12 +66,29 @@ export default function HomePage() {
                 </Button>
                 <br />
                 <br />
+
+                <h2>Or sign up to volunteer: </h2>
+
+                <h5>Available Dates:</h5>
+                <VolunteerDates dates={dates} setDates={setDates} />
                 <br />
-                <h2>Or select a date to volunteer: </h2>
+
+                <h4>Select a date:</h4>
                 <input
                     type="date"
-                    defaultValue={new Date().toISOString().split("T")[0]}
-                ></input>
+                    value={selectedDate}
+                    ref={dateField}
+                    onChange={(e) => {
+                        tryToSelectStartDate(e.target.value);
+                    }}
+                />
+                <Button
+                    variant="primary"
+                    onClick={submit}
+                    className="DateSubmitButton"
+                >
+                    Submit
+                </Button>
             </div>
         </>
     );

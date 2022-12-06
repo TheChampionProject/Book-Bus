@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
 import "../App.css";
 
 export default function EditPopup({
@@ -138,12 +139,82 @@ export default function EditPopup({
                                 onChange={(e) => setTitle(e.target.value)}
                             />
                             <br />
-                            <label className="Popup">Genre: </label>
-                            <input
-                                type="text"
-                                value={genre}
-                                onChange={(e) => setGenre(e.target.value)}
-                            />
+                            <label className="Popup Genre-Label">Genre: </label>
+                            <Dropdown>
+                                <Dropdown.Toggle
+                                    variant="primary"
+                                    className="ManagePopupDropdown"
+                                >
+                                    {genre}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className="ManagePopupDropdownMenu">
+                                    <Dropdown.Item
+                                        onClick={() =>
+                                            setGenre("Explore: Fantasy")
+                                        }
+                                    >
+                                        Explore: Fantasy
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        onClick={() =>
+                                            setGenre(
+                                                "Explore: Historical Fiction"
+                                            )
+                                        }
+                                    >
+                                        Explore: Historical Fiction
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        onClick={() => setGenre("Explore")}
+                                    >
+                                        Explore
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        onClick={() =>
+                                            setGenre("Laugh: Graphic Novel")
+                                        }
+                                    >
+                                        Laugh: Graphic Novel
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        onClick={() => setGenre("Laugh")}
+                                    >
+                                        Laugh
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        onClick={() =>
+                                            setGenre("Be Inspired: People")
+                                        }
+                                    >
+                                        Be Inspired: People
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        onClick={() =>
+                                            setGenre("Be Inspired: Event")
+                                        }
+                                    >
+                                        Be Inspired: Event
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        onClick={() => setGenre("Be Inspired")}
+                                    >
+                                        Be Inspired
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        onClick={() =>
+                                            setGenre("Solve It: Activity")
+                                        }
+                                    >
+                                        Solve It: Activity
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        onClick={() => setGenre("Solve It")}
+                                    >
+                                        Solve It
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
 
                             <br />
                             <label className="Popup">Price: </label>
