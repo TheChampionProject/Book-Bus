@@ -44,7 +44,7 @@ const getBooksFB = async () => {
 
 const setBookFB = async (book, location) => {
     await getBooksFB();
-        errorMessage = "";
+    errorMessage = "";
     let archiveDates = [],
         archiveDate;
     let prevArchivedBooks = [];
@@ -162,12 +162,12 @@ const bookBusVerify = async (verificationFile) => {
 };
 
 const getVolunteerDatesFB = async () => {
-    let dates;
+    let dates = [];
     let errorMessage = "";
     await get(child(dbRef, `/volunteer-dates`))
         .then((snapshot) => {
             if (snapshot.exists()) {
-                dates = snapshot.val();
+                dates.push(snapshot.val());
             } else {
                 errorMessage = "No Data Found";
             }
@@ -180,17 +180,35 @@ const getVolunteerDatesFB = async () => {
     else return dates;
 };
 
-const updateVolunteerDateFB = async () => {
-    let errorMessage = "";
-    await set(ref(db, `/volunteer-dates`), {
-        date: new Date().toISOString(),
-    }).catch((e) => {
-        errorMessage = e;
-    });
+const updateVolunteerDateFB = async (dateID) => {
+    let dates = await getVolunteerDatesFB();
+    let volunteers = "",
+        errorMessage = "";
+
+    for (let i in dates[0]) {
+        if (dates[0][i].id === dateID) {
+            volunteers = dates[0][i].volunteers;
+        }
+    }
+
+    console.log(volunteers);
+
+    //if (volunteers.includes(auth.currentUser.uid))
+    //    return "You are already signed up for this date.";
+    //else if (volunteers === "")
+    //    return "There was an error signing up for this date. Please try again later.";
+
+    //volunteers.push(auth.currentUser.uid);
+
+    await set(ref(db, `/volunteer-dates/${dateID}`), { volunteers }).catch(
+        (e) => {
+            errorMessage = e;
+        }
+    );
 
     if (errorMessage !== "") return errorMessage;
     else return "success";
-}
+};
 
 export {
     getBooksFB,

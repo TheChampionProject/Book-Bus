@@ -3,9 +3,14 @@ import React from "react";
 export default function VolunteerDates({ dates: dates, setDates: setDates }) {
     useEffect(() => {
         const getDates = async () => {
+            let dates = [];
+
             await fetch(process.env.REACT_APP_BACKEND_URL + "getDates")
                 .then((response) => response.json())
-                .then((data) => setDates(data));
+                .then((data) => {
+                    for (let i in data[0]) dates.push(data[0][i]);
+                    setDates(dates);
+                });
         };
         getDates();
     }, []);
@@ -18,8 +23,7 @@ export default function VolunteerDates({ dates: dates, setDates: setDates }) {
                 {new Date(date.startDate).getHours() > 12
                     ? new Date(date.startDate).getHours() - 12 + "pm"
                     : new Date(date.startDate).getHours()}{" "}
-                    at {date.location}{" "}
-                to{" "}
+                at {date.location} to{" "}
                 {new Date(date.endDate).getHours() > 12
                     ? new Date(date.endDate).getHours() - 12 + "pm"
                     : new Date(date.endDate).getHours()}

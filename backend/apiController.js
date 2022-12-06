@@ -118,8 +118,7 @@ const getVolunteerDates = asyncHandler(async (req, res) => {
 });
 
 const signUpForDate = asyncHandler(async (req, res) => {
-    console.log(req.body)
-    //res.send(await updateVolunteerDateFB());
+    res.send(await updateVolunteerDateFB(req.body.dateID));
 });
 
 export {
