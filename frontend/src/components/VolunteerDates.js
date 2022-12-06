@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import React from "react";
-export default function VolunteerDates({ dates: dates, setDates: setDates }) {
+export default function VolunteerDates({ dates, setDates }) {
     useEffect(() => {
         const getDates = async () => {
             let dates = [];

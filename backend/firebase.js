@@ -122,7 +122,7 @@ const signUpAuth = async (email, password, first, last) => {
     ).catch((e) => {
         return e;
     });
-    await setDoc(doc(firestoredb, "users", currentUser.user.uid), {
+    await setDoc(doc(firestoredb, "users", auth.currentUser.user.uid), {
         email: email,
         name: first + " " + last,
         password: password,
@@ -152,7 +152,12 @@ const resetPasswordAuth = async (email) => {
 };
 
 const bookBusVerify = async (verificationFile) => {
-    const targetRef = storageRef(storage, `test/img1`);
+    const auth = getAuth();
+
+    const targetRef = storageRef(
+        storage,
+        `verificationForms/${auth.currentUser.uid}`
+    );
     await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
         await updateDoc(doc(firestoredb, "users", auth.currentUser.uid), {
             watchedVideo: true,
@@ -182,25 +187,22 @@ const getVolunteerDatesFB = async () => {
 
 const updateVolunteerDateFB = async (dateID) => {
     let dates = await getVolunteerDatesFB();
-    let volunteers = "",
-        errorMessage = "";
+    let errorMessage = "",
+        data;
 
     for (let i in dates[0]) {
         if (dates[0][i].id === dateID) {
-            volunteers = dates[0][i].volunteers;
+            data = dates[0][i];
         }
     }
+    const auth = getAuth();
 
-    console.log(volunteers);
+    if (data.volunteers.includes(auth.currentUser.uid))
+        return "You are already signed up for this date.";
 
-    //if (volunteers.includes(auth.currentUser.uid))
-    //    return "You are already signed up for this date.";
-    //else if (volunteers === "")
-    //    return "There was an error signing up for this date. Please try again later.";
+    data.volunteers.push(auth.currentUser.uid);
 
-    //volunteers.push(auth.currentUser.uid);
-
-    await set(ref(db, `/volunteer-dates/${dateID}`), { volunteers }).catch(
+    await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
         (e) => {
             errorMessage = e;
         }
@@ -208,6 +210,10 @@ const updateVolunteerDateFB = async (dateID) => {
 
     if (errorMessage !== "") return errorMessage;
     else return "success";
+};
+
+export const getSignedInUserFB = async () => {
+    return getAuth();
 };
 
 export {

@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import VolunteerDates from "../components/VolunteerDates";
 import axios from "axios";
 

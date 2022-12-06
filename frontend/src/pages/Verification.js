@@ -21,7 +21,7 @@ export default function VolunteerVerify() {
                     data: bodyFormData,
                     headers: { "Content-Type": "multipart/form-data" },
                 });
-                navigate("/manage");
+                navigate("/home");
             } catch (err) {
                 console.log(err);
             }
@@ -88,7 +88,7 @@ export default function VolunteerVerify() {
             <Toolbar sx={{ justifyContent: "space-between" }}>
                 <div />
                 <Button
-                    href="/donate"
+                    href="/home"
                     sx={{ borderRadius: 20, height: 65 }}
                     variant="outlined"
                     color="error"
