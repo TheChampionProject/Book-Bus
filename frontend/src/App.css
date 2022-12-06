@@ -216,3 +216,14 @@
     width: 50%;
     top: 0px;
 }
+
+.ManagePopupDropdown {
+    position: relative;
+    left: 11em;
+    top: -1em;
+}
+
+.Genre-Label {
+    position: relative;
+    top: 1em;
+}

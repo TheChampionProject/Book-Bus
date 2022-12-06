@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import VolunteerDates from "../components/VolunteerDates";
 
 export default function HomePage() {

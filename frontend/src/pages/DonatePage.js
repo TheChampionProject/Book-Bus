@@ -18,11 +18,11 @@ export default function DonatePage() {
     return (
         <>
             <div className="fixed-top navbar NavHead">
-                <a href="https://thechampionproject.org/">Go to Our Website</a>
+                <a href="https://thechampionproject.org/">Want to learn more about us?</a>
 
                 <h3 className="CPStyle">The Champion Project</h3>
 
-                <a href="/login">Sign In/Up to Volunteer</a>
+                <a href="/login">Sign in/up to volunteer</a>
             </div>
 
             <div className="TextCenterDiv">
