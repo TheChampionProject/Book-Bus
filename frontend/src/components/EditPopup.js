@@ -87,12 +87,17 @@ export default function EditPopup({
         }
 
         if (inventory > book.Inventory) {
-            book.AddDates = [
-                ...(book.AddDates === "null" ? [] : book.AddDates),
-                ...Array(inventory - book.Inventory).fill(
-                    new Date().toISOString()
-                ),
-            ];
+            //book.AddDates = [
+            //    ...(book.AddDates === "null" ? [] : book.AddDates),
+            //    ...Array(inventory - book.Inventory).fill(
+            //        new Date().toISOString()
+            //    ),
+            //];
+
+            if (book.AddDates === undefined) book.AddDates = [];
+            else book.AddDates.push(...book.AddDates);
+
+            for (let i = 0; i < inventory - book.Inventory; i++) book.AddDates.push(new Date().toISOString());
         }
 
         book.Title = title;
