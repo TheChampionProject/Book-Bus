@@ -151,7 +151,7 @@ const bookBusVerify = async (verificationFile) => {
 
     const targetRef = storageRef(
         storage,
-        `verificationForms/${auth.currentUser.uid}`
+        `verificationForms/${auth.currentUser.displayName}`
     );
     await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
         await updateDoc(doc(firestoredb, "users", auth.currentUser.uid), {
@@ -192,10 +192,10 @@ const updateVolunteerDateFB = async (dateID) => {
     }
     const auth = getAuth();
 
-    if (data.volunteers.includes(auth.currentUser.uid))
+    if (data.volunteers.includes(auth.currentUser.displayName))
         return "You are already signed up for this date.";
 
-    data.volunteers.push(auth.currentUser.uid);
+    data.volunteers.push(auth.currentUser.displayName);
 
     await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
         (e) => {
