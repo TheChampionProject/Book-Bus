@@ -10,7 +10,6 @@ import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
-import { v4 as uuid4 } from "uuid";
 
 dotenv.config();
 
@@ -44,7 +43,7 @@ const getBooksFB = async () => {
 
 const setBookFB = async (book, location) => {
     await getBooksFB();
-    errorMessage = "";
+    let errorMessage = "";
     let archiveDates = [],
         archiveDate;
     let prevArchivedBooks = [];
@@ -78,9 +77,7 @@ const setBookFB = async (book, location) => {
             archiveDates.push(archiveDate);
             book.Index = prevArchivedBooks.length;
         }
-    } else if (location == "active") {
-        book.UUID = uuid4();
-    }
+     }
 
     const editedBook = {
         Title: book.Title,
@@ -94,7 +91,6 @@ const setBookFB = async (book, location) => {
         params = { ...editedBook, ArchiveDates: archiveDates };
     } else {
         if (book.Inventory === 0) {
-            console.log("deleting " + book);
             params = null;
         } else
             params = {
@@ -106,7 +102,6 @@ const setBookFB = async (book, location) => {
     }
 
     await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
-        console.log(e);
         errorMessage = e;
     });
 
