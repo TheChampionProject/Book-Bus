@@ -16,15 +16,16 @@ export default function QueryRow({
         e.preventDefault();
 
         if (
-            books.filter(({ Title }) => Title.toLowerCase() === book.volumeInfo.title.toLowerCase())
-                .length > 0
+            books.filter(
+                ({ Title }) =>
+                    Title.toLowerCase() === book.volumeInfo.title.toLowerCase()
+            ).length > 0
         ) {
             alert(
                 "This book is already in the database. Please find it and change its inventory instead."
             );
             return;
         }
-
 
         refinedBook.AddDates = []; // Date for when book is added. Some books already with this name so can't pick a better one :(
         refinedBook.AddDates.push(new Date().toISOString());
@@ -47,10 +48,10 @@ export default function QueryRow({
                     { ISBN }
                 );
 
-                if (typeof booksRunPrice.data.price === "number")
+                if (typeof booksRunPrice.data.price === "number") {
                     // If they have the price
                     refinedBook.Price = booksRunPrice.data.price;
-                else refinedBook.Price = "N/A"; // No one has the price :(
+                } else refinedBook.Price = "N/A"; // No one has the price :(
             } catch {
                 refinedBook.Price = "N/A"; // No one has the price :(
             }

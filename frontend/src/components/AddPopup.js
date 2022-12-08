@@ -21,8 +21,18 @@ export default function AddPopup({
         setShowTable(false);
     }, [showAddPopup]);
 
-    const manuallyAdd = (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        const statusKeyboardInput = (e) => {
+            if (e.keyCode === 32) {
+                manuallyAdd();
+            }
+        };
+
+        window.addEventListener("keydown", statusKeyboardInput);
+        return () => window.removeEventListener("keydown", statusKeyboardInput);
+    });
+
+    const manuallyAdd = () => {
         setBook(null);
         setShowAddPopup(false);
         setShowEditPopup(true);
@@ -30,22 +40,57 @@ export default function AddPopup({
 
     const searchForBook = async (e) => {
         e.preventDefault();
-        await axios
-            .post(process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks", {
-                title: searchQuery.current.value,
-            })
-            .catch(() => {
-                setAlert({
-                    show: true,
-                    message:
-                        "There was a problem with your search query. Please refresh and try again.",
-                    success: false,
+        try {
+            let request = await axios
+                .post(
+                    process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
+                    {
+                        title: searchQuery.current.value,
+                    }
+                )
+                .catch(() => {
+                    setAlert({
+                        show: true,
+                        message:
+                            "There was a problem with your search query. Please refresh and try again.",
+                        success: false,
+                    });
+                })
+                .then((response) => {
+                    setShowTable(true);
+                    if (response.data === "Error") {
+                        setShowTable(false);
+
+                        setAlert({
+                            show: true,
+                            message:
+                                "There was a problem with your search query. Please refresh and try again.",
+                            success: false,
+                        });
+
+                        setTimeout(() => {
+                            setAlert({
+                                show: false,
+                            });
+                        }, 3000);
+                    } else setQueryList(response.data);
                 });
-            })
-            .then((response) => {
-                setShowTable(true);
-                setQueryList(response.data);
+        } catch {
+            setShowTable(false);
+
+            setAlert({
+                show: true,
+                message:
+                    "There was a problem with your search query. Please refresh and try again.",
+                success: false,
             });
+
+            setTimeout(() => {
+                setAlert({
+                    show: false,
+                });
+            }, 3000);
+        }
     };
     return (
         <>
@@ -76,6 +121,7 @@ export default function AddPopup({
                         <button
                             className="FakeLink"
                             onClick={(e) => {
+                                e.preventDefault();
                                 manuallyAdd(e);
                             }}
                             style={{

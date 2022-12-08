@@ -11,8 +11,8 @@ export default function EditPopup({
     setAlert,
 }) {
     let autoFillTitle = "";
-    let autoFillGenre = "";
-    let autoFillInventory = "";
+    let autoFillGenre = "N/A";
+    let autoFillInventory = "1";
     let autoFillNeeded = 0;
     let autoFillPrice = 0;
     let addBook = false;
@@ -87,17 +87,11 @@ export default function EditPopup({
         }
 
         if (inventory > book.Inventory) {
-            //book.AddDates = [
-            //    ...(book.AddDates === "null" ? [] : book.AddDates),
-            //    ...Array(inventory - book.Inventory).fill(
-            //        new Date().toISOString()
-            //    ),
-            //];
-
             if (book.AddDates === undefined) book.AddDates = [];
             else book.AddDates.push(...book.AddDates);
 
-            for (let i = 0; i < inventory - book.Inventory; i++) book.AddDates.push(new Date().toISOString());
+            for (let i = 0; i < inventory - book.Inventory; i++)
+                book.AddDates.push(new Date().toISOString());
         }
 
         book.Title = title;
@@ -132,7 +126,9 @@ export default function EditPopup({
         <>
             <Modal show={showEditPopup} onHide={() => close()}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit This Book</Modal.Title>
+                    <Modal.Title>
+                        {addBook ? "Manually Add a Book" : "Edit " + title}
+                    </Modal.Title>
                 </Modal.Header>
                 <form>
                     <Modal.Body>

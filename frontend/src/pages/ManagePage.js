@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BookTable from "../components/BookTable.js";
 import TableHeader from "../components/TableHeader.js";
 import Table from "react-bootstrap/Table";
@@ -24,6 +24,17 @@ export default function ManagePage() {
         e.preventDefault();
         setShowAddPopup(true);
     };
+
+    useEffect(() => {
+        const statusKeyboardInput = (e) => {
+            if (e.keyCode === 13 && !showEditPoup && !showAddPopup) {
+                setShowAddPopup(true);
+            }
+        };
+
+        window.addEventListener("keydown", statusKeyboardInput);
+        return () => window.removeEventListener("keydown", statusKeyboardInput);
+    });
 
     return (
         <>

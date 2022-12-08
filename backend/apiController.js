@@ -8,7 +8,7 @@ import {
     bookBusVerify,
     getVolunteerDatesFB,
     updateVolunteerDateFB,
-    getSignedInUserFB
+    getSignedInUserFB,
 } from "./firebase.js";
 
 import dotenv from "dotenv";
@@ -38,11 +38,17 @@ const getSearchQueryBooks = asyncHandler(async (req, res) => {
         GOOGLE_BOOKS_API_BASE_URL + req.body.title
     );
 
-    for (let i = 0; i < booksRequest.data.items.length; i++) {
-        books.push(booksRequest.data.items[i]);
+    try {
+        if (!booksRequest.data.items) res.send("Error");
+        else {
+            for (let i = 0; i < booksRequest.data.items.length; i++) {
+                books.push(booksRequest.data.items[i]);
+            }
+            res.send(books);
+        }
+    } catch {
+        res.send("Error");
     }
-
-    res.send(books);
 });
 
 const getBookPrice = asyncHandler(async (req, res) => {
@@ -52,9 +58,9 @@ const getBookPrice = asyncHandler(async (req, res) => {
         BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
     );
 
-    if ((price = priceRequest.data.result.offers.booksrun.new !== "none"))
+    if (priceRequest.data.result.offers.booksrun.new !== "none")
         price = priceRequest.data.result.offers.booksrun.new;
-    else if ((price = priceRequest.data.result.offers.booksrun.used !== "none"))
+    else if (priceRequest.data.result.offers.booksrun.used !== "none")
         price = priceRequest.data.result.offers.booksrun.used;
     else price = "Price Not Found";
 
@@ -137,5 +143,5 @@ export {
     verify,
     getVolunteerDates,
     signUpForDate,
-    getSignedInUser
+    getSignedInUser,
 };
