@@ -6,7 +6,7 @@ import {
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, updateDoc, getDoc } from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
@@ -130,14 +130,17 @@ const signUpAuth = async (email, password, first, last) => {
 };
 
 const signInAuth = async (email, password) => {
-    const currentUser = await signInWithEmailAndPassword(
+    await signInWithEmailAndPassword(
         auth,
         email,
         password
     ).catch((e) => {
         return e;
     });
-    return currentUser;
+    const docRef = doc(firestoredb, "users", auth.currentUser.uid)
+    const docSnap = await getDoc(docRef);
+    const verification = docSnap.data();
+    return verification;
 };
 
 const resetPasswordAuth = async (email) => {
@@ -147,14 +150,16 @@ const resetPasswordAuth = async (email) => {
 };
 
 const bookBusVerify = async (verificationFile) => {
-    const auth = getAuth();
+    const docRef = doc(firestoredb, "users", auth.currentUser.uid)
+    const docSnap = await getDoc(docRef);
+    const usrName = docSnap.data().name;
 
     const targetRef = storageRef(
         storage,
-        `verificationForms/${auth.currentUser.uid}`
+        `verificationForms/${usrName.split(" ")[0]}_${usrName.split(" ")[1]}_verificationForm.pdf`
     );
     await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
-        await updateDoc(doc(firestoredb, "users", auth.currentUser.uid), {
+        await updateDoc(docRef, {
             watchedVideo: true,
             uploadedForm: true,
         });
