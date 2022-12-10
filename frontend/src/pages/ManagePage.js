@@ -27,7 +27,8 @@ export default function ManagePage() {
 
     useEffect(() => {
         const statusKeyboardInput = (e) => {
-            if (e.keyCode === 13 && !showEditPoup && !showAddPopup) {
+            if (e.keyCode === 16 && !showEditPoup && !showAddPopup) {
+                console.log("Call");
                 setShowAddPopup(true);
             }
         };

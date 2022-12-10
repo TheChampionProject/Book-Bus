@@ -1,5 +1,5 @@
 import { Modal, Button, Table } from "react-bootstrap";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import QueryResults from "./QueryResults.js";
 import "../App.css";
@@ -14,8 +14,7 @@ export default function AddPopup({
 }) {
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
-
-    const searchQuery = useRef();
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         setShowTable(false);
@@ -23,9 +22,7 @@ export default function AddPopup({
 
     useEffect(() => {
         const statusKeyboardInput = (e) => {
-            if (e.keyCode === 32) {
-                manuallyAdd();
-            }
+            if (e.keyCode === 220) manuallyAdd();
         };
 
         window.addEventListener("keydown", statusKeyboardInput);
@@ -41,11 +38,11 @@ export default function AddPopup({
     const searchForBook = async (e) => {
         e.preventDefault();
         try {
-            let request = await axios
+            await axios
                 .post(
                     process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
                     {
-                        title: searchQuery.current.value,
+                        title: searchQuery,
                     }
                 )
                 .catch(() => {
@@ -102,9 +99,11 @@ export default function AddPopup({
                     <form>
                         <input
                             type="text"
+                            autoFocus
                             placeholder="Search For a Title"
                             className="AddPopup"
-                            ref={searchQuery}
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                         />
 
                         <Button

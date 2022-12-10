@@ -14,7 +14,7 @@ export default function EditPopup({
     let autoFillGenre = "N/A";
     let autoFillInventory = "1";
     let autoFillNeeded = 0;
-    let autoFillPrice = 0;
+    let autoFillPrice = "";
     let addBook = false;
 
     try {
@@ -42,7 +42,7 @@ export default function EditPopup({
 
     let previousTitle = useRef("");
     let previousGenre = useRef("");
-    let previousInventory = useRef("");
+    let previousInventory = useRef("1");
     let previousNeeded = useRef("");
     let previousPrice = useRef("");
 
@@ -136,8 +136,12 @@ export default function EditPopup({
                             <label className="Popup">Title: </label>
                             <input
                                 type="text"
+                                autoFocus
                                 value={title}
-                                onChange={(e) => setTitle(e.target.value)}
+                                onChange={(e) => {
+                                    if (e.target.value !== "\\")
+                                        setTitle(e.target.value);
+                                }}
                             />
                             <br />
                             <label className="Popup Genre-Label">Genre: </label>
