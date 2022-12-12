@@ -257,7 +257,7 @@ export default function EditPopup({
                                     className="btn btn-success"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        setInventory(++inventory); // It has to be clicked twice to work
+                                        setInventory(++inventory);
                                     }}
                                 />
                             </div>
@@ -271,7 +271,7 @@ export default function EditPopup({
                                     className="btn btn-danger"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        setNeeded(--needed); // It has to be clicked twice to work
+                                        setNeeded(--needed);
                                     }}
                                 />
 
