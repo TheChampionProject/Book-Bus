@@ -27,16 +27,23 @@ const getAllBooks = asyncHandler(async (req, res) => {
 });
 
 const getSearchQueryBooks = asyncHandler(async (req, res) => {
-    let books = [];
+    let books = [],
+        booksRequest;
 
     if (!req.body.title) {
         res.status(400);
         throw new Error("Missing Title");
     }
 
-    let booksRequest = await axios.get(
-        GOOGLE_BOOKS_API_BASE_URL + req.body.title
-    );
+    if (req.body.mode === "titleSearch") {
+        booksRequest = await axios.get(
+            GOOGLE_BOOKS_API_BASE_URL + req.body.title
+        );
+    } else {
+        booksRequest = await axios.get(
+            GOOGLE_BOOKS_API_BASE_URL + "isbn:" + req.body.ISBN
+        );
+    }
 
     try {
         if (!booksRequest.data.items) res.send("Error");

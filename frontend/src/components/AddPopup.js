@@ -42,7 +42,7 @@ export default function AddPopup({
                 .post(
                     process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
                     {
-                        title: searchQuery,
+                        title: searchQuery, mode: "titleSearch",
                     }
                 )
                 .catch(() => {

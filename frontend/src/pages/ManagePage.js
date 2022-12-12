@@ -37,6 +37,19 @@ export default function ManagePage() {
         return () => window.removeEventListener("keydown", statusKeyboardInput);
     });
 
+//    window.onkeypress = (e) => {
+//        let barcode = "";
+//        let code = e.keyCode ? e.keyCode : e.which;
+//        barcode=barcode+String.fromCharCode(code);
+//        scannedBarcode += barcode;
+//  
+//        if (code === ENTER_KEY) {
+//          console.log("DISPATCHING: " + scannedBarcode);
+//          self.scan(scannedBarcode);
+//          scannedBarcode = '';
+//        }
+//      }
+
     return (
         <>
             <div className="fixed-top navbar NavHead">
