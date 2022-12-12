@@ -9,6 +9,7 @@ import {
     getVolunteerDatesFB,
     updateVolunteerDateFB,
     getSignedInUserFB,
+    signOutUser
 } from "./firebase.js";
 
 import dotenv from "dotenv";
@@ -132,6 +133,10 @@ const getSignedInUser = asyncHandler(async (req, res) => {
     res.send(await getSignedInUserFB());
 });
 
+const logout = asyncHandler(async (req, res) => {
+    await signOutUser();
+})
+
 export {
     getAllBooks,
     setBook,
@@ -144,4 +149,5 @@ export {
     getVolunteerDates,
     signUpForDate,
     getSignedInUser,
+    logout
 };

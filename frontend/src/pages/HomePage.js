@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import React, { useState, useRef } from "react";
 import VolunteerDates from "../components/VolunteerDates";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
     const [selectedDate, setSelectedDate] = useState("");
@@ -12,6 +13,7 @@ export default function HomePage() {
         okayToProceed = false;
 
     let dateField = useRef();
+    let navigate = useNavigate();
 
     const tryToSelectStartDate = (newDate) => {
         for (let i = 0; i < dates.length; i++) {
@@ -48,6 +50,18 @@ export default function HomePage() {
             alert("There was an error with your request");
         }
     };
+
+    const handleLogout = async () => {
+        try {
+            await axios
+                .post(process.env.REACT_APP_BACKEND_URL + "logout")
+                .then(() => {
+                    navigate("/login")
+                })
+        } catch (err) {
+            alert("Unable to Sign Out!")
+        }
+    }
     return (
         <>
             <div className="CenterHomePage">
@@ -70,6 +84,9 @@ export default function HomePage() {
                 </Button>
                 <br />
                 <br />
+                <Button variant="primary" onClick={handleLogout}>
+                    Sign Out
+                </Button>
 
                 <h2>Or sign up to volunteer: </h2>
 

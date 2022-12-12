@@ -5,6 +5,7 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
+    signOut
 } from "firebase/auth";
 import {
     getFirestore,
@@ -220,6 +221,10 @@ const updateVolunteerDateFB = async (dateID) => {
     else return "success";
 };
 
+const signOutUser = async () => {
+    await signOut(auth);
+}
+
 export const getSignedInUserFB = async () => {
     return getAuth();
 };
@@ -233,4 +238,5 @@ export {
     bookBusVerify,
     getVolunteerDatesFB,
     updateVolunteerDateFB,
+    signOutUser
 };
