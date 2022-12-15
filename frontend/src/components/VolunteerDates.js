@@ -10,6 +10,7 @@ export default function VolunteerDates({ dates, setDates }) {
                 .then((data) => {
                     for (let i in data[0]) dates.push(data[0][i]);
                     setDates(dates);
+                    
                 });
         };
         getDates();
@@ -19,14 +20,15 @@ export default function VolunteerDates({ dates, setDates }) {
     else
         return dates.map((date, number) => (
             <div key={number}>
-                {new Date(date.startDate).toDateString()} at{" "}
+                {new Date(date.startDate).toDateString()} from{" "}
                 {new Date(date.startDate).getHours() > 12
                     ? new Date(date.startDate).getHours() - 12 + "pm"
                     : new Date(date.startDate).getHours()}{" "}
-                at {date.location} to{" "}
+                to{" "}
                 {new Date(date.endDate).getHours() > 12
                     ? new Date(date.endDate).getHours() - 12 + "pm"
-                    : new Date(date.endDate).getHours()}
+                    : new Date(date.endDate).getHours()}{" "}
+                at {date.location}
             </div>
         ));
 }

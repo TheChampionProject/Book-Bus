@@ -9,6 +9,7 @@ import {
     getVolunteerDatesFB,
     updateVolunteerDateFB,
     getSignedInUserFB,
+    changeDateFB,
 } from "./firebase.js";
 
 import dotenv from "dotenv";
@@ -22,11 +23,11 @@ const GOOGLE_BOOKS_API_BASE_URL =
 
 const BOOKS_RUN_API_BASE_URL = "https://booksrun.com/api/v3/price/buy/";
 
-const getAllBooks = asyncHandler(async (req, res) => {
+export const getAllBooks = asyncHandler(async (req, res) => {
     res.send(await getBooksFB());
 });
 
-const getSearchQueryBooks = asyncHandler(async (req, res) => {
+export const getSearchQueryBooks = asyncHandler(async (req, res) => {
     let books = [],
         booksRequest;
 
@@ -46,8 +47,9 @@ const getSearchQueryBooks = asyncHandler(async (req, res) => {
     }
 
     try {
-        if (!booksRequest.data.items) res.send("Error");
-        else {
+        if (!booksRequest.data.items) {
+            res.send("Error");
+        } else {
             for (let i = 0; i < booksRequest.data.items.length; i++) {
                 books.push(booksRequest.data.items[i]);
             }
@@ -58,7 +60,7 @@ const getSearchQueryBooks = asyncHandler(async (req, res) => {
     }
 });
 
-const getBookPrice = asyncHandler(async (req, res) => {
+export const getBookPrice = asyncHandler(async (req, res) => {
     ISBN = req.body.ISBN;
 
     let priceRequest = await axios.get(
@@ -75,7 +77,7 @@ const getBookPrice = asyncHandler(async (req, res) => {
 });
 
 // Can update a book, add a book, and archive a book
-const setBook = asyncHandler(async (req, res) => {
+export const setBook = asyncHandler(async (req, res) => {
     if (!req.body.newBook) {
         res.status(400);
         throw new Error("Missing Book");
@@ -91,7 +93,7 @@ const setBook = asyncHandler(async (req, res) => {
     else res.send("failure");
 });
 
-const signup = asyncHandler(async (req, res) => {
+export const signup = asyncHandler(async (req, res) => {
     try {
         res.send(
             await signUpAuth(
@@ -106,7 +108,7 @@ const signup = asyncHandler(async (req, res) => {
     }
 });
 
-const login = asyncHandler(async (req, res) => {
+export const login = asyncHandler(async (req, res) => {
     try {
         res.send(await signInAuth(req.body.email, req.body.password));
     } catch (err) {
@@ -114,7 +116,7 @@ const login = asyncHandler(async (req, res) => {
     }
 });
 
-const resetPassword = asyncHandler(async (req, res) => {
+export const resetPassword = asyncHandler(async (req, res) => {
     try {
         await resetPasswordAuth(req.body.email);
     } catch (err) {
@@ -122,33 +124,24 @@ const resetPassword = asyncHandler(async (req, res) => {
     }
 });
 
-const verify = asyncHandler(async (req, res) => {
+export const verify = asyncHandler(async (req, res) => {
     await bookBusVerify(req.file);
     res.send("success");
 });
 
-const getVolunteerDates = asyncHandler(async (req, res) => {
+export const getVolunteerDates = asyncHandler(async (req, res) => {
     res.send(await getVolunteerDatesFB());
 });
 
-const signUpForDate = asyncHandler(async (req, res) => {
+export const signUpForDate = asyncHandler(async (req, res) => {
     res.send(await updateVolunteerDateFB(req.body.dateID));
 });
 
-const getSignedInUser = asyncHandler(async (req, res) => {
-    res.send(await getSignedInUserFB());
+export const changeDate = asyncHandler(async (req, res) => {
+    console.log(req.body.newData);
+    res.send(await changeDateFB(req.body.newData));
 });
 
-export {
-    getAllBooks,
-    setBook,
-    getSearchQueryBooks,
-    getBookPrice,
-    signup,
-    login,
-    resetPassword,
-    verify,
-    getVolunteerDates,
-    signUpForDate,
-    getSignedInUser,
-};
+export const getSignedInUser = asyncHandler(async (req, res) => {
+    res.send(await getSignedInUserFB());
+});

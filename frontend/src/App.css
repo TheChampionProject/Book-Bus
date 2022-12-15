@@ -212,8 +212,16 @@
 }
 
 .CenterHomePage {
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 50%;
+    top: 0px;
+}
+
+.CenterAdminPage {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
     top: 0px;
 }
 
@@ -233,4 +241,8 @@
 .DateSubmitButton {
     position: relative;
     left: 1em;
+}
+
+.Hidden {
+    display: none;
 }

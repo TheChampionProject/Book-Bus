@@ -18,6 +18,7 @@ export default function AddPopup({
 
     useEffect(() => {
         setShowTable(false);
+        setSearchQuery("");
     }, [showAddPopup]);
 
     useEffect(() => {
@@ -37,56 +38,33 @@ export default function AddPopup({
 
     const searchForBook = async (e) => {
         e.preventDefault();
-        try {
-            await axios
-                .post(
-                    process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
-                    {
-                        title: searchQuery, mode: "titleSearch",
-                    }
-                )
-                .catch(() => {
-                    setAlert({
-                        show: true,
-                        message:
-                            "There was a problem with your search query. Please refresh and try again.",
-                        success: false,
-                    });
-                })
-                .then((response) => {
-                    setShowTable(true);
-                    if (response.data === "Error") {
-                        setShowTable(false);
 
-                        setAlert({
-                            show: true,
-                            message:
-                                "There was a problem with your search query. Please refresh and try again.",
-                            success: false,
-                        });
+        let request = await axios.post(
+            process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
+            {
+                title: searchQuery,
+                mode: "titleSearch",
+            }
+        );
 
-                        setTimeout(() => {
-                            setAlert({
-                                show: false,
-                            });
-                        }, 3000);
-                    } else setQueryList(response.data);
-                });
-        } catch {
-            setShowTable(false);
-
+        if (request.data === "Error") {
             setAlert({
                 show: true,
-                message:
-                    "There was a problem with your search query. Please refresh and try again.",
+                message: "We couldn't find that book. Please add it manually.",
                 success: false,
             });
+
+            manuallyAdd();
 
             setTimeout(() => {
                 setAlert({
                     show: false,
                 });
             }, 3000);
+        } else {
+            setQueryList(request.data);
+
+            setShowTable(true);
         }
     };
     return (

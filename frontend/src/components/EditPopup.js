@@ -9,6 +9,7 @@ export default function EditPopup({
     book,
     setManagedBook,
     setAlert,
+    lastGenre,
 }) {
     let autoFillTitle = "";
     let autoFillGenre = "N/A";
@@ -20,11 +21,13 @@ export default function EditPopup({
     try {
         if (book !== null) {
             autoFillTitle = book.Title;
-            autoFillGenre = book.Genre;
+            autoFillGenre = lastGenre.current;
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
-        } else addBook = true;
+        } else {
+            addBook = true;
+        }
     } catch {
         setAlert({
             show: true,
@@ -110,6 +113,7 @@ export default function EditPopup({
             setManagedBook(book);
         }
 
+        lastGenre.current = genre;
         setShowEditPopup(false);
     };
 

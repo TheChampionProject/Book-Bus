@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BookTable from "../components/BookTable.js";
 import TableHeader from "../components/TableHeader.js";
 import Table from "react-bootstrap/Table";
@@ -19,6 +19,7 @@ export default function ManagePage() {
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
     let [books, setBooks] = useState(null);
+    const lastGenre = useRef("");
 
     let handleAddBook = (e) => {
         e.preventDefault();
@@ -28,7 +29,6 @@ export default function ManagePage() {
     useEffect(() => {
         const statusKeyboardInput = (e) => {
             if (e.keyCode === 16 && !showEditPoup && !showAddPopup) {
-                console.log("Call");
                 setShowAddPopup(true);
             }
         };
@@ -37,18 +37,18 @@ export default function ManagePage() {
         return () => window.removeEventListener("keydown", statusKeyboardInput);
     });
 
-//    window.onkeypress = (e) => {
-//        let barcode = "";
-//        let code = e.keyCode ? e.keyCode : e.which;
-//        barcode=barcode+String.fromCharCode(code);
-//        scannedBarcode += barcode;
-//  
-//        if (code === ENTER_KEY) {
-//          console.log("DISPATCHING: " + scannedBarcode);
-//          self.scan(scannedBarcode);
-//          scannedBarcode = '';
-//        }
-//      }
+    //    window.onkeypress = (e) => {
+    //        let barcode = "";
+    //        let code = e.keyCode ? e.keyCode : e.which;
+    //        barcode=barcode+String.fromCharCode(code);
+    //        scannedBarcode += barcode;
+    //
+    //        if (code === ENTER_KEY) {
+    //          console.log("DISPATCHING: " + scannedBarcode);
+    //          self.scan(scannedBarcode);
+    //          scannedBarcode = '';
+    //        }
+    //      }
 
     return (
         <>
@@ -120,6 +120,7 @@ export default function ManagePage() {
                 setBook={setBook}
                 setManagedBook={setManagedBook}
                 setAlert={setAlert}
+                lastGenre={lastGenre}
             />
 
             <AddPopup
