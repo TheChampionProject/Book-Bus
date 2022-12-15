@@ -37,28 +37,17 @@ export default function ManagePage() {
         return () => window.removeEventListener("keydown", statusKeyboardInput);
     });
 
-    //    window.onkeypress = (e) => {
-    //        let barcode = "";
-    //        let code = e.keyCode ? e.keyCode : e.which;
-    //        barcode=barcode+String.fromCharCode(code);
-    //        scannedBarcode += barcode;
-    //
-    //        if (code === ENTER_KEY) {
-    //          console.log("DISPATCHING: " + scannedBarcode);
-    //          self.scan(scannedBarcode);
-    //          scannedBarcode = '';
-    //        }
-    //      }
-
     return (
         <>
+            <div className="FlipPhone alert">Please Flip Your Phone</div>
             <div className="fixed-top navbar NavHead">
-                <a href="/gift">Go to Gift Page</a>
+                <a href="/gift">Gift Page</a>
                 <h3 className="CPStyle">The Champion Project</h3>
                 <div>
                     <input
                         type="text"
                         placeholder="Search"
+                        className="SearchBar"
                         style={{ margin: "1em" }}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />

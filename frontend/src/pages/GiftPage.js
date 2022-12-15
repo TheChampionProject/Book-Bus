@@ -21,16 +21,15 @@ export default function ManagePage() {
     return (
         <>
             <div className="fixed-top navbar NavHead">
-                <a href="/manage">Go to the Manage Page</a>
+                <a href="/manage">Manage Page</a>
                 <h3 className="CPStyle">The Champion Project</h3>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        style={{ margin: "1em" }}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                </div>
+                <input
+                    type="text"
+                    placeholder="Search"
+                    className="SearchBar"
+                    style={{ margin: ".1em" }}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
             </div>
 
             <div
