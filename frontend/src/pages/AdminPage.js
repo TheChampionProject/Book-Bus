@@ -3,16 +3,22 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DateDD from "../components/DateDD";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-
+import uuidv4 from "uuid";
 export default function AdminPage() {
     const [signedUpDateQuery, setSignedUpDateQuery] = useState("");
-    const [dateToBeChanged, setDateToBeChanged] = useState("");
+    const [dateToBeChanged, setDateToBeChanged] = useState({
+        startDate: "Select a date to change",
+    });
     const [newDate, setNewDate] = useState("");
+    const [newEndTime, setNewEndTime] = useState("");
+
     const [newTime, setNewTime] = useState("");
     const [newLocation, setNewLocation] = useState("");
 
     let dateField = useRef();
     const [dates, setDates] = useState([]);
+
+    let [addDateMode, setDateMode] = useState(false);
 
     useEffect(() => {
         const getDates = async () => {
@@ -26,19 +32,35 @@ export default function AdminPage() {
         getDates();
     }, []);
 
+    const addDate = (e) => {
+        e.preventDefault();
+        setDateMode(true);
+        const newDate = {};
+        newDate.id = uuidv4();
+        setDateToBeChanged(newDate);
+    };
+
     const submit = async () => {
+        if (addDateMode) {
+            console.log("Add Mode");
+            if (newDate === "" || newTime === "" || newLocation === "" || newEndTime === "") {
+                alert("Please fill out all fields");
+                return;
+            }
+        }
         let startDate = newDate,
             location = newLocation,
-            time = newTime;
+            time = newTime, endTime = newEndTime;
         if (newDate === "") startDate = dateToBeChanged.startDate.slice(0, 10);
         if (newTime === "") time = dateToBeChanged.startDate.slice(11, 16);
         if (newLocation === "") location = dateToBeChanged.location;
+        if (newEndTime === "") endTime = dateToBeChanged.endDate.slice(11, 16);
 
         const newData = {
             startDate: startDate + " " + time,
             location: location,
             id: dateToBeChanged.id,
-            endDate: dateToBeChanged.endDate,
+            endDate: startDate + " " + endTime,
             volunteers: dateToBeChanged.volunteers,
         };
         const request = await axios.post(
@@ -49,7 +71,7 @@ export default function AdminPage() {
         );
         if (request.data === "Error")
             alert("There was an error with your request");
-        else alert("Date changed successfully");
+        else alert("Date changed successfully. Refresh the page to see changes.");
     };
 
     return (
@@ -57,23 +79,51 @@ export default function AdminPage() {
             <div className="CenterAdminPage">
                 <h1>Admin Page</h1>
                 <br />
-                <h4>Change A BookBus Event Date:</h4>
-                <Dropdown>
-                    <Dropdown.Toggle variant="primary" className="">
-                        {dateToBeChanged.startDate}
-                    </Dropdown.Toggle>
+                <h4>Change/Add A BookBus Event Date:</h4>
+                <div style={{ display: "flex", justifyContent: "normal" }}>
+                    <Button
+                        style={{ marginRight: "2em" }}
+                        onClick={(e) => addDate(e)}
+                    >
+                        Add +
+                    </Button>
 
-                    <Dropdown.Menu>
-                        <DateDD dates={dates} setDate={setDateToBeChanged} />
-                    </Dropdown.Menu>
-                </Dropdown>
-                <div className={`${dateToBeChanged === "" ? "Hidden" : ""}`}>
+                    <Dropdown>
+                        <Dropdown.Toggle variant="primary">
+                            {dateToBeChanged.startDate}
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <DateDD
+                                dates={dates}
+                                setDate={setDateToBeChanged}
+                            />
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
+
+                <div
+                    className={`${
+                        dateToBeChanged.startDate === "Select a date to change"
+                            ? "Hidden"
+                            : ""
+                    }`}
+                >
                     <br />
-                    <h4>Change The Time (24 Hr): {newTime}</h4>
+                    <h4>Change The Start Time (24 Hr): {newTime}</h4>
                     <input
                         type="time"
                         value={newTime}
                         onChange={(e) => setNewTime(e.target.value)}
+                    ></input>
+                    <br />
+
+                    <br />
+                    <h4>Change The End Time (24 Hr): {newEndTime}</h4>
+                    <input
+                        type="time"
+                        value={newEndTime}
+                        onChange={(e) => setNewEndTime(e.target.value)}
                     ></input>
                     <br />
 

@@ -138,7 +138,6 @@ export const signUpForDate = asyncHandler(async (req, res) => {
 });
 
 export const changeDate = asyncHandler(async (req, res) => {
-    console.log(req.body.newData);
     res.send(await changeDateFB(req.body.newData));
 });
 
