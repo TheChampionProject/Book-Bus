@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import BookTable from "../components/BookTable.js";
-import TableHeader from "../components/TableHeader.js";
-import Table from "react-bootstrap/Table";
+import TableStructure from "../components/TableStructure";
 import "../App.css";
 import EditPopup from "../components/EditPopup.js";
 import AddPopup from "../components/AddPopup.js";
-import { classNames } from "@hkamran/utility-web";
+import Header from "../components/Header";
 
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
@@ -39,68 +37,31 @@ export default function ManagePage() {
 
     return (
         <>
-            <div className="FlipPhone alert">Please Flip Your Phone</div>
-            <div className="fixed-top navbar NavHead">
-                <a href="/gift">Gift Page</a>
-                <h3 className="CPStyle">The Champion Project</h3>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        className="SearchBar"
-                        style={{ margin: "1em" }}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                </div>
-            </div>
-
-            <div
-                className={classNames(
-                    "fixed-top alert",
-                    alert.success ? "alert-success" : "alert-danger"
-                )}
-                style={{ display: alert.show ? "" : "none" }}
+            <Header
+                setSearchQuery={setSearchQuery}
+                alert={alert}
+                href={"/gift"}
+                hrefName={"Gift Page"}
+            />
+            
+            <TableStructure
+                mode="manage"
+                setBook={setBook}
+                setShowEditPopup={setShowEditPopup}
+                managedBook={managedBook}
+                setManagedBook={setManagedBook}
+                setAlert={setAlert}
+                searchQuery={searchQuery}
+                books={books}
+                setBooks={setBooks}
+            />
+            <button
+                type="button"
+                className="AddBookButton"
+                onClick={(e) => handleAddBook(e)}
             >
-                {alert.message}
-            </div>
-
-            <div className="BookTableParent">
-                <div className="BookTable">
-                    <div className="container mt-3">
-                        <Table
-                            striped
-                            bordered
-                            hover
-                            className="ActualBookTable"
-                        >
-                            <TableHeader
-                                mode={"manage"}
-                                className="fixed-top"
-                            />
-                            <tbody>
-                                <BookTable
-                                    setBook={setBook}
-                                    setShowEditPopup={setShowEditPopup}
-                                    managedBook={managedBook}
-                                    setManagedBook={setManagedBook}
-                                    setAlert={setAlert}
-                                    searchQuery={searchQuery}
-                                    mode={"manage"}
-                                    books={books}
-                                    setBooks={setBooks}
-                                />
-                            </tbody>
-                        </Table>
-                    </div>
-                    <button
-                        type="button"
-                        className="AddBookButton"
-                        onClick={(e) => handleAddBook(e)}
-                    >
-                        +
-                    </button>
-                </div>
-            </div>
+                +
+            </button>
 
             <EditPopup
                 showEditPopup={showEditPoup}

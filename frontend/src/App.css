@@ -22,7 +22,7 @@
     overflow: auto;
     position: relative;
     height: auto;
-    top: 5.6rem;
+    top: 5rem;
 }
 
 .BookTableParent {
@@ -149,13 +149,9 @@
     color: #a70102;
     font-family: "Permanent Marker", cursive;
     font-size: 2em;
-    margin-left: 5em;
 }
 
 @media only screen and (min-width: 1000px) {
-    .CPStyle {
-        margin-left: 16em;
-    }
 }
 
 @media (orientation: portrait) {
@@ -166,9 +162,9 @@
 
 @media (orientation: landscape) {
     .FlipPhone {
-      display: hidden;
+        display: hidden;
     }
-  }
+}
 
 .GiftButtons {
     position: relative;
