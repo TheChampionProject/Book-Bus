@@ -50,7 +50,7 @@
 .NavHead {
     position: sticky;
     top: 0;
-    background: #ffffff;
+    background: #f6efef;
     z-index: 1;
 }
 
@@ -149,9 +149,21 @@
     color: #a70102;
     font-family: "Permanent Marker", cursive;
     font-size: 2em;
+    position: relative;
+    top: 0.2em;
+
 }
 
 @media only screen and (min-width: 1000px) {
+    .CPStyle {
+        left: 30%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .CPStyle {
+        left: 12%;
+    }
 }
 
 @media (orientation: portrait) {

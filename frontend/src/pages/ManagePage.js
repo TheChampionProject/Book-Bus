@@ -18,9 +18,10 @@ export default function ManagePage() {
     const [searchQuery, setSearchQuery] = useState("");
     let [books, setBooks] = useState(null);
     const lastGenre = useRef("");
+    const [scanMode, setScanMode] = useState(false);
+
 
     let handleAddBook = (e) => {
-        e.preventDefault();
         setShowAddPopup(true);
     };
 
@@ -42,6 +43,8 @@ export default function ManagePage() {
                 alert={alert}
                 href={"/gift"}
                 hrefName={"Gift Page"}
+                useSearchBar={true}
+
             />
             
             <TableStructure
@@ -58,7 +61,7 @@ export default function ManagePage() {
             <button
                 type="button"
                 className="AddBookButton"
-                onClick={(e) => handleAddBook(e)}
+                onClick={(e) => {e.preventDefault(); handleAddBook()}}
             >
                 +
             </button>
@@ -71,6 +74,9 @@ export default function ManagePage() {
                 setManagedBook={setManagedBook}
                 setAlert={setAlert}
                 lastGenre={lastGenre}
+                scanMode={scanMode}
+                setScanMode={setScanMode}
+                setShowAddPopup={setShowAddPopup}
             />
 
             <AddPopup
@@ -80,6 +86,8 @@ export default function ManagePage() {
                 setAlert={setAlert}
                 setShowEditPopup={setShowEditPopup}
                 books={books}
+                scanMode={scanMode}
+                setScanMode={setScanMode}
             />
         </>
     );

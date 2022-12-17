@@ -42,7 +42,7 @@ export const getSearchQueryBooks = asyncHandler(async (req, res) => {
         );
     } else {
         booksRequest = await axios.get(
-            GOOGLE_BOOKS_API_BASE_URL + "isbn:" + req.body.ISBN
+            GOOGLE_BOOKS_API_BASE_URL + "isbn:" + req.body.title
         );
     }
 
@@ -71,6 +71,10 @@ export const getBookPrice = asyncHandler(async (req, res) => {
         price = priceRequest.data.result.offers.booksrun.new;
     else if (priceRequest.data.result.offers.booksrun.used !== "none")
         price = priceRequest.data.result.offers.booksrun.used;
+    else if (priceRequest.data.result.offers.marketplace[0].new !== "none")
+        price = priceRequest.data.result.offers.marketplace[0].new;
+    else if (priceRequest.data.result.offers.marketplace[0].used !== "none")
+        price = priceRequest.data.result.offers.marketplace[0].used.price;
     else price = "Price Not Found";
 
     res.send(price);

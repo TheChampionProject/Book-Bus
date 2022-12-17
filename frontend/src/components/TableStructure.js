@@ -4,8 +4,18 @@ import TableHeader from "./TableHeader.js";
 import Table from "react-bootstrap/Table";
 import "../App.css";
 
-
-export default function TableStructure({mode, setBook, setShowEditPopup, managedBook, setManagedBook, setAlert, searchQuery, books, setBooks}) {
+export default function TableStructure({
+    mode,
+    setBook,
+    setShowEditPopup,
+    managedBook,
+    setManagedBook,
+    setAlert,
+    searchQuery,
+    books,
+    setBooks,
+    setShowGC,
+}) {
     return (
         <div className="BookTableParent">
             <div className="BookTable">
@@ -23,11 +33,12 @@ export default function TableStructure({mode, setBook, setShowEditPopup, managed
                                 mode={mode}
                                 books={books}
                                 setBooks={setBooks}
+                                setShowGC={setShowGC}
+
                             />
                         </tbody>
                     </Table>
                 </div>
-               
             </div>
         </div>
     );

@@ -15,17 +15,19 @@ export default function QueryRow({
     const add = async (e) => {
         e.preventDefault();
 
-        if (
-            books.filter(
-                ({ Title }) =>
-                    Title.toLowerCase() === book.volumeInfo.title.toLowerCase()
-            ).length > 0
-        ) {
-            alert(
-                "This book is already in the database. Please find it and change its inventory instead."
-            );
-            return;
-        }
+            if (
+                books.filter(
+                    ({ Title }) =>
+                        Title.toLowerCase() ===
+                        book.volumeInfo.title.toLowerCase()
+                ).length > 0
+            ) {
+                alert(
+                    "This book is already in the database. Please find it and change its inventory instead."
+                );
+                return;
+            }
+        
 
         refinedBook.AddDates = []; // Date for when book is added. Some books already with this name so can't pick a better one :(
         refinedBook.AddDates.push(new Date().toISOString());
@@ -55,7 +57,10 @@ export default function QueryRow({
             } catch {
                 refinedBook.Price = "5"; // No one has the price :(
             }
-        } else refinedBook.Price = book.saleInfo.listPrice.amount ? book.saleInfo.listPrice.amount : "5";
+        } else
+            refinedBook.Price = book.saleInfo.listPrice.amount
+                ? book.saleInfo.listPrice.amount
+                : "5";
 
         setBook(refinedBook);
         setShowEditPopup(true);
@@ -63,7 +68,6 @@ export default function QueryRow({
 
     if (!book || !book.volumeInfo.title) {
         setShowTable(false);
-        console.log("missing info");
         setAlert({
             show: true,
             message:

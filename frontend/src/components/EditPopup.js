@@ -10,13 +10,16 @@ export default function EditPopup({
     setManagedBook,
     setAlert,
     lastGenre,
+    scanMode,
+    setShowAddPopup,
 }) {
     let autoFillTitle = "";
     let autoFillGenre = "N/A";
     let autoFillInventory = "1";
     let autoFillNeeded = 0;
     let autoFillPrice = "";
-    let addBook = false;
+    let addBook = false,
+        complete = false;
 
     try {
         if (book !== null) {
@@ -64,6 +67,12 @@ export default function EditPopup({
         setInventory(autoFillInventory);
         setNeeded(autoFillNeeded);
         setPrice(autoFillPrice);
+        complete = false;
+        if (scanMode)
+            setTimeout(() => {
+                editBook();
+                if (complete) setShowAddPopup(true);
+            }, 3000);
     }, [
         autoFillInventory,
         autoFillNeeded,
@@ -74,8 +83,6 @@ export default function EditPopup({
     ]);
 
     const editBook = (e) => {
-        e.preventDefault();
-
         if (genre === "N/A") {
             alert("Please select a genre");
             return;
@@ -97,6 +104,8 @@ export default function EditPopup({
                 book.AddDates.push(new Date().toISOString());
         }
 
+        console.log(title);
+
         book.Title = title;
         book.Genre = genre;
         book.Inventory = inventory;
@@ -115,6 +124,7 @@ export default function EditPopup({
 
         lastGenre.current = genre;
         setShowEditPopup(false);
+        complete = true;
     };
 
     const close = () => {
@@ -307,6 +317,7 @@ export default function EditPopup({
                             className="btn btn-success"
                             type="submit"
                             onClick={(e) => {
+                                e.preventDefault();
                                 editBook(e);
                             }}
                         >

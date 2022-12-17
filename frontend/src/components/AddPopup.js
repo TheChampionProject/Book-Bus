@@ -11,6 +11,8 @@ export default function AddPopup({
     setShowEditPopup,
     setBook,
     books,
+    scanMode,
+    setScanMode,
 }) {
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
@@ -43,7 +45,7 @@ export default function AddPopup({
             process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
             {
                 title: searchQuery,
-                mode: "titleSearch",
+                mode: scanMode ? "" : "titleSearch",
             }
         );
 
@@ -63,7 +65,6 @@ export default function AddPopup({
             }, 3000);
         } else {
             setQueryList(request.data);
-
             setShowTable(true);
         }
     };
@@ -102,11 +103,23 @@ export default function AddPopup({
                                 manuallyAdd(e);
                             }}
                             style={{
-                                display: true ? "" : "none",
                                 marginLeft: "1rem",
                             }}
                         >
                             Can't Find It? Manually Add
+                        </button>
+
+                        <button
+                            className="FakeLink"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setScanMode(!scanMode);
+                            }}
+                            style={{
+                                marginLeft: "65%",
+                            }}
+                        >
+                            {scanMode ? "Leave " : "Enter "}Scan Mode
                         </button>
                     </form>
                 </Modal.Body>
@@ -128,6 +141,8 @@ export default function AddPopup({
                                 setAlert={setAlert}
                                 setShowTable={setShowTable}
                                 books={books}
+                                scanMode={scanMode}
+                                searchQuery={searchQuery}
                             />
                         </tbody>
                     </Table>
