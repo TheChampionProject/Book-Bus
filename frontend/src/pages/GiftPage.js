@@ -16,7 +16,6 @@ export default function ManagePage() {
     const [showGC, setShowGC] = useState(false);
     const [book, setBook] = useState(null);
     const [books, setBooks] = useState(null);
-    const [showEditPoup, setShowEditPopup] = useState(false); // Show the popup
 
     return (
         <>
@@ -31,7 +30,6 @@ export default function ManagePage() {
             <TableStructure
                 mode="gift"
                 setBook={setBook}
-                setShowEditPopup={setShowEditPopup}
                 managedBook={managedBook}
                 setManagedBook={setManagedBook}
                 setAlert={setAlert}

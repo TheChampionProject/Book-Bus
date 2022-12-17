@@ -104,27 +104,25 @@ export default function EditPopup({
                 book.AddDates.push(new Date().toISOString());
         }
 
-        console.log(title);
-
         book.Title = title;
         book.Genre = genre;
         book.Inventory = inventory;
         book.Needed = needed;
         book.Price = price;
 
-        if (
-            autoFillInventory !== inventory || // Only if stuff was changed
-            autoFillNeeded !== needed ||
-            autoFillTitle !== title ||
-            autoFillGenre !== genre ||
-            autoFillPrice !== price
-        ) {
-            setManagedBook(book);
-        }
+        //if (
+        //    autoFillInventory !== inventory || // Only if stuff was changed
+        //    autoFillNeeded !== needed ||
+        //    autoFillTitle !== title ||
+        //    autoFillGenre !== genre ||
+        //    autoFillPrice !== price
+        //) {
+        //}
 
         lastGenre.current = genre;
-        setShowEditPopup(false);
+        setManagedBook(book);
         complete = true;
+        setShowEditPopup(false);
     };
 
     const close = () => {
@@ -141,7 +139,7 @@ export default function EditPopup({
             <Modal show={showEditPopup} onHide={() => close()}>
                 <Modal.Header closeButton>
                     <Modal.Title>
-                        {addBook ? "Manually Add a Book" : "Edit " + title}
+                        {addBook ? "Manually Add a Book" : "Edit " + book.Title}
                     </Modal.Title>
                 </Modal.Header>
                 <form>
@@ -235,14 +233,18 @@ export default function EditPopup({
                                 </Dropdown.Menu>
                             </Dropdown>
 
-                            <br />
-                            <label className="Popup">Price: </label>
+                            <label className="Popup" style={{marginRight: "3.5em"}}>Price: </label>
+                            <label className="Popup" style={{ width: "10px" }}>
+                                $
+                            </label>
+
                             <input
                                 type="text"
+                                style={{ maxWidth: "4em" }}
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                             />
-
+                            <br />
                             <label className="Popup">Inventory: </label>
 
                             <div className="btn-group modal-body">

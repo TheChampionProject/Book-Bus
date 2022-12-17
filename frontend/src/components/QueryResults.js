@@ -11,31 +11,32 @@ export default function QueryResults({
     books,
     searchQuery,
 }) {
+    let foundBook = false;
     const add = async (book) => {
-        const refinedBook = {}; // In order to get the Google Books autocomplete to work with our book-object format.
+        let refinedBook = {};
 
-        if (
-            books.filter(
-                ({ Title }) =>
-                    Title.toLowerCase() === book.volumeInfo.title.toLowerCase()
-            ).length > 0
-        ) {
-            alert(
-                "This book is already in the database. Please find it and change its inventory instead."
-            );
-            return;
+        for (let i = 0; i < books.length; i++) {
+            if (
+                books[i].Title.toLowerCase() ===
+                book.volumeInfo.title.toLowerCase()
+            ) {
+                console.log("This book is already in the database.");
+                refinedBook = books[i];
+            }
         }
 
-        refinedBook.AddDates = []; // Date for when book is added. Some books already with this name so can't pick a better one :(
+        if (Object.entries(refinedBook).length === 0) {
+            refinedBook.AddDates = [];
+            refinedBook.Title = book.volumeInfo.title;
+            refinedBook.Genre = "N/A";
+            refinedBook.Inventory = 1;
+            refinedBook.Needed = 0;
+            refinedBook.Index = -1;
+        }
+
+        if (refinedBook.AddDates === undefined) refinedBook.AddDates = [];
+
         refinedBook.AddDates.push(new Date().toISOString());
-
-        setShowAddPopup(false);
-
-        refinedBook.Title = book.volumeInfo.title;
-        refinedBook.Genre = "N/A";
-        refinedBook.Inventory = 1;
-        refinedBook.Needed = 0;
-        refinedBook.Index = -1; // So that when book table sees it it knows its a new book and will give it the next available index.
 
         if (book.saleInfo.saleability === "NOT_FOR_SALE") {
             // Google Books doesn't have a price for this book
@@ -55,24 +56,24 @@ export default function QueryResults({
                 ? book.saleInfo.listPrice.amount
                 : "5";
 
+        setShowAddPopup(false);
         setBook(refinedBook);
         setShowEditPopup(true);
-        return;
     };
 
     if (queryList.length === 0) return;
     return queryList.map((book, number) => {
-
         try {
             if (
                 book.volumeInfo.industryIdentifiers[1].identifier ===
-                searchQuery
+                searchQuery || book.volumeInfo.industryIdentifiers[0].identifier === searchQuery
             ) {
-                add(book);
-                return;
+                if (!foundBook) {
+                    add(book);
+                    foundBook = true;
+                }
             }
-        } catch {
-        }
+        } catch {}
 
         return (
             <QueryRow

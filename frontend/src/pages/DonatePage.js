@@ -13,7 +13,6 @@ export default function DonatePage() {
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
     let [books, setBooks] = useState(null);
-    const [showEditPoup, setShowEditPopup] = useState(false); // Show the popup
 
     return (
         <>
@@ -33,7 +32,6 @@ export default function DonatePage() {
 
             <TableStructure
                 mode="donate"
-                setShowEditPopup={setShowEditPopup}
                 managedBook={managedBook}
                 setManagedBook={setManagedBook}
                 setAlert={setAlert}
