@@ -21,6 +21,12 @@ export default function EditPopup({
     let addBook = false,
         complete = false;
 
+    let calledEdit = useRef(false);
+    let interrupt = useRef(false);
+
+    let priceRef = useRef(null),
+        titleRef = useRef(null); // For the cursor to auto click
+
     try {
         if (book !== null) {
             autoFillTitle = book.Title;
@@ -68,11 +74,6 @@ export default function EditPopup({
         setNeeded(autoFillNeeded);
         setPrice(autoFillPrice);
         complete = false;
-        if (scanMode)
-            setTimeout(() => {
-                editBook();
-                if (complete) setShowAddPopup(true);
-            }, 3000);
     }, [
         autoFillInventory,
         autoFillNeeded,
@@ -82,8 +83,45 @@ export default function EditPopup({
         book,
     ]);
 
-    const editBook = (e) => {
-        if (genre === "N/A") {
+    useEffect(() => {
+        if (!showEditPopup) return;
+
+        if (addBook) {
+            for (let i = 0; i < 5; i++) titleRef.current.focus();
+        } else priceRef.current.focus();
+
+        calledEdit.current = false;
+        interrupt.current = false;
+        if (scanMode && !addBook) {
+            setTimeout(() => {
+                if (calledEdit.current) {
+                    return;
+                }
+
+                if (!interrupt.current && !calledEdit.current) {
+                    editBook();
+                    calledEdit.current = true;
+                    if (complete) setShowAddPopup(true); // If they didn't have a genre selected
+                }
+            }, 3000);
+        }
+    }, [showEditPopup]);
+
+    useEffect(() => {
+        const statusKeyboardInput = (e) => {
+            if (e.keyCode) interrupt.current = true;
+        };
+
+        window.addEventListener("keydown", statusKeyboardInput);
+        return () => window.removeEventListener("keydown", statusKeyboardInput);
+    });
+
+    useEffect(() =>
+        window.addEventListener("click", () => (interrupt.current = true))
+    );
+
+    const editBook = () => {
+        if ((genre === "N/A" || genre === "") && showEditPopup) {
             alert("Please select a genre");
             return;
         }
@@ -93,7 +131,7 @@ export default function EditPopup({
         if (addBook) {
             book = {};
             book.AddDates = [];
-            book.AddDates.push(new Date().toISOString()); // Date for when book is added
+            book.AddDates.push(new Date().toISOString());
         }
 
         if (inventory > book.Inventory) {
@@ -110,18 +148,10 @@ export default function EditPopup({
         book.Needed = needed;
         book.Price = price;
 
-        //if (
-        //    autoFillInventory !== inventory || // Only if stuff was changed
-        //    autoFillNeeded !== needed ||
-        //    autoFillTitle !== title ||
-        //    autoFillGenre !== genre ||
-        //    autoFillPrice !== price
-        //) {
-        //}
-
         lastGenre.current = genre;
-        setManagedBook(book);
         complete = true;
+        interrupt.current = false;
+        setManagedBook(book);
         setShowEditPopup(false);
     };
 
@@ -148,8 +178,8 @@ export default function EditPopup({
                             <label className="Popup">Title: </label>
                             <input
                                 type="text"
-                                autoFocus
                                 value={title}
+                                ref={titleRef}
                                 onChange={(e) => {
                                     if (e.target.value !== "\\")
                                         setTitle(e.target.value);
@@ -175,12 +205,10 @@ export default function EditPopup({
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                         onClick={() =>
-                                            setGenre(
-                                                "Explore: Historical Fiction"
-                                            )
+                                            setGenre("Explore: Sports")
                                         }
                                     >
-                                        Explore: Historical Fiction
+                                        Explore: Sports
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                         onClick={() => setGenre("Explore")}
@@ -233,13 +261,19 @@ export default function EditPopup({
                                 </Dropdown.Menu>
                             </Dropdown>
 
-                            <label className="Popup" style={{marginRight: "3.5em"}}>Price: </label>
+                            <label
+                                className="Popup"
+                                style={{ marginRight: "3.5em" }}
+                            >
+                                Price:
+                            </label>
                             <label className="Popup" style={{ width: "10px" }}>
                                 $
                             </label>
 
                             <input
                                 type="text"
+                                ref={priceRef}
                                 style={{ maxWidth: "4em" }}
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}

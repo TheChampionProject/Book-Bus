@@ -66,6 +66,10 @@ export const getBookPrice = asyncHandler(async (req, res) => {
     let priceRequest = await axios.get(
         BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
     );
+    if (priceRequest.data.result.status === "error") {
+        res.send("Price Not Found");
+        return;
+    }
 
     if (priceRequest.data.result.offers.booksrun.new !== "none")
         price = priceRequest.data.result.offers.booksrun.new;

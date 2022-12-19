@@ -1,5 +1,5 @@
 import { Modal, Button, Table } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import QueryResults from "./QueryResults.js";
 import "../App.css";
@@ -17,6 +17,7 @@ export default function AddPopup({
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const textField = useRef(null);
 
     useEffect(() => {
         setShowTable(false);
@@ -38,9 +39,7 @@ export default function AddPopup({
         setShowEditPopup(true);
     };
 
-    const searchForBook = async (e) => {
-        e.preventDefault();
-
+    const searchForBook = async () => {
         let request = await axios.post(
             process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
             {
@@ -82,6 +81,7 @@ export default function AddPopup({
                             placeholder="Search For a Title"
                             className="AddPopup"
                             value={searchQuery}
+                            ref={textField}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
 
@@ -90,6 +90,7 @@ export default function AddPopup({
                             className="btn btn-success"
                             type="submit"
                             onClick={(e) => {
+                                e.preventDefault();
                                 searchForBook(e);
                             }}
                         >
@@ -114,6 +115,7 @@ export default function AddPopup({
                             onClick={(e) => {
                                 e.preventDefault();
                                 setScanMode(!scanMode);
+                                textField.current.focus();
                             }}
                             style={{
                                 marginLeft: "65%",

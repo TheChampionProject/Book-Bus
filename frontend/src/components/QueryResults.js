@@ -20,8 +20,8 @@ export default function QueryResults({
                 books[i].Title.toLowerCase() ===
                 book.volumeInfo.title.toLowerCase()
             ) {
-                console.log("This book is already in the database.");
                 refinedBook = books[i];
+                refinedBook.Inventory++;
             }
         }
 
@@ -38,23 +38,28 @@ export default function QueryResults({
 
         refinedBook.AddDates.push(new Date().toISOString());
 
-        if (book.saleInfo.saleability === "NOT_FOR_SALE") {
-            // Google Books doesn't have a price for this book
-            let ISBN = book.volumeInfo.industryIdentifiers[0].identifier;
-            let booksRunPrice = await axios.post(
-                // Ask another API for the price
-                process.env.REACT_APP_BACKEND_URL + "getBookPrice",
-                { ISBN }
-            );
+        try {
+            if (book.saleInfo.saleability === "NOT_FOR_SALE") {
+                // Google Books doesn't have a price for this book
+                let ISBN = book.volumeInfo.industryIdentifiers[0].identifier;
+                let booksRunPrice = await axios.post(
+                    // Ask another API for the price
+                    process.env.REACT_APP_BACKEND_URL + "getBookPrice",
+                    { ISBN }
+                );
 
-            if (typeof booksRunPrice.data.price === "number") {
-                // If they have the price
-                refinedBook.Price = booksRunPrice.data.price;
-            } else refinedBook.Price = "5"; // No one has the price :(
-        } else
-            refinedBook.Price = book.saleInfo.listPrice.amount
-                ? book.saleInfo.listPrice.amount
-                : "5";
+                if (typeof booksRunPrice.data.price === "number") {
+                    // If they have the price
+                    refinedBook.Price = booksRunPrice.data.price;
+                } else refinedBook.Price = "5"; // No one has the price :(
+            } else {
+                refinedBook.Price = book.saleInfo.listPrice.amount
+                    ? book.saleInfo.listPrice.amount
+                    : "5";
+            }
+        } catch {
+            refinedBook.Price = "5";
+        }
 
         setShowAddPopup(false);
         setBook(refinedBook);
@@ -62,11 +67,20 @@ export default function QueryResults({
     };
 
     if (queryList.length === 0) return;
+    if (searchQuery === "") return;
     return queryList.map((book, number) => {
+        if (queryList.length === 1) {
+            if (!foundBook) {
+                add(book);
+                foundBook = true;
+            }
+        }
         try {
             if (
                 book.volumeInfo.industryIdentifiers[1].identifier ===
-                searchQuery || book.volumeInfo.industryIdentifiers[0].identifier === searchQuery
+                    searchQuery ||
+                book.volumeInfo.industryIdentifiers[0].identifier ===
+                    searchQuery
             ) {
                 if (!foundBook) {
                     add(book);
