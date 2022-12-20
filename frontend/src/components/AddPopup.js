@@ -1,5 +1,5 @@
 import { Modal, Button, Table } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import QueryResults from "./QueryResults.js";
 import "../App.css";
@@ -11,13 +11,17 @@ export default function AddPopup({
     setShowEditPopup,
     setBook,
     books,
+    scanMode,
+    setScanMode,
 }) {
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const textField = useRef(null);
 
     useEffect(() => {
         setShowTable(false);
+        setSearchQuery("");
     }, [showAddPopup]);
 
     useEffect(() => {
@@ -35,58 +39,32 @@ export default function AddPopup({
         setShowEditPopup(true);
     };
 
-    const searchForBook = async (e) => {
-        e.preventDefault();
-        try {
-            await axios
-                .post(
-                    process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
-                    {
-                        title: searchQuery,
-                    }
-                )
-                .catch(() => {
-                    setAlert({
-                        show: true,
-                        message:
-                            "There was a problem with your search query. Please refresh and try again.",
-                        success: false,
-                    });
-                })
-                .then((response) => {
-                    setShowTable(true);
-                    if (response.data === "Error") {
-                        setShowTable(false);
+    const searchForBook = async () => {
+        let request = await axios.post(
+            process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
+            {
+                title: searchQuery,
+                mode: scanMode ? "" : "titleSearch",
+            }
+        );
 
-                        setAlert({
-                            show: true,
-                            message:
-                                "There was a problem with your search query. Please refresh and try again.",
-                            success: false,
-                        });
-
-                        setTimeout(() => {
-                            setAlert({
-                                show: false,
-                            });
-                        }, 3000);
-                    } else setQueryList(response.data);
-                });
-        } catch {
-            setShowTable(false);
-
+        if (request.data === "Error") {
             setAlert({
                 show: true,
-                message:
-                    "There was a problem with your search query. Please refresh and try again.",
+                message: "We couldn't find that book. Please add it manually.",
                 success: false,
             });
+
+            manuallyAdd();
 
             setTimeout(() => {
                 setAlert({
                     show: false,
                 });
             }, 3000);
+        } else {
+            setQueryList(request.data);
+            setShowTable(true);
         }
     };
     return (
@@ -103,6 +81,7 @@ export default function AddPopup({
                             placeholder="Search For a Title"
                             className="AddPopup"
                             value={searchQuery}
+                            ref={textField}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
 
@@ -111,6 +90,7 @@ export default function AddPopup({
                             className="btn btn-success"
                             type="submit"
                             onClick={(e) => {
+                                e.preventDefault();
                                 searchForBook(e);
                             }}
                         >
@@ -124,11 +104,24 @@ export default function AddPopup({
                                 manuallyAdd(e);
                             }}
                             style={{
-                                display: true ? "" : "none",
                                 marginLeft: "1rem",
                             }}
                         >
                             Can't Find It? Manually Add
+                        </button>
+
+                        <button
+                            className="FakeLink"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setScanMode(!scanMode);
+                                textField.current.focus();
+                            }}
+                            style={{
+                                marginLeft: "65%",
+                            }}
+                        >
+                            {scanMode ? "Leave " : "Enter "}Scan Mode
                         </button>
                     </form>
                 </Modal.Body>
@@ -150,6 +143,8 @@ export default function AddPopup({
                                 setAlert={setAlert}
                                 setShowTable={setShowTable}
                                 books={books}
+                                scanMode={scanMode}
+                                searchQuery={searchQuery}
                             />
                         </tbody>
                     </Table>

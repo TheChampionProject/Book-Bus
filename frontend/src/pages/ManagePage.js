@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
-import BookTable from "../components/BookTable.js";
-import TableHeader from "../components/TableHeader.js";
-import Table from "react-bootstrap/Table";
+import React, { useState, useEffect, useRef } from "react";
+import TableStructure from "../components/TableStructure";
 import "../App.css";
 import EditPopup from "../components/EditPopup.js";
 import AddPopup from "../components/AddPopup.js";
-import { classNames } from "@hkamran/utility-web";
+import Header from "../components/Header";
 
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
@@ -19,16 +17,17 @@ export default function ManagePage() {
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
     let [books, setBooks] = useState(null);
+    const lastGenre = useRef("");
+    const [scanMode, setScanMode] = useState(false);
+
 
     let handleAddBook = (e) => {
-        e.preventDefault();
         setShowAddPopup(true);
     };
 
     useEffect(() => {
         const statusKeyboardInput = (e) => {
             if (e.keyCode === 16 && !showEditPoup && !showAddPopup) {
-                console.log("Call");
                 setShowAddPopup(true);
             }
         };
@@ -39,66 +38,33 @@ export default function ManagePage() {
 
     return (
         <>
-            <div className="fixed-top navbar NavHead">
-                <a href="/gift">Go to Gift Page</a>
-                <h3 className="CPStyle">The Champion Project</h3>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        style={{ margin: "1em" }}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                </div>
-            </div>
+            <Header
+                setSearchQuery={setSearchQuery}
+                alert={alert}
+                href={"/gift"}
+                hrefName={"Gift Page"}
+                useSearchBar={true}
 
-            <div
-                className={classNames(
-                    "fixed-top alert",
-                    alert.success ? "alert-success" : "alert-danger"
-                )}
-                style={{ display: alert.show ? "" : "none" }}
+            />
+            
+            <TableStructure
+                mode="manage"
+                setBook={setBook}
+                setShowEditPopup={setShowEditPopup}
+                managedBook={managedBook}
+                setManagedBook={setManagedBook}
+                setAlert={setAlert}
+                searchQuery={searchQuery}
+                books={books}
+                setBooks={setBooks}
+            />
+            <button
+                type="button"
+                className="AddBookButton"
+                onClick={(e) => {e.preventDefault(); handleAddBook()}}
             >
-                {alert.message}
-            </div>
-
-            <div className="BookTableParent">
-                <div className="BookTable">
-                    <div className="container mt-3">
-                        <Table
-                            striped
-                            bordered
-                            hover
-                            className="ActualBookTable"
-                        >
-                            <TableHeader
-                                mode={"manage"}
-                                className="fixed-top"
-                            />
-                            <tbody>
-                                <BookTable
-                                    setBook={setBook}
-                                    setShowEditPopup={setShowEditPopup}
-                                    managedBook={managedBook}
-                                    setManagedBook={setManagedBook}
-                                    setAlert={setAlert}
-                                    searchQuery={searchQuery}
-                                    mode={"manage"}
-                                    books={books}
-                                    setBooks={setBooks}
-                                />
-                            </tbody>
-                        </Table>
-                    </div>
-                    <button
-                        type="button"
-                        className="AddBookButton"
-                        onClick={(e) => handleAddBook(e)}
-                    >
-                        +
-                    </button>
-                </div>
-            </div>
+                +
+            </button>
 
             <EditPopup
                 showEditPopup={showEditPoup}
@@ -107,6 +73,10 @@ export default function ManagePage() {
                 setBook={setBook}
                 setManagedBook={setManagedBook}
                 setAlert={setAlert}
+                lastGenre={lastGenre}
+                scanMode={scanMode}
+                setScanMode={setScanMode}
+                setShowAddPopup={setShowAddPopup}
             />
 
             <AddPopup
@@ -116,6 +86,8 @@ export default function ManagePage() {
                 setAlert={setAlert}
                 setShowEditPopup={setShowEditPopup}
                 books={books}
+                scanMode={scanMode}
+                setScanMode={setScanMode}
             />
         </>
     );

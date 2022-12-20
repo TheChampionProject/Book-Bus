@@ -5,7 +5,7 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
-    signOut
+    signOut,
 } from "firebase/auth";
 import {
     getFirestore,
@@ -28,7 +28,7 @@ const firestoredb = getFirestore(app);
 const storage = getStorage();
 let databaseBooks = [];
 
-const getBooksFB = async () => {
+export const getBooksFB = async () => {
     databaseBooks = [];
     let errorMessage = "";
 
@@ -48,7 +48,7 @@ const getBooksFB = async () => {
     else return databaseBooks;
 };
 
-const setBookFB = async (book, location) => {
+export const setBookFB = async (book, location) => {
     await getBooksFB();
     let errorMessage = "";
     let archiveDates = [],
@@ -92,8 +92,6 @@ const setBookFB = async (book, location) => {
         Price: book.Price,
     };
 
-    if (book.AddDates) sendAddDates = book.AddDates;
-
     if (location === "archive") {
         params = { ...editedBook, ArchiveDates: archiveDates };
     } else {
@@ -104,7 +102,7 @@ const setBookFB = async (book, location) => {
                 ...editedBook,
                 Inventory: book.Inventory,
                 Needed: book.Needed,
-                AddDates: sendAddDates,
+                AddDates: book.AddDates,
             };
     }
 
@@ -116,7 +114,7 @@ const setBookFB = async (book, location) => {
     else return "success";
 };
 
-const signUpAuth = async (email, password, first, last) => {
+export const signUpAuth = async (email, password, first, last) => {
     const currentUser = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -136,7 +134,7 @@ const signUpAuth = async (email, password, first, last) => {
     return currentUser;
 };
 
-const signInAuth = async (email, password) => {
+export const signInAuth = async (email, password) => {
     await signInWithEmailAndPassword(auth, email, password).catch((e) => {
         return e;
     });
@@ -146,13 +144,13 @@ const signInAuth = async (email, password) => {
     return verification;
 };
 
-const resetPasswordAuth = async (email) => {
+export const resetPasswordAuth = async (email) => {
     await sendPasswordResetEmail(auth, email).catch((e) => {
         return e;
     });
 };
 
-const bookBusVerify = async (verificationFile) => {
+export const bookBusVerify = async (verificationFile) => {
     const docRef = doc(firestoredb, "users", auth.currentUser.uid);
     const docSnap = await getDoc(docRef);
     const usrName = docSnap.data().name;
@@ -171,7 +169,7 @@ const bookBusVerify = async (verificationFile) => {
     });
 };
 
-const getVolunteerDatesFB = async () => {
+export const getVolunteerDatesFB = async () => {
     let dates = [];
     let errorMessage = "";
     await get(child(dbRef, `/volunteer-dates`))
@@ -190,7 +188,7 @@ const getVolunteerDatesFB = async () => {
     else return dates;
 };
 
-const updateVolunteerDateFB = async (dateID) => {
+export const updateVolunteerDateFB = async (dateID) => {
     let dates = await getVolunteerDatesFB();
 
     let errorMessage = "",
@@ -203,40 +201,35 @@ const updateVolunteerDateFB = async (dateID) => {
     }
 
     if (data === "") {
-        console.log("No date found with that ID.");
         return "No date found with that ID.";
     }
+    //
+    //    if (auth.currentUser.uid !== null)
+    //        data.volunteers.push(auth.currentUser.uid);
+    //
+    //    await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
+    //        (e) => {
+    //            errorMessage = e;
+    //        }
+    //    );
 
-    
-    if (auth.currentUser.uid !== null) // Doesn't work :(
-        data.volunteers.push(auth.currentUser.uid);
-
-    await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
-        (e) => {
-            errorMessage = e;
-        }
-    );
-
+    console.log(getAuth());
     if (errorMessage !== "") return errorMessage;
     else return "success";
 };
-
-const signOutUser = async () => {
-    await signOut(auth);
-}
 
 export const getSignedInUserFB = async () => {
     return getAuth();
 };
 
-export {
-    getBooksFB,
-    setBookFB,
-    signUpAuth,
-    signInAuth,
-    resetPasswordAuth,
-    bookBusVerify,
-    getVolunteerDatesFB,
-    updateVolunteerDateFB,
-    signOutUser
+export const changeDateFB = async (newData) => {
+    await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData }).catch(
+        (e) => {
+            errorMessage = e;
+        }
+    );
+};
+
+export const signOutUser = async () => {
+    await signOut(auth);
 };

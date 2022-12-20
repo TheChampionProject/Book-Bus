@@ -56,19 +56,18 @@ export default function HomePage() {
             await axios
                 .post(process.env.REACT_APP_BACKEND_URL + "logout")
                 .then(() => {
-                    navigate("/login")
-                })
+                    navigate("/login");
+                });
         } catch (err) {
-            alert("Unable to Sign Out!")
+            alert("Unable to Sign Out!");
         }
-    }
+    };
     return (
         <>
             <div className="CenterHomePage">
                 <h1>Thank you for volunteering for the Champion Project!</h1>
                 <br />
                 <h2>Chose a page to go to: </h2>
-
                 <Button variant="primary" href="/manage">
                     Manage the book database
                 </Button>
@@ -87,13 +86,12 @@ export default function HomePage() {
                 <Button variant="primary" onClick={handleLogout}>
                     Sign Out
                 </Button>
-
+                <br /> 
+                <br />
                 <h2>Or sign up to volunteer: </h2>
-
                 <h5>Available Dates:</h5>
                 <VolunteerDates dates={dates} setDates={setDates} />
                 <br />
-
                 <h4>Select a date:</h4>
                 <input
                     type="date"

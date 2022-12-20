@@ -15,17 +15,19 @@ export default function QueryRow({
     const add = async (e) => {
         e.preventDefault();
 
-        if (
-            books.filter(
-                ({ Title }) =>
-                    Title.toLowerCase() === book.volumeInfo.title.toLowerCase()
-            ).length > 0
-        ) {
-            alert(
-                "This book is already in the database. Please find it and change its inventory instead."
-            );
-            return;
-        }
+            if (
+                books.filter(
+                    ({ Title }) =>
+                        Title.toLowerCase() ===
+                        book.volumeInfo.title.toLowerCase()
+                ).length > 0
+            ) {
+                alert(
+                    "This book is already in the database. Please find it and change its inventory instead."
+                );
+                return;
+            }
+        
 
         refinedBook.AddDates = []; // Date for when book is added. Some books already with this name so can't pick a better one :(
         refinedBook.AddDates.push(new Date().toISOString());
@@ -53,29 +55,19 @@ export default function QueryRow({
                     refinedBook.Price = booksRunPrice.data.price;
                 } else refinedBook.Price = "N/A"; // No one has the price :(
             } catch {
-                refinedBook.Price = "N/A"; // No one has the price :(
+                refinedBook.Price = "5"; // No one has the price :(
             }
-        } else refinedBook.Price = book.saleInfo.listPrice.amount;
+        } else
+            refinedBook.Price = book.saleInfo.listPrice.amount
+                ? book.saleInfo.listPrice.amount
+                : "5";
 
         setBook(refinedBook);
         setShowEditPopup(true);
     };
 
-    try {
-        if (!book || !book.volumeInfo.title || !book.volumeInfo.authors[0]) {
-            setShowTable(false);
-            setAlert({
-                show: true,
-                message:
-                    "There was a problem with your search query. Please refresh and try again.",
-                success: false,
-            });
-
-            return null;
-        }
-    } catch {
+    if (!book || !book.volumeInfo.title) {
         setShowTable(false);
-
         setAlert({
             show: true,
             message:
@@ -85,6 +77,8 @@ export default function QueryRow({
 
         return null;
     }
+
+    if (!book.volumeInfo.authors) book.volumeInfo.authors = ["N/A"];
 
     return (
         <tr>
