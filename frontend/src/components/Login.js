@@ -24,8 +24,12 @@ const Login = ({ handleChange }) => {
                         email: email,
                         password: password,
                     })
-                    .then(() => {
-                        navigate("/verification");
+                    .then((response) => {
+                        if (response.data["watchedVideo"] && response.data["uploadedForm"]) {
+                            navigate("/home")
+                        } else {
+                            navigate("/verification")
+                        }
                     });
             } catch (err) {
                 alert("Invalid username or password!");
@@ -44,7 +48,7 @@ const Login = ({ handleChange }) => {
                     .post(process.env.REACT_APP_BACKEND_URL + "reset", {
                         email: resetEmail,
                     })
-                    .then(() => alert("success"));
+                    .then(() => alert("Success! Check your spam folder for the reset email"));
             } catch (err) {
                 console.log(err);
             }

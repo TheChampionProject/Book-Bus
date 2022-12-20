@@ -6,11 +6,16 @@ import {
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    updateDoc,
+    getDoc,
+} from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
-import { v4 as uuid4 } from "uuid";
 
 dotenv.config();
 
@@ -22,7 +27,7 @@ const firestoredb = getFirestore(app);
 const storage = getStorage();
 let databaseBooks = [];
 
-const getBooksFB = async () => {
+export const getBooksFB = async () => {
     databaseBooks = [];
     let errorMessage = "";
 
@@ -42,9 +47,9 @@ const getBooksFB = async () => {
     else return databaseBooks;
 };
 
-const setBookFB = async (book, location) => {
+export const setBookFB = async (book, location) => {
     await getBooksFB();
-    errorMessage = "";
+    let errorMessage = "";
     let archiveDates = [],
         archiveDate;
     let prevArchivedBooks = [];
@@ -78,8 +83,6 @@ const setBookFB = async (book, location) => {
             archiveDates.push(archiveDate);
             book.Index = prevArchivedBooks.length;
         }
-    } else if (location == "active") {
-        book.UUID = uuid4();
     }
 
     const editedBook = {
@@ -88,25 +91,21 @@ const setBookFB = async (book, location) => {
         Price: book.Price,
     };
 
-    if (book.AddDates) sendAddDates = book.AddDates;
-
     if (location === "archive") {
         params = { ...editedBook, ArchiveDates: archiveDates };
     } else {
         if (book.Inventory === 0) {
-            console.log("deleting " + book);
             params = null;
         } else
             params = {
                 ...editedBook,
                 Inventory: book.Inventory,
                 Needed: book.Needed,
-                AddDates: sendAddDates,
+                AddDates: book.AddDates,
             };
     }
 
     await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
-        console.log(e);
         errorMessage = e;
     });
 
@@ -114,7 +113,7 @@ const setBookFB = async (book, location) => {
     else return "success";
 };
 
-const signUpAuth = async (email, password, first, last) => {
+export const signUpAuth = async (email, password, first, last) => {
     const currentUser = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -122,7 +121,7 @@ const signUpAuth = async (email, password, first, last) => {
     ).catch((e) => {
         return e;
     });
-    await setDoc(doc(firestoredb, "users", auth.currentUser.user.uid), {
+    await setDoc(doc(firestoredb, "users", auth.currentUser.uid), {
         email: email,
         name: first + " " + last,
         password: password,
@@ -134,39 +133,42 @@ const signUpAuth = async (email, password, first, last) => {
     return currentUser;
 };
 
-const signInAuth = async (email, password) => {
-    const currentUser = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-    ).catch((e) => {
+export const signInAuth = async (email, password) => {
+    await signInWithEmailAndPassword(auth, email, password).catch((e) => {
         return e;
     });
-    return currentUser;
+    const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    const verification = docSnap.data();
+    return verification;
 };
 
-const resetPasswordAuth = async (email) => {
+export const resetPasswordAuth = async (email) => {
     await sendPasswordResetEmail(auth, email).catch((e) => {
         return e;
     });
 };
 
-const bookBusVerify = async (verificationFile) => {
-    const auth = getAuth();
+export const bookBusVerify = async (verificationFile) => {
+    const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    const usrName = docSnap.data().name;
 
     const targetRef = storageRef(
         storage,
-        `verificationForms/${auth.currentUser.uid}`
+        `verificationForms/${usrName.split(" ")[0]}_${
+            usrName.split(" ")[1]
+        }_verificationForm.pdf`
     );
     await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
-        await updateDoc(doc(firestoredb, "users", auth.currentUser.uid), {
+        await updateDoc(docRef, {
             watchedVideo: true,
             uploadedForm: true,
         });
     });
 };
 
-const getVolunteerDatesFB = async () => {
+export const getVolunteerDatesFB = async () => {
     let dates = [];
     let errorMessage = "";
     await get(child(dbRef, `/volunteer-dates`))
@@ -185,22 +187,26 @@ const getVolunteerDatesFB = async () => {
     else return dates;
 };
 
-const updateVolunteerDateFB = async (dateID) => {
+export const updateVolunteerDateFB = async (dateID) => {
     let dates = await getVolunteerDatesFB();
+
     let errorMessage = "",
-        data;
+        data = "";
 
     for (let i in dates[0]) {
         if (dates[0][i].id === dateID) {
             data = dates[0][i];
         }
     }
-    const auth = getAuth();
 
-    if (data.volunteers.includes(auth.currentUser.uid))
-        return "You are already signed up for this date.";
+    if (data === "") {
+        console.log("No date found with that ID.");
+        return "No date found with that ID.";
+    }
 
-    data.volunteers.push(auth.currentUser.uid);
+    if (auth.currentUser.uid !== null)
+        // Doesn't work :(
+        data.volunteers.push(auth.currentUser.uid);
 
     await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
         (e) => {
@@ -216,13 +222,10 @@ export const getSignedInUserFB = async () => {
     return getAuth();
 };
 
-export {
-    getBooksFB,
-    setBookFB,
-    signUpAuth,
-    signInAuth,
-    resetPasswordAuth,
-    bookBusVerify,
-    getVolunteerDatesFB,
-    updateVolunteerDateFB,
+export const changeDateFB = async (newData) => {
+    await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData }).catch(
+        (e) => {
+            errorMessage = e;
+        }
+    );
 };

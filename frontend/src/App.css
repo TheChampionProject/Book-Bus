@@ -22,7 +22,7 @@
     overflow: auto;
     position: relative;
     height: auto;
-    top: 5.6rem;
+    top: 5rem;
 }
 
 .BookTableParent {
@@ -50,7 +50,7 @@
 .NavHead {
     position: sticky;
     top: 0;
-    background: #ffffff;
+    background: #f6efef;
     z-index: 1;
 }
 
@@ -72,6 +72,11 @@
     color: white;
 }
 
+.btn-group {
+    position: relative;
+    left: 4px;
+}
+
 .btn-group:after {
     content: "";
     clear: both;
@@ -90,7 +95,13 @@
 }
 
 .SearchBar {
-    right: 70em;
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5em;
+}
+
+.SearchBarInput {
+    width: 20em;
 }
 
 .TableCell {
@@ -98,7 +109,7 @@
 }
 
 .BiggerCell {
-    width: 3em;
+  max-width: 4em;
 }
 
 .navbar {
@@ -110,10 +121,15 @@
 /* Links inside the navbar */
 .navbar a {
     float: left;
-    display: block;
+    display: block !important;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+.navbar {
+    overflow: hidden;
+    display: block !important;
 }
 
 .FakeLink {
@@ -138,6 +154,38 @@
     color: #a70102;
     font-family: "Permanent Marker", cursive;
     font-size: 2em;
+    position: relative;
+    top: 0.2em;
+}
+
+@media only screen and (min-width: 1000px) {
+    .CPStyle {
+        left: 30%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .CPStyle {
+        left: 8%;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .CPStyle {
+        left: 40%;
+    }
+}
+
+@media (orientation: portrait) {
+    .FlipPhone {
+        display: show;
+    }
+}
+
+@media (orientation: landscape) {
+    .FlipPhone {
+        display: hidden;
+    }
 }
 
 .GiftButtons {
@@ -212,15 +260,25 @@
 }
 
 .CenterHomePage {
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 50%;
+    top: 0px;
+}
+
+.CenterAdminPage {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
     top: 0px;
 }
 
 .ManagePopupDropdown {
     position: relative;
-    left: 11em;
-    top: -1em;
+    margin: auto;
+    width: 50%;
+    left: 33%;
+    bottom: 1em;
 }
 
 .Genre-Label {
@@ -231,4 +289,8 @@
 .DateSubmitButton {
     position: relative;
     left: 1em;
+}
+
+.Hidden {
+    display: none;
 }

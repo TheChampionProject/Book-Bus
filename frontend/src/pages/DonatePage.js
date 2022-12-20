@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import BookTable from "../components/BookTable.js";
-import TableHeader from "../components/TableHeader.js";
-import Table from "react-bootstrap/Table";
 import "../App.css";
-import { classNames } from "@hkamran/utility-web";
+import TableStructure from "../components/TableStructure";
+
+import Header from "../components/Header";
 
 export default function DonatePage() {
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
@@ -17,56 +16,29 @@ export default function DonatePage() {
 
     return (
         <>
-            <div className="fixed-top navbar NavHead">
-                <a href="https://thechampionproject.org/">Want to learn more about us?</a>
-
-                <h3 className="CPStyle">The Champion Project</h3>
-
-                <a href="/login">Sign in/up to volunteer</a>
-            </div>
+            <Header
+                setSearchQuery={setSearchQuery}
+                alert={alert}
+                href={"/login"}
+                hrefName={"Login/Signup"}
+            />
 
             <div className="TextCenterDiv">
-                <em >
+                <em>
                     Please send books to the Junior League Office at 8686 New
                     Trails Dr, The Woodlands, TX 77381
                 </em>
             </div>
 
-            <div
-                className={classNames(
-                    "fixed-top alert",
-                    alert.success ? "alert-success" : "alert-danger"
-                )}
-                style={{ display: alert.show ? "" : "none" }}
-            >
-                {alert.message}
-            </div>
-            <div className="BookTableParent">
-                <div className="BookTable">
-                    <div className="container">
-                        <Table
-                            striped
-                            bordered
-                            hover
-                            className="ActualBookTable"
-                        >
-                            <TableHeader mode={"donate"} />
-                            <tbody>
-                                <BookTable
-                                    managedBook={managedBook}
-                                    setManagedBook={setManagedBook}
-                                    setAlert={setAlert}
-                                    searchQuery={searchQuery}
-                                    setSearchQuery={setSearchQuery}
-                                    mode={"donate"}
-                                    books={books}
-                                    setBooks={setBooks}
-                                />
-                            </tbody>
-                        </Table>
-                    </div>
-                </div>
-            </div>
+            <TableStructure
+                mode="donate"
+                managedBook={managedBook}
+                setManagedBook={setManagedBook}
+                setAlert={setAlert}
+                searchQuery={searchQuery}
+                books={books}
+                setBooks={setBooks}
+            />
         </>
     );
 }

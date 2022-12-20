@@ -35,14 +35,18 @@ export default function HomePage() {
 
     const submit = async (e) => {
         tryToSelectStartDate(dateField.current.value);
-        if (okayToProceed) {
-            await axios.post(
-                process.env.REACT_APP_BACKEND_URL + "signUpForDate",
-                {
-                    dateID: selectedDateID,
-                }
-            );
-        } else alert("There was an error with your request");
+        try {
+            if (okayToProceed) {
+                await axios.post(
+                    process.env.REACT_APP_BACKEND_URL + "signUpForDate",
+                    {
+                        dateID: selectedDateID,
+                    }
+                );
+            } else alert("There was an error with your request");
+        } catch {
+            alert("There was an error with your request");
+        }
     };
     return (
         <>
