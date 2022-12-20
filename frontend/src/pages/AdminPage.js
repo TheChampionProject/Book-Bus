@@ -42,7 +42,6 @@ export default function AdminPage() {
 
     const submit = async () => {
         if (addDateMode) {
-            console.log("Add Mode");
             if (newDate === "" || newTime === "" || newLocation === "" || newEndTime === "") {
                 alert("Please fill out all fields");
                 return;

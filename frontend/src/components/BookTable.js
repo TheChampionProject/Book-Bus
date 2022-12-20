@@ -72,7 +72,7 @@ export default function BookTable({
                         Price: res[i].Price,
                         Needed: res[i].Needed,
                         UUID: res[i].UUID,
-                        Index: i,
+                        AddDates: res[i].AddDates ? res[i].AddDates : [],
                     };
                 }
 

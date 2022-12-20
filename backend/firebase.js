@@ -91,8 +91,6 @@ export const setBookFB = async (book, location) => {
         Price: book.Price,
     };
 
-    if (book.AddDates) sendAddDates = book.AddDates;
-
     if (location === "archive") {
         params = { ...editedBook, ArchiveDates: archiveDates };
     } else {
@@ -103,7 +101,7 @@ export const setBookFB = async (book, location) => {
                 ...editedBook,
                 Inventory: book.Inventory,
                 Needed: book.Needed,
-                AddDates: sendAddDates,
+                AddDates: book.AddDates,
             };
     }
 

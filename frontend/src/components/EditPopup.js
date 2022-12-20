@@ -8,7 +8,6 @@ export default function EditPopup({
     setShowEditPopup,
     book,
     setManagedBook,
-    setAlert,
     lastGenre,
     scanMode,
     setShowAddPopup,
@@ -18,8 +17,8 @@ export default function EditPopup({
     let autoFillInventory = "1";
     let autoFillNeeded = 0;
     let autoFillPrice = "";
-    let addBook = false,
-        complete = false;
+    let addBook = useRef(true);
+    let complete = false;
 
     let calledEdit = useRef(false);
     let interrupt = useRef(false);
@@ -27,24 +26,28 @@ export default function EditPopup({
     let priceRef = useRef(null),
         titleRef = useRef(null); // For the cursor to auto click
 
-    try {
+    useEffect(() => {
+        if (!showEditPopup) return;
+
         if (book !== null) {
+            addBook.current = false;
             autoFillTitle = book.Title;
             autoFillGenre = lastGenre.current;
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
         } else {
-            addBook = true;
+            addBook.current = true;
         }
-    } catch {
-        setAlert({
-            show: true,
-            message:
-                "There was a problem with your book changes. Please refresh and try again.",
-            success: false,
-        });
-    }
+
+        if (addBook.current) {
+            setTimeout(() => {
+                titleRef.current.focus();
+            }, 500);
+        } else {
+            priceRef.current.focus();
+        }
+    }, [showEditPopup]);
 
     let [title, setTitle] = useState(autoFillTitle);
     let [genre, setGenre] = useState(autoFillGenre);
@@ -86,13 +89,9 @@ export default function EditPopup({
     useEffect(() => {
         if (!showEditPopup) return;
 
-        if (addBook) {
-            for (let i = 0; i < 5; i++) titleRef.current.focus();
-        } else priceRef.current.focus();
-
         calledEdit.current = false;
         interrupt.current = false;
-        if (scanMode && !addBook) {
+        if (scanMode && !addBook.current) {
             setTimeout(() => {
                 if (calledEdit.current) {
                     return;
@@ -128,15 +127,16 @@ export default function EditPopup({
 
         if (String(price).startsWith("$")) price = price.slice(1);
 
-        if (addBook) {
+        if (addBook.current) {
             book = {};
             book.AddDates = [];
             book.AddDates.push(new Date().toISOString());
         }
 
         if (inventory > book.Inventory) {
-            if (book.AddDates === undefined) book.AddDates = [];
-            else book.AddDates.push(...book.AddDates);
+            if (book.AddDates === undefined) {
+                book.AddDates = [];
+            } else book.AddDates.push(...book.AddDates);
 
             for (let i = 0; i < inventory - book.Inventory; i++)
                 book.AddDates.push(new Date().toISOString());
@@ -144,7 +144,7 @@ export default function EditPopup({
 
         book.Title = title;
         book.Genre = genre;
-        book.Inventory = inventory;
+        book.Inventory = previousInventory.current;
         book.Needed = needed;
         book.Price = price;
 
@@ -169,7 +169,9 @@ export default function EditPopup({
             <Modal show={showEditPopup} onHide={() => close()}>
                 <Modal.Header closeButton>
                     <Modal.Title>
-                        {addBook ? "Manually Add a Book" : "Edit " + book.Title}
+                        {addBook.current
+                            ? "Manually Add a Book"
+                            : "Edit " + book.Title}
                     </Modal.Title>
                 </Modal.Header>
                 <form>

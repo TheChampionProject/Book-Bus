@@ -1,5 +1,5 @@
 import QueryRow from "./QueryRow.js";
-import React from "react";
+import React, { useRef } from "react";
 import axios from "axios";
 export default function QueryResults({
     queryList,
@@ -11,7 +11,7 @@ export default function QueryResults({
     books,
     searchQuery,
 }) {
-    let foundBook = false;
+    let foundBook = useRef(false);
     const add = async (book) => {
         let refinedBook = {};
 
@@ -21,7 +21,6 @@ export default function QueryResults({
                 book.volumeInfo.title.toLowerCase()
             ) {
                 refinedBook = books[i];
-                refinedBook.Inventory++;
             }
         }
 
@@ -32,9 +31,14 @@ export default function QueryResults({
             refinedBook.Inventory = 1;
             refinedBook.Needed = 0;
             refinedBook.Index = -1;
+        } else {
+            refinedBook.Inventory = parseInt(refinedBook.Inventory) + 1;
         }
 
-        if (refinedBook.AddDates === undefined) refinedBook.AddDates = [];
+        if (refinedBook.AddDates) {
+        } else {
+            refinedBook.AddDates = [];
+        }
 
         refinedBook.AddDates.push(new Date().toISOString());
 
@@ -70,22 +74,21 @@ export default function QueryResults({
     if (searchQuery === "") return;
     return queryList.map((book, number) => {
         if (queryList.length === 1) {
-            if (!foundBook) {
+            if (!foundBook.current) {
                 add(book);
-                foundBook = true;
+                foundBook.current = true;
             }
         }
         try {
             if (
                 book.volumeInfo.industryIdentifiers[1].identifier ===
                     searchQuery ||
-                book.volumeInfo.industryIdentifiers[0].identifier ===
-                    searchQuery
+                (book.volumeInfo.industryIdentifiers[0].identifier ===
+                    searchQuery &&
+                    !foundBook)
             ) {
-                if (!foundBook) {
-                    add(book);
-                    foundBook = true;
-                }
+                add(book);
+                foundBook.current = true;
             }
         } catch {}
 
