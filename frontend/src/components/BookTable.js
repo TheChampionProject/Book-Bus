@@ -177,7 +177,7 @@ export default function BookTable({
         </tr>
     ) : (
         books
-            .filter((book) => book.Inventory > 0)
+            .filter((book) => (mode === "manage" ? true: book.Inventory > 0 ))
             .filter((book) =>
                 searchQuery === ""
                     ? true

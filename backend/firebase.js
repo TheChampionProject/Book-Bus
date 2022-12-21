@@ -95,15 +95,12 @@ export const setBookFB = async (book, location) => {
     if (location === "archive") {
         params = { ...editedBook, ArchiveDates: archiveDates };
     } else {
-        if (book.Inventory === 0) {
-            params = null;
-        } else
-            params = {
-                ...editedBook,
-                Inventory: book.Inventory,
-                Needed: book.Needed,
-                AddDates: book.AddDates,
-            };
+        params = {
+            ...editedBook,
+            Inventory: book.Inventory,
+            Needed: book.Needed,
+            AddDates: book.AddDates,
+        };
     }
 
     await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
@@ -138,9 +135,11 @@ export const signInAuth = async (email, password) => {
     await signInWithEmailAndPassword(auth, email, password).catch((e) => {
         return e;
     });
+
     const docRef = doc(firestoredb, "users", auth.currentUser.uid);
     const docSnap = await getDoc(docRef);
     const verification = docSnap.data();
+    console.log(verification);
     return verification;
 };
 
@@ -203,17 +202,29 @@ export const updateVolunteerDateFB = async (dateID) => {
     if (data === "") {
         return "No date found with that ID.";
     }
-    //
-    //    if (auth.currentUser.uid !== null)
-    //        data.volunteers.push(auth.currentUser.uid);
-    //
-    //    await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
-    //        (e) => {
-    //            errorMessage = e;
-    //        }
-    //    );
 
-    console.log(getAuth());
+    try {
+        if (auth.currentUser.uid !== null) {
+            const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+            const docSnap = await getDoc(docRef);
+            const usrName = docSnap.data().name;
+
+            if (data.volunteers.includes(usrName)) {
+                return "User already Signed Up";
+            } else {
+                data.volunteers.push(usrName);
+            }
+        }
+    } catch {
+        return "No user signed in";
+    }
+
+    await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
+        (e) => {
+            errorMessage = e;
+        }
+    );
+
     if (errorMessage !== "") return errorMessage;
     else return "success";
 };

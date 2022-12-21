@@ -7,6 +7,7 @@ import StatYearDD from "./StatYearDD";
 export default function BooksGiven() {
     let archivedBooks = [];
     let activeBooks = [];
+    let volunteerDates = [];
     let [thisMonthGifted, setThisMonthGifted] = useState([]);
     let [thisYearGifted, setThisYearGifted] = useState([]);
     let [allTimeGifted, setAllTimeGifted] = useState([]);
@@ -22,6 +23,10 @@ export default function BooksGiven() {
     let [thisMonthRecievedValue, setThisMonthRecievedValue] = useState(0);
     let [thisYearRecievedValue, setThisYearRecievedValue] = useState(0);
     let [allTimeRecievedValue, setAllTimeRecievedValue] = useState(0);
+
+    let [numEventsThisMonth, setNumEventsThisMonth] = useState(0);
+    let [numEventsThisYear, setNumEventsThisYear] = useState(0);
+    let [numEventsAllTime, setNumEventsAllTime] = useState(0);
 
     let [currentInventory, setCurrentInventory] = useState([]);
 
@@ -47,6 +52,7 @@ export default function BooksGiven() {
             .then(async (response) => {
                 archivedBooks = response.data[0].archive;
                 activeBooks = response.data[0].active;
+                volunteerDates = response.data[0]["volunteer-dates"];
                 await processStats();
             });
     };
@@ -72,6 +78,9 @@ export default function BooksGiven() {
         numSolve = 0;
         numLaugh = 0;
         numInspire = 0;
+        numEventsThisMonth = 0;
+        numEventsThisYear = 0;
+        numEventsAllTime = 0;
 
         processOldStats = statsYear !== year;
         if (processOldStats) year = statsYear;
@@ -131,6 +140,22 @@ export default function BooksGiven() {
             }
         }
 
+        for (let k in volunteerDates) {
+            if (new Date(volunteerDates[k].startDate).getFullYear() === year) {
+                numEventsThisYear++;
+            }
+
+            if (
+                !processOldStats &&
+                new Date(volunteerDates[k].startDate).getMonth() ===
+                    currentMonth
+            ) {
+                numEventsThisMonth++;
+            }
+
+            numEventsAllTime++;
+        }
+
         setCurrentInventory(currentInventory);
 
         setThisMonthGifted(thisMonthGifted);
@@ -148,6 +173,10 @@ export default function BooksGiven() {
         setThisMonthRecievedValue(thisMonthRecievedValue + "");
         setThisYearRecievedValue(thisYearRecievedValue + "");
         setAllTimeRecievedValue(allTimeRecievedValue + "");
+
+        setNumEventsAllTime(numEventsAllTime);
+        setNumEventsThisYear(numEventsThisYear);
+        setNumEventsThisMonth(numEventsThisMonth);
 
         setThisMonthRecievedValue(
             Math.round(
@@ -187,7 +216,8 @@ export default function BooksGiven() {
     let booksGiftedThisMonth,
         booksRecievedThisMonth,
         amountGiftedThisMonth,
-        amountRecievedThisMonth;
+        amountRecievedThisMonth,
+        numEventsThisMonthHTML;
 
     if (!processOldStats) {
         booksGiftedThisMonth = (
@@ -216,11 +246,20 @@ export default function BooksGiven() {
                 </p>
             </div>
         );
+        numEventsThisMonthHTML = (
+            <div className="Statistic">
+                <p className="StatText">{numEventsThisMonth}</p>
+                <p className="StatDescription">
+                    # of BookBus Events (This Month)
+                </p>
+            </div>
+        );
     } else {
         booksGiftedThisMonth = <></>;
         booksRecievedThisMonth = <></>;
         amountGiftedThisMonth = <></>;
         amountRecievedThisMonth = <></>;
+        numEventsThisMonthHTML = <></>;
     }
 
     return (
@@ -294,20 +333,36 @@ export default function BooksGiven() {
                 </div>
 
                 <div className="Statistic">
+                    <p className="StatText">{numEventsThisYear}</p>
+                    <p className="StatDescription">
+                        # of BookBus Events (This Year)
+                    </p>
+                </div>
+
+                <div className="Statistic">
+                    <p className="StatText">{numEventsAllTime}</p>
+                    <p className="StatDescription">
+                        # of BookBus Events (All Time)
+                    </p>
+                </div>
+
+                {numEventsThisMonthHTML}
+
+                <div className="Statistic">
                     <p className="StatText">{numInspire}</p>
-                    <p className="StatDescription"># of Be Inspired Gifted</p>
+                    <p className="StatDescription"># of Be Inspired Gifted (All Time)</p>
                 </div>
                 <div className="Statistic">
                     <p className="StatText">{numLaugh}</p>
-                    <p className="StatDescription"># of Laugh Gifted</p>
+                    <p className="StatDescription"># of Laugh Gifted (All Time)</p>
                 </div>
                 <div className="Statistic">
                     <p className="StatText">{numExplore}</p>
-                    <p className="StatDescription"># of Explore Gifted</p>
+                    <p className="StatDescription"># of Explore Gifted (All Time)</p>
                 </div>
                 <div className="Statistic">
                     <p className="StatText">{numSolve}</p>
-                    <p className="StatDescription"># of Solve Gifted</p>
+                    <p className="StatDescription"># of Solve Gifted (All Time)</p>
                 </div>
             </div>
         </>

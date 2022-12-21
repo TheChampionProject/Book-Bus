@@ -37,9 +37,10 @@ export default function HomePage() {
 
     const submit = async (e) => {
         tryToSelectStartDate(dateField.current.value);
+        let request = "Error";
         try {
             if (okayToProceed) {
-                await axios.post(
+                request = await axios.post(
                     process.env.REACT_APP_BACKEND_URL + "signUpForDate",
                     {
                         dateID: selectedDateID,
@@ -49,6 +50,11 @@ export default function HomePage() {
         } catch {
             alert("There was an error with your request");
         }
+
+        if (request.data === "User already Signed Up") alert("You are already signed up for this date");
+        else if (request.data === "No date found with that ID.") alert("There was an error with your request");
+        else if (request.data === "No user signed in") alert("You must be signed in to sign up for a date");
+        else if (request.data === "success") alert("You have successfully signed up for this date!");
     };
 
     const handleLogout = async () => {

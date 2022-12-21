@@ -10,7 +10,7 @@ import {
     updateVolunteerDateFB,
     getSignedInUserFB,
     changeDateFB,
-    signOutUser
+    signOutUser,
 } from "./firebase.js";
 
 import dotenv from "dotenv";
@@ -118,11 +118,7 @@ export const signup = asyncHandler(async (req, res) => {
 });
 
 export const login = asyncHandler(async (req, res) => {
-    try {
-        res.send(await signInAuth(req.body.email, req.body.password));
-    } catch (err) {
-        res.json(err);
-    }
+    res.send(await signInAuth(req.body.email, req.body.password));
 });
 
 export const resetPassword = asyncHandler(async (req, res) => {
@@ -134,8 +130,7 @@ export const resetPassword = asyncHandler(async (req, res) => {
 });
 
 export const verify = asyncHandler(async (req, res) => {
-    await bookBusVerify(req.file);
-    res.send("success");
+    res.send(await bookBusVerify(req.file));
 });
 
 export const getVolunteerDates = asyncHandler(async (req, res) => {
@@ -155,6 +150,5 @@ export const getSignedInUser = asyncHandler(async (req, res) => {
 });
 
 export const logout = asyncHandler(async (req, res) => {
-    await signOutUser();
-    
-})
+    res.send(await signOutUser());
+});
