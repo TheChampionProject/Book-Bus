@@ -25,6 +25,12 @@
     top: 5rem;
 }
 
+.GenreFilter {
+    position: fixed;
+    top: 1rem;
+    left: 7em;
+}
+
 .BookTableParent {
     display: flex;
     flex-direction: column;

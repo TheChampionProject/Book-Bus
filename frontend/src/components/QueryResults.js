@@ -13,6 +13,9 @@ export default function QueryResults({
 }) {
     let foundBook = useRef(false);
     const add = async (book) => {
+        if (foundBook.current) return;
+        foundBook.current = true;
+
         let refinedBook = {};
 
         for (let i = 0; i < books.length; i++) {
@@ -22,6 +25,12 @@ export default function QueryResults({
             ) {
                 refinedBook = books[i];
             }
+        }
+
+        if (book.volumeInfo.maturityRating === "NOT_MATURE") {
+            alert(
+                "Warning: This book has been flagged with mature content. Please ask for a supervisor's approval before adding it to the library."
+            );
         }
 
         if (Object.entries(refinedBook).length === 0) {
@@ -35,8 +44,7 @@ export default function QueryResults({
             refinedBook.Inventory = parseInt(refinedBook.Inventory) + 1;
         }
 
-        if (refinedBook.AddDates) {
-        } else {
+        if (!refinedBook.AddDates) {
             refinedBook.AddDates = [];
         }
 
@@ -73,12 +81,6 @@ export default function QueryResults({
     if (queryList.length === 0) return;
     if (searchQuery === "") return;
     return queryList.map((book, number) => {
-        if (queryList.length === 1) {
-            if (!foundBook.current) {
-                add(book);
-                foundBook.current = true;
-            }
-        }
         try {
             if (
                 book.volumeInfo.industryIdentifiers[1].identifier ===
@@ -88,7 +90,6 @@ export default function QueryResults({
                     !foundBook)
             ) {
                 add(book);
-                foundBook.current = true;
             }
         } catch {}
 

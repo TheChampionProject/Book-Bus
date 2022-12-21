@@ -19,6 +19,7 @@ export default function ManagePage() {
     let [books, setBooks] = useState(null);
     const lastGenre = useRef("");
     const [scanMode, setScanMode] = useState(false);
+    let [genreFilter, setGenreFilter] = useState("All");
 
 
     let handleAddBook = (e) => {
@@ -44,6 +45,8 @@ export default function ManagePage() {
                 href={"/home"}
                 hrefName={"Home Page"}
                 useSearchBar={true}
+                genreFilter={genreFilter}
+                setGenreFilter={setGenreFilter}
 
             />
             
@@ -77,6 +80,7 @@ export default function ManagePage() {
                 scanMode={scanMode}
                 setScanMode={setScanMode}
                 setShowAddPopup={setShowAddPopup}
+                books={books}
             />
 
             <AddPopup

@@ -64,6 +64,7 @@ export default function AddPopup({
             }, 3000);
         } else {
             setQueryList(request.data);
+
             setShowTable(true);
         }
     };
