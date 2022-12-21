@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
     const [selectedDate, setSelectedDate] = useState("");
-    const [dates, setDates] = useState([]);
+    let [dates, setDates] = useState([]);
     let [username, setUsername] = useState("");
     let startDates = [],
         dateIDs = [],
@@ -29,7 +29,8 @@ export default function HomePage() {
         };
         getUsername();
     }, []);
-    const tryToSelectStartDate = (newDate) => {
+
+    const tryToSelectStartDate = async (newDate) => {
         for (let i = 0; i < dates.length; i++) {
             startDates.push(dates[i].startDate.slice(0, 10));
             dateIDs.push(dates[i].id);
@@ -51,6 +52,16 @@ export default function HomePage() {
 
     const submit = async (e) => {
         tryToSelectStartDate(dateField.current.value);
+        const response = await axios.get(
+            process.env.REACT_APP_BACKEND_URL + "getSignedInUserInfo"
+        );
+
+        if (!response.data.watchedVideo || !response.data.uploadedForm) {
+            alert(
+                "You must watch the video and upload the form before signing up for a date!"
+            );
+            return;
+        }
         let request = "Error";
         try {
             if (okayToProceed) {
@@ -94,7 +105,11 @@ export default function HomePage() {
                         Thank you for volunteering for the Champion Project{" "}
                         {username}!
                     </h1>
-                    <Button variant="primary" onClick={handleLogout} style={{position: "absolute", top: "1%", right: "2%"}}>
+                    <Button
+                        variant="primary"
+                        onClick={handleLogout}
+                        style={{ position: "absolute", top: "1%", right: "2%" }}
+                    >
                         Sign Out
                     </Button>
                 </div>
@@ -114,9 +129,14 @@ export default function HomePage() {
                 <Button variant="primary" href="/stats">
                     View statistics
                 </Button>
-                <br />
-                <br />
 
+                <br />
+                <br />
+                <Button variant="primary" href="/admin">
+                    Admin Page
+                </Button>
+                <br />
+                <br />
                 <h2>Or sign up to volunteer: </h2>
                 <h5>Available Dates:</h5>
                 <VolunteerDates dates={dates} setDates={setDates} />

@@ -119,6 +119,10 @@ export const signUpAuth = async (email, password, first, last) => {
     ).catch((e) => {
         return e;
     });
+
+    await signInWithEmailAndPassword(auth, email, password).catch((e) => {
+        return e;
+    });
     await setDoc(doc(firestoredb, "users", auth.currentUser.uid), {
         email: email,
         name: first + " " + last,
@@ -149,8 +153,9 @@ export const resetPasswordAuth = async (email) => {
 };
 
 export const bookBusVerify = async (verificationFile) => {
-    const usrName = await getSignedInUserNameFB();
-    if (usrName === "No user signed in") return usrName;
+    const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    const usrName = docSnap.data().name;
 
     const targetRef = storageRef(
         storage,
@@ -221,6 +226,15 @@ export const updateVolunteerDateFB = async (dateID) => {
     else return "success";
 };
 
+export const getSignedInUserInfoFB = async () => {
+    try {
+        const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        return docSnap.data();
+    } catch {
+        return "No user signed in";
+    }
+};
 export const getSignedInUserFB = async () => {
     return getAuth();
 };

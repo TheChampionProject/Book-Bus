@@ -4,6 +4,7 @@ import DateDD from "../components/DateDD";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import uuidv4 from "uuid";
+import { useNavigate } from "react-router-dom";
 export default function AdminPage() {
     const [signedUpDateQuery, setSignedUpDateQuery] = useState("");
     const [dateToBeChanged, setDateToBeChanged] = useState({
@@ -20,6 +21,8 @@ export default function AdminPage() {
 
     let [addDateMode, setDateMode] = useState(false);
 
+    let navigate = useNavigate();
+
     useEffect(() => {
         const getDates = async () => {
             await fetch(process.env.REACT_APP_BACKEND_URL + "getDates")
@@ -32,6 +35,24 @@ export default function AdminPage() {
         getDates();
     }, []);
 
+    useEffect(() => {
+        const getUsername = async () => {
+            const response = await axios.get(
+                process.env.REACT_APP_BACKEND_URL + "getSignedInUserInfo"
+            );
+
+            if (response.data === "No user signed in") {
+                alert("You must be signed in to view this page");
+                navigate("/login");
+            }
+            if (!response.data.admin) {
+                alert("You must be an admin to view this page");
+                navigate("/home");
+            }
+        };
+        getUsername();
+    }, []);
+
     const addDate = (e) => {
         e.preventDefault();
         setDateMode(true);
@@ -42,14 +63,20 @@ export default function AdminPage() {
 
     const submit = async () => {
         if (addDateMode) {
-            if (newDate === "" || newTime === "" || newLocation === "" || newEndTime === "") {
+            if (
+                newDate === "" ||
+                newTime === "" ||
+                newLocation === "" ||
+                newEndTime === ""
+            ) {
                 alert("Please fill out all fields");
                 return;
             }
         }
         let startDate = newDate,
             location = newLocation,
-            time = newTime, endTime = newEndTime;
+            time = newTime,
+            endTime = newEndTime;
         if (newDate === "") startDate = dateToBeChanged.startDate.slice(0, 10);
         if (newTime === "") time = dateToBeChanged.startDate.slice(11, 16);
         if (newLocation === "") location = dateToBeChanged.location;
@@ -70,13 +97,51 @@ export default function AdminPage() {
         );
         if (request.data === "Error")
             alert("There was an error with your request");
-        else alert("Date changed successfully. Refresh the page to see changes.");
+        else
+            alert(
+                "Date changed successfully. Refresh the page to see changes."
+            );
     };
+
+    let signedUpDateQueryVolunteers = [];
+
+    if (signedUpDateQuery !== "") {
+        for (let i in signedUpDateQuery.volunteers) {
+            signedUpDateQueryVolunteers.push(signedUpDateQuery.volunteers[i]);
+            if (signedUpDateQueryVolunteers[i] !== "")
+                signedUpDateQueryVolunteers.push(", ");
+
+            if (signedUpDateQueryVolunteers[i] === "") {
+                signedUpDateQueryVolunteers.pop();
+                signedUpDateQueryVolunteers.pop();
+            }
+
+            if (signedUpDateQueryVolunteers[i] === null) {
+                signedUpDateQueryVolunteers.pop();
+            }
+        }
+
+        if (
+            signedUpDateQueryVolunteers[
+                signedUpDateQueryVolunteers.length - 1
+            ] === ", "
+        )
+            signedUpDateQueryVolunteers.pop();
+
+        if (signedUpDateQueryVolunteers.length === 0)
+            signedUpDateQueryVolunteers.push("No volunteers signed up :(");
+    }
 
     return (
         <>
             <div className="CenterAdminPage">
                 <h1>Admin Page</h1>
+                <a
+                    href="/home"
+                    style={{ position: "absolute", top: "1em", left: "1em" }}
+                >
+                    Home Page
+                </a>
                 <br />
                 <h4>Change/Add A BookBus Event Date:</h4>
                 <div style={{ display: "flex", justifyContent: "normal" }}>
@@ -84,7 +149,7 @@ export default function AdminPage() {
                         style={{ marginRight: "2em" }}
                         onClick={(e) => addDate(e)}
                     >
-                        Add +
+                        Add
                     </Button>
 
                     <Dropdown>
@@ -169,6 +234,8 @@ export default function AdminPage() {
                         <DateDD dates={dates} setDate={setSignedUpDateQuery} />
                     </Dropdown.Menu>
                 </Dropdown>
+                <br />
+                {signedUpDateQueryVolunteers}
             </div>
         </>
     );

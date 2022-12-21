@@ -264,6 +264,9 @@ export default function BooksGiven() {
 
     return (
         <>
+            <a href="/home" className="StatsHomeLink">
+                Home Page
+            </a>
             <label className="StatsLabel">Select Year For Statistics: </label>
             <Dropdown>
                 <Dropdown.Toggle variant="primary" className="StatsDropdown">
@@ -350,19 +353,27 @@ export default function BooksGiven() {
 
                 <div className="Statistic">
                     <p className="StatText">{numInspire}</p>
-                    <p className="StatDescription"># of Be Inspired Gifted (All Time)</p>
+                    <p className="StatDescription">
+                        # of Be Inspired Gifted (All Time)
+                    </p>
                 </div>
                 <div className="Statistic">
                     <p className="StatText">{numLaugh}</p>
-                    <p className="StatDescription"># of Laugh Gifted (All Time)</p>
+                    <p className="StatDescription">
+                        # of Laugh Gifted (All Time)
+                    </p>
                 </div>
                 <div className="Statistic">
                     <p className="StatText">{numExplore}</p>
-                    <p className="StatDescription"># of Explore Gifted (All Time)</p>
+                    <p className="StatDescription">
+                        # of Explore Gifted (All Time)
+                    </p>
                 </div>
                 <div className="Statistic">
                     <p className="StatText">{numSolve}</p>
-                    <p className="StatDescription"># of Solve Gifted (All Time)</p>
+                    <p className="StatDescription">
+                        # of Solve Gifted (All Time)
+                    </p>
                 </div>
             </div>
         </>

@@ -41,8 +41,8 @@ export default function ManagePage() {
             <Header
                 setSearchQuery={setSearchQuery}
                 alert={alert}
-                href={"/gift"}
-                hrefName={"Gift Page"}
+                href={"/home"}
+                hrefName={"Home Page"}
                 useSearchBar={true}
 
             />

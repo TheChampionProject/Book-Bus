@@ -10,8 +10,16 @@ export default function VolunteerDates({ dates, setDates }) {
                 .then((data) => {
                     for (let i in data[0]) dates.push(data[0][i]);
                     setDates(dates);
-                    
                 });
+
+            const currentDate = new Date();
+            dates = dates.filter((date) => {
+                return (
+                    currentDate.getTime() <= new Date(date.startDate).getTime()
+                );
+            });
+
+            setDates(dates);
         };
         getDates();
     }, []);
