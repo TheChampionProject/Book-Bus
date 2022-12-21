@@ -11,6 +11,7 @@ import {
     getSignedInUserFB,
     changeDateFB,
     signOutUser,
+    getSignedInUserNameFB
 } from "./firebase.js";
 
 import dotenv from "dotenv";
@@ -147,6 +148,10 @@ export const changeDate = asyncHandler(async (req, res) => {
 
 export const getSignedInUser = asyncHandler(async (req, res) => {
     res.send(await getSignedInUserFB());
+});
+
+export const getSignedInUserName = asyncHandler(async (req, res) => {
+    res.send(await getSignedInUserNameFB());
 });
 
 export const logout = asyncHandler(async (req, res) => {

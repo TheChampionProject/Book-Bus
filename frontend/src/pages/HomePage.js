@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import VolunteerDates from "../components/VolunteerDates";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function HomePage() {
     const [selectedDate, setSelectedDate] = useState("");
     const [dates, setDates] = useState([]);
+    let [username, setUsername] = useState("");
     let startDates = [],
         dateIDs = [],
         selectedDateID,
@@ -15,6 +16,19 @@ export default function HomePage() {
     let dateField = useRef();
     let navigate = useNavigate();
 
+    useEffect(() => {
+        const getUsername = async () => {
+            const response = await axios.get(
+                process.env.REACT_APP_BACKEND_URL + "getSignedInUserName"
+            );
+            if (response.data === "No user signed in") {
+                alert("You must be signed in to view this page");
+                navigate("/login");
+            }
+            setUsername(response.data.substring(0, response.data.indexOf(" ")));
+        };
+        getUsername();
+    }, []);
     const tryToSelectStartDate = (newDate) => {
         for (let i = 0; i < dates.length; i++) {
             startDates.push(dates[i].startDate.slice(0, 10));
@@ -51,10 +65,14 @@ export default function HomePage() {
             alert("There was an error with your request");
         }
 
-        if (request.data === "User already Signed Up") alert("You are already signed up for this date");
-        else if (request.data === "No date found with that ID.") alert("There was an error with your request");
-        else if (request.data === "No user signed in") alert("You must be signed in to sign up for a date");
-        else if (request.data === "success") alert("You have successfully signed up for this date!");
+        if (request.data === "User already Signed Up")
+            alert("You are already signed up for this date");
+        else if (request.data === "No date found with that ID.")
+            alert("There was an error with your request");
+        else if (request.data === "No user signed in")
+            alert("You must be signed in to sign up for a date");
+        else if (request.data === "success")
+            alert("You have successfully signed up for this date!");
     };
 
     const handleLogout = async () => {
@@ -71,7 +89,16 @@ export default function HomePage() {
     return (
         <>
             <div className="CenterHomePage">
-                <h1>Thank you for volunteering for the Champion Project!</h1>
+                <div className="HomePageHeader">
+                    <h1>
+                        Thank you for volunteering for the Champion Project{" "}
+                        {username}!
+                    </h1>
+                    <Button variant="primary" onClick={handleLogout} style={{position: "absolute", top: "1%", right: "2%"}}>
+                        Sign Out
+                    </Button>
+                </div>
+
                 <br />
                 <h2>Chose a page to go to: </h2>
                 <Button variant="primary" href="/manage">
@@ -89,11 +116,7 @@ export default function HomePage() {
                 </Button>
                 <br />
                 <br />
-                <Button variant="primary" onClick={handleLogout}>
-                    Sign Out
-                </Button>
-                <br /> 
-                <br />
+
                 <h2>Or sign up to volunteer: </h2>
                 <h5>Available Dates:</h5>
                 <VolunteerDates dates={dates} setDates={setDates} />

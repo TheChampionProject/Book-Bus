@@ -139,7 +139,6 @@ export const signInAuth = async (email, password) => {
     const docRef = doc(firestoredb, "users", auth.currentUser.uid);
     const docSnap = await getDoc(docRef);
     const verification = docSnap.data();
-    console.log(verification);
     return verification;
 };
 
@@ -150,9 +149,8 @@ export const resetPasswordAuth = async (email) => {
 };
 
 export const bookBusVerify = async (verificationFile) => {
-    const docRef = doc(firestoredb, "users", auth.currentUser.uid);
-    const docSnap = await getDoc(docRef);
-    const usrName = docSnap.data().name;
+    const usrName = await getSignedInUserNameFB();
+    if (usrName === "No user signed in") return usrName;
 
     const targetRef = storageRef(
         storage,
@@ -203,20 +201,14 @@ export const updateVolunteerDateFB = async (dateID) => {
         return "No date found with that ID.";
     }
 
-    try {
-        if (auth.currentUser.uid !== null) {
-            const docRef = doc(firestoredb, "users", auth.currentUser.uid);
-            const docSnap = await getDoc(docRef);
-            const usrName = docSnap.data().name;
-
-            if (data.volunteers.includes(usrName)) {
-                return "User already Signed Up";
-            } else {
-                data.volunteers.push(usrName);
-            }
-        }
-    } catch {
-        return "No user signed in";
+    const userName = await getSignedInUserNameFB();
+    if (userName === "No user signed in") {
+        return userName;
+    }
+    if (data.volunteers.includes(userName)) {
+        return "User already Signed Up";
+    } else {
+        data.volunteers.push(userName);
     }
 
     await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
@@ -231,6 +223,16 @@ export const updateVolunteerDateFB = async (dateID) => {
 
 export const getSignedInUserFB = async () => {
     return getAuth();
+};
+
+export const getSignedInUserNameFB = async () => {
+    try {
+        const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        return docSnap.data().name;
+    } catch {
+        return "No user signed in";
+    }
 };
 
 export const changeDateFB = async (newData) => {

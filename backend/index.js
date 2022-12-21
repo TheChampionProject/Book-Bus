@@ -13,7 +13,8 @@ import {
     signUpForDate,
     getSignedInUser,
     changeDate,
-    logout
+    logout,
+    getSignedInUserName
 } from "./apiController.js";
 import multer from "multer";
 
@@ -49,5 +50,6 @@ app.post("/signUpForDate", signUpForDate);
 app.get("/getSignedInUser", getSignedInUser);
 app.post("/changeDate", changeDate);
 app.post("/logout", logout)
+app.get("/getSignedInUserName", getSignedInUserName);
 
 app.listen(port, () => console.log(`Server started on ${port}!`));
