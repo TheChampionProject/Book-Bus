@@ -3,6 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import GenreDDI from "./GenreDDI";
 import "../App.css";
+import uuidv4 from "uuid";
 
 export default function EditPopup({
     showEditPopup,
@@ -34,12 +35,15 @@ export default function EditPopup({
         if (book !== null) {
             addBook.current = false;
             autoFillTitle = book.Title;
-            autoFillGenre = lastGenre.current;
+
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
+
+            autoFillGenre = book.Genre !== "" ? book.Genre : lastGenre.current;
         } else {
             addBook.current = true;
+            autoFillGenre = lastGenre.current;
         }
 
         if (addBook.current) {
@@ -62,6 +66,8 @@ export default function EditPopup({
     let previousInventory = useRef("1");
     let previousNeeded = useRef("");
     let previousPrice = useRef("");
+
+    let [modalTitle, setModalTitle] = useState("");
 
     useEffect(() => {
         previousTitle.current = title;
@@ -122,8 +128,8 @@ export default function EditPopup({
     );
 
     const editBook = () => {
-        let previousBookInventory = 0,
-            foundPreviousBook = false;
+        let previousBookInventory = 0;
+        
         if ((genre === "N/A" || genre === "") && showEditPopup) {
             alert("Please select a genre");
             return;
@@ -146,34 +152,35 @@ export default function EditPopup({
 
         if (String(price).startsWith("$")) price = price.slice(1);
 
+        for (let i = 0; i < books.length; i++) {
+            if (
+                books[i].Title.toLowerCase() === title.toLowerCase() &&
+                books[i].UUID !== book.UUID
+            ) {
+                alert(
+                    "This book already exists. Press okay to auto-merge the books."
+                );
+                
+                previousBookInventory = books[i].Inventory;
+                book.UUID = books[i].UUID;
+                book.AddDates = books[i].AddDates;
+                break;
+            } else previousBookInventory = 0;
+        }
+
         if (addBook.current) {
             book = {};
-            for (let i = 0; i < books.length; i++) {
-                if (books[i].Title.toLowerCase() === title.toLowerCase()) {
-                    alert(
-                        "This book already exists. Auto-merging inventory..."
-                    );
-                    foundPreviousBook = true;
-                    previousBookInventory = books[i].Inventory;
-                    console.log(previousBookInventory);
-                    book.UUID = books[i].UUID;
-                    book.AddDates = books[i].AddDates;
-                    break;
-                } else previousBookInventory = 0;
-            }
+            book.UUID = uuidv4();
         }
 
         if (inventory > book.Inventory) {
-            if (book.AddDates === undefined) {
+            if (!book.AddDates) {
                 book.AddDates = [];
-            } else book.AddDates.push(...book.AddDates);
+            }
 
+            
             for (let i = 0; i < inventory - book.Inventory; i++)
                 book.AddDates.push(new Date().toISOString());
-        }
-
-        if (!foundPreviousBook) {
-            book.AddDates = [];
         }
 
         book.Title = title;
@@ -182,16 +189,17 @@ export default function EditPopup({
         book.Needed = needed;
         book.Price = price;
 
-        book.AddDates.push(new Date().toISOString());
-
         if (addBook.current) {
             book.Inventory =
                 parseInt(previousBookInventory) + parseInt(book.Inventory);
+            if (!book.AddDates) book.AddDates = [];
+            book.AddDates.push(new Date().toISOString());
         }
 
         lastGenre.current = genre;
         complete = true;
         interrupt.current = false;
+        console.log(book);
         setManagedBook(book);
         setShowEditPopup(false);
     };
@@ -205,17 +213,16 @@ export default function EditPopup({
         setShowEditPopup(false);
     };
 
+    if (addBook.current) modalTitle = "Add a Book";
+    else if (!addBook.current && book !== null)
+        modalTitle = "Edit " + book.Title;
+    else modalTitle = "Null Book Exception";
+
     return (
         <>
             <Modal show={showEditPopup} onHide={() => close()}>
                 <Modal.Header closeButton>
-                    <Modal.Title>
-                        {addBook.current
-                            ? "Manually Add a Book"
-                            : "Edit " + book
-                            ? book.Title
-                            : "Null"}
-                    </Modal.Title>
+                    <Modal.Title>{modalTitle}</Modal.Title>
                 </Modal.Header>
                 <form>
                     <Modal.Body>

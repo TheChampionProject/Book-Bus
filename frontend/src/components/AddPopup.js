@@ -18,6 +18,7 @@ export default function AddPopup({
     const [showTable, setShowTable] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const textField = useRef(null);
+    const successfulQuery = useRef(false);
 
     useEffect(() => {
         setShowTable(false);
@@ -40,15 +41,39 @@ export default function AddPopup({
     };
 
     const searchForBook = async () => {
-        let request = await axios.post(
-            process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
-            {
-                title: searchQuery,
-                mode: scanMode ? "" : "titleSearch",
-            }
-        );
+        let request;
+        try {
+            request = await axios.post(
+                process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
+                {
+                    title: searchQuery,
+                    mode: scanMode ? "" : "titleSearch",
+                }
+            );
 
-        if (request.data === "Error") {
+            if (request.data === "Error") {
+                successfulQuery.current = false;
+                setAlert({
+                    show: true,
+                    message:
+                        "We couldn't find that book. Please add it manually.",
+                    success: false,
+                });
+
+                manuallyAdd();
+
+                setTimeout(() => {
+                    setAlert({
+                        show: false,
+                    });
+                }, 3000);
+            } else {
+                successfulQuery.current = true;
+                setQueryList(request.data);
+                setShowTable(true);
+            }
+        } catch {
+            successfulQuery.current = false;
             setAlert({
                 show: true,
                 message: "We couldn't find that book. Please add it manually.",
@@ -62,10 +87,6 @@ export default function AddPopup({
                     show: false,
                 });
             }, 3000);
-        } else {
-            setQueryList(request.data);
-
-            setShowTable(true);
         }
     };
     return (
@@ -146,6 +167,7 @@ export default function AddPopup({
                                 books={books}
                                 scanMode={scanMode}
                                 searchQuery={searchQuery}
+                                successfulQuery={successfulQuery}
                             />
                         </tbody>
                     </Table>
