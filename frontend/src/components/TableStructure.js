@@ -15,6 +15,7 @@ export default function TableStructure({
     books,
     setBooks,
     setShowGC,
+    genreFilter
 }) {
     return (
         <div className="BookTableParent">
@@ -34,7 +35,7 @@ export default function TableStructure({
                                 books={books}
                                 setBooks={setBooks}
                                 setShowGC={setShowGC}
-
+                                genreFilter={genreFilter}
                             />
                         </tbody>
                     </Table>

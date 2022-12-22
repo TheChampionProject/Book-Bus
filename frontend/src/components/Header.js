@@ -11,8 +11,7 @@ export default function Header({
     hrefName,
     useSearchBar,
     setGenreFilter,
-    genreFilter
-
+    genreFilter,
 }) {
     let leftElement, rightElement, dropdown;
     if (useSearchBar) {
@@ -28,10 +27,7 @@ export default function Header({
         );
         dropdown = (
             <Dropdown>
-                <Dropdown.Toggle
-                    variant="primary"
-                    className="GenreFilter"
-                >
+                <Dropdown.Toggle variant="primary" className="GenreFilter">
                     {genreFilter}
                 </Dropdown.Toggle>
 
@@ -59,7 +55,8 @@ export default function Header({
             <div className="fixed-top navbar NavHead">
                 {leftElement}
                 {dropdown}
-                <h3 className="CPStyle">The Champion Project</h3>
+                <h3 className="CPStyleMobile">TCP</h3>
+                <h3 className="CPStyleFull">The Champion Project</h3>{" "}
                 {rightElement}
             </div>
 

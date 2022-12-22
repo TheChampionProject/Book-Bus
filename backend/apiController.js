@@ -64,27 +64,93 @@ export const getSearchQueryBooks = asyncHandler(async (req, res) => {
 });
 
 export const getBookPrice = asyncHandler(async (req, res) => {
-    ISBN = req.body.ISBN;
+    //    ISBN = req.body.ISBN;
+    //
+    //    let priceRequest = await axios.get(
+    //        BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
+    //    );
+    //    if (priceRequest.data.result.status === "error") {
+    //        res.send("Price Not Found");
+    //        return;
+    //    }
+    //
+    //    if (priceRequest.data.result.offers.booksrun.new !== "none")
+    //        price = priceRequest.data.result.offers.booksrun.new;
+    //    else if (priceRequest.data.result.offers.booksrun.used !== "none")
+    //        price = priceRequest.data.result.offers.booksrun.used;
+    //    else if (priceRequest.data.result.offers.marketplace[0].new !== "none")
+    //        price = priceRequest.data.result.offers.marketplace[0].new;
+    //    else if (priceRequest.data.result.offers.marketplace[0].used !== "none")
+    //        price = priceRequest.data.result.offers.marketplace[0].used.price;
+    //    else price = "Price Not Found";
+    //
+    //    res.send(price);
 
-    let priceRequest = await axios.get(
-        BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
-    );
-    if (priceRequest.data.result.status === "error") {
-        res.send("Price Not Found");
-        return;
-    }
+    //const options = {
+    //    method: 'GET',
+    //    url: 'https://amazon-data-scrapper3.p.rapidapi.com/search/Macbook%20Air',
+    //    params: {api_key: '10518d369acaf28f525da1e0e8039add'},
+    //    headers: {
+    //      'X-RapidAPI-Key': '89e1b594dfmsh2024736d3904237p19b4f0jsn98c7c21416a6',
+    //      'X-RapidAPI-Host': 'amazon-data-scrapper3.p.rapidapi.com'
+    //    }
+    //  };
 
-    if (priceRequest.data.result.offers.booksrun.new !== "none")
-        price = priceRequest.data.result.offers.booksrun.new;
-    else if (priceRequest.data.result.offers.booksrun.used !== "none")
-        price = priceRequest.data.result.offers.booksrun.used;
-    else if (priceRequest.data.result.offers.marketplace[0].new !== "none")
-        price = priceRequest.data.result.offers.marketplace[0].new;
-    else if (priceRequest.data.result.offers.marketplace[0].used !== "none")
-        price = priceRequest.data.result.offers.marketplace[0].used.price;
-    else price = "Price Not Found";
+    //const PRICEOPTIONS = {
+    //    method: "GET",
+    //    url: "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/v2/amz/amazon-lookup-prices",
+    //    params: { page: "1", domainCode: "com", asin: "B07QFC6LN6" },
+    //    headers: {
+    //        "X-RapidAPI-Key":
+    //            "89e1b594dfmsh2024736d3904237p19b4f0jsn98c7c21416a6",
+    //        "X-RapidAPI-Host":
+    //            "axesso-axesso-amazon-data-service-v1.p.rapidapi.com",
+    //    },
+    //};
 
-    res.send(price);
+    //await axios
+    //    .request(options)
+    //    .then((response) => {
+    //        console.log(response.data);
+    //    })
+    //    .catch((error) => {
+    //        console.error(error);
+    //    });
+
+    //const options = {
+    //    method: "GET",
+    //    url: "",
+    //   ,
+
+    //    headers = {
+    //
+    //    };
+    //
+    //    const request = await axios({
+    //        url: `https://amazon-data-scraper58.p.rapidapi.com/search/book`,
+    //        headers: headers,
+    //        method: "GET",
+    //    });
+
+    const request = axios({
+        method: "GET",
+        url: "https://amazon-data-scraper58.p.rapidapi.com/search/book",
+        headers: {
+            "content-type": "application/octet-stream",
+            "X-RapidAPI-Key":
+                "89e1b594dfmsh2024736d3904237p19b4f0jsn98c7c21416a6",
+            "X-RapidAPI-Host": "amazon-data-scraper58.p.rapidapi.com",
+        },
+    });
+    console.log(request.data);
+    //await axios
+    //    .request(options)
+    //    .then(function (response) {
+    //        console.log(response.data);
+    //    })
+    //    .catch((error) => {
+    //        console.error(error);
+    //    });
 });
 
 // Can update a book, add a book, and archive a book

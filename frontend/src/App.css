@@ -185,7 +185,7 @@
 }
 
 .navbar {
-    overflow: hidden;
+    /*overflow: hidden;*/
     display: block !important;
 }
 
@@ -207,7 +207,18 @@
     width: 20em;
 }
 
-.CPStyle {
+.CPStyleMobile {
+    color: #a70102;
+    font-family: "Permanent Marker", cursive;
+    font-size: 2em;
+    position: relative;
+    top: 0.2em;
+    position: relative;
+    left: 8em;
+    width: "1em";
+}
+
+.CPStyleFull {
     color: #a70102;
     font-family: "Permanent Marker", cursive;
     font-size: 2em;
@@ -216,20 +227,27 @@
 }
 
 @media only screen and (min-width: 1000px) {
-    .CPStyle {
+    .CPStyleFull {
         left: 30%;
+    }
+    .CPStyleMobile {
+        display: none;
     }
 }
 
 @media only screen and (max-width: 1000px) {
-    .CPStyle {
-        left: 8%;
+    .CPStyleFull {
+        display: none;
     }
 }
 
 @media only screen and (min-width: 1500px) {
-    .CPStyle {
+    .CPStyleFull {
         left: 40%;
+    }
+
+    .CPStyleMobile {
+        display: none;
     }
 }
 

@@ -67,7 +67,7 @@ export default function EditPopup({
     let previousNeeded = useRef("");
     let previousPrice = useRef("");
 
-    let [modalTitle, setModalTitle] = useState("");
+    let modalTitle = "";
 
     useEffect(() => {
         previousTitle.current = title;
@@ -129,7 +129,7 @@ export default function EditPopup({
 
     const editBook = () => {
         let previousBookInventory = 0;
-        
+
         if ((genre === "N/A" || genre === "") && showEditPopup) {
             alert("Please select a genre");
             return;
@@ -160,7 +160,7 @@ export default function EditPopup({
                 alert(
                     "This book already exists. Press okay to auto-merge the books."
                 );
-                
+
                 previousBookInventory = books[i].Inventory;
                 book.UUID = books[i].UUID;
                 book.AddDates = books[i].AddDates;
@@ -178,7 +178,6 @@ export default function EditPopup({
                 book.AddDates = [];
             }
 
-            
             for (let i = 0; i < inventory - book.Inventory; i++)
                 book.AddDates.push(new Date().toISOString());
         }

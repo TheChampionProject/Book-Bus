@@ -1,5 +1,5 @@
 import QueryRow from "./QueryRow.js";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import axios from "axios";
 import uuidv4 from "uuid";
 export default function QueryResults({
@@ -30,7 +30,6 @@ export default function QueryResults({
             }
         }
 
-        console.log(book.volumeInfo);
         if (book.volumeInfo.maturityRating === "NOT_MATURE") {
             alert(
                 "Warning: This book has been flagged with mature content. Please ask for a supervisor's approval before adding it to the library."

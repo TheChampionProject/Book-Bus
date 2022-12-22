@@ -3,6 +3,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 export default function GenreDDI({ setFunction }) {
     return (
         <>
+            <Dropdown.Item onClick={() => setFunction("All")}>
+                All
+            </Dropdown.Item>
             <Dropdown.Item onClick={() => setFunction("Explore: Fantasy")}>
                 Explore: Fantasy
             </Dropdown.Item>
