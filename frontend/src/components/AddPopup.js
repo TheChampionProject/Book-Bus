@@ -19,6 +19,8 @@ export default function AddPopup({
     const [searchQuery, setSearchQuery] = useState("");
     const textField = useRef(null);
 
+    const successfulQuery = useRef(false);
+
     useEffect(() => {
         setShowTable(false);
         setSearchQuery("");
@@ -40,6 +42,41 @@ export default function AddPopup({
     };
 
     const searchForBook = async () => {
+
+        let request;
+        try {
+            request = await axios.post(
+                process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
+                {
+                    title: searchQuery,
+                    mode: scanMode ? "" : "titleSearch",
+                }
+            );
+
+            if (request.data === "Error") {
+                successfulQuery.current = false;
+                setAlert({
+                    show: true,
+                    message:
+                        "We couldn't find that book. Please add it manually.",
+                    success: false,
+                });
+
+                manuallyAdd();
+
+                setTimeout(() => {
+                    setAlert({
+                        show: false,
+                    });
+                }, 3000);
+            } else {
+                successfulQuery.current = true;
+                setQueryList(request.data);
+                setShowTable(true);
+            }
+        } catch {
+            successfulQuery.current = false;
+
         let request = await axios.post(
             process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
             {
@@ -49,6 +86,7 @@ export default function AddPopup({
         );
 
         if (request.data === "Error") {
+
             setAlert({
                 show: true,
                 message: "We couldn't find that book. Please add it manually.",
@@ -145,6 +183,8 @@ export default function AddPopup({
                                 books={books}
                                 scanMode={scanMode}
                                 searchQuery={searchQuery}
+                                successfulQuery={successfulQuery}
+
                             />
                         </tbody>
                     </Table>

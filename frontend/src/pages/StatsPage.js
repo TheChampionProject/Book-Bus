@@ -5,7 +5,7 @@ export default function StatsPage() {
         <>
             <div className="statsNav">
                 <span className="navItem" />
-                <h3 className="CPStyle">The Champion Project</h3>
+                <h3 className="GiftHeader">The Champion Project</h3>
                 <span className="navItem" />
             </div>
 

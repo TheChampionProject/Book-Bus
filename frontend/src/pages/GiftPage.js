@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import GiftConfirmation from "../components/GiftConfirmation.js";
 import TableStructure from "../components/TableStructure";
 import Header from "../components/Header";
-
 import "../App.css";
+import UserProtection from "../components/UserProtection.js";
+
 
 export default function ManagePage() {
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
@@ -16,15 +17,21 @@ export default function ManagePage() {
     const [showGC, setShowGC] = useState(false);
     const [book, setBook] = useState(null);
     const [books, setBooks] = useState(null);
+    let [genreFilter, setGenreFilter] = useState("All");
 
     return (
         <>
+
+            <UserProtection />
             <Header
                 setSearchQuery={setSearchQuery}
                 alert={alert}
-                href={"/manage"}
-                hrefName={"Manage Page"}
+                href={"/home"}
+                hrefName={"Home Page"}
                 useSearchBar={true}
+                setGenreFilter={setGenreFilter}
+                genreFilter={genreFilter}
+
             />
 
             <TableStructure
@@ -37,6 +44,8 @@ export default function ManagePage() {
                 searchQuery={searchQuery}
                 books={books}
                 setBooks={setBooks}
+                genreFilter={genreFilter}
+
             />
             <GiftConfirmation
                 showGC={showGC}

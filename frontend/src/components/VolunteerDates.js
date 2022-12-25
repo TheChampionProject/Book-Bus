@@ -12,6 +12,15 @@ export default function VolunteerDates({ dates, setDates }) {
                     setDates(dates);
                     
                 });
+
+            const currentDate = new Date();
+            dates = dates.filter((date) => {
+                return (
+                    currentDate.getTime() <= new Date(date.startDate).getTime()
+                );
+            });
+
+            setDates(dates);
         };
         getDates();
     }, []);

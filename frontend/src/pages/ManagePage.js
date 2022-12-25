@@ -4,6 +4,8 @@ import "../App.css";
 import EditPopup from "../components/EditPopup.js";
 import AddPopup from "../components/AddPopup.js";
 import Header from "../components/Header";
+import UserProtection from "../components/UserProtection.js";
+
 
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
@@ -19,6 +21,7 @@ export default function ManagePage() {
     let [books, setBooks] = useState(null);
     const lastGenre = useRef("");
     const [scanMode, setScanMode] = useState(false);
+    let [genreFilter, setGenreFilter] = useState("All");
 
 
     let handleAddBook = (e) => {
@@ -38,15 +41,18 @@ export default function ManagePage() {
 
     return (
         <>
+            <UserProtection />
             <Header
                 setSearchQuery={setSearchQuery}
                 alert={alert}
-                href={"/gift"}
-                hrefName={"Gift Page"}
+                href={"/home"}
+                hrefName={"Home Page"}
                 useSearchBar={true}
-
+                genreFilter={genreFilter}
+                setGenreFilter={setGenreFilter}
             />
-            
+
+
             <TableStructure
                 mode="manage"
                 setBook={setBook}
@@ -57,11 +63,18 @@ export default function ManagePage() {
                 searchQuery={searchQuery}
                 books={books}
                 setBooks={setBooks}
+
+                genreFilter={genreFilter}
+
             />
             <button
                 type="button"
                 className="AddBookButton"
-                onClick={(e) => {e.preventDefault(); handleAddBook()}}
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleAddBook();
+                }}
+
             >
                 +
             </button>
@@ -77,6 +90,8 @@ export default function ManagePage() {
                 scanMode={scanMode}
                 setScanMode={setScanMode}
                 setShowAddPopup={setShowAddPopup}
+                books={books}
+
             />
 
             <AddPopup
