@@ -1,38 +1,69 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
+import GenreDDI from "./GenreDDI";
 import "../App.css";
+import uuidv4 from "uuid";
 
 export default function EditPopup({
     showEditPopup,
     setShowEditPopup,
     book,
     setManagedBook,
-    setAlert,
+    lastGenre,
+    scanMode,
+    setShowAddPopup,
+    books,
+
 }) {
     let autoFillTitle = "";
-    let autoFillGenre = "";
-    let autoFillInventory = "";
+    let autoFillGenre = "N/A";
+    let autoFillInventory = "1";
     let autoFillNeeded = 0;
-    let autoFillPrice = 0;
-    let addBook = false;
+    let autoFillPrice = "";
+    let addBook = useRef(true);
+    let complete = false;
 
-    try {
+    let calledEdit = useRef(false);
+    let interrupt = useRef(false);
+
+    let priceRef = useRef(null),
+        titleRef = useRef(null); // For the cursor to auto click
+
+    useEffect(() => {
+        if (!showEditPopup) return;
+
         if (book !== null) {
+            addBook.current = false;
             autoFillTitle = book.Title;
-            autoFillGenre = book.Genre;
+
+
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
-        } else addBook = true;
-    } catch {
-        setAlert({
-            show: true,
-            message:
-                "There was a problem with your book changes. Please refresh and try again.",
-            success: false,
-        });
-    }
+
+            autoFillGenre = book.Genre !== "" ? book.Genre : lastGenre.current;
+        } else {
+            addBook.current = true;
+            autoFillGenre = lastGenre.current;
+
+            autoFillGenre = lastGenre.current;
+            autoFillInventory = book.Inventory;
+            autoFillNeeded = book.Needed;
+            autoFillPrice = book.Price;
+        } else {
+            addBook.current = true;
+
+        }
+
+        if (addBook.current) {
+            setTimeout(() => {
+                titleRef.current.focus();
+            }, 500);
+        } else {
+            priceRef.current.focus();
+        }
+    }, [showEditPopup]);
 
     let [title, setTitle] = useState(autoFillTitle);
     let [genre, setGenre] = useState(autoFillGenre);
@@ -42,9 +73,11 @@ export default function EditPopup({
 
     let previousTitle = useRef("");
     let previousGenre = useRef("");
-    let previousInventory = useRef("");
+    let previousInventory = useRef("1");
     let previousNeeded = useRef("");
     let previousPrice = useRef("");
+
+    let modalTitle = "";
 
     useEffect(() => {
         previousTitle.current = title;
@@ -61,6 +94,7 @@ export default function EditPopup({
         setInventory(autoFillInventory);
         setNeeded(autoFillNeeded);
         setPrice(autoFillPrice);
+        complete = false;
     }, [
         autoFillInventory,
         autoFillNeeded,
@@ -70,52 +104,142 @@ export default function EditPopup({
         book,
     ]);
 
-    const editBook = (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        if (!showEditPopup) return;
 
-        if (genre === "N/A") {
+        calledEdit.current = false;
+        interrupt.current = false;
+        if (scanMode && !addBook.current) {
+            setTimeout(() => {
+                if (calledEdit.current) {
+                    return;
+                }
+
+
+                if (!interrupt.current && !calledEdit.current) {
+                    editBook();
+                    calledEdit.current = true;
+                    if (complete) setShowAddPopup(true); // If they didn't have a genre selected
+                }
+            }, 3000);
+        }
+    }, [showEditPopup]);
+
+    useEffect(() => {
+        const statusKeyboardInput = (e) => {
+            if (e.keyCode) interrupt.current = true;
+        };
+
+        window.addEventListener("keydown", statusKeyboardInput);
+        return () => window.removeEventListener("keydown", statusKeyboardInput);
+    });
+
+
+
+                if (!interrupt.current && !calledEdit.current) {
+                    editBook();
+                    calledEdit.current = true;
+                    if (complete) setShowAddPopup(true); // If they didn't have a genre selected
+                }
+            }, 3000);
+        }
+    }, [showEditPopup]);
+
+    useEffect(() => {
+        const statusKeyboardInput = (e) => {
+            if (e.keyCode) interrupt.current = true;
+        };
+
+        window.addEventListener("keydown", statusKeyboardInput);
+        return () => window.removeEventListener("keydown", statusKeyboardInput);
+    });
+
+
+    useEffect(() =>
+        window.addEventListener("click", () => (interrupt.current = true))
+    );
+
+    const editBook = () => {
+
+        let previousBookInventory = 0;
+
+
+        if ((genre === "N/A" || genre === "") && showEditPopup) {
             alert("Please select a genre");
+            return;
+        }
+
+        if (title === "") {
+            alert("Please enter a title");
+            return;
+        }
+
+        if (inventory === "") {
+            alert("Please enter an inventory");
+            return;
+        }
+
+        if (price === "") {
+            alert("Please enter a price");
             return;
         }
 
         if (String(price).startsWith("$")) price = price.slice(1);
 
-        if (addBook) {
+
+        for (let i = 0; i < books.length; i++) {
+            if (
+                books[i].Title.toLowerCase() === title.toLowerCase() &&
+                books[i].UUID !== book.UUID
+            ) {
+                alert(
+                    "This book already exists. Press okay to auto-merge the books."
+                );
+
+                previousBookInventory = books[i].Inventory;
+                book.UUID = books[i].UUID;
+                book.AddDates = books[i].AddDates;
+                break;
+            } else previousBookInventory = 0;
+        }
+
+        if (addBook.current) {
             book = {};
-            book.AddDates = [];
-            book.AddDates.push(new Date().toISOString()); // Date for when book is added
+            book.UUID = uuidv4();
         }
 
         if (inventory > book.Inventory) {
-            //book.AddDates = [
-            //    ...(book.AddDates === "null" ? [] : book.AddDates),
-            //    ...Array(inventory - book.Inventory).fill(
-            //        new Date().toISOString()
-            //    ),
-            //];
+            if (!book.AddDates) {
+                book.AddDates = [];
+            }
 
-            if (book.AddDates === undefined) book.AddDates = [];
-            else book.AddDates.push(...book.AddDates);
 
-            for (let i = 0; i < inventory - book.Inventory; i++) book.AddDates.push(new Date().toISOString());
+
+            for (let i = 0; i < inventory - book.Inventory; i++)
+                book.AddDates.push(new Date().toISOString());
         }
 
         book.Title = title;
         book.Genre = genre;
-        book.Inventory = inventory;
+        book.Inventory = previousInventory.current;
         book.Needed = needed;
         book.Price = price;
 
-        if (
-            autoFillInventory !== inventory || // Only if stuff was changed
-            autoFillNeeded !== needed ||
-            autoFillTitle !== title ||
-            autoFillGenre !== genre ||
-            autoFillPrice !== price
-        ) {
-            setManagedBook(book);
+
+        if (addBook.current) {
+            book.Inventory =
+                parseInt(previousBookInventory) + parseInt(book.Inventory);
+            if (!book.AddDates) book.AddDates = [];
+            book.AddDates.push(new Date().toISOString());
         }
 
+        lastGenre.current = genre;
+        complete = true;
+        interrupt.current = false;
+        console.log(book);
+
+
+        setManagedBook(book);
         setShowEditPopup(false);
     };
 
@@ -128,11 +252,18 @@ export default function EditPopup({
         setShowEditPopup(false);
     };
 
+    if (addBook.current) modalTitle = "Add a Book";
+    else if (!addBook.current && book !== null)
+        modalTitle = "Edit " + book.Title;
+    else modalTitle = "Null Book Exception";
+
     return (
         <>
             <Modal show={showEditPopup} onHide={() => close()}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit This Book</Modal.Title>
+                    <Modal.Title>{modalTitle}</Modal.Title>
+
+
                 </Modal.Header>
                 <form>
                     <Modal.Body>
@@ -141,7 +272,11 @@ export default function EditPopup({
                             <input
                                 type="text"
                                 value={title}
-                                onChange={(e) => setTitle(e.target.value)}
+                                ref={titleRef}
+                                onChange={(e) => {
+                                    if (e.target.value !== "\\")
+                                        setTitle(e.target.value);
+                                }}
                             />
                             <br />
                             <label className="Popup Genre-Label">Genre: </label>
@@ -154,81 +289,34 @@ export default function EditPopup({
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu className="ManagePopupDropdownMenu">
-                                    <Dropdown.Item
-                                        onClick={() =>
-                                            setGenre("Explore: Fantasy")
-                                        }
-                                    >
-                                        Explore: Fantasy
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        onClick={() =>
-                                            setGenre(
-                                                "Explore: Historical Fiction"
-                                            )
-                                        }
-                                    >
-                                        Explore: Historical Fiction
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        onClick={() => setGenre("Explore")}
-                                    >
-                                        Explore
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        onClick={() =>
-                                            setGenre("Laugh: Graphic Novel")
-                                        }
-                                    >
-                                        Laugh: Graphic Novel
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        onClick={() => setGenre("Laugh")}
-                                    >
-                                        Laugh
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        onClick={() =>
-                                            setGenre("Be Inspired: People")
-                                        }
-                                    >
-                                        Be Inspired: People
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        onClick={() =>
-                                            setGenre("Be Inspired: Event")
-                                        }
-                                    >
-                                        Be Inspired: Event
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        onClick={() => setGenre("Be Inspired")}
-                                    >
-                                        Be Inspired
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        onClick={() =>
-                                            setGenre("Solve It: Activity")
-                                        }
-                                    >
-                                        Solve It: Activity
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        onClick={() => setGenre("Solve It")}
-                                    >
-                                        Solve It
-                                    </Dropdown.Item>
+
+                                    <GenreDDI setFunction={setGenre} />
+
                                 </Dropdown.Menu>
                             </Dropdown>
 
-                            <br />
-                            <label className="Popup">Price: </label>
+                            <label
+                                className="Popup"
+                                style={{ marginRight: "3.5em" }}
+                            >
+                                Price:
+                            </label>
+                            <label className="Popup" style={{ width: "10px" }}>
+                                $
+                            </label>
+
                             <input
                                 type="text"
+                                ref={priceRef}
+                                style={{ maxWidth: "4em" }}
                                 value={price}
-                                onChange={(e) => setPrice(e.target.value)}
+                                onChange={(e) =>
+                                    setPrice(
+                                        Math.max(0, parseInt(e.target.value))
+                                    )
+                                }
                             />
-
+                            <br />
                             <label className="Popup">Inventory: </label>
 
                             <div className="btn-group modal-body">
@@ -238,7 +326,11 @@ export default function EditPopup({
                                     className="btn btn-danger"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        setInventory(--inventory);
+                                        if (inventory - 1 >= 0) {
+                                            setInventory(
+                                                Math.max(0, --inventory)
+                                            );
+                                        }
                                     }}
                                 />
 
@@ -257,7 +349,7 @@ export default function EditPopup({
                                     className="btn btn-success"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        setInventory(++inventory); // It has to be clicked twice to work
+                                        setInventory(++inventory);
                                     }}
                                 />
                             </div>
@@ -271,7 +363,9 @@ export default function EditPopup({
                                     className="btn btn-danger"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        setNeeded(--needed); // It has to be clicked twice to work
+                                        if (needed - 1 >= 0) {
+                                            setNeeded(Math.max(0, --needed));
+                                        }
                                     }}
                                 />
 
@@ -303,6 +397,7 @@ export default function EditPopup({
                             className="btn btn-success"
                             type="submit"
                             onClick={(e) => {
+                                e.preventDefault();
                                 editBook(e);
                             }}
                         >

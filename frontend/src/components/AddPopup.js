@@ -1,5 +1,5 @@
 import { Modal, Button, Table } from "react-bootstrap";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import QueryResults from "./QueryResults.js";
 import "../App.css";
@@ -11,41 +11,99 @@ export default function AddPopup({
     setShowEditPopup,
     setBook,
     books,
+    scanMode,
+    setScanMode,
 }) {
     const [queryList, setQueryList] = useState([]);
     const [showTable, setShowTable] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+    const textField = useRef(null);
 
-    const searchQuery = useRef();
+    const successfulQuery = useRef(false);
 
     useEffect(() => {
         setShowTable(false);
+        setSearchQuery("");
     }, [showAddPopup]);
 
-    const manuallyAdd = (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        const statusKeyboardInput = (e) => {
+            if (e.keyCode === 220) manuallyAdd();
+        };
+
+        window.addEventListener("keydown", statusKeyboardInput);
+        return () => window.removeEventListener("keydown", statusKeyboardInput);
+    });
+
+    const manuallyAdd = () => {
         setBook(null);
         setShowAddPopup(false);
         setShowEditPopup(true);
     };
 
-    const searchForBook = async (e) => {
-        e.preventDefault();
-        await axios
-            .post(process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks", {
-                title: searchQuery.current.value,
-            })
-            .catch(() => {
+    const searchForBook = async () => {
+
+        let request;
+        try {
+            request = await axios.post(
+                process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
+                {
+                    title: searchQuery,
+                    mode: scanMode ? "" : "titleSearch",
+                }
+            );
+
+            if (request.data === "Error") {
+                successfulQuery.current = false;
                 setAlert({
                     show: true,
                     message:
-                        "There was a problem with your search query. Please refresh and try again.",
+                        "We couldn't find that book. Please add it manually.",
                     success: false,
                 });
-            })
-            .then((response) => {
+
+                manuallyAdd();
+
+                setTimeout(() => {
+                    setAlert({
+                        show: false,
+                    });
+                }, 3000);
+            } else {
+                successfulQuery.current = true;
+                setQueryList(request.data);
                 setShowTable(true);
-                setQueryList(response.data);
+            }
+        } catch {
+            successfulQuery.current = false;
+
+        let request = await axios.post(
+            process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
+            {
+                title: searchQuery,
+                mode: scanMode ? "" : "titleSearch",
+            }
+        );
+
+        if (request.data === "Error") {
+
+            setAlert({
+                show: true,
+                message: "We couldn't find that book. Please add it manually.",
+                success: false,
             });
+
+            manuallyAdd();
+
+            setTimeout(() => {
+                setAlert({
+                    show: false,
+                });
+            }, 3000);
+        } else {
+            setQueryList(request.data);
+            setShowTable(true);
+        }
     };
     return (
         <>
@@ -57,9 +115,12 @@ export default function AddPopup({
                     <form>
                         <input
                             type="text"
+                            autoFocus
                             placeholder="Search For a Title"
                             className="AddPopup"
-                            ref={searchQuery}
+                            value={searchQuery}
+                            ref={textField}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                         />
 
                         <Button
@@ -67,6 +128,7 @@ export default function AddPopup({
                             className="btn btn-success"
                             type="submit"
                             onClick={(e) => {
+                                e.preventDefault();
                                 searchForBook(e);
                             }}
                         >
@@ -76,14 +138,28 @@ export default function AddPopup({
                         <button
                             className="FakeLink"
                             onClick={(e) => {
+                                e.preventDefault();
                                 manuallyAdd(e);
                             }}
                             style={{
-                                display: true ? "" : "none",
                                 marginLeft: "1rem",
                             }}
                         >
                             Can't Find It? Manually Add
+                        </button>
+
+                        <button
+                            className="FakeLink"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setScanMode(!scanMode);
+                                textField.current.focus();
+                            }}
+                            style={{
+                                marginLeft: "65%",
+                            }}
+                        >
+                            {scanMode ? "Leave " : "Enter "}Scan Mode
                         </button>
                     </form>
                 </Modal.Body>
@@ -105,6 +181,10 @@ export default function AddPopup({
                                 setAlert={setAlert}
                                 setShowTable={setShowTable}
                                 books={books}
+                                scanMode={scanMode}
+                                searchQuery={searchQuery}
+                                successfulQuery={successfulQuery}
+
                             />
                         </tbody>
                     </Table>

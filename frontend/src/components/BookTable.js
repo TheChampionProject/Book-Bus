@@ -12,6 +12,7 @@ export default function BookTable({
     setShowGC,
     books,
     setBooks,
+    genreFilter,
 }) {
     let index = useRef();
 
@@ -72,7 +73,7 @@ export default function BookTable({
                         Price: res[i].Price,
                         Needed: res[i].Needed,
                         UUID: res[i].UUID,
-                        Index: i,
+                        AddDates: res[i].AddDates ? res[i].AddDates : [],
                     };
                 }
 
@@ -177,7 +178,10 @@ export default function BookTable({
         </tr>
     ) : (
         books
-            .filter((book) => book.Inventory > 0)
+            .filter((book) => (mode === "manage" ? true : book.Inventory > 0))
+            .filter((book) =>
+                genreFilter === "All" ? true : book.Genre === genreFilter
+            )
             .filter((book) =>
                 searchQuery === ""
                     ? true

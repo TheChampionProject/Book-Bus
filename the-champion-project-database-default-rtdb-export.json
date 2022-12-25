@@ -1,7 +1,7 @@
 {
     "active": {
         "005c66b7-089f-4a15-9c88-f5571d0dc483": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -10,7 +10,7 @@
             "Title": "what color is my world?"
         },
         "006ccf38-c48a-4f76-80d6-f6b3fd0a8716": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -19,16 +19,18 @@
             "Title": "Press Start! Game Over, Super Rabbit Boy!"
         },
         "00716f53-a535-4f6b-8c62-019338b47dc1": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
             "Sub-Genre": "",
             "Timestamp": "10/16/2022 15:50:29",
             "Title": "Animal Joke Book"
+
+=======
         },
         "02309bfd-3393-464a-b47a-e0d66ea5267c": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -37,7 +39,7 @@
             "Title": "Milk Goes To School"
         },
         "02e8b915-30ba-40b5-a72d-4b7b40d0b044": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -46,7 +48,7 @@
             "Title": "The Last Kids on Earth"
         },
         "02fe5913-2354-4987-a083-87ac7ed7f14a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -55,7 +57,7 @@
             "Title": "Warriors: Dawn of the Clans #4: The Blazing Star"
         },
         "034f8ea6-8dc5-414a-aed0-a8f4e87ea143": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10.99,
@@ -64,7 +66,7 @@
             "Title": "The Amusement Park from the Black Lagoon"
         },
         "03f2c2ce-309c-4484-8886-01ead1b5092a": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -73,7 +75,7 @@
             "Title": "The Spiderwick Chronicles: The Ironwood Tree"
         },
         "04289d32-cbcc-4a71-ba42-6323ed087b1f": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -82,7 +84,7 @@
             "Title": "Book Two: The Deep: Dive"
         },
         "047b2c5a-aae9-4e97-afeb-bd9c274b0f74": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -91,7 +93,7 @@
             "Title": "Kickoff!"
         },
         "04e45591-d8b5-4a6e-9a38-42a509bda37a": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10.99,
@@ -100,7 +102,7 @@
             "Title": "THE Wichita Kid: A Caddie’s Story"
         },
         "05a5eefe-c5ea-4e3a-b986-5d8cb7ff9960": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -109,7 +111,7 @@
             "Title": "Captain Underpants and the big, bad battle of the bionic booger boy part 2: the revenge of the ridiculous robo-boogers"
         },
         "05e049cf-d92f-495f-8180-0b4971b6ee9f": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -118,7 +120,7 @@
             "Title": "The Tiny Geniuses"
         },
         "05e31005-b840-4659-b5d0-71cf4227ed3e": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 14.95,
@@ -127,7 +129,7 @@
             "Title": "A Poem a Day"
         },
         "05e6b7aa-09a4-44d2-81a5-00058679d59d": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -136,7 +138,7 @@
             "Title": "The Serpent's Shadow"
         },
         "06ce9b64-c7f4-4814-926c-d27b084cdb08": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 5.99,
@@ -145,7 +147,7 @@
             "Title": "Magic Treehouse- #5 Night of the Ninjas"
         },
         "07234686-93cc-4ce5-a83a-15b7749c5194": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 1,
@@ -154,14 +156,14 @@
             "Title": "The Silver Branch"
         },
         "08bb11e7-1d01-4f1e-9d16-d8a7449a8628": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
             "Title": "elon musk and the quest for a fantastic future"
         },
         "09478e89-94ec-4f2b-97f3-456e95e01ee2": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -170,7 +172,7 @@
             "Title": "Tale of a Scaredy Dog"
         },
         "09da4be5-5ac5-4d35-91f4-4ef2e69e050b": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.95,
@@ -179,7 +181,7 @@
             "Title": "Fun with Nature"
         },
         "0a2bcf31-2935-4d2d-b2d6-39b9a541da7f": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.5,
@@ -188,7 +190,7 @@
             "Title": "Encyclopedia Brown shows the way - book 9"
         },
         "0a427702-5f61-4b31-b984-61265ef9ff6d": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10.95,
@@ -197,7 +199,7 @@
             "Title": "It’s Not My Fault"
         },
         "0aac7d7c-b434-4894-bf59-d698cc631be8": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -206,7 +208,7 @@
             "Title": "Bad Kitty: Gets a Bath"
         },
         "0af3445e-6621-4bad-b0f1-bd1715afd1b7": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -215,7 +217,7 @@
             "Title": "Clifford the Big Red Dog"
         },
         "0c6f3fd5-5482-40c5-8c0b-80c28b482783": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -224,7 +226,7 @@
             "Title": "The Pigeon Needs a Bath"
         },
         "0c888031-ea1c-453f-8ed8-3d1b830ee771": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.84,
@@ -233,7 +235,7 @@
             "Title": "Diary of a Minecraft zombie"
         },
         "0cefe0dd-9cf7-4304-9a4f-1a3715e38cdd": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -242,7 +244,7 @@
             "Title": "The Fault in our Stars"
         },
         "0d75032c-6393-4fc1-bd33-b6fe8a991b33": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -251,7 +253,7 @@
             "Title": "The Boy who Saved Baseball"
         },
         "0e1f0651-4253-4515-bd97-4fb1d8e6a0af": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 13.99,
@@ -260,7 +262,7 @@
             "Title": "Magic Treehouse - # 36 Sunlight on the Snow Leopard"
         },
         "10772d15-a24a-44ca-ba7c-71c4e19a7166": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -269,7 +271,7 @@
             "Title": "Indiana Jones and the Hollow Earth"
         },
         "11a19e26-2596-4fbc-81a4-cc72b7e72858": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 19.95,
@@ -278,7 +280,7 @@
             "Title": "Jakeman"
         },
         "13db99c5-3594-488d-86ae-16a995e339b7": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.95,
@@ -287,7 +289,7 @@
             "Title": "Ten-Second Tongue Twisters"
         },
         "14181060-26fb-4afa-8a7c-937e343650ba": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -296,7 +298,7 @@
             "Title": "Wings of Fire-The Lost Continent"
         },
         "14745ca5-776d-45aa-8254-a89bc097110f": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -305,7 +307,7 @@
             "Title": "Meeting New Friends"
         },
         "1507c541-1109-406f-a90b-b0b5769bc153": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15.99,
@@ -314,14 +316,14 @@
             "Title": "Eragon - Book One - The Inheritance Cycle"
         },
         "156a0ea3-478c-4750-a8a4-dfdb0da14cd8": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
             "Title": "Manga Mutiny"
         },
         "1724c1a7-5724-4a2f-92a5-8ba556fc16dc": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 14.99,
@@ -330,7 +332,7 @@
             "Title": "The Book Thief"
         },
         "17ebc8f0-464d-4ab5-a568-5ca0cc5a45e5": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -339,7 +341,7 @@
             "Title": "Bruce’s Big Move"
         },
         "198181e1-ed74-41ee-80f5-479417cb43f6": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -348,7 +350,7 @@
             "Title": "Four: A Divergent Collection"
         },
         "198cc896-2f28-4613-8d71-c8accbb4dc8b": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -357,7 +359,7 @@
             "Title": "Captain Underpants and the Perilous Plot of Professor Poopypants"
         },
         "19b5e2ce-317b-47b4-82d0-48d29fadf7be": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -366,7 +368,7 @@
             "Title": "The Chronicles of Narnia"
         },
         "19c7e503-be8f-4c57-aa2f-3f4365779c95": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -375,7 +377,7 @@
             "Title": "the sunroom"
         },
         "19e5564c-43fa-421b-b29e-cd1c011d4704": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -384,7 +386,7 @@
             "Title": "Jackpot: A Swindle Mystery"
         },
         "19f5a24d-1395-43f7-9ff9-32e2a45e5396": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -393,7 +395,7 @@
             "Title": "The Penderwicks on Gardam Street"
         },
         "1a8de2cc-c8ae-4e2c-bc55-dcea91cbeb1c": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -402,7 +404,7 @@
             "Title": "Hotel Bruce"
         },
         "1ab8748c-250e-4791-9a91-4265885164bf": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -411,7 +413,7 @@
             "Title": "The Spiderwick Chronicles: Lucinda's Secret"
         },
         "1ae4f8a8-2063-4b16-91e9-e6e4f95809d3": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 29.5,
@@ -420,7 +422,7 @@
             "Title": "Letters to Santa"
         },
         "1b234c23-3e93-47bc-84d4-f93ff21fb3a0": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -429,7 +431,7 @@
             "Title": "Airman"
         },
         "1b4f298e-ebf6-4c1d-8b51-4b5b19c6d340": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 18.99,
@@ -438,7 +440,7 @@
             "Title": "Dragons Love Tacos"
         },
         "1b876a34-1c01-4dc7-b8ca-76364fa88f08": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -447,7 +449,7 @@
             "Title": "Praying the Bible in Your Life"
         },
         "1d5921cc-be01-4389-86ea-7d3df88c8d79": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -456,7 +458,7 @@
             "Title": "The River"
         },
         "1dbfc179-74cf-4ed3-8cec-e28bc8150bf1": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 14.99,
@@ -465,7 +467,7 @@
             "Title": "Below the Surface"
         },
         "1dc1ee43-8ead-4f9a-beaf-c7de46052a5b": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -474,7 +476,7 @@
             "Title": "The City of Ember"
         },
         "1e90e218-4048-4fed-855d-90c8c3c95401": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10,
@@ -483,7 +485,7 @@
             "Title": "treasure island"
         },
         "1ebe904b-0bd3-4397-a1f2-cd84e110cf4d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 1,
@@ -492,7 +494,7 @@
             "Title": "Sword Song"
         },
         "1fc7c046-af82-4613-9b19-04bec22a9bae": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -501,7 +503,7 @@
             "Title": "Monday into the Cave of Thieves"
         },
         "201e1f77-63ba-4a20-8902-554c6b0d79f4": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -510,7 +512,7 @@
             "Title": "Mother Bruce"
         },
         "2079b606-7c10-425b-9c5f-f1969dc70c12": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 1.99,
@@ -519,7 +521,7 @@
             "Title": "The Bible Promise Book"
         },
         "20ddf849-bb10-47cd-9e85-192ce75dbe18": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -528,7 +530,7 @@
             "Title": "Plankton is Plushy"
         },
         "20f5a873-4382-4eca-8985-eff429b8a67e": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 18.99,
@@ -537,7 +539,7 @@
             "Title": "Eleanor & Park"
         },
         "2153a246-3da8-4285-8981-26623f5220b9": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -546,7 +548,7 @@
             "Title": "Bruce’s Bug Storm"
         },
         "217853e7-bf24-4f1b-883b-cfe283442e28": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -555,7 +557,7 @@
             "Title": "house arrest"
         },
         "23730883-db20-4adc-bbdf-18e8cd549a2c": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -564,7 +566,7 @@
             "Title": "Nate the Great"
         },
         "2479ac3f-3ecc-4662-87de-df872045941f": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -573,7 +575,7 @@
             "Title": "percy jackson and the olympians the ultimate guide"
         },
         "24d6336e-1eee-4671-b5db-1ac418c09201": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -582,7 +584,7 @@
             "Title": "I Survived The Joplin Tornado, 2011"
         },
         "25e498c0-ccc8-4e4c-b735-a60b70965570": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 19.99,
@@ -591,7 +593,7 @@
             "Title": "Rush Revere and the Patriots"
         },
         "27928ef7-b615-46f0-86c5-874da7e0d7c7": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -600,7 +602,7 @@
             "Title": "Tight"
         },
         "27b58230-d22a-4055-9033-67ecc862ea2f": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 3,
             "Needed": 0,
             "Price": 5.99,
@@ -609,7 +611,7 @@
             "Title": "The Bad Guys"
         },
         "27bd59c0-d0f4-4256-ae09-10c2596562b7": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -618,7 +620,7 @@
             "Title": "Wings of Fire The Dark Secret"
         },
         "27d2d2b2-2adb-4de3-a023-fbd7fd5fb68e": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.95,
@@ -627,7 +629,7 @@
             "Title": "ted, white, and blue"
         },
         "27da2837-09aa-4d17-8ffd-783cbb97badb": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -636,7 +638,7 @@
             "Title": "What if You Had Animal Ears"
         },
         "280146c1-93d8-4efe-8cda-d16f29a3f040": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 14.99,
@@ -645,7 +647,7 @@
             "Title": "The Book Thief"
         },
         "283611f7-aa33-4e8b-a67c-0a0ce5eca088": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -654,7 +656,7 @@
             "Title": "The Hardy Boys The House on the Cliff"
         },
         "284ceacc-9a9e-4037-8237-ffefe62908c6": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -663,7 +665,7 @@
             "Title": "Wings of Fire"
         },
         "2870b5e4-498e-4a80-b8c5-6091145672e4": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -672,7 +674,7 @@
             "Title": "Allegiant"
         },
         "290da6f4-a920-423d-9a73-2b1343b22bcc": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 11.99,
@@ -681,7 +683,7 @@
             "Title": "Throne of Glass"
         },
         "29836b21-f849-403f-a76c-cfac797c44d0": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -690,7 +692,7 @@
             "Title": "Insurgent"
         },
         "2a0575f7-4117-42c2-bb4f-3bb6ef5fa50e": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15.95,
@@ -699,7 +701,7 @@
             "Title": "A Hologram for the King"
         },
         "2a824437-4443-491e-a0c9-b878be42a265": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.13,
@@ -708,7 +710,7 @@
             "Title": "The Boy Who Never Gave Up"
         },
         "2a944cc8-69fc-485c-9e09-2af6e87758e5": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -717,7 +719,7 @@
             "Title": "Wings of Fire The Dragonet Prophecy"
         },
         "2af815e3-3308-4552-b546-cafef98a8be5": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -726,7 +728,7 @@
             "Title": "Captain underpants and the preposterous plight of the purple potty people"
         },
         "2b5972fb-4796-4647-bfa3-f1d93d8980fa": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -735,7 +737,7 @@
             "Title": "Mall Mania"
         },
         "2c487fa7-3527-4b75-aeba-19ba465704a5": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -744,7 +746,7 @@
             "Title": "Wings of Fire"
         },
         "2c531d71-fb8b-47d9-a505-e70aef013e9a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -753,7 +755,7 @@
             "Title": "heart of a shepherd"
         },
         "2c78709b-a2be-402a-a5d9-109d07ac81c1": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -762,7 +764,7 @@
             "Title": "Encyclopedia Brown Solves Then All - 5"
         },
         "2cfe66b1-8a00-4b00-b73d-d5d6b7c5e910": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -771,7 +773,7 @@
             "Title": "I Survived the Attack Of The Grizzlies,1967"
         },
         "2d4d0d43-cb5d-4c45-acaf-0bb2f2671181": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -780,7 +782,7 @@
             "Title": "Wings of Fire The Hidden Kingdom"
         },
         "2d61e7bc-22d3-4815-9562-7de0490495b8": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -789,7 +791,7 @@
             "Title": "Amelia Bedelia & Friends: Mind their Manners"
         },
         "2d756795-5db2-4436-a606-f29074769929": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15.95,
@@ -798,7 +800,7 @@
             "Title": "Sea Biscuit"
         },
         "2d818d93-b133-4ecb-a56e-16fe24cb1015": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -807,7 +809,7 @@
             "Title": "Crankenstein"
         },
         "2dacc280-a4b3-4186-b6c6-b77cfa46baaf": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -816,7 +818,7 @@
             "Title": "Choose Your Own Adventure: Space and Beyond"
         },
         "2ee04bfb-e413-4f9c-8724-c5bd6d7db9ef": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -825,7 +827,7 @@
             "Title": "The Snow Day from the Black Lagoon"
         },
         "2f032619-1d94-49ff-903a-ebcf822b7686": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -834,7 +836,7 @@
             "Title": "Good Morning Snowplow!"
         },
         "2fd81baf-b5c9-4f2d-b397-47da9109abab": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 12.99,
@@ -843,7 +845,7 @@
             "Title": "Catching Fire -Book Two of The Hunger Games"
         },
         "3065a577-3ac1-4d15-bbdd-f5ca27a6d84b": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -852,7 +854,7 @@
             "Title": "Old Man’s War"
         },
         "30a6c9f3-aee4-4cfc-988b-7021e95f2827": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -861,7 +863,7 @@
             "Title": "The Last Kids on Earth and the Zombie Parade"
         },
         "3152bca6-05e6-40b9-8f73-f977a297e3ee": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -870,7 +872,7 @@
             "Title": "Mary Poppins opens the door"
         },
         "328fbcf3-3309-4c62-9a0b-05d780c6e4b5": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -879,7 +881,7 @@
             "Title": "Wuthering Heights"
         },
         "33a95b9f-c1d7-4ca7-b143-6e8b106050e6": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 25,
             "Needed": 0,
             "Price": 27.99,
@@ -888,7 +890,7 @@
             "Title": "Adventure Bible"
         },
         "3424af20-e0b1-4414-a26c-f8ad418d0a34": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 13.99,
@@ -897,7 +899,7 @@
             "Title": "House of Robots: Robots Go Wild"
         },
         "346039fc-4421-496b-a5f3-7dca460900f0": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -906,7 +908,7 @@
             "Title": "The Best Vacation Ever"
         },
         "3472789b-224e-49bc-93d9-aae3069f0b88": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -915,7 +917,7 @@
             "Title": "More About Paddingto"
         },
         "35eeba5c-32ff-4c87-a67b-1890230a7c85": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -924,7 +926,7 @@
             "Title": "Picture day perfection"
         },
         "376324df-cd81-48f5-86b3-52ab66ecb2a0": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -933,7 +935,7 @@
             "Title": "Moo"
         },
         "37cd7ac7-9715-442e-bcc8-57555432e8a3": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 14.99,
@@ -942,7 +944,7 @@
             "Title": "The Secret of Pembrooke Park"
         },
         "38676d0b-799f-4bb6-a6f1-9e8ccfcd8a94": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -951,7 +953,7 @@
             "Title": "Dog Man Grime and Punishment"
         },
         "38b734bf-c4e3-4816-b085-0908d5b72bfa": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 1.98,
@@ -960,7 +962,7 @@
             "Title": "Mr. Freeze"
         },
         "3989bfb8-00ca-4943-a857-9fb6d01b3d60": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -969,7 +971,7 @@
             "Title": "Troll Troubles (Frozen)"
         },
         "39ba5f04-2a08-4d1c-85f2-0e1e74c6b0db": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -978,7 +980,7 @@
             "Title": "Elsa’s Magic (Frozen)"
         },
         "3a101862-6b81-4bf7-a0e6-751e92e2c428": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -987,7 +989,7 @@
             "Title": "Tractors"
         },
         "3a90b2ce-1676-4134-ac21-4b7e44fa07f4": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -996,7 +998,7 @@
             "Title": "I Survived the Shark Attacks of 1916"
         },
         "3b9dc312-4701-4814-a10a-77d515699475": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.95,
@@ -1005,7 +1007,7 @@
             "Title": "kids myths busted"
         },
         "3ba76c52-03e1-41cb-bb95-02c4c9b2b949": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1014,7 +1016,7 @@
             "Title": "A Bear Called Paddington"
         },
         "3c3a0542-1724-46f5-bbf4-52354f03a5cb": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 1,
@@ -1023,7 +1025,7 @@
             "Title": "All For a Sister"
         },
         "3c98a7a2-f9e2-49f2-9d21-89031f22d274": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -1032,7 +1034,7 @@
             "Title": "Day at the Beach"
         },
         "3cbecc60-ba84-45c1-9a16-3fe91ff1ecaf": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1041,7 +1043,7 @@
             "Title": "The Chronicles is Narnia"
         },
         "3cf7e454-b1d6-47f9-b48b-01f6ed0ae739": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10.99,
@@ -1050,7 +1052,7 @@
             "Title": "We Were Liars"
         },
         "3e10801d-59e4-4f70-8dd3-3e03e6a1bc00": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10,
@@ -1059,7 +1061,7 @@
             "Title": "the great gatsby"
         },
         "3e59c006-2191-48e0-876c-275ddd8f1f59": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1068,7 +1070,7 @@
             "Title": "Dive: Book Three: The Danger"
         },
         "3eb97709-66b1-49a3-9bd6-e08a442daef2": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1077,7 +1079,7 @@
             "Title": "Ballpark Mysteries Book 3: The L.A. Dodger"
         },
         "3eda0ffc-855e-4adf-af09-a3525c21738d": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10.95,
@@ -1095,7 +1097,7 @@
             "Title": "Percy Jackson"
         },
         "40d78ef0-1d0d-4dbf-b764-2c3cd6e20313": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -1104,7 +1106,7 @@
             "Title": "Mocking Jay"
         },
         "4190352f-7306-4c2f-8603-422c13ea3747": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 12.99,
@@ -1113,7 +1115,7 @@
             "Title": "Four - A Divergent Collection"
         },
         "43a6e275-8dec-4803-bb4c-f21b5bf318c7": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -1122,7 +1124,7 @@
             "Title": "Magic Treehouse-#9 Dolphins at Daybreak"
         },
         "43aa9c9a-9158-462b-aa0d-8ff03f8f6677": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 2,
             "Needed": 0,
             "Price": 12.99,
@@ -1131,7 +1133,7 @@
             "Title": "Dog Man"
         },
         "43c7b547-c65c-474b-b25e-a861367b799e": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1140,7 +1142,7 @@
             "Title": "Bruce's Big Move"
         },
         "43d0eb5c-d073-4b35-8b7f-7882d9d9d0fa": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -1149,7 +1151,7 @@
             "Title": "Roaring Lambs"
         },
         "43ee00e8-2cee-4cfc-9478-62d76f263a69": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -1158,7 +1160,7 @@
             "Title": "The Future We Left Behind"
         },
         "4421ec70-de84-4399-85b8-357df857c723": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1167,7 +1169,7 @@
             "Title": "The Wings of Fire-Moon Rising"
         },
         "44d28f28-1105-4146-bf63-533740dc6c6b": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1176,7 +1178,7 @@
             "Title": "amazing grace"
         },
         "44e50e80-a19a-42cd-b125-e45e0305c3b0": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -1185,7 +1187,7 @@
             "Title": "dice activities for multiplication"
         },
         "45982dc4-f712-46e7-8d15-1d2fb3080a26": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1194,7 +1196,7 @@
             "Title": "Mary Poppins In The Park - 4"
         },
         "45b380c7-e23a-4d0e-901d-0e3928b1e1ad": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -1203,7 +1205,7 @@
             "Title": "Dr. Brad Has Gone Mad"
         },
         "4602a336-cc84-4ea3-9b6b-acff5be79295": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16,
@@ -1212,7 +1214,7 @@
             "Title": "Ben and the Sudden Too-Big Family"
         },
         "462e4b45-74cb-4659-97dc-f2802abcdb9e": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1221,7 +1223,7 @@
             "Title": "The Unwanteds"
         },
         "47a9dfaa-7e32-42d5-8d98-0bc9f2584f01": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -1230,7 +1232,7 @@
             "Title": "Magic Treehouse - #12 Polar Bears Past Bedtime"
         },
         "47c745ce-d79b-426c-b784-5c8c09227e2d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -1239,7 +1241,7 @@
             "Title": "Things Not Seen"
         },
         "47fda9cd-0355-47bd-bf7f-2e6960030d1a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -1248,7 +1250,7 @@
             "Title": "Wings of Fire The Hive Queen"
         },
         "48425f6e-eb76-42a6-b538-fa650479e34c": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1257,7 +1259,7 @@
             "Title": "The Cupcake Queen"
         },
         "48aa7ada-eb0a-4f16-a3e4-99210a501dc4": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1266,7 +1268,7 @@
             "Title": "Scat"
         },
         "48e7c851-0616-40a1-ab2c-30d84734381d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7,
@@ -1275,7 +1277,7 @@
             "Title": "the velveteen rabbit"
         },
         "4a8792b7-5e27-4341-8ca8-194a7ab42bf9": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -1284,7 +1286,7 @@
             "Title": "Oliver Twist"
         },
         "4a92eab2-3d43-4c68-afda-dd2bc388bc65": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1293,7 +1295,7 @@
             "Title": "Toy Story 4 Made To Play"
         },
         "4b207f97-fcf3-4570-93bb-4f3792bdf867": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1302,7 +1304,7 @@
             "Title": "Jesus Calling"
         },
         "4b581609-45aa-4b82-b74c-9ad59ba49077": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -1311,7 +1313,7 @@
             "Title": "Net Force Virtual Vandals"
         },
         "4b60e1b4-9065-44c2-ade8-e407618c70a3": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 14.04,
@@ -1320,7 +1322,7 @@
             "Title": "The Heros of Olympus: The Lost Hero"
         },
         "4b8fca9c-769c-4cf3-8724-37908014bc92": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1329,7 +1331,7 @@
             "Title": "The Never Girls - From the Mist"
         },
         "4becd3bd-9833-4b11-b51f-bbb439bd5dec": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -1338,7 +1340,7 @@
             "Title": "Miss Laney is Zany"
         },
         "4d3ee759-96ac-4188-8176-ba88b3fe22e0": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1347,7 +1349,7 @@
             "Title": "King & Kayla"
         },
         "4e1583e3-3181-44ab-8c4f-4dacccae87e5": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -1356,7 +1358,7 @@
             "Title": "Seekers: Smoke Mountain"
         },
         "4eb3bd46-cebb-4bd3-8fbf-b15506d5bc44": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -1365,7 +1367,7 @@
             "Title": "How Not to Start Third Grade"
         },
         "4ed3e2ee-24df-4d9a-b39e-94de0b1cdd77": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1374,7 +1376,7 @@
             "Title": "The Hardy Boys The Tower Treasure"
         },
         "4ef0ac5b-9722-44dd-8067-2697b1cc0824": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1383,7 +1385,7 @@
             "Title": "True Tales Shark Attack Young Survivors"
         },
         "4f24dba4-42db-44a3-b2db-af4e75b42f17": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 14.95,
@@ -1392,7 +1394,7 @@
             "Title": "Anna of Byzantium"
         },
         "50d263de-16be-408a-b880-b62c83a55b7a": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1401,7 +1403,7 @@
             "Title": "she persisted harriet tubman"
         },
         "50ebcb28-b492-40af-b438-51f995b2842d": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1410,7 +1412,7 @@
             "Title": "Super Sand Castle Saturday"
         },
         "514ac419-393f-450f-95c2-70069d1c6e30": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1419,7 +1421,7 @@
             "Title": "50 States Fandex"
         },
         "51a2e707-3b26-4934-9e25-9880a0d057d9": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10.95,
@@ -1428,7 +1430,7 @@
             "Title": "I Can’t Believe You SAID That!"
         },
         "52011724-df53-4174-bd01-c447c81824ab": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -1437,7 +1439,7 @@
             "Title": "the girl who loved wild horses"
         },
         "5201b372-00fc-4b3d-b9b5-f28b99edf250": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10,
@@ -1446,7 +1448,7 @@
             "Title": "pride and prejudice"
         },
         "52a1475f-a5a2-4a45-b884-0f35f5ed182a": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1455,7 +1457,7 @@
             "Title": "The Spiderwick Chronicles: The Seeing Stone"
         },
         "5340910f-86fb-4ae0-9ec8-baa9f3b58112": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 19.95,
@@ -1464,7 +1466,7 @@
             "Title": "5,000 Awesome Facts (About Everything)"
         },
         "53af8d0f-ca12-439f-b292-d604197c2570": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1473,7 +1475,7 @@
             "Title": "The Thief Lord"
         },
         "5465ec98-9498-406f-9e56-2def897ac2be": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -1482,7 +1484,7 @@
             "Title": "Encyclopedia Brown Saves The Day"
         },
         "546f37c9-362e-45fa-9595-e8bb99362a4e": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1491,7 +1493,7 @@
             "Title": "Henry Heckel: Builds a Robot"
         },
         "5475ca5d-7926-45a2-95ab-b402c665ee9c": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1500,7 +1502,7 @@
             "Title": "Ballpark Mysteries Book 1: The Fenway Foul-Up"
         },
         "54e919e3-1804-4dc6-964b-9bd3342289b9": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -1509,7 +1511,7 @@
             "Title": "Crossed"
         },
         "55a4275f-e86a-4235-af31-5601f81d3760": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 12.99,
@@ -1518,7 +1520,7 @@
             "Title": "The Hunger Games"
         },
         "55a8bd45-d1e7-45af-9cce-7f2d41807206": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -1527,7 +1529,7 @@
             "Title": "The Fault in our Stars"
         },
         "560e2cac-6394-4a60-b3d7-285c2b6e49ef": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1536,7 +1538,7 @@
             "Title": "The Chronicled of Narnia The Lion, the Witch and the Wardrobe"
         },
         "5668d3b8-0e68-4c65-be98-ba1d787e4aa5": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -1545,7 +1547,7 @@
             "Title": "The Red Pyramid"
         },
         "56b1e114-b906-4cf1-a496-efc2f35dadc4": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -1554,7 +1556,7 @@
             "Title": "I broke my butt!"
         },
         "57d882ed-5b72-4e90-a54b-7235b9e06ed3": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1563,7 +1565,7 @@
             "Title": "The Penderwicks at Point Mouette"
         },
         "57ebc25c-8ec5-4adf-893e-0e0cd8ac71b4": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 2,
             "Needed": 0,
             "Price": 5.99,
@@ -1572,7 +1574,7 @@
             "Title": "Captain Underpants and the perilous plot of professor poopypants"
         },
         "5842c272-27f3-43d8-9dba-4118a972cb5a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15.99,
@@ -1581,7 +1583,7 @@
             "Title": "The Perks of Being a Wallflower"
         },
         "58636bc4-cd7c-45e2-b0e5-38217d51c2d6": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 19.99,
@@ -1590,7 +1592,7 @@
             "Title": "Rush Revere and the Brave Pilgrims"
         },
         "58c6ca0a-b19e-4307-93fd-8c094932974a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -1599,7 +1601,7 @@
             "Title": "Six of Crows"
         },
         "58e722a7-340e-4402-942e-842ab16b72f7": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -1608,7 +1610,7 @@
             "Title": "Best Friends (Frozen)"
         },
         "59011b1f-4937-45eb-8183-23e078c029d0": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1617,7 +1619,7 @@
             "Title": "The Never Girls - The Space Between"
         },
         "5902a750-3f57-4628-b222-5fd9cd1fec94": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1626,7 +1628,7 @@
             "Title": "Tag Team"
         },
         "593eb614-30ce-41c2-aff1-d59d3ad4bb23": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1635,7 +1637,7 @@
             "Title": "Interpreting Chicken"
         },
         "5954ad95-ce7f-4ccd-9cf0-ec3f07de4b8c": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1644,7 +1646,7 @@
             "Title": "If I Built a Car"
         },
         "5974cc01-50c9-46e0-8200-340d4077cbb2": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1653,7 +1655,7 @@
             "Title": "Freckle Juice"
         },
         "597614e7-0267-4632-a940-c6ebd3ec3c47": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10.99,
@@ -1662,7 +1664,7 @@
             "Title": "King of the Wins"
         },
         "597c59e3-b162-4a0e-aedf-1b20a7c82249": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1671,7 +1673,7 @@
             "Title": "I Survived the Japanese Tsunami, 2011"
         },
         "5a14e6b9-6c48-49ff-b1b5-d2e3457c323a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -1680,7 +1682,7 @@
             "Title": "Eerie Elementary - Recess is a Jungle"
         },
         "5b79852b-5ec7-4737-b1aa-0631f86f8d3d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 3,
             "Needed": 0,
             "Price": 4.99,
@@ -1689,7 +1691,7 @@
             "Title": "Magic Treehouse #1 Dinosaurs Before Dark"
         },
         "5c0c5cdf-fbbd-44cc-96cf-c118e8b9c814": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1698,7 +1700,7 @@
             "Title": "The Ghost Belonged to Me"
         },
         "5c70000a-c6b6-42a3-962a-7de645c971f1": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1707,7 +1709,7 @@
             "Title": "The Penderwicks, A Summer Tale of Four Sisters, Two Rabbits, and A Very Interesting Boy"
         },
         "5cc28604-1d69-44a9-a8f0-32f4e7d63020": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -1716,7 +1718,7 @@
             "Title": "Fancy Nancy The Dazzling Book Report"
         },
         "5ccbf93c-736a-47e5-854c-9a437cbaddf2": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1725,7 +1727,7 @@
             "Title": "Bad Kitty: Happy Birthday Bad Kitty"
         },
         "5ce18fe6-61fa-40a0-9910-0b523676288d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1734,7 +1736,7 @@
             "Title": "Ginger Pye"
         },
         "5d0ac461-8330-42d8-bd7c-ea31e54114b5": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1743,7 +1745,7 @@
             "Title": "The Batman"
         },
         "5d74e49c-e551-4f64-9596-c1d83ec8049b": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -1752,7 +1754,7 @@
             "Title": "Magic Treehouse The Graphic Novel - The Knight at Dawn"
         },
         "5dd624d8-47e4-4781-90bb-f447cc626462": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10.99,
@@ -1761,7 +1763,7 @@
             "Title": "Midnight for Charlie Bone"
         },
         "5dfe1101-4178-428f-aa63-5e74d027e135": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -1770,7 +1772,7 @@
             "Title": "Hot Rod Hamster and the Haunted Halloween Party"
         },
         "5e084d82-ef93-4696-9ce8-688db742ceb4": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -1779,7 +1781,7 @@
             "Title": "women in science"
         },
         "5e8ec99d-d459-4c33-8497-f7e3c9eafc9c": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.79,
@@ -1788,7 +1790,7 @@
             "Title": "The Shining Company"
         },
         "5e9d8b26-8ee8-4816-bf9e-2d8f8a70f99b": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -1797,7 +1799,7 @@
             "Title": "Fancy Nancy Sees Stars"
         },
         "5ec75591-b9d2-4ef0-bf85-ad9be676ee4e": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -1806,7 +1808,7 @@
             "Title": "Dog Man Unleashed"
         },
         "60da539e-49c7-4773-9ec2-a581eec910e4": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10,
@@ -1815,7 +1817,7 @@
             "Title": "Elf Pets, A Saint Bernard Tradition"
         },
         "613eba3e-c3c8-4f3a-b108-9ce9fea45053": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -1824,7 +1826,7 @@
             "Title": "animal farm"
         },
         "620e4e3d-8e94-4254-9369-89b106a79947": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.95,
@@ -1833,7 +1835,7 @@
             "Title": "The Football Man"
         },
         "623317a0-edf9-4400-97fa-162a308707c2": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -1842,7 +1844,7 @@
             "Title": "Mr. Granite Is from Another Plant"
         },
         "6251d8f2-4f65-4e3c-9053-1ae3c9990d24": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1851,7 +1853,7 @@
             "Title": "The Sword and the Flute"
         },
         "62cf2979-1a79-4098-9a72-edd0e5c73aca": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1860,7 +1862,7 @@
             "Title": "Same Old Horse"
         },
         "63151989-2dd1-460f-a69f-89c9fcce5264": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1869,7 +1871,7 @@
             "Title": "the little red hen"
         },
         "6326d0d5-c6e5-42bc-8a41-e2d754913ea0": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -1878,7 +1880,7 @@
             "Title": "Wings of Fire Talons of Power"
         },
         "6341641f-1f30-4c60-b74d-21126a170b9f": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 33.77,
@@ -1887,7 +1889,7 @@
             "Title": "How Christmas Began"
         },
         "63796990-411d-47b4-9b5d-7b1c41e068e8": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -1896,7 +1898,7 @@
             "Title": "Encyclopedia Brown Keeps The Peace - 6"
         },
         "64386604-5c39-4641-8f5b-d3885d6879f8": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.9,
@@ -1905,7 +1907,7 @@
             "Title": "The Chronicles of Nania the silver chair"
         },
         "64dc0ed1-115f-4a1f-afbd-083ac68908d3": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -1914,7 +1916,7 @@
             "Title": "The Book Thief"
         },
         "6543bd13-a447-46e2-b9f5-05783f022151": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1923,7 +1925,7 @@
             "Title": "The Abominable Snowman"
         },
         "65b4e6e3-7ee1-4669-b8ce-d6d9390c1d3b": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1932,7 +1934,7 @@
             "Title": "Dog Breath, The Horrible Trouble with Hally Tosis"
         },
         "65e33fe3-c771-451d-8717-e873a62a9cd7": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15.99,
@@ -1941,7 +1943,7 @@
             "Title": "The Fascinating Ocean Book for Kids"
         },
         "6635941a-58f3-4ff1-9a15-b56a73c93322": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1950,7 +1952,7 @@
             "Title": "Treasure Hunters"
         },
         "6721a7e4-91b3-4e89-bc28-5fe1537d75d3": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 2,
             "Needed": 0,
             "Price": 5.99,
@@ -1959,7 +1961,7 @@
             "Title": "The adventures of Captain Underpants"
         },
         "67c67710-df4e-4913-a5c6-33aeb5aa74f8": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1968,7 +1970,7 @@
             "Title": "I Survived The California Wildfires, 2018"
         },
         "683387cb-2d07-4dbe-8485-807fa15984fe": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 8.99,
@@ -1977,7 +1979,7 @@
             "Title": "Ranger’s Apprentice The Siege of Macindaw - book 6"
         },
         "684922f1-4943-44fd-822c-e4659d95b7a0": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -1986,7 +1988,7 @@
             "Title": "The Spiderwick Chronicles: The Wrath of Mulgarath"
         },
         "69611ffa-466b-4dda-a31c-f4ffe5097031": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -1995,7 +1997,7 @@
             "Title": "loot"
         },
         "6a73310e-381c-4981-9a5d-02b7d8a0875b": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2004,7 +2006,7 @@
             "Title": "Indiana Jones and the Dinosaur Eggs"
         },
         "6ada383c-2e0e-4d20-bc7c-bb7546f34783": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -2013,7 +2015,7 @@
             "Title": "Looking for Alaska"
         },
         "6b621df0-a82a-4bce-b76b-a83f47a3ce3f": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2022,7 +2024,7 @@
             "Title": "Bad Kitty: vs. Uncle Murray"
         },
         "6dc7d373-c5a4-4ff0-819d-a57508d7e566": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2031,7 +2033,7 @@
             "Title": "The Bad Seed"
         },
         "6e214d84-7f6a-4da1-9e8c-e8ce377cf59e": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15.99,
@@ -2040,7 +2042,7 @@
             "Title": "The Fascinating Science Book for Kids"
         },
         "6e2fca19-b203-45c5-a062-28fa137aa743": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -2049,7 +2051,7 @@
             "Title": "The Eleventh Hour Curious Mystery"
         },
         "6e9abdac-e526-45f5-bd67-95ebe76ac303": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 13.99,
@@ -2058,7 +2060,7 @@
             "Title": "The Last Kids on Earth"
         },
         "6eaa1722-9a42-4bab-986b-7a03b1d5bd49": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 2,
             "Needed": 0,
             "Price": 7.99,
@@ -2067,7 +2069,7 @@
             "Title": "The day Jimmy’s boa ate the wash"
         },
         "6ebc3bb4-0f78-43fb-8fa4-0d8b43d30154": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2076,7 +2078,7 @@
             "Title": "Wings of Fire Winter Turning"
         },
         "6ecb04a7-1ad1-449f-8996-a0f13c3d2cef": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 24,
             "Needed": 0,
             "Price": 10.99,
@@ -2085,7 +2087,7 @@
             "Title": "The Last Mapmaker"
         },
         "6ee37221-e1dc-4194-b813-b6c8e3e3e398": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -2094,7 +2096,7 @@
             "Title": "Inspector Flytrap"
         },
         "6f1317fb-b5f8-4a98-bfde-b9c773f99dfc": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 14.99,
@@ -2103,7 +2105,7 @@
             "Title": "Beyond the Summerland"
         },
         "6f1643a3-00e4-47d5-be40-dd77b3e93748": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -2112,7 +2114,7 @@
             "Title": "Allegiant - book 3"
         },
         "6f691b6a-e6aa-4462-9417-64635b160e64": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2121,7 +2123,7 @@
             "Title": "The Giant Slayer"
         },
         "6fb18989-1989-42d8-a5da-e47832efd339": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2130,7 +2132,7 @@
             "Title": "Game Changers"
         },
         "70acbc2a-b4c3-4ff8-a2ed-eda93e5b5605": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16,
@@ -2139,7 +2141,7 @@
             "Title": "Bird by Bird: Some Instructions on Writing and Life"
         },
         "70b8a332-dda0-4a28-9189-cb8b52d89ea6": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 3,
             "Needed": 0,
             "Price": 5.99,
@@ -2148,7 +2150,7 @@
             "Title": "Magic Treehouse - #3 Mummies in the Morning"
         },
         "70f522e1-20db-4fde-944e-3a618eb9ee7e": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2157,7 +2159,7 @@
             "Title": "The Gathering Darkness Survivors Dead of Night"
         },
         "70fcd4e4-e2fa-4a9b-a9fb-24f5a0ea732e": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2166,7 +2168,7 @@
             "Title": "The Hardy Boys The Secret of the Old Mill"
         },
         "71a9b60c-5900-493c-9dd3-521a111caba4": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2175,7 +2177,7 @@
             "Title": "Brain Games- Preschool"
         },
         "721aba1b-30ae-4eb7-b700-5dd2670d0f97": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": "",
@@ -2184,7 +2186,7 @@
             "Title": "Ms. Cuddly is nutty!"
         },
         "725ab029-1543-4361-ac23-9eb71fbdb85b": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2193,7 +2195,7 @@
             "Title": "The world according to Humphrey"
         },
         "7458fe4b-ed99-41ac-9aca-e0db8d19ed03": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.08,
@@ -2202,7 +2204,7 @@
             "Title": "Flat Stanley"
         },
         "751af7ad-8808-47df-b309-9d268fdbc8d6": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -2211,7 +2213,7 @@
             "Title": "Goodnight Moon"
         },
         "7529e127-ee3e-4b11-a486-7a9aef0bc8ec": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -2220,7 +2222,7 @@
             "Title": "The Hunger Games"
         },
         "752dcd03-2ac0-410b-be60-3fd565428791": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -2229,7 +2231,7 @@
             "Title": "Meet the Bobs and Tweets"
         },
         "75332c89-9fad-487f-ae22-fe368c02b682": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2238,7 +2240,7 @@
             "Title": "Wings of Fire The Lost Heir"
         },
         "75937e62-7fb1-4c01-803d-cdc79631ab62": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2247,7 +2249,7 @@
             "Title": "Pepper's Journal"
         },
         "7678af1f-576d-4cd0-b784-eecc023c54ef": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2256,7 +2258,7 @@
             "Title": "How to Beat the Bully without even Trying"
         },
         "76b313a4-d165-4118-bf3c-e96ed12bf14a": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.95,
@@ -2265,7 +2267,7 @@
             "Title": "what did we use before toilet paper?"
         },
         "77231ba2-77bc-45e8-95d4-f92f04fc1354": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2274,7 +2276,7 @@
             "Title": "Ballpark Mysteries Book 2: The Pinstripe Ghost"
         },
         "77254676-db87-4ee6-b473-a47be0796048": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2283,7 +2285,7 @@
             "Title": "The Hardy Boys The Great Airport Mystery"
         },
         "7737967f-a418-40a4-b864-3c731f8d995b": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2292,7 +2294,7 @@
             "Title": "The Magnificent Makers How to Twst a Friendship"
         },
         "77384612-cc98-4148-9d6f-d863017e16dc": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -2301,7 +2303,7 @@
             "Title": "Open Road Summer"
         },
         "7779d1f8-bb7d-4de8-8a80-9f5867280e73": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -2310,7 +2312,7 @@
             "Title": "Insurgent - book 2"
         },
         "7795f68d-fbeb-4d9a-a1db-7e8cb7018a4d": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2319,7 +2321,7 @@
             "Title": "1, 2, 3… By the sea"
         },
         "78578473-2408-493c-8842-3371f7083426": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -2328,7 +2330,7 @@
             "Title": "Guess how much i love you"
         },
         "78814ed2-e5f4-4d79-aa50-3f40da574908": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2337,7 +2339,7 @@
             "Title": "The Brain is Kind of a Big Deal"
         },
         "788fd5d4-4664-4bd4-bb77-a05792fe7b4d": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2346,7 +2348,7 @@
             "Title": "Big Nate: Strikes Again"
         },
         "78b59575-7fc7-4b31-a769-6320a26b59d2": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 5.99,
@@ -2355,7 +2357,7 @@
             "Title": "Magic Treehouse -#7 Sunset of the Sabertooth"
         },
         "78e88f27-7b37-4f2b-a36f-032beca6ecc1": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -2364,7 +2366,7 @@
             "Title": "Dog Man - Lord of the fleas"
         },
         "791494df-db5a-4b34-ac78-596ad2292a7b": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2373,7 +2375,7 @@
             "Title": "Choose Your Own Adventure: The Lost Jewels of Nabooti"
         },
         "7b07eb06-79a2-496a-ab7d-824a1d01f905": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -2382,7 +2384,7 @@
             "Title": "Captain underpants and the preposterous plight of the purple potty people"
         },
         "7b175fd1-4d2b-4d62-94e7-10fc08c25cc2": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2391,7 +2393,7 @@
             "Title": "Get Up and Go"
         },
         "7b3c5c82-0691-48bd-99aa-e96c4b467e90": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2400,7 +2402,7 @@
             "Title": "The Bad Guys: Cut to the Chase"
         },
         "7b6a8cfa-7a7c-4ff3-a346-e64a85bba3ca": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.5,
@@ -2409,7 +2411,7 @@
             "Title": "Encyclopedia Brown takes the case - book 10"
         },
         "7bb90380-026f-407a-b417-3a2b3c590ba5": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3,
@@ -2418,7 +2420,7 @@
             "Title": "Fantastic Beasts and Where to Find Them Coloring Book"
         },
         "7be6c573-e55e-40ad-8462-7cd39399a0d1": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 13.99,
@@ -2427,7 +2429,7 @@
             "Title": "My Life as a Cartoonist"
         },
         "7bf5b723-1377-4e8d-8176-b0c11b880edd": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -2436,7 +2438,7 @@
             "Title": "A Royal Visit (Frozen)"
         },
         "7c733d48-43ff-4b66-a888-9b91007946fa": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 8.99,
@@ -2445,7 +2447,7 @@
             "Title": "Ranger’s Apprentice The Ruins of Gorlan - book 1"
         },
         "7e3a1f64-8cc7-47fe-9aca-58997105c0b5": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2454,7 +2456,7 @@
             "Title": "King and Kayla"
         },
         "7e9a675f-4f7c-4411-80d1-ed61f1ddc7cd": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2463,7 +2465,7 @@
             "Title": "The Chronicles of marina the Magician’s Nephew"
         },
         "7e9f8372-930c-4b44-86f7-5bf512231dc6": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -2472,7 +2474,7 @@
             "Title": "harriet the spy"
         },
         "7eebdcdd-fef1-4480-85df-127cc3a7db7d": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -2481,7 +2483,7 @@
             "Title": "Ms. Leaky Is Freaky"
         },
         "7f604d50-161b-4b85-be35-4dac0b9e7de4": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -2490,7 +2492,7 @@
             "Title": "Captain Underpants and the Wrath of the Wicked Wedgie Woman"
         },
         "7ffef7e9-94e2-4140-acec-b3901f3debd3": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 11.99,
@@ -2499,7 +2501,7 @@
             "Title": "Throne of Glass"
         },
         "811893bc-a844-48c7-8cc9-65c2f2204c8d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2508,7 +2510,7 @@
             "Title": "The Boy Who Saved Baseball"
         },
         "812b7576-f2e0-4e71-bbca-4809e394a7fd": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 2,
             "Needed": 0,
             "Price": 9.99,
@@ -2517,7 +2519,7 @@
             "Title": "Ninja Farts Silent But Deadly"
         },
         "82a1c527-1540-4710-bb70-549f9a75bf7b": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2526,7 +2528,7 @@
             "Title": "The Hardy Boys What Happened at Midnight"
         },
         "8407906a-ed96-4689-8ce4-3fd610fd6a96": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -2535,7 +2537,7 @@
             "Title": "The Science Fair from the Black Lagoon"
         },
         "840fdc96-66aa-4ba0-830e-b0434c079fdb": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2544,7 +2546,7 @@
             "Title": "Miss Nelson is Missing!"
         },
         "842f2e64-05d8-4e5f-823f-7cae0ec22d69": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2553,7 +2555,7 @@
             "Title": "The Magnificent Makers Riding Sound Waves"
         },
         "84b55e51-29e6-4f6c-b3e8-85ae888ff67a": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 14.95,
@@ -2562,7 +2564,7 @@
             "Title": "Muddy Banks"
         },
         "8532d851-763f-4364-a724-b1febbf3088a": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -2571,7 +2573,7 @@
             "Title": "Colin Fischer"
         },
         "8651afe4-aaa5-4958-a08f-a3fa2375cd15": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.51,
@@ -2580,7 +2582,7 @@
             "Title": "Random Acts of Fun"
         },
         "86ce7105-d472-4438-af90-9fec68542d87": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17,
@@ -2589,7 +2591,7 @@
             "Title": "the wright brothers"
         },
         "8806e20d-19fe-4100-9a02-074e5a863e21": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8,
@@ -2598,7 +2600,7 @@
             "Title": "Haunted Hayride"
         },
         "883a64d6-64ec-4089-b11e-eb7fb1467ba4": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -2607,7 +2609,7 @@
             "Title": "the poky little puppy"
         },
         "88e9802d-deb4-4b35-b867-054708c71333": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -2616,7 +2618,7 @@
             "Title": "Stink Moody in Master of Disaster"
         },
         "88eca2b4-2cad-440a-8ca3-818ae2c7a3cc": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -2625,7 +2627,7 @@
             "Title": "Fish in a Tree"
         },
         "895e8fb4-17e7-4352-b9cb-8cf897b9b41d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 18.99,
@@ -2634,7 +2636,7 @@
             "Title": "Why Not You?"
         },
         "89632ebf-b35d-45ff-a350-5bc4f8dca939": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2643,7 +2645,7 @@
             "Title": "Magic Treehouse Merlin Missions - # 8 Blizzard of the Blue Moon"
         },
         "8964261e-5c5f-4ec7-aadd-c9d15b67df9c": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -2652,7 +2654,7 @@
             "Title": "Seekers: The Last Wilderness"
         },
         "89c2db40-ecc9-4758-b873-f5994169ee5e": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 23,
@@ -2661,7 +2663,7 @@
             "Title": "The Narnia Trivia Book"
         },
         "8abea90a-03b9-4ad3-8bd0-18ca4ba1c6fd": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2670,7 +2672,7 @@
             "Title": "verity fairy"
         },
         "8ad25c27-37ed-412f-a07f-3b4b929543ce": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -2679,7 +2681,7 @@
             "Title": "I Don't Want to Read This Book"
         },
         "8caeb539-07af-42c1-875c-0790c19a9c9f": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2688,14 +2690,14 @@
             "Title": "Captain Underpants and the big, bad battle of the bionic booger boy part 1: the night of the nasty nostril nuggets"
         },
         "8ce9e8ff-06e3-408a-aad1-b9256c62104b": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": "2",
             "Needed": 0,
             "Price": 12.99,
             "Title": "The Sun Is Also A Star"
         },
         "8cff9f04-5bca-43c4-aeab-f7a81029703c": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.23,
@@ -2704,7 +2706,7 @@
             "Title": "I Love Animals Wild, Scary, Cute, Or Cuddly"
         },
         "8e380420-42b5-46e2-87cb-cd33fd7b1e76": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -2713,7 +2715,7 @@
             "Title": "Overtaken"
         },
         "8e3bb05c-0799-4970-b03f-3e589e1499c3": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2722,7 +2724,7 @@
             "Title": "Book One: The Discovery: Dive"
         },
         "8e5fe140-54ca-4cb2-8b7c-9a9389752fac": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 13.99,
@@ -2731,7 +2733,7 @@
             "Title": "Magic Treehouse #30 Hurricane Heros in Texas"
         },
         "8e90fe9e-74a3-47f1-8325-78f09a4683a7": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2740,7 +2742,7 @@
             "Title": "The Bad Guys: The Baddest Day Ever"
         },
         "8ea5acca-6404-4caf-955f-c4382f37eae8": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2749,7 +2751,7 @@
             "Title": "Mary Poppins comes back"
         },
         "8f2485d7-efa3-4d16-8028-335f99938632": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 19.99,
@@ -2758,7 +2760,7 @@
             "Title": "Rush Revere and the Presidency"
         },
         "8fa45823-ef86-40be-9538-5154a9ed001f": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2767,7 +2769,7 @@
             "Title": "The Hardy Boys The Mystery of Cabin Island"
         },
         "907033f6-12f9-44f4-a4b3-f0d5adc93638": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -2776,7 +2778,7 @@
             "Title": "The Narnia Trivia Book"
         },
         "9081c494-7920-456a-80af-0cf9c039bde4": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2785,7 +2787,7 @@
             "Title": "Mercy Watson to the Rescue"
         },
         "90834d3e-6c5a-41cd-991d-aae0a9916f9d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": "",
@@ -2794,7 +2796,7 @@
             "Title": "Mr Cooper is super!"
         },
         "90aab8f2-40f3-4d37-b4c2-4f9ee247feb3": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -2803,7 +2805,7 @@
             "Title": "Miss Mary is Scary"
         },
         "91b10f83-7df9-4941-9125-a1682acc00af": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2812,7 +2814,7 @@
             "Title": "Ballpark Mysteries Book: The Astro Outlaw"
         },
         "92ded09d-86d0-4c68-90c9-3d112f4eb964": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2821,7 +2823,7 @@
             "Title": "Knockout"
         },
         "92e7ad3c-d1b1-4365-b505-d17e384686f7": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2830,7 +2832,7 @@
             "Title": "Multiplication"
         },
         "93120fe2-1cc3-4787-a52b-56a4f95bbf16": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10,
@@ -2839,7 +2841,7 @@
             "Title": "secrets of my hollywood life"
         },
         "9334d67e-7d45-43d6-8924-ea6086cef6d0": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 22.95,
@@ -2848,7 +2850,7 @@
             "Title": "soccer analytics"
         },
         "93df25c5-4c16-48c0-89b3-73136b7a5356": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2857,7 +2859,7 @@
             "Title": "Paddington Helps Out"
         },
         "943fa457-5243-4e6f-9253-b71e5cfcbea7": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -2866,7 +2868,7 @@
             "Title": "millions"
         },
         "943fe758-03fc-410d-90bb-0a02218264b6": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2875,7 +2877,7 @@
             "Title": "I Survived The Eruption Of Mount St. Helens, 1980"
         },
         "9442f025-5b21-4f62-8466-dba22ed01dd0": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -2884,7 +2886,7 @@
             "Title": "Warriors Midnight"
         },
         "945f0ebb-3545-4caf-8673-ebea866a0e15": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17.99,
@@ -2893,7 +2895,7 @@
             "Title": "Every Man a Hero"
         },
         "952b53b2-11ed-4720-b58e-e96b21f3f6d5": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -2902,7 +2904,7 @@
             "Title": "Net Force One is the Loneliest Number"
         },
         "95ac10ad-12d3-4f46-895a-00f46cb0fc90": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 3,
             "Needed": 0,
             "Price": 5.99,
@@ -2911,7 +2913,7 @@
             "Title": "Magic Treehouse - #4 Pirates Past Noon"
         },
         "95db2a79-84cb-4c4b-a633-5081ace9c664": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15,
@@ -2920,7 +2922,7 @@
             "Title": "The case of the wiggling wig"
         },
         "9605766b-0e91-4860-b33e-922104458089": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 14.99,
@@ -2929,7 +2931,7 @@
             "Title": "The Island of Dragons - Tye twelfth Adventures in the Kingdom of Fantasy"
         },
         "9753375e-8775-4cbe-86dc-c2804d2f5480": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.95,
@@ -2938,7 +2940,7 @@
             "Title": "Diary of a Wimpy Kid The Third Wheel"
         },
         "979b539c-b9b3-468f-9097-f75e81c0a6dd": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -2947,7 +2949,7 @@
             "Title": "Bad Food Game of Scones"
         },
         "984a29d6-f18b-4b76-878b-b90232f9020e": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -2956,7 +2958,7 @@
             "Title": "Four Little Blossoms at Oak Hill School"
         },
         "99bd2041-c281-4e1d-995a-c054b01c98e2": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7,
@@ -2965,7 +2967,7 @@
             "Title": "the gingerbread man loose at the zoo"
         },
         "9a278187-414f-4e4f-84ac-318604010440": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15.99,
@@ -2974,7 +2976,7 @@
             "Title": "The Fascinating Animal Book for Kids 500 Wild Facts!"
         },
         "9a63d3c5-4a7b-40fa-8370-0df385fabb89": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.5,
@@ -2983,7 +2985,7 @@
             "Title": "Encyclopedia Brown and the case is the dead eagles - Book 12"
         },
         "9af097f0-279c-41d3-86e2-14439305a42b": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -2992,7 +2994,7 @@
             "Title": "touchdown kid"
         },
         "9b1d60f6-df0e-4553-92c5-9ea0090daa14": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3001,7 +3003,7 @@
             "Title": "The Celery Stalks at Midnight"
         },
         "9b889102-a45e-449b-9d6d-fe981a681732": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.95,
@@ -3010,7 +3012,7 @@
             "Title": "The Official Bob Ross Coloring Book"
         },
         "9c241181-6da3-47b0-b16d-955f7c48613f": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -3019,7 +3021,7 @@
             "Title": "the giver"
         },
         "9d99c732-82da-4497-914d-c918c6936ef7": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3028,7 +3030,7 @@
             "Title": "The Chronicles of Narnia The Voyage of the Dawn Treader"
         },
         "9dff6730-c23a-46dc-9c44-e070d69ac3d3": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16,
@@ -3037,7 +3039,7 @@
             "Title": "Soul Surfer"
         },
         "9e96d8f0-6ed1-4171-96ff-ba60c90efb3f": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3046,7 +3048,7 @@
             "Title": "The Hardy Boys The Shore Road Mystery"
         },
         "9f4ecd67-56f5-491c-8f3d-f012df8b0cb3": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.79,
@@ -3055,7 +3057,7 @@
             "Title": "Table of Elements"
         },
         "9f5df60a-04b6-49f1-92a6-ee7b10c8b5df": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3064,7 +3066,7 @@
             "Title": "Lost and found"
         },
         "a22fd39d-dce5-4c74-a2aa-516f4f4ea552": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3073,7 +3075,7 @@
             "Title": "the curse of einsteins pencil"
         },
         "a3186b2e-aadc-4708-87ec-855cf56b166a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17,
@@ -3082,7 +3084,7 @@
             "Title": "Recursion"
         },
         "a39bf768-8aa5-455a-b130-1bea30b080e4": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 18,
@@ -3091,7 +3093,7 @@
             "Title": "The Girl in the Picture"
         },
         "a4cc27ff-0d90-4cf5-b734-457ac15ca1be": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -3100,7 +3102,7 @@
             "Title": "Net Force Cold Case"
         },
         "a4ec0fd7-922d-4fe1-9a3f-8ea48a77c68a": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3109,7 +3111,7 @@
             "Title": "Belly Up"
         },
         "a591d16c-7efd-45d0-98c6-379858e20e00": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.95,
@@ -3118,7 +3120,7 @@
             "Title": "The Sun Also Rises"
         },
         "a811c4bf-ad9e-4f81-aec6-be1e72f462b8": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10,
@@ -3127,7 +3129,7 @@
             "Title": "the sun also rises"
         },
         "a907d8af-a48d-439c-90ce-994cac24b240": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -3136,7 +3138,7 @@
             "Title": "By the Shores of Silver Lake"
         },
         "a91bec3a-c58a-4b70-aaa6-ea3643b20178": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3145,7 +3147,7 @@
             "Title": "The Hardy Boys Hunting for Hidden Gold"
         },
         "a97bad49-da7e-4a2d-bc98-b7b8370df426": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -3154,7 +3156,7 @@
             "Title": "Encyclopedia Brown Tracks Them Down"
         },
         "aa9e2114-e49d-4740-a810-87f990b1c68d": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -3163,7 +3165,7 @@
             "Title": "I Want to Be a Veterinarian"
         },
         "ab932c8c-bfc4-465d-be9e-930e785dfa52": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -3172,7 +3174,7 @@
             "Title": "The Secret Garden"
         },
         "ac7c5dc6-a237-4ba8-bb40-fcab0ddd2319": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 13.99,
@@ -3181,7 +3183,7 @@
             "Title": "All for a Story"
         },
         "ae0d0426-239b-4e90-9b40-ffef69fe257b": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3190,7 +3192,7 @@
             "Title": "Bailey’s Story"
         },
         "ae99be0a-602e-4b03-b03a-8c7bc8b69bc9": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3199,7 +3201,7 @@
             "Title": "How to Catch Santa"
         },
         "aec60bce-5610-4d92-a2bb-c82ec48bf077": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -3208,7 +3210,7 @@
             "Title": "A Pig, A Fox, and Stinky Socks"
         },
         "af9a704e-c651-4d67-a802-68406d02fa82": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3217,7 +3219,7 @@
             "Title": "Geronimo Stilton, Secret Agent"
         },
         "b0a99fbe-41d5-4205-9dcd-3879c5d94cbb": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.5,
@@ -3226,7 +3228,7 @@
             "Title": "Encyclopedia Brown lends a hand - book 11"
         },
         "b1161124-94d3-4261-bcfb-f0016fd3d908": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 8.99,
@@ -3235,7 +3237,7 @@
             "Title": "Ranger’s Apprentice The Sorcerer in the North - book 5"
         },
         "b17575f1-5b8c-45f7-89bc-1e1bbb6b30e0": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3244,7 +3246,7 @@
             "Title": "Plunked"
         },
         "b1dcfe86-bc23-4534-bd9a-4f52627d7f04": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -3253,7 +3255,7 @@
             "Title": "Dog Man"
         },
         "b1f72ed7-a05d-45fc-bff1-64b58c63b079": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -3262,7 +3264,7 @@
             "Title": "Divergent"
         },
         "b266fa8d-dc27-4f52-a6c4-d4892749d018": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.95,
@@ -3271,7 +3273,7 @@
             "Title": "Cross word Puzzels"
         },
         "b2ad0a69-a138-495f-80b7-a24121269ebf": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 1,
@@ -3280,7 +3282,7 @@
             "Title": "Animal Kids Cubs, Chicks, and Pups"
         },
         "b3502b46-4bcd-41af-b240-824b07b3396a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3289,7 +3291,7 @@
             "Title": "Mary Poppins"
         },
         "b49217cc-c95f-4619-9c99-c088f6c5ae1a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.97,
@@ -3298,7 +3300,7 @@
             "Title": "The Great Gatsby"
         },
         "b49b281c-6aa0-4c66-82b9-d46e44c68909": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 2,
             "Needed": 0,
             "Price": 35,
@@ -3307,7 +3309,7 @@
             "Title": "the hobbit"
         },
         "b531a344-e14a-4a0b-8ba8-836f95b8a50f": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.5,
@@ -3316,7 +3318,7 @@
             "Title": "Encyclopedia Brown boy detective - book 1"
         },
         "b5519055-b2fc-4c83-b72d-fa51bb0ce6a9": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3325,7 +3327,7 @@
             "Title": "Captain Underpants and the wicked wedgie woman"
         },
         "b5cc5f9f-82d7-438c-be0d-0a980b3c233f": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3334,7 +3336,7 @@
             "Title": "Indiana Jones and the Peril at Death"
         },
         "b63cddae-8df5-425b-84e7-a7be314721c5": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3343,7 +3345,7 @@
             "Title": "Captain Underpants and the Big, Bad Battle of The Bionic Booger Boy"
         },
         "b7545006-aa25-41c6-82d9-475f705b9d21": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3352,14 +3354,14 @@
             "Title": "Wings of Fire-escaping peril"
         },
         "b8930964-0271-4279-8aa4-655e7619501d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": "2",
             "Needed": 0,
             "Price": 12.99,
             "Title": "The Sun Is Also A Star"
         },
         "b8c31f3c-b8d6-4793-9f02-b8ea179f71ad": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -3368,7 +3370,7 @@
             "Title": "No One Likes a Fart"
         },
         "b8cde131-b501-45fa-9d3e-b2fef42e6783": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3377,7 +3379,7 @@
             "Title": "I am not a chair!"
         },
         "b974f439-9707-439c-adea-21b65ef655bb": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 24.99,
@@ -3386,7 +3388,7 @@
             "Title": "Happy, Happy, Hapoy"
         },
         "ba04bff2-1ff6-476d-9e51-8d4ca39bfb39": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3395,7 +3397,7 @@
             "Title": "J.D and the Great Barber Battle"
         },
         "bb8c4124-e260-4690-8d0f-ded6a197fac7": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 18.99,
@@ -3404,7 +3406,7 @@
             "Title": "I am Malala"
         },
         "bc64631c-a35e-4e80-858c-22fe0ca09c9a": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15.99,
@@ -3413,7 +3415,7 @@
             "Title": "Knuffle Bunny"
         },
         "bd961abc-f78b-49ef-9e95-0b33b18e1e3a": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 19.99,
@@ -3422,7 +3424,7 @@
             "Title": "WHY? Over 1,111 Answers to Everything"
         },
         "be38abea-c41b-41a5-a536-26a077923ab6": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3431,7 +3433,7 @@
             "Title": "The Spiderwick Chronicles: The Field Guide"
         },
         "be6b1109-cab9-4cd3-8863-5aadd7b34499": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 18,
@@ -3440,7 +3442,7 @@
             "Title": "Peanut Butter & Cupcake"
         },
         "c0763732-8036-4746-b474-d4376000f21a": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -3449,7 +3451,7 @@
             "Title": "You Are Amazing: ZenDoodle Coloring"
         },
         "c0b7f0fc-52e2-4dd2-a9dd-4735dd5273de": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -3458,7 +3460,7 @@
             "Title": "Mister Shivers - Beneath the Bed and Other Scary Stories"
         },
         "c11bec37-3f4b-4041-82c5-ce7336ebea5d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.95,
@@ -3467,7 +3469,7 @@
             "Title": "Mikey and the Dragons"
         },
         "c126897b-2203-4a84-bd4b-e9a482820c77": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3476,7 +3478,7 @@
             "Title": "The Pooh Book is Quotatins"
         },
         "c18dcaa0-2292-46a0-97bd-6549e9d0695b": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15.95,
@@ -3485,7 +3487,7 @@
             "Title": "The secret of the Lost Kingdom"
         },
         "c21fe317-1937-4841-9107-9ce30dd2fa63": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3494,7 +3496,7 @@
             "Title": "The Bad Guys: Guide to Being Good"
         },
         "c304fd36-bc42-4dd6-96ba-a6189369b3df": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.97,
@@ -3503,7 +3505,7 @@
             "Title": "Taken"
         },
         "c3236480-a9cd-4a0e-86f6-6da84fb83bff": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -3512,7 +3514,7 @@
             "Title": "The Last Kids on Earth and the Nightmare King"
         },
         "c32b3b7d-c036-4f37-8c6b-e4b46254c90c": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -3521,7 +3523,7 @@
             "Title": "Bear Grylls Adventure"
         },
         "c45fc68e-b54c-4492-b44a-e1bdf3a4c9ae": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -3530,7 +3532,7 @@
             "Title": "Diary of a Wimpy Kid: The Meltdown"
         },
         "c4797084-90fe-49b7-bbde-d4f529541f19": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3539,7 +3541,7 @@
             "Title": "Mirette on the high wire"
         },
         "c5a905ab-16a3-4b02-8213-ff8d38aedb51": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3548,7 +3550,7 @@
             "Title": "Mercy Watson Something Wonky This Way Comes"
         },
         "c623f459-4c55-4f9f-8af0-fe54607883b0": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.95,
@@ -3557,7 +3559,7 @@
             "Title": "The chickens are restless"
         },
         "c6cc64a3-3e62-4189-b95e-13c2c62ae607": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -3566,7 +3568,7 @@
             "Title": "Pinkalicious Eggstraordinary Easter"
         },
         "c85d098e-3b6d-488f-940e-be8344b1d738": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.95,
@@ -3575,7 +3577,7 @@
             "Title": "weird but true!"
         },
         "c8a057ed-7327-4cfd-af6d-31ef34de5360": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -3593,7 +3595,7 @@
             "Title": "Harry Potter"
         },
         "ca8760fb-5007-4647-a72d-534469cafc7b": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3602,7 +3604,7 @@
             "Title": "Choose Your Own Adventure: Journey Under The Sea"
         },
         "cb362090-adae-4aaa-a4f9-40a2756ed42b": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 3.99,
@@ -3611,7 +3613,7 @@
             "Title": "How Not to Babysit Your Brother"
         },
         "cc270f07-0edc-48ff-bb38-542b3e803a5e": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3620,7 +3622,7 @@
             "Title": "Kings and Queens"
         },
         "cd759c9a-fc23-4d45-94ba-56dcf4726485": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15,
@@ -3629,7 +3631,7 @@
             "Title": "Wreck This Journal"
         },
         "cd9d4935-2fcc-4285-b010-f03f9d0b52c0": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -3638,7 +3640,7 @@
             "Title": "Coach Hyatt is a Riot"
         },
         "cdcedcaa-4ac0-4253-b126-d2d5433d2d26": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -3647,7 +3649,7 @@
             "Title": "Doctor Grundy’s Undies"
         },
         "ce783c67-70ac-4204-97b1-4b66b45eab06": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -3656,7 +3658,7 @@
             "Title": "Interesting Stories for Curious People"
         },
         "ce9cb1d3-1fb2-477d-a571-90a5e3781f3d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3665,7 +3667,7 @@
             "Title": "Indiana Jones and the Secret of the Sphinx"
         },
         "cf4650b2-7add-48d5-8bbb-68f9bfad3ef8": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3674,7 +3676,7 @@
             "Title": "The Twenty-One Balloons"
         },
         "cf56cff9-2573-41a5-a293-917a2aa5bf04": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3683,7 +3685,7 @@
             "Title": "I Survived The San Francisco Earthquake 1906"
         },
         "cf5c6547-53c0-4bd8-8bd6-7138acff0b01": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.5,
@@ -3692,7 +3694,7 @@
             "Title": "Encyclopedia Brown gets his man - book 4"
         },
         "cf6c8466-7e03-44d5-9b1e-f9804861aa72": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3701,7 +3703,7 @@
             "Title": "Wings of Fire The Brightest Night"
         },
         "d19dd92d-926d-4e9e-ae9e-75b26a76559d": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3710,7 +3712,7 @@
             "Title": "I Survived The Great Molasses Flood, 1919"
         },
         "d1c9eb37-1bb7-425d-8635-4c2e25504a9e": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3719,7 +3721,7 @@
             "Title": "Animals on Board"
         },
         "d1f4b012-57ca-407f-b2b0-d6d2320adbce": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 8.99,
@@ -3728,7 +3730,7 @@
             "Title": "Ranger’s Apprentice The Icebound Land - book 3"
         },
         "d23e5fb0-379c-4c37-bca7-7f3b6fb844e7": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3737,7 +3739,7 @@
             "Title": "Color by Number Travel Mosaic"
         },
         "d2c43168-ce33-4b83-9a6b-34e6b4287e99": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -3746,7 +3748,7 @@
             "Title": "Gosh in A Tree"
         },
         "d3411840-82f9-427a-a751-5841fcb5e9a9": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -3755,7 +3757,7 @@
             "Title": "Divergent"
         },
         "d34c282b-04a6-41e7-9c09-f7f695408476": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3764,7 +3766,7 @@
             "Title": "Captain Underpants and the terrifying return of tippy tinkletousers"
         },
         "d4433b90-be9b-43f1-ae0e-c84a524a4a95": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": "",
@@ -3773,7 +3775,7 @@
             "Title": "Truth Be Told: Exposing the Myth of Evolution"
         },
         "d45efb18-adb3-4ed8-b06d-0ac8a10da25f": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3782,7 +3784,7 @@
             "Title": "The Hardy Boys The Secret of the Caves"
         },
         "d492cba3-c880-44c5-b29e-e41b17ba0f16": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -3791,7 +3793,7 @@
             "Title": "There's A Boy in The Girls' Bathroom"
         },
         "d4bdd6fc-b8a3-4c32-9808-8152e19f7dd4": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3800,7 +3802,7 @@
             "Title": "Racing Around"
         },
         "d4e8827f-7c75-4410-9d4e-b200259f74b6": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3809,7 +3811,7 @@
             "Title": "Room one a mystery or two"
         },
         "d4f9640c-576c-44a2-bc82-9b98f3c20a9d": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 18.99,
@@ -3818,7 +3820,7 @@
             "Title": "Jumanji"
         },
         "d5677c26-bfc2-4b91-ab97-ecc6800faba2": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3827,7 +3829,7 @@
             "Title": "Magic Treehouse - #6 Afternoon on the Amazon"
         },
         "d673f226-7eda-4172-b78b-6d4df319e207": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3836,7 +3838,7 @@
             "Title": "The Last of Really Great Whangdoodles"
         },
         "d6a70a0f-4c7e-47ad-9269-57d63746799c": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.95,
@@ -3845,7 +3847,7 @@
             "Title": "The Sisterhood of the Traveling Pants"
         },
         "d7f837bd-2d77-41fd-a732-d91ed9b9d3aa": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3854,7 +3856,7 @@
             "Title": "How to a speak Dolphin"
         },
         "d8e64d78-ecf9-43d1-b90a-391bbbef1010": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 5.99,
@@ -3863,7 +3865,7 @@
             "Title": "Magic Treehouse -#8 Midnight on the Moon"
         },
         "da579d76-12d8-4f16-8d4e-980a45c3ae3c": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3872,7 +3874,7 @@
             "Title": "Self Knowledge"
         },
         "da6adbaf-6ff2-4f23-8b1b-30f0dfcf2bc5": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -3881,7 +3883,7 @@
             "Title": "Mrs. Dole is Out of Control"
         },
         "dac0d946-f4f5-4485-9f66-56c247dfa50e": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -3890,7 +3892,7 @@
             "Title": "The Hero’s Guide to Saving your kingdom"
         },
         "db52e859-2c72-49f1-a8b6-a6a72cad99e4": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -3899,14 +3901,14 @@
             "Title": "Olaf’s Dream (Frozen)"
         },
         "dc5ae239-06f9-4adf-a917-f084a47891b5": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": "17.99",
             "Title": "Fast Pitch"
         },
         "dc63ca20-6afe-4623-8ae1-4b359dfb3eaf": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3915,7 +3917,7 @@
             "Title": "Captain underpants and the preposterous Phlight of the purple potty people"
         },
         "ddc533ca-d82a-41d6-b84c-26899e117748": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -3924,7 +3926,7 @@
             "Title": "Magic Tree House Fact Tracker - Pandas and Other Endangered Species"
         },
         "de28b0c6-2b8c-4ef4-9e99-aca9de80b3a1": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -3933,14 +3935,14 @@
             "Title": "Me. Tony is Fill of Baloney"
         },
         "debec06e-3ada-404d-80fb-e0bfecb62bd6": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": "19",
             "Needed": 0,
             "Price": 34.99,
             "Title": "Student Study Bible"
         },
         "df5c269d-945d-4e0c-9cb1-dc4c627edf7f": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -3949,7 +3951,7 @@
             "Title": "Not Quite Narwhal"
         },
         "e03bdc93-6c9d-40ca-bb13-5579ef8ed917": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 18.99,
@@ -3958,7 +3960,7 @@
             "Title": "Oh, the places you’ll go"
         },
         "e1313db3-d22b-422a-8c92-c3b1af068407": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.96,
@@ -3967,7 +3969,7 @@
             "Title": "Weird But True! 6 300 Outrageous Facts"
         },
         "e14a20f9-c864-454f-8490-ec20e3cd3c0b": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -3976,7 +3978,7 @@
             "Title": "Hatchet"
         },
         "e170157f-c194-4491-a998-274ce173e99a": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -3985,7 +3987,7 @@
             "Title": "The Year Without Santa Claus"
         },
         "e18c8a62-e2eb-469a-b22d-ead8f600056f": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 2,
             "Needed": 0,
             "Price": 10,
@@ -3994,7 +3996,7 @@
             "Title": "Little Women"
         },
         "e1b94ef2-6091-4e62-a728-e18ba9c34f88": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 2,
             "Needed": 0,
             "Price": 15.99,
@@ -4003,7 +4005,7 @@
             "Title": "the perks of being a wallflower"
         },
         "e2d4b385-fb4d-408f-83e0-280fd1edac4d": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4012,7 +4014,7 @@
             "Title": "Taking Liberty"
         },
         "e2ff7ddd-0185-4665-affe-11d6aa6021c6": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -4021,7 +4023,7 @@
             "Title": "Big Nate on a Roll"
         },
         "e47ee1c5-c7ca-4e68-8b77-ee73c5777ca7": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4030,7 +4032,7 @@
             "Title": "Scholastic Children's Dictionary"
         },
         "e52ee22f-7467-4d44-878d-161fbcb3c28f": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4039,7 +4041,7 @@
             "Title": "Captain Underpants and the Big Bad Battle of the Bionic Booger Boy"
         },
         "e5d17c6b-a78c-41e5-b4ec-6001e74b87e9": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4048,7 +4050,7 @@
             "Title": "Al Capone Does My Shirts"
         },
         "e5dca548-80d8-4a98-ac11-5efd852dc605": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.95,
@@ -4057,7 +4059,7 @@
             "Title": "Click, clack, moo. Cows that type"
         },
         "e78c96f9-62ec-45ef-9522-ef5a31fe32aa": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -4066,7 +4068,7 @@
             "Title": "100 Days of Cool"
         },
         "e7fabe3a-fb49-4b68-a409-c73ff6fbb01a": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -4075,7 +4077,7 @@
             "Title": "King and Kayla and the Case of the Mysterious Mouse"
         },
         "e82265cd-9fa2-49c0-b997-f824b3248d65": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -4084,7 +4086,7 @@
             "Title": "Spirit Animals Blood Ties (book 3)"
         },
         "e838003e-b119-4e94-92be-8e59e6171794": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -4093,7 +4095,7 @@
             "Title": "The Sun is Also a Star"
         },
         "e884366c-a398-499f-9cdd-bbec8ccc1ca0": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -4102,7 +4104,7 @@
             "Title": "so you want to be an inventor"
         },
         "e90612e2-a557-4910-b436-78947659d8a7": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 3,
             "Needed": 0,
             "Price": 4.99,
@@ -4111,7 +4113,7 @@
             "Title": "Magic Treehouse- #2 The Knight at Dawn"
         },
         "e95cb247-bcd6-4077-b7e5-1859bf4dc959": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -4120,7 +4122,7 @@
             "Title": "super slugger"
         },
         "e9b83ab0-206f-4298-b3ec-73d21bfa8289": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4129,7 +4131,7 @@
             "Title": "Spunky Monkeys on Parade"
         },
         "ea41c70d-ee5b-4245-982b-2f13e987b345": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -4138,7 +4140,7 @@
             "Title": "Wish"
         },
         "eac2bf83-7778-43e4-89fa-e8e40a06ed95": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 17,
@@ -4147,7 +4149,7 @@
             "Title": "The Boys in the Boat"
         },
         "eb3fbbe7-326c-414e-9735-2b4974ce272d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -4156,7 +4158,7 @@
             "Title": "Snow Angels (Frozen)"
         },
         "ebd4c4ea-1168-4450-a6b8-ad5e2d606e2e": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -4165,7 +4167,7 @@
             "Title": "Four A Divergent Collection"
         },
         "ecdbafaf-8d68-405a-b28b-10bc432a9831": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15,
@@ -4174,7 +4176,7 @@
             "Title": "prisoner B-3087"
         },
         "ecf2a25b-4e13-405f-80fd-d137ed7956c3": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5,
@@ -4183,7 +4185,7 @@
             "Title": "into the trap"
         },
         "ed84c8db-13a9-4f8e-a0f1-c2229ee5bd84": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 8.99,
@@ -4192,7 +4194,7 @@
             "Title": "Ranger’s Apprentice The Burning Bridge - book 2"
         },
         "edf86d76-a481-4f02-ba37-424af2b0fcf4": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -4201,7 +4203,7 @@
             "Title": "Ashanti to Zulu"
         },
         "ee5cc674-f31f-4006-b19f-1c7084244f78": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 15,
@@ -4210,7 +4212,7 @@
             "Title": "When You Were Mine"
         },
         "eee53199-239b-436d-b737-7250f9389d6a": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -4219,7 +4221,7 @@
             "Title": "The Prayer That Changes Everything"
         },
         "ef574d3b-2824-4554-b09d-4396090dfda2": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -4228,7 +4230,7 @@
             "Title": "I Survived the Children’s Blizzard, 1888"
         },
         "f02318a7-fd8b-40bb-b25f-290fd8d3e073": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -4237,7 +4239,7 @@
             "Title": "Memoirs of a Tortoise"
         },
         "f0c8ed55-8997-4679-a8b6-2c0d62681e26": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 4.5,
             "Needed": 0,
             "Price": 4.5,
@@ -4246,7 +4248,7 @@
             "Title": "Encyclopedia Brown finds the clues - book 3"
         },
         "f1c9d631-b4db-48a4-8b14-4170d8dc9425": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4255,7 +4257,7 @@
             "Title": "The Mouse and the Motorcycle"
         },
         "f1f331ca-ce72-45cd-b21c-29bd0844e6cb": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -4264,7 +4266,7 @@
             "Title": "Magic Treehouse - #11 Lions at Lunchtime"
         },
         "f2183c40-9aec-4357-bc68-4885f68bac03": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 12.99,
@@ -4273,7 +4275,7 @@
             "Title": "Catching Fire"
         },
         "f21c9cb0-e4d7-4777-a513-24f96ad9fc5b": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -4282,7 +4284,7 @@
             "Title": "Net Force Safe House"
         },
         "f257c469-ff0a-44fc-b3b4-ecf35e824e87": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -4291,7 +4293,7 @@
             "Title": "Magic Treehouse -#10 Ghost Town at Sundown"
         },
         "f297b83e-1743-4601-bc02-70cc7e24a455": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -4300,7 +4302,7 @@
             "Title": "Wings of Fire Legends Darkstalker"
         },
         "f3bedb74-c06c-46ee-b3f1-0397cd2fc130": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4309,7 +4311,7 @@
             "Title": "Magic Treehouse - #28 High Tide in Hawaii"
         },
         "f56ffcea-cf1c-4d5b-8cd0-a5f67fd54125": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4318,7 +4320,7 @@
             "Title": "I Survived the Great Chicago Fire,1871"
         },
         "f5b41267-909d-430c-9db6-e969caa86bb4": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 14.99,
@@ -4327,7 +4329,7 @@
             "Title": "Diary of a Wimpy Kid: Wrecking Ball"
         },
         "f65b10af-01aa-499f-925d-e1102e3150b3": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -4336,7 +4338,7 @@
             "Title": "The Hardy Boys The Missing Chums"
         },
         "f7dac74d-2f54-4928-b77b-201a7dbaab06": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.5,
@@ -4345,7 +4347,7 @@
             "Title": "Encyclopedia Brown and the case of the secret pitch - book 2"
         },
         "f7db89a3-4230-4bf7-9b0e-68777de2fedc": {
-            "Genre": "Be Inspired (Blue)",
+            "Genre": "Be Inspired",
             "Inventory": 1,
             "Needed": 0,
             "Price": 10,
@@ -4354,7 +4356,7 @@
             "Title": "madeline"
         },
         "f968e6ab-22d8-4cec-99ea-7033eff710c4": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 6.99,
@@ -4363,7 +4365,7 @@
             "Title": "King & Kayla"
         },
         "f9f3b570-38e2-4759-b271-4e4856ee52bd": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 8.99,
@@ -4372,7 +4374,7 @@
             "Title": "Ranger’s Apprentice Oakleaf Bearers - book 4"
         },
         "fb424e7a-c268-4eba-8239-2f7d61f1f629": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -4381,7 +4383,7 @@
             "Title": "The Clique"
         },
         "fbc0fba2-6bc2-42b8-890f-c4e30bda79b8": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 8.99,
@@ -4390,7 +4392,7 @@
             "Title": "On the Banks of Plum Creek"
         },
         "fc117024-8d6c-43fd-836d-d965145eacf3": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4399,7 +4401,7 @@
             "Title": "Captain underpants and the invasion of the incredibly naughty cafeteria ladies from outer space (and the subsequent assault of the equally evil lunchroom zombie nerds)"
         },
         "fc12aad9-3185-4f38-aeff-7e6ce672275d": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 16.99,
@@ -4408,7 +4410,7 @@
             "Title": "The Fourteenth Goldfish"
         },
         "fc3667b7-77dd-4659-ac2e-4bb759b42999": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 7.99,
@@ -4417,7 +4419,7 @@
             "Title": "Making Bombs for Hitler"
         },
         "fd647e3e-8725-425b-95a8-9dfbc23bcb89": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4426,7 +4428,7 @@
             "Title": "The Chronicles of Narnia The Last Battle"
         },
         "fd76e010-86fc-4b9f-8038-1ee8fb663a65": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 1.98,
@@ -4435,7 +4437,7 @@
             "Title": "Meet Batman"
         },
         "fd85c789-c472-4d39-a091-92d1fc20fc6b": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4444,7 +4446,7 @@
             "Title": "Coyotes All Around"
         },
         "fd8f1066-baaf-4f77-9171-3deb7ed48383": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 4.99,
@@ -4453,7 +4455,7 @@
             "Title": "The Mandalorian"
         },
         "fe406660-04b5-4434-9148-ee88e7d16fdd": {
-            "Genre": "Solve (Black)",
+            "Genre": "Solve",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4462,7 +4464,7 @@
             "Title": "Tally O'Malley"
         },
         "fee8804d-7b54-4a9a-a89c-695f34ecdb67": {
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Inventory": 1,
             "Needed": 0,
             "Price": 5.99,
@@ -4471,7 +4473,7 @@
             "Title": "Captain Underpants and the attack of the talking toilets"
         },
         "ff0109dd-1f7e-48fb-81db-d6334e7d2802": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 2,
             "Needed": 0,
             "Price": 12.99,
@@ -4480,7 +4482,7 @@
             "Title": "Mockingjay - Final book of The Hunger Games"
         },
         "ff3d054a-ea9e-4afc-9c9a-0b1e462aa9ab": {
-            "Genre": "Explore (White)",
+            "Genre": "Explore",
             "Inventory": 1,
             "Needed": 0,
             "Price": 9.99,
@@ -4492,187 +4494,187 @@
     "archive": {
         "206faa77-2d60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea74-2d60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea767-2d60-4705-8964-182f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 16.99,
             "Title": "Blank"
         },
         "206fea77-2260-4705-8964-182f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 14.99,
             "Title": "The Official Bob Ross Coloring Book"
         },
         "206fea77-2a60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea77-2d60-12705-8964-182f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 6.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-5964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-6964-182f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 10.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8064-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8664-182f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 10.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8964-182f132ef": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 8,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8964-182f132eff16": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 12.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8964-182f132eff17": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 6.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8964-182f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 10.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8964-182f1528eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8964-182f1628eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8964-182f16328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-8964-882f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-89654-182f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 12.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4705-89664-182f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 10.99,
             "Title": "Blank"
         },
         "206fea77-2d60-4964-182f132eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 11.99,
             "Title": "Blank"
         },
         "206fea77-2d61-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "20afea77-2d60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "216fea77-2d60-4705-7964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "216fea77-2d60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "246fea77-2d60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "306fea77-2d60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "406fea77-2d60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "906fea77-2d60-4705-8964-182f1328eff18": {
             "ArchiveDates": ["2022-11-24T09:32:33.778Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 7.99,
             "Title": "Blank"
         },
         "d917a51c-a73e-4a30-afa4-56cb6f207dd2": {
             "ArchiveDates": ["2022-12-03T05:14:09.407Z"],
-            "Genre": "Laugh (Red)",
+            "Genre": "Laugh",
             "Price": 6.99,
             "Title": "1, 2, 3… By the sea"
         }

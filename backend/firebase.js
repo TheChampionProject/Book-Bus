@@ -5,8 +5,15 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
+    signOut,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    updateDoc,
+    getDoc,
+} from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
 import { firebaseConfig } from "../keys.js";
@@ -21,7 +28,7 @@ const firestoredb = getFirestore(app);
 const storage = getStorage();
 let databaseBooks = [];
 
-const getBooksFB = async () => {
+export const getBooksFB = async () => {
     databaseBooks = [];
     let errorMessage = "";
 
@@ -41,7 +48,7 @@ const getBooksFB = async () => {
     else return databaseBooks;
 };
 
-const setBookFB = async (book, location) => {
+export const setBookFB = async (book, location) => {
     await getBooksFB();
     let errorMessage = "";
     let archiveDates = [],
@@ -77,7 +84,7 @@ const setBookFB = async (book, location) => {
             archiveDates.push(archiveDate);
             book.Index = prevArchivedBooks.length;
         }
-     }
+    }
 
     const editedBook = {
         Title: book.Title,
@@ -85,11 +92,16 @@ const setBookFB = async (book, location) => {
         Price: book.Price,
     };
 
-    if (book.AddDates) sendAddDates = book.AddDates;
-
     if (location === "archive") {
         params = { ...editedBook, ArchiveDates: archiveDates };
     } else {
+        params = {
+            ...editedBook,
+            Inventory: book.Inventory,
+            Needed: book.Needed,
+            AddDates: book.AddDates,
+        };
+
         if (book.Inventory === 0) {
             params = null;
         } else
@@ -97,7 +109,7 @@ const setBookFB = async (book, location) => {
                 ...editedBook,
                 Inventory: book.Inventory,
                 Needed: book.Needed,
-                AddDates: sendAddDates,
+                AddDates: book.AddDates,
             };
     }
 
@@ -109,7 +121,7 @@ const setBookFB = async (book, location) => {
     else return "success";
 };
 
-const signUpAuth = async (email, password, first, last) => {
+export const signUpAuth = async (email, password, first, last) => {
     const currentUser = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -117,7 +129,11 @@ const signUpAuth = async (email, password, first, last) => {
     ).catch((e) => {
         return e;
     });
-    await setDoc(doc(firestoredb, "users", auth.currentUser.user.uid), {
+
+    await signInWithEmailAndPassword(auth, email, password).catch((e) => {
+        return e;
+    });
+    await setDoc(doc(firestoredb, "users", auth.currentUser.uid), {
         email: email,
         name: first + " " + last,
         password: password,
@@ -129,39 +145,43 @@ const signUpAuth = async (email, password, first, last) => {
     return currentUser;
 };
 
-const signInAuth = async (email, password) => {
-    const currentUser = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-    ).catch((e) => {
+export const signInAuth = async (email, password) => {
+    await signInWithEmailAndPassword(auth, email, password).catch((e) => {
         return e;
     });
-    return currentUser;
+
+    const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    const verification = docSnap.data();
+    return verification;
 };
 
-const resetPasswordAuth = async (email) => {
+export const resetPasswordAuth = async (email) => {
     await sendPasswordResetEmail(auth, email).catch((e) => {
         return e;
     });
 };
 
-const bookBusVerify = async (verificationFile) => {
-    const auth = getAuth();
+export const bookBusVerify = async (verificationFile) => {
+    const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    const usrName = docSnap.data().name;
 
     const targetRef = storageRef(
         storage,
-        `verificationForms/${auth.currentUser.uid}`
+        `verificationForms/${usrName.split(" ")[0]}_${
+            usrName.split(" ")[1]
+        }_verificationForm.pdf`
     );
     await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
-        await updateDoc(doc(firestoredb, "users", auth.currentUser.uid), {
+        await updateDoc(docRef, {
             watchedVideo: true,
             uploadedForm: true,
         });
     });
 };
 
-const getVolunteerDatesFB = async () => {
+export const getVolunteerDatesFB = async () => {
     let dates = [];
     let errorMessage = "";
     await get(child(dbRef, `/volunteer-dates`))
@@ -180,22 +200,34 @@ const getVolunteerDatesFB = async () => {
     else return dates;
 };
 
-const updateVolunteerDateFB = async (dateID) => {
+export const updateVolunteerDateFB = async (dateID) => {
     let dates = await getVolunteerDatesFB();
+
     let errorMessage = "",
-        data;
+        data = "";
 
     for (let i in dates[0]) {
         if (dates[0][i].id === dateID) {
             data = dates[0][i];
         }
     }
-    const auth = getAuth();
 
-    if (data.volunteers.includes(auth.currentUser.uid))
-        return "You are already signed up for this date.";
+    if (data === "") {
+        return "No date found with that ID.";
+    }
 
-    data.volunteers.push(auth.currentUser.uid);
+
+    const userName = await getSignedInUserNameFB();
+    if (userName === "No user signed in") {
+        return userName;
+    }
+    if (data.volunteers.includes(userName)) {
+        return "User already Signed Up";
+    } else {
+        data.volunteers.push(userName);
+    }
+
+
 
     await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
         (e) => {
@@ -207,17 +239,40 @@ const updateVolunteerDateFB = async (dateID) => {
     else return "success";
 };
 
+export const getSignedInUserInfoFB = async () => {
+    try {
+        const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        return docSnap.data();
+    } catch {
+        return "No user signed in";
+    }
+};
 export const getSignedInUserFB = async () => {
     return getAuth();
 };
 
-export {
-    getBooksFB,
-    setBookFB,
-    signUpAuth,
-    signInAuth,
-    resetPasswordAuth,
-    bookBusVerify,
-    getVolunteerDatesFB,
-    updateVolunteerDateFB,
+
+export const getSignedInUserNameFB = async () => {
+    try {
+        const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        return docSnap.data().name;
+    } catch {
+        return "No user signed in";
+    }
+};
+
+export const changeDateFB = async (newData) => {
+    await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData }).catch(
+        (e) => {
+            errorMessage = e;
+        }
+    );
+
+};
+
+export const signOutUser = async () => {
+    await signOut(auth);
+
 };
