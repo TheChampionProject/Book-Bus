@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import "../App.css";
 import UserProtection from "../components/UserProtection.js";
 
+
 export default function ManagePage() {
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
     const [alert, setAlert] = useState({
@@ -20,6 +21,7 @@ export default function ManagePage() {
 
     return (
         <>
+
             <UserProtection />
             <Header
                 setSearchQuery={setSearchQuery}
@@ -29,6 +31,7 @@ export default function ManagePage() {
                 useSearchBar={true}
                 setGenreFilter={setGenreFilter}
                 genreFilter={genreFilter}
+
             />
 
             <TableStructure
@@ -42,6 +45,7 @@ export default function ManagePage() {
                 books={books}
                 setBooks={setBooks}
                 genreFilter={genreFilter}
+
             />
             <GiftConfirmation
                 showGC={showGC}

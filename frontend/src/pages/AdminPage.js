@@ -5,6 +5,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import uuidv4 from "uuid";
 import { useNavigate } from "react-router-dom";
+
 export default function AdminPage() {
     const [signedUpDateQuery, setSignedUpDateQuery] = useState("");
     const [dateToBeChanged, setDateToBeChanged] = useState({
@@ -21,7 +22,9 @@ export default function AdminPage() {
 
     let [addDateMode, setDateMode] = useState(false);
 
+
     let navigate = useNavigate();
+
 
     useEffect(() => {
         const getDates = async () => {
@@ -34,6 +37,7 @@ export default function AdminPage() {
         };
         getDates();
     }, []);
+
 
     useEffect(() => {
         const getUsername = async () => {
@@ -53,6 +57,7 @@ export default function AdminPage() {
         getUsername();
     }, []);
 
+
     const addDate = (e) => {
         e.preventDefault();
         setDateMode(true);
@@ -63,20 +68,24 @@ export default function AdminPage() {
 
     const submit = async () => {
         if (addDateMode) {
+
             if (
                 newDate === "" ||
                 newTime === "" ||
                 newLocation === "" ||
                 newEndTime === ""
             ) {
+
                 alert("Please fill out all fields");
                 return;
             }
         }
         let startDate = newDate,
             location = newLocation,
+
             time = newTime,
             endTime = newEndTime;
+
         if (newDate === "") startDate = dateToBeChanged.startDate.slice(0, 10);
         if (newTime === "") time = dateToBeChanged.startDate.slice(11, 16);
         if (newLocation === "") location = dateToBeChanged.location;
@@ -97,6 +106,7 @@ export default function AdminPage() {
         );
         if (request.data === "Error")
             alert("There was an error with your request");
+
         else
             alert(
                 "Date changed successfully. Refresh the page to see changes."
@@ -132,16 +142,19 @@ export default function AdminPage() {
             signedUpDateQueryVolunteers.push("No volunteers signed up :(");
     }
 
+
     return (
         <>
             <div className="CenterAdminPage">
                 <h1>Admin Page</h1>
+
                 <a
                     href="/home"
                     style={{ position: "absolute", top: "1em", left: "1em" }}
                 >
                     Home Page
                 </a>
+
                 <br />
                 <h4>Change/Add A BookBus Event Date:</h4>
                 <div style={{ display: "flex", justifyContent: "normal" }}>
@@ -149,7 +162,9 @@ export default function AdminPage() {
                         style={{ marginRight: "2em" }}
                         onClick={(e) => addDate(e)}
                     >
+
                         Add
+
                     </Button>
 
                     <Dropdown>
@@ -234,8 +249,10 @@ export default function AdminPage() {
                         <DateDD dates={dates} setDate={setSignedUpDateQuery} />
                     </Dropdown.Menu>
                 </Dropdown>
+
                 <br />
                 {signedUpDateQueryVolunteers}
+
             </div>
         </>
     );

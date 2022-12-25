@@ -4,6 +4,7 @@ import { classNames } from "@hkamran/utility-web";
 import Dropdown from "react-bootstrap/Dropdown";
 import GenreDDI from "./GenreDDI";
 
+
 export default function Header({
     setSearchQuery,
     alert,
@@ -14,6 +15,7 @@ export default function Header({
     genreFilter,
 }) {
     let leftElement, rightElement, dropdown;
+
     if (useSearchBar) {
         leftElement = <a href={href}>{hrefName}</a>;
         rightElement = (
@@ -25,6 +27,7 @@ export default function Header({
                 onChange={(e) => setSearchQuery(e.target.value)}
             />
         );
+
         dropdown = (
             <Dropdown>
                 <Dropdown.Toggle variant="primary" className="GenreFilter">
@@ -49,14 +52,17 @@ export default function Header({
             </a>
         );
         dropdown = <></>;
+
     }
     return (
         <>
             <div className="fixed-top navbar NavHead">
                 {leftElement}
+
                 {dropdown}
                 <h3 className="CPStyleMobile">TCP</h3>
                 <h3 className="CPStyleFull">The Champion Project</h3>{" "}
+
                 {rightElement}
             </div>
 

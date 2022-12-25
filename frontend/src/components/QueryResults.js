@@ -1,7 +1,9 @@
 import QueryRow from "./QueryRow.js";
 import React, { useRef } from "react";
 import axios from "axios";
+
 import uuidv4 from "uuid";
+
 export default function QueryResults({
     queryList,
     setShowAddPopup,
@@ -11,6 +13,7 @@ export default function QueryResults({
     setShowTable,
     books,
     searchQuery,
+
     successfulQuery,
 }) {
     let foundBook = useRef(false);
@@ -18,6 +21,7 @@ export default function QueryResults({
     const add = async (book) => {
         if (foundBook.current) return;
         foundBook.current = true;
+
 
         let refinedBook = {};
 
@@ -30,12 +34,14 @@ export default function QueryResults({
             }
         }
 
+
         if (book.volumeInfo.maturityRating === "NOT_MATURE") {
             alert(
                 "Warning: This book has been flagged with mature content. Please ask for a supervisor's approval before adding it to the library."
             );
             console.log(book.volumeInfo.title);
         }
+
 
         if (Object.entries(refinedBook).length === 0) {
             refinedBook.AddDates = [];
@@ -44,12 +50,16 @@ export default function QueryResults({
             refinedBook.Inventory = 1;
             refinedBook.Needed = 0;
             refinedBook.Index = -1;
+
             refinedBook.UUID = uuidv4();
+
         } else {
             refinedBook.Inventory = parseInt(refinedBook.Inventory) + 1;
         }
 
+
         if (!refinedBook.AddDates) {
+
             refinedBook.AddDates = [];
         }
 
@@ -92,6 +102,7 @@ export default function QueryResults({
     }, 100);
 
     return queryList.map((book, number) => {
+
         try {
             if (
                 book.volumeInfo.industryIdentifiers[1].identifier ===
@@ -101,6 +112,7 @@ export default function QueryResults({
                     !foundBook)
             ) {
                 add(book);
+
             }
         } catch {}
 

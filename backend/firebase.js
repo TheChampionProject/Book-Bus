@@ -101,6 +101,16 @@ export const setBookFB = async (book, location) => {
             Needed: book.Needed,
             AddDates: book.AddDates,
         };
+
+        if (book.Inventory === 0) {
+            params = null;
+        } else
+            params = {
+                ...editedBook,
+                Inventory: book.Inventory,
+                Needed: book.Needed,
+                AddDates: book.AddDates,
+            };
     }
 
     await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
@@ -206,6 +216,7 @@ export const updateVolunteerDateFB = async (dateID) => {
         return "No date found with that ID.";
     }
 
+
     const userName = await getSignedInUserNameFB();
     if (userName === "No user signed in") {
         return userName;
@@ -215,6 +226,8 @@ export const updateVolunteerDateFB = async (dateID) => {
     } else {
         data.volunteers.push(userName);
     }
+
+
 
     await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
         (e) => {
@@ -239,6 +252,7 @@ export const getSignedInUserFB = async () => {
     return getAuth();
 };
 
+
 export const getSignedInUserNameFB = async () => {
     try {
         const docRef = doc(firestoredb, "users", auth.currentUser.uid);
@@ -255,8 +269,10 @@ export const changeDateFB = async (newData) => {
             errorMessage = e;
         }
     );
+
 };
 
 export const signOutUser = async () => {
     await signOut(auth);
+
 };

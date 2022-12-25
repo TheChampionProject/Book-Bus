@@ -15,6 +15,7 @@ export default function QueryRow({
     const add = async (e) => {
         e.preventDefault();
 
+
         let refinedBook = {};
 
         for (let i = 0; i < books.length; i++) {
@@ -33,6 +34,7 @@ export default function QueryRow({
             );
             console.log(book.volumeInfo.title);
         }
+
 
         if (Object.entries(refinedBook).length === 0) {
             refinedBook.AddDates = [];
@@ -65,6 +67,7 @@ export default function QueryRow({
                 if (typeof booksRunPrice.data.price === "number") {
                     // If they have the price
                     refinedBook.Price = booksRunPrice.data.price;
+
                 } else refinedBook.Price = "5"; // No one has the price :(
             } else {
                 refinedBook.Price = book.saleInfo.listPrice.amount
@@ -74,6 +77,7 @@ export default function QueryRow({
         } catch {
             refinedBook.Price = "5";
         }
+
 
         setShowAddPopup(false);
         setBook(refinedBook);

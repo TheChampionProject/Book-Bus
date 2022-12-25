@@ -18,6 +18,7 @@ export default function AddPopup({
     const [showTable, setShowTable] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const textField = useRef(null);
+
     const successfulQuery = useRef(false);
 
     useEffect(() => {
@@ -41,6 +42,7 @@ export default function AddPopup({
     };
 
     const searchForBook = async () => {
+
         let request;
         try {
             request = await axios.post(
@@ -74,6 +76,17 @@ export default function AddPopup({
             }
         } catch {
             successfulQuery.current = false;
+
+        let request = await axios.post(
+            process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
+            {
+                title: searchQuery,
+                mode: scanMode ? "" : "titleSearch",
+            }
+        );
+
+        if (request.data === "Error") {
+
             setAlert({
                 show: true,
                 message: "We couldn't find that book. Please add it manually.",
@@ -87,6 +100,9 @@ export default function AddPopup({
                     show: false,
                 });
             }, 3000);
+        } else {
+            setQueryList(request.data);
+            setShowTable(true);
         }
     };
     return (
@@ -168,6 +184,7 @@ export default function AddPopup({
                                 scanMode={scanMode}
                                 searchQuery={searchQuery}
                                 successfulQuery={successfulQuery}
+
                             />
                         </tbody>
                     </Table>

@@ -6,6 +6,7 @@ import AddPopup from "../components/AddPopup.js";
 import Header from "../components/Header";
 import UserProtection from "../components/UserProtection.js";
 
+
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [showEditPoup, setShowEditPopup] = useState(false); // Show the popup
@@ -21,6 +22,7 @@ export default function ManagePage() {
     const lastGenre = useRef("");
     const [scanMode, setScanMode] = useState(false);
     let [genreFilter, setGenreFilter] = useState("All");
+
 
     let handleAddBook = (e) => {
         setShowAddPopup(true);
@@ -50,6 +52,7 @@ export default function ManagePage() {
                 setGenreFilter={setGenreFilter}
             />
 
+
             <TableStructure
                 mode="manage"
                 setBook={setBook}
@@ -60,7 +63,9 @@ export default function ManagePage() {
                 searchQuery={searchQuery}
                 books={books}
                 setBooks={setBooks}
+
                 genreFilter={genreFilter}
+
             />
             <button
                 type="button"
@@ -69,6 +74,7 @@ export default function ManagePage() {
                     e.preventDefault();
                     handleAddBook();
                 }}
+
             >
                 +
             </button>
@@ -85,6 +91,7 @@ export default function ManagePage() {
                 setScanMode={setScanMode}
                 setShowAddPopup={setShowAddPopup}
                 books={books}
+
             />
 
             <AddPopup
