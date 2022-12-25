@@ -23,15 +23,12 @@
     position: relative;
     height: auto;
     top: 5rem;
-
 }
 
 .GenreFilter {
     position: fixed;
     top: 1rem;
     left: 7em;
-
-
 }
 
 .BookTableParent {
@@ -118,9 +115,7 @@
 }
 
 .BiggerCell {
-
     max-width: 3em;
-
 }
 
 .navbar {
@@ -243,7 +238,7 @@
 @media only screen and (max-width: 1000px) {
     .CPStyleFull {
         display: none;
-=======
+    }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -255,12 +250,10 @@
 @media only screen and (max-width: 1000px) {
     .CPStyle {
         left: 8%;
-
     }
 }
 
 @media only screen and (min-width: 1500px) {
-
     .CPStyleFull {
         left: 40%;
     }
@@ -272,7 +265,6 @@
     .CPStyle {
         left: 40%;
     }
-
 }
 
 @media (orientation: portrait) {
@@ -373,7 +365,6 @@
     width: 50%;
     top: 0px;
 }
-
 
 @media only screen and (max-width: 1000px) {
     .CenterHomePage {
