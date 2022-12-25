@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 import VolunteerDates from "../components/VolunteerDates";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 export default function HomePage() {
     const [selectedDate, setSelectedDate] = useState("");
     let [dates, setDates] = useState([]);
@@ -23,9 +22,9 @@ export default function HomePage() {
             );
             if (response.data === "No user signed in") {
                 alert("You must be signed in to view this page");
-                navigate("/login");
+                window.location = "/login";
             }
-            setUsername(response.data.substring(0, response.data.indexOf(" ")));
+            setUsername(response.data.split(" ")[0]);
         };
         getUsername();
     }, []);
