@@ -14,7 +14,6 @@ export default function EditPopup({
     scanMode,
     setShowAddPopup,
     books,
-
 }) {
     let autoFillTitle = "";
     let autoFillGenre = "N/A";
@@ -37,7 +36,6 @@ export default function EditPopup({
             addBook.current = false;
             autoFillTitle = book.Title;
 
-
             autoFillInventory = book.Inventory;
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
@@ -46,14 +44,6 @@ export default function EditPopup({
         } else {
             addBook.current = true;
             autoFillGenre = lastGenre.current;
-
-            autoFillGenre = lastGenre.current;
-            autoFillInventory = book.Inventory;
-            autoFillNeeded = book.Needed;
-            autoFillPrice = book.Price;
-        } else {
-            addBook.current = true;
-
         }
 
         if (addBook.current) {
@@ -115,7 +105,6 @@ export default function EditPopup({
                     return;
                 }
 
-
                 if (!interrupt.current && !calledEdit.current) {
                     editBook();
                     calledEdit.current = true;
@@ -133,36 +122,13 @@ export default function EditPopup({
         window.addEventListener("keydown", statusKeyboardInput);
         return () => window.removeEventListener("keydown", statusKeyboardInput);
     });
-
-
-
-                if (!interrupt.current && !calledEdit.current) {
-                    editBook();
-                    calledEdit.current = true;
-                    if (complete) setShowAddPopup(true); // If they didn't have a genre selected
-                }
-            }, 3000);
-        }
-    }, [showEditPopup]);
-
-    useEffect(() => {
-        const statusKeyboardInput = (e) => {
-            if (e.keyCode) interrupt.current = true;
-        };
-
-        window.addEventListener("keydown", statusKeyboardInput);
-        return () => window.removeEventListener("keydown", statusKeyboardInput);
-    });
-
 
     useEffect(() =>
         window.addEventListener("click", () => (interrupt.current = true))
     );
 
     const editBook = () => {
-
         let previousBookInventory = 0;
-
 
         if ((genre === "N/A" || genre === "") && showEditPopup) {
             alert("Please select a genre");
@@ -185,7 +151,6 @@ export default function EditPopup({
         }
 
         if (String(price).startsWith("$")) price = price.slice(1);
-
 
         for (let i = 0; i < books.length; i++) {
             if (
@@ -213,8 +178,6 @@ export default function EditPopup({
                 book.AddDates = [];
             }
 
-
-
             for (let i = 0; i < inventory - book.Inventory; i++)
                 book.AddDates.push(new Date().toISOString());
         }
@@ -224,7 +187,6 @@ export default function EditPopup({
         book.Inventory = previousInventory.current;
         book.Needed = needed;
         book.Price = price;
-
 
         if (addBook.current) {
             book.Inventory =
@@ -237,8 +199,6 @@ export default function EditPopup({
         complete = true;
         interrupt.current = false;
         console.log(book);
-
-
         setManagedBook(book);
         setShowEditPopup(false);
     };
@@ -262,8 +222,6 @@ export default function EditPopup({
             <Modal show={showEditPopup} onHide={() => close()}>
                 <Modal.Header closeButton>
                     <Modal.Title>{modalTitle}</Modal.Title>
-
-
                 </Modal.Header>
                 <form>
                     <Modal.Body>
@@ -289,9 +247,7 @@ export default function EditPopup({
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu className="ManagePopupDropdownMenu">
-
                                     <GenreDDI setFunction={setGenre} />
-
                                 </Dropdown.Menu>
                             </Dropdown>
 
