@@ -13,6 +13,8 @@ export default function DonatePage() {
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
     let [books, setBooks] = useState(null);
+    let [genreFilter, setGenreFilter] = useState("All");
+
 
     return (
         <>
@@ -38,6 +40,7 @@ export default function DonatePage() {
                 searchQuery={searchQuery}
                 books={books}
                 setBooks={setBooks}
+                genreFilter={genreFilter}
             />
         </>
     );
