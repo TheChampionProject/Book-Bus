@@ -5,6 +5,8 @@ import EditPopup from "../components/EditPopup.js";
 import AddPopup from "../components/AddPopup.js";
 import Header from "../components/Header";
 import UserProtection from "../components/UserProtection.js";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 export default function ManagePage() {
@@ -22,11 +24,31 @@ export default function ManagePage() {
     const lastGenre = useRef("");
     const [scanMode, setScanMode] = useState(false);
     let [genreFilter, setGenreFilter] = useState("All");
+    let navigate = useNavigate();
 
 
     let handleAddBook = (e) => {
         setShowAddPopup(true);
     };
+
+    useEffect(() => {
+        const getVerification = async () => {
+            const response = await axios.get(
+                process.env.REACT_APP_BACKEND_URL + "getSignedInUserInfo"
+            );
+
+            if (response.data === "No user signed in") {
+                alert("You must be signed in to view this page")
+                navigate("/login")
+            }
+            if (!(response.data.uploadedForm && response.data.watchedVideo)) {
+                alert("You must be a verified volunteer to view this page");
+                navigate("/home");
+            };
+            getVerification();
+        }
+    
+    }, []);
 
     useEffect(() => {
         const statusKeyboardInput = (e) => {
