@@ -13,7 +13,6 @@ import {
     signOutUser,
     getSignedInUserNameFB,
     getSignedInUserInfoFB,
-
 } from "./firebase.js";
 
 import dotenv from "dotenv";
@@ -121,9 +120,7 @@ export const signup = asyncHandler(async (req, res) => {
 });
 
 export const login = asyncHandler(async (req, res) => {
-
     res.send(await signInAuth(req.body.email, req.body.password));
-
 });
 
 export const resetPassword = asyncHandler(async (req, res) => {
@@ -135,9 +132,7 @@ export const resetPassword = asyncHandler(async (req, res) => {
 });
 
 export const verify = asyncHandler(async (req, res) => {
-
     res.send(await bookBusVerify(req.file));
-
 });
 
 export const getVolunteerDates = asyncHandler(async (req, res) => {
@@ -145,16 +140,28 @@ export const getVolunteerDates = asyncHandler(async (req, res) => {
 });
 
 export const signUpForDate = asyncHandler(async (req, res) => {
-    res.send(await updateVolunteerDateFB(req.body.dateID));
+    for (let i = 0; i < req.body.dateIDs.length; i++) {
+        
+        let fbRequest = await updateVolunteerDateFB(req.body.dateIDs[i], true);
+        if (fbRequest === "failure") {
+            res.send("failure");
+            return;
+        }
+    }
+
+    for (let i = 0; i < req.body.unselectedDateIDs.length; i++) {
+        let fbRequest = await updateVolunteerDateFB(req.body.unselectedDateIDs[i], false);
+        if (fbRequest === "failure") {
+            res.send("failure");
+            return;
+        }
+    }
+
+    res.send("success");
 });
 
 export const changeDate = asyncHandler(async (req, res) => {
     res.send(await changeDateFB(req.body.newData));
-
-});
-
-export const getSignedInUser = asyncHandler(async (req, res) => {
-    res.send(await getSignedInUserFB());
 });
 
 export const getSignedInUserName = asyncHandler(async (req, res) => {
@@ -167,5 +174,9 @@ export const logout = asyncHandler(async (req, res) => {
 
 export const getSignedInUserInfo = asyncHandler(async (req, res) => {
     res.send(await getSignedInUserInfoFB());
-
 });
+
+export const getSignedInUser = asyncHandler(async (req, res) => {
+    res.send(await getSignedInUserFB());
+});
+

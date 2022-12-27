@@ -32,7 +32,7 @@ export default function QueryRow({
             alert(
                 "Warning: This book has been flagged with mature content. Please ask for a supervisor's approval before adding it to the library."
             );
-            console.log(book.volumeInfo.title);
+            
         }
 
 
