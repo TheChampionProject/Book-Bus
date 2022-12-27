@@ -96,7 +96,7 @@ export default function AdminPage() {
             location: location,
             id: dateToBeChanged.id,
             endDate: startDate + " " + endTime,
-            volunteers: dateToBeChanged.volunteers,
+            volunteers: dateToBeChanged.startDate === "Select a date to change"? dateToBeChanged.volunteers : [""],
         };
         const request = await axios.post(
             process.env.REACT_APP_BACKEND_URL + "changeDate",

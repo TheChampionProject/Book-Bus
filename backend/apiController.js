@@ -140,7 +140,24 @@ export const getVolunteerDates = asyncHandler(async (req, res) => {
 });
 
 export const signUpForDate = asyncHandler(async (req, res) => {
-    res.send(await updateVolunteerDateFB(req.body.dateID));
+    for (let i = 0; i < req.body.dateIDs.length; i++) {
+        
+        let fbRequest = await updateVolunteerDateFB(req.body.dateIDs[i], true);
+        if (fbRequest === "failure") {
+            res.send("failure");
+            return;
+        }
+    }
+
+    for (let i = 0; i < req.body.unselectedDateIDs.length; i++) {
+        let fbRequest = await updateVolunteerDateFB(req.body.unselectedDateIDs[i], false);
+        if (fbRequest === "failure") {
+            res.send("failure");
+            return;
+        }
+    }
+
+    res.send("success");
 });
 
 export const changeDate = asyncHandler(async (req, res) => {

@@ -1,19 +1,16 @@
 import Button from "react-bootstrap/Button";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import VolunteerDates from "../components/VolunteerDates";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export default function HomePage() {
-    const [selectedDate, setSelectedDate] = useState("");
-    let [dates, setDates] = useState([]);
-    let [username, setUsername] = useState("");
-    let startDates = [],
-        dateIDs = [],
-        selectedDateID,
-        okayToProceed = false;
+    const [selectedDateIDs, setSelectedDateIDs] = useState([]);
+    const [unselectedDateIDs, setUnselectedDateIDs] = useState([]);
+    const [availableDates, setAvailableDates] = useState([]);
+    const [username, setUsername] = useState("");
+    const [fullUserName, setFullUsername] = useState(null);
 
-    let dateField = useRef();
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getUsername = async () => {
@@ -25,35 +22,19 @@ export default function HomePage() {
                 window.location = "/login";
             }
             setUsername(response.data.split(" ")[0]);
+            setFullUsername(response.data);
         };
         getUsername();
     }, []);
 
-    const tryToSelectStartDate = async (newDate) => {
-        for (let i = 0; i < dates.length; i++) {
-            startDates.push(dates[i].startDate.slice(0, 10));
-            dateIDs.push(dates[i].id);
-        }
-
-        let dateIndex = startDates.indexOf(newDate);
-        if (
-            (!startDates.includes(newDate) && newDate !== "") ||
-            dateIndex === -1
-        ) {
-            alert("Please select an available date");
-            setSelectedDate("");
-        } else {
-            okayToProceed = true;
-            selectedDateID = dateIDs[dateIndex];
-            setSelectedDate(newDate);
-        }
-    };
-
     const submit = async (e) => {
-        tryToSelectStartDate(dateField.current.value);
+        e.preventDefault();
+
         const response = await axios.get(
             process.env.REACT_APP_BACKEND_URL + "getSignedInUserInfo"
         );
+
+
 
         if (!response.data.watchedVideo || !response.data.uploadedForm) {
             alert(
@@ -61,16 +42,16 @@ export default function HomePage() {
             );
             return;
         }
+
         let request = "Error";
         try {
-            if (okayToProceed) {
-                request = await axios.post(
-                    process.env.REACT_APP_BACKEND_URL + "signUpForDate",
-                    {
-                        dateID: selectedDateID,
-                    }
-                );
-            } else alert("There was an error with your request");
+            request = await axios.post(
+                process.env.REACT_APP_BACKEND_URL + "signUpForDate",
+                {
+                    dateIDs: selectedDateIDs,
+                    unselectedDateIDs: unselectedDateIDs,
+                }
+            );
         } catch {
             alert("There was an error with your request");
         }
@@ -82,7 +63,7 @@ export default function HomePage() {
         else if (request.data === "No user signed in")
             alert("You must be signed in to sign up for a date");
         else if (request.data === "success")
-            alert("You have successfully signed up for this date!");
+            alert("Your date changes have been saved! Please refresh the page to ensure the changes are correct.");
     };
 
     const handleLogout = async () => {
@@ -138,23 +119,19 @@ export default function HomePage() {
                 <br />
                 <h2>Or sign up to volunteer: </h2>
                 <h5>Available Dates:</h5>
-                <VolunteerDates dates={dates} setDates={setDates} />
-                <br />
-                <h4>Select a date:</h4>
-                <input
-                    type="date"
-                    value={selectedDate}
-                    ref={dateField}
-                    onChange={(e) => {
-                        tryToSelectStartDate(e.target.value);
-                    }}
+                <VolunteerDates
+                    availableDates={availableDates}
+                    setAvailableDates={setAvailableDates}
+                    setSelectedDateIDs={setSelectedDateIDs}
+                    selectedDateIDs={selectedDateIDs}
+                    fullUserName={fullUserName}
+                    setUnselectedDateIDs={setUnselectedDateIDs}
+                    unselectedDateIDs={unselectedDateIDs}
                 />
-                <Button
-                    variant="primary"
-                    onClick={submit}
-                    className="DateSubmitButton"
-                >
-                    Submit
+                <br />
+
+                <Button variant="primary" onClick={submit} className="">
+                    Save Changes
                 </Button>
             </div>
         </>
