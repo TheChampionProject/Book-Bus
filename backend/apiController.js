@@ -64,27 +64,37 @@ export const getSearchQueryBooks = asyncHandler(async (req, res) => {
 });
 
 export const getBookPrice = asyncHandler(async (req, res) => {
-    ISBN = req.body.ISBN;
+    const options = {
+        method: "GET",
+        url: "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-search-by-keyword-asin",
+        params: {
+            domainCode: "com",
+            keyword: req.body.title,
+            page: "1",
+            excludeSponsored: "false",
+            sortBy: "relevanceblender",
+            withCache: "true",
+        },
+        headers: {
+            "X-RapidAPI-Key": process.env.RAPID_API_KEY,
+            "X-RapidAPI-Host":
+                "axesso-axesso-amazon-data-service-v1.p.rapidapi.com",
+        },
+    };
 
-    let priceRequest = await axios.get(
-        BOOKS_RUN_API_BASE_URL + ISBN + "?key=" + process.env.BOOKS_RUN_API_KEY
-    );
-    if (priceRequest.data.result.status === "error") {
-        res.send("Price Not Found");
-        return;
-    }
+    let price = "error";
+    await axios
+        .request(options)
+        .then((response) => {
+            if (
+                response.data.responseMessage === "Product successfully found!"
+            ) {
+                price = response.data.searchProductDetails[0].price;
+            }
+        })
+        .catch(() => {});
 
-    if (priceRequest.data.result.offers.booksrun.new !== "none")
-        price = priceRequest.data.result.offers.booksrun.new;
-    else if (priceRequest.data.result.offers.booksrun.used !== "none")
-        price = priceRequest.data.result.offers.booksrun.used;
-    else if (priceRequest.data.result.offers.marketplace[0].new !== "none")
-        price = priceRequest.data.result.offers.marketplace[0].new;
-    else if (priceRequest.data.result.offers.marketplace[0].used !== "none")
-        price = priceRequest.data.result.offers.marketplace[0].used.price;
-    else price = "Price Not Found";
-
-    res.send(price);
+    res.send(price + "");
 });
 
 // Can update a book, add a book, and archive a book
@@ -141,7 +151,6 @@ export const getVolunteerDates = asyncHandler(async (req, res) => {
 
 export const signUpForDate = asyncHandler(async (req, res) => {
     for (let i = 0; i < req.body.dateIDs.length; i++) {
-        
         let fbRequest = await updateVolunteerDateFB(req.body.dateIDs[i], true);
         if (fbRequest === "failure") {
             res.send("failure");
@@ -150,7 +159,10 @@ export const signUpForDate = asyncHandler(async (req, res) => {
     }
 
     for (let i = 0; i < req.body.unselectedDateIDs.length; i++) {
-        let fbRequest = await updateVolunteerDateFB(req.body.unselectedDateIDs[i], false);
+        let fbRequest = await updateVolunteerDateFB(
+            req.body.unselectedDateIDs[i],
+            false
+        );
         if (fbRequest === "failure") {
             res.send("failure");
             return;
@@ -179,4 +191,3 @@ export const getSignedInUserInfo = asyncHandler(async (req, res) => {
 export const getSignedInUser = asyncHandler(async (req, res) => {
     res.send(await getSignedInUserFB());
 });
-
