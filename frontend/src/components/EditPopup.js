@@ -10,7 +10,6 @@ export default function EditPopup({
     setShowEditPopup,
     book,
     setManagedBook,
-    lastGenre,
     scanMode,
     setShowAddPopup,
     books,
@@ -40,10 +39,13 @@ export default function EditPopup({
             autoFillNeeded = book.Needed;
             autoFillPrice = book.Price;
 
-            autoFillGenre = book.Genre !== "" ? book.Genre : lastGenre.current;
+            autoFillGenre =
+                book.Genre !== ""
+                    ? book.Genre
+                    : localStorage.getItem("lastGenre");
         } else {
             addBook.current = true;
-            autoFillGenre = lastGenre.current;
+            autoFillGenre = localStorage.getItem("lastGenre");
         }
 
         if (addBook.current) {
@@ -55,11 +57,11 @@ export default function EditPopup({
         }
     }, [showEditPopup]);
 
-    let [title, setTitle] = useState(autoFillTitle);
-    let [genre, setGenre] = useState(autoFillGenre);
-    let [inventory, setInventory] = useState(autoFillInventory);
-    let [needed, setNeeded] = useState(autoFillNeeded);
-    let [price, setPrice] = useState(autoFillPrice);
+    let [title, setTitle] = useState();
+    let [genre, setGenre] = useState();
+    let [inventory, setInventory] = useState();
+    let [needed, setNeeded] = useState();
+    let [price, setPrice] = useState();
 
     let previousTitle = useRef("");
     let previousGenre = useRef("");
@@ -195,15 +197,16 @@ export default function EditPopup({
             book.AddDates.push(new Date().toISOString());
         }
 
-        lastGenre.current = genre;
+        localStorage.setItem("lastGenre", genre);
         complete = true;
         interrupt.current = false;
-        
+
         setManagedBook(book);
         setShowEditPopup(false);
     };
 
     const close = () => {
+        if (!showEditPopup) return;
         setTitle("");
         setGenre("");
         setInventory("");
@@ -215,7 +218,7 @@ export default function EditPopup({
     if (addBook.current) modalTitle = "Add a Book";
     else if (!addBook.current && book !== null)
         modalTitle = "Edit " + book.Title;
-    else modalTitle = "Null Book Exception";
+    else modalTitle = "Add a Book";
 
     return (
         <>
@@ -267,9 +270,14 @@ export default function EditPopup({
                                 style={{ maxWidth: "4em" }}
                                 value={price}
                                 onChange={(e) =>
-                                    setPrice(
-                                        Math.max(0, parseInt(e.target.value))
-                                    )
+                                    e.target.value === ""
+                                        ? setPrice("")
+                                        : setPrice(
+                                              Math.max(
+                                                  0,
+                                                  parseFloat(e.target.value)
+                                              )
+                                          )
                                 }
                             />
                             <br />

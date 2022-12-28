@@ -13,15 +13,14 @@ export default function QueryResults({
     setShowTable,
     books,
     searchQuery,
-
     successfulQuery,
+    okayToRun,
 }) {
     let foundBook = useRef(false);
 
     const add = async (book) => {
-        if (foundBook.current) return;
+        if (foundBook.current || !okayToRun.current) return;
         foundBook.current = true;
-
 
         let refinedBook = {};
 
@@ -34,15 +33,6 @@ export default function QueryResults({
             }
         }
 
-
-        if (book.volumeInfo.maturityRating === "NOT_MATURE") {
-            alert(
-                "Warning: This book has been flagged with mature content. Please ask for a supervisor's approval before adding it to the library."
-            );
-            
-        }
-
-
         if (Object.entries(refinedBook).length === 0) {
             refinedBook.AddDates = [];
             refinedBook.Title = book.volumeInfo.title;
@@ -52,45 +42,33 @@ export default function QueryResults({
             refinedBook.Index = -1;
 
             refinedBook.UUID = uuidv4();
-
         } else {
             refinedBook.Inventory = parseInt(refinedBook.Inventory) + 1;
         }
 
-
         if (!refinedBook.AddDates) {
-
             refinedBook.AddDates = [];
         }
 
         refinedBook.AddDates.push(new Date().toISOString());
 
         try {
-            if (book.saleInfo.saleability === "NOT_FOR_SALE") {
-                // Google Books doesn't have a price for this book
-                let ISBN = book.volumeInfo.industryIdentifiers[0].identifier;
-                let booksRunPrice = await axios.post(
-                    // Ask another API for the price
-                    process.env.REACT_APP_BACKEND_URL + "getBookPrice",
-                    { ISBN }
-                );
+            let queriedPrice = await axios.post(
+                // Ask another API for the price
+                process.env.REACT_APP_BACKEND_URL + "getBookPrice",
+                { title: refinedBook.Title }
+            );
 
-                if (typeof booksRunPrice.data.price === "number") {
-                    // If they have the price
-                    refinedBook.Price = booksRunPrice.data.price;
-                } else refinedBook.Price = "5"; // No one has the price :(
-            } else {
-                refinedBook.Price = book.saleInfo.listPrice.amount
-                    ? book.saleInfo.listPrice.amount
-                    : "5";
-            }
+            if (queriedPrice.data !== "error")
+                refinedBook.Price = queriedPrice.data;
         } catch {
             refinedBook.Price = "5";
         }
 
-        setShowAddPopup(false);
         setBook(refinedBook);
+        setShowAddPopup(false);
         setShowEditPopup(true);
+        okayToRun.current = false;
     };
 
     if (queryList.length === 0) return;
@@ -102,7 +80,6 @@ export default function QueryResults({
     }, 100);
 
     return queryList.map((book, number) => {
-
         try {
             if (
                 book.volumeInfo.industryIdentifiers[1].identifier ===
@@ -112,7 +89,6 @@ export default function QueryResults({
                     !foundBook)
             ) {
                 add(book);
-
             }
         } catch {}
 

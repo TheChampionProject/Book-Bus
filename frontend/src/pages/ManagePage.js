@@ -8,7 +8,6 @@ import UserProtection from "../components/UserProtection.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [showEditPoup, setShowEditPopup] = useState(false); // Show the popup
@@ -21,11 +20,10 @@ export default function ManagePage() {
     }); // Show the alert
     const [searchQuery, setSearchQuery] = useState("");
     let [books, setBooks] = useState(null);
-    const lastGenre = useRef("");
+
     const [scanMode, setScanMode] = useState(false);
     let [genreFilter, setGenreFilter] = useState("All");
     let navigate = useNavigate();
-
 
     let handleAddBook = (e) => {
         setShowAddPopup(true);
@@ -38,16 +36,15 @@ export default function ManagePage() {
             );
 
             if (response.data === "No user signed in") {
-                alert("You must be signed in to view this page")
-                navigate("/login")
+                alert("You must be signed in to view this page");
+                navigate("/login");
             }
             if (!(response.data.uploadedForm && response.data.watchedVideo)) {
                 alert("You must be a verified volunteer to view this page");
                 navigate("/home");
-            };
+            }
             getVerification();
-        }
-    
+        };
     }, []);
 
     useEffect(() => {
@@ -74,7 +71,6 @@ export default function ManagePage() {
                 setGenreFilter={setGenreFilter}
             />
 
-
             <TableStructure
                 mode="manage"
                 setBook={setBook}
@@ -85,9 +81,7 @@ export default function ManagePage() {
                 searchQuery={searchQuery}
                 books={books}
                 setBooks={setBooks}
-
                 genreFilter={genreFilter}
-
             />
             <button
                 type="button"
@@ -96,7 +90,6 @@ export default function ManagePage() {
                     e.preventDefault();
                     handleAddBook();
                 }}
-
             >
                 +
             </button>
@@ -108,12 +101,11 @@ export default function ManagePage() {
                 setBook={setBook}
                 setManagedBook={setManagedBook}
                 setAlert={setAlert}
-                lastGenre={lastGenre}
+                
                 scanMode={scanMode}
                 setScanMode={setScanMode}
                 setShowAddPopup={setShowAddPopup}
                 books={books}
-
             />
 
             <AddPopup

@@ -118,7 +118,7 @@ export default function HomePage() {
                 <br />
                 <br />
                 <h2>Or sign up to volunteer: </h2>
-                <h5>Available Dates:</h5>
+                <h5>Available Dates (If you're on mobile, you may need to press aA, Request Desktop Site):</h5>
                 <VolunteerDates
                     availableDates={availableDates}
                     setAvailableDates={setAvailableDates}
