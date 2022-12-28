@@ -198,7 +198,7 @@ export default function EditPopup({
         lastGenre.current = genre;
         complete = true;
         interrupt.current = false;
-        console.log(book);
+        
         setManagedBook(book);
         setShowEditPopup(false);
     };

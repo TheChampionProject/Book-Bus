@@ -190,7 +190,7 @@ export const getVolunteerDatesFB = async () => {
     else return dates;
 };
 
-export const updateVolunteerDateFB = async (dateID) => {
+export const updateVolunteerDateFB = async (dateID, add) => {
     let dates = await getVolunteerDatesFB();
 
     let errorMessage = "",
@@ -207,15 +207,20 @@ export const updateVolunteerDateFB = async (dateID) => {
     }
 
     const userName = await getSignedInUserNameFB();
+
     if (userName === "No user signed in") {
         return userName;
     }
-    if (data.volunteers.includes(userName)) {
+
+    if (!data.volunteers) data.volunteers = [];
+
+    if (!add) {
+        data.volunteers.splice(data.volunteers.indexOf(userName), 1);
+    } else if (data.volunteers.includes(userName)) {
         return "User already Signed Up";
-    } else {
+    } else if (add) {
         data.volunteers.push(userName);
     }
-
     await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
         (e) => {
             errorMessage = e;
