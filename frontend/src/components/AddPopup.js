@@ -18,8 +18,8 @@ export default function AddPopup({
     const [showTable, setShowTable] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const textField = useRef(null);
-
     const successfulQuery = useRef(false);
+    const okayToRun = useRef(false);
 
     useEffect(() => {
         setShowTable(false);
@@ -70,6 +70,8 @@ export default function AddPopup({
                 }, 3000);
             } else {
                 successfulQuery.current = true;
+                okayToRun.current = true;
+                
                 setQueryList(request.data);
                 setShowTable(true);
             }
@@ -170,6 +172,7 @@ export default function AddPopup({
                                 scanMode={scanMode}
                                 searchQuery={searchQuery}
                                 successfulQuery={successfulQuery}
+                                okayToRun={okayToRun}
                             />
                         </tbody>
                     </Table>
