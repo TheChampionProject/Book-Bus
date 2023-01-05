@@ -4,7 +4,6 @@ import {
     getAllBooks,
     setBook,
     getSearchQueryBooks,
-    getBookPrice,
     signup,
     login,
     resetPassword,
@@ -16,7 +15,6 @@ import {
     logout,
     getSignedInUserInfo,
     getSignedInUserName,
-
 } from "./apiController.js";
 import multer from "multer";
 
@@ -40,7 +38,7 @@ app.use(urlencoded({ extended: false }));
 
 app.get("/getAllBooks", getAllBooks);
 app.post("/getSearchQueryBooks", getSearchQueryBooks);
-app.post("/getBookPrice", getBookPrice);
+
 app.put("/setBook", setBook);
 
 app.post("/signup", signup);
@@ -54,6 +52,5 @@ app.post("/changeDate", changeDate);
 app.post("/logout", logout);
 app.get("/getSignedInUserName", getSignedInUserName);
 app.get("/getSignedInUserInfo", getSignedInUserInfo);
-
 
 app.listen(port, () => console.log(`Server started on ${port}!`));

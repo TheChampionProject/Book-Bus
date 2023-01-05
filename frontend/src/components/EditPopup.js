@@ -46,6 +46,8 @@ export default function EditPopup({
         } else {
             addBook.current = true;
             autoFillGenre = localStorage.getItem("lastGenre");
+            
+            setGenre(autoFillGenre);
         }
 
         if (addBook.current) {
@@ -58,13 +60,13 @@ export default function EditPopup({
     }, [showEditPopup]);
 
     let [title, setTitle] = useState();
-    let [genre, setGenre] = useState();
+    let [genre, setGenre] = useState(autoFillGenre);
     let [inventory, setInventory] = useState();
     let [needed, setNeeded] = useState();
     let [price, setPrice] = useState();
 
     let previousTitle = useRef("");
-    let previousGenre = useRef("");
+    let previousGenre = useRef(autoFillGenre);
     let previousInventory = useRef("1");
     let previousNeeded = useRef("");
     let previousPrice = useRef("");
@@ -269,16 +271,7 @@ export default function EditPopup({
                                 ref={priceRef}
                                 style={{ maxWidth: "4em" }}
                                 value={price}
-                                onChange={(e) =>
-                                    e.target.value === ""
-                                        ? setPrice("")
-                                        : setPrice(
-                                              Math.max(
-                                                  0,
-                                                  parseFloat(e.target.value)
-                                              )
-                                          )
-                                }
+                                onChange={(e) => setPrice(e.target.value)}
                             />
                             <br />
                             <label className="Popup">Inventory: </label>
