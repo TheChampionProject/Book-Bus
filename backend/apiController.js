@@ -63,40 +63,6 @@ export const getSearchQueryBooks = asyncHandler(async (req, res) => {
     }
 });
 
-export const getBookPrice = asyncHandler(async (req, res) => {
-    const options = {
-        method: "GET",
-        url: "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-search-by-keyword-asin",
-        params: {
-            domainCode: "com",
-            keyword: req.body.title,
-            page: "1",
-            excludeSponsored: "false",
-            sortBy: "relevanceblender",
-            withCache: "true",
-        },
-        headers: {
-            "X-RapidAPI-Key": process.env.RAPID_API_KEY,
-            "X-RapidAPI-Host":
-                "axesso-axesso-amazon-data-service-v1.p.rapidapi.com",
-        },
-    };
-
-    let price = "error";
-    await axios
-        .request(options)
-        .then((response) => {
-            if (
-                response.data.responseMessage === "Product successfully found!"
-            ) {
-                price = response.data.searchProductDetails[0].price;
-            }
-        })
-        .catch(() => {});
-
-    res.send(price + "");
-});
-
 // Can update a book, add a book, and archive a book
 export const setBook = asyncHandler(async (req, res) => {
     if (!req.body.newBook) {

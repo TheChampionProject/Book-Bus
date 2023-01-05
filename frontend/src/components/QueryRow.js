@@ -35,6 +35,7 @@ export default function QueryRow({
             refinedBook.Needed = 0;
             refinedBook.Index = -1;
             refinedBook.UUID = uuidv4();
+            refinedBook.Price = "";
         } else {
             refinedBook.Inventory = parseInt(refinedBook.Inventory) + 1;
         }
@@ -43,19 +44,9 @@ export default function QueryRow({
             refinedBook.AddDates = [];
         }
 
+        if (!refinedBook.Price) refinedBook.Price = "";
+
         refinedBook.AddDates.push(new Date().toISOString());
-
-        try {
-            let queriedPrice = await axios.post(
-                process.env.REACT_APP_BACKEND_URL + "getBookPrice",
-                { title: refinedBook.Title }
-            );
-
-            if (queriedPrice.data !== "error")
-                refinedBook.Price = queriedPrice.data;
-        } catch {
-            refinedBook.Price = "5";
-        }
 
         setShowAddPopup(false);
         setBook(refinedBook);
