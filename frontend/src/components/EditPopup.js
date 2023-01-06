@@ -15,7 +15,7 @@ export default function EditPopup({
     books,
 }) {
     let autoFillTitle = "";
-    let autoFillGenre = "N/A";
+    let autoFillGenre = localStorage.getItem("lastGenre");
     let autoFillInventory = "1";
     let autoFillNeeded = 0;
     let autoFillPrice = "";
@@ -46,7 +46,7 @@ export default function EditPopup({
         } else {
             addBook.current = true;
             autoFillGenre = localStorage.getItem("lastGenre");
-            
+
             setGenre(autoFillGenre);
         }
 
@@ -98,30 +98,32 @@ export default function EditPopup({
         book,
     ]);
 
-    useEffect(() => {
-        if (!showEditPopup) return;
-
-        calledEdit.current = false;
-        interrupt.current = false;
-        if (scanMode && !addBook.current) {
-            setTimeout(() => {
-                if (calledEdit.current) {
-                    return;
-                }
-
-                if (!interrupt.current && !calledEdit.current) {
-                    editBook();
-                    calledEdit.current = true;
-                    if (complete) setShowAddPopup(true); // If they didn't have a genre selected
-                }
-            }, 3000);
-        }
-    }, [showEditPopup]);
+    //    useEffect(() => {
+    //        if (!showEditPopup) return;
+    //
+    //        calledEdit.current = false;
+    //        interrupt.current = false;
+    //        if (scanMode && !addBook.current) {
+    //            setTimeout(() => {
+    //                if (calledEdit.current) {
+    //                    return;
+    //                }
+    //
+    //                if (!interrupt.current && !calledEdit.current) {
+    //                    editBook();
+    //                    calledEdit.current = true;
+    //                    setShowAddPopup(true); // If they didn't have a genre selected
+    //                }
+    //            }, 3000);
+    //        }
+    //    }, [showEditPopup]);
 
     useEffect(() => {
         const statusKeyboardInput = (e) => {
             if (e.keyCode) interrupt.current = true;
         };
+
+        // Copy the text inside the text field
 
         window.addEventListener("keydown", statusKeyboardInput);
         return () => window.removeEventListener("keydown", statusKeyboardInput);
@@ -156,21 +158,21 @@ export default function EditPopup({
 
         if (String(price).startsWith("$")) price = price.slice(1);
 
-        for (let i = 0; i < books.length; i++) {
-            if (
-                books[i].Title.toLowerCase() === title.toLowerCase() &&
-                books[i].UUID !== book.UUID
-            ) {
-                alert(
-                    "This book already exists. Press okay to auto-merge the books."
-                );
-
-                previousBookInventory = books[i].Inventory;
-                book.UUID = books[i].UUID;
-                book.AddDates = books[i].AddDates;
-                break;
-            } else previousBookInventory = 0;
-        }
+        //        for (let i = 0; i < books.length; i++) {
+        //            if (
+        //                books[i].Title.toLowerCase() === title.toLowerCase() &&
+        //                books[i].UUID !== book.UUID
+        //            ) {
+        //                alert(
+        //                    "This book already exists. Press okay to auto-merge the books."
+        //                );
+        //
+        //                previousBookInventory = books[i].Inventory;
+        //                book.UUID = books[i].UUID;
+        //                book.AddDates = books[i].AddDates;
+        //                break;
+        //            } else previousBookInventory = 0;
+        //        }
 
         if (addBook.current) {
             book = {};
@@ -205,6 +207,7 @@ export default function EditPopup({
 
         setManagedBook(book);
         setShowEditPopup(false);
+        setShowAddPopup(true);
     };
 
     const close = () => {

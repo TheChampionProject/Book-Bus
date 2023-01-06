@@ -30,7 +30,7 @@ export default function QueryRow({
         if (Object.entries(refinedBook).length === 0) {
             refinedBook.AddDates = [];
             refinedBook.Title = book.volumeInfo.title;
-            refinedBook.Genre = "N/A";
+            refinedBook.Genre = "";
             refinedBook.Inventory = 1;
             refinedBook.Needed = 0;
             refinedBook.Index = -1;
