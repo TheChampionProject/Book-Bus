@@ -4,6 +4,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import GenreDDI from "./GenreDDI";
 import "../App.css";
 import uuidv4 from "uuid";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default function EditPopup({
     showEditPopup,
@@ -20,11 +21,7 @@ export default function EditPopup({
     let autoFillNeeded = 0;
     let autoFillPrice = "";
     let addBook = useRef(true);
-    let complete = false;
-
-    let calledEdit = useRef(false);
     let interrupt = useRef(false);
-
     let priceRef = useRef(null),
         titleRef = useRef(null); // For the cursor to auto click
 
@@ -88,7 +85,6 @@ export default function EditPopup({
         setInventory(autoFillInventory);
         setNeeded(autoFillNeeded);
         setPrice(autoFillPrice);
-        complete = false;
     }, [
         autoFillInventory,
         autoFillNeeded,
@@ -98,32 +94,10 @@ export default function EditPopup({
         book,
     ]);
 
-    //    useEffect(() => {
-    //        if (!showEditPopup) return;
-    //
-    //        calledEdit.current = false;
-    //        interrupt.current = false;
-    //        if (scanMode && !addBook.current) {
-    //            setTimeout(() => {
-    //                if (calledEdit.current) {
-    //                    return;
-    //                }
-    //
-    //                if (!interrupt.current && !calledEdit.current) {
-    //                    editBook();
-    //                    calledEdit.current = true;
-    //                    setShowAddPopup(true); // If they didn't have a genre selected
-    //                }
-    //            }, 3000);
-    //        }
-    //    }, [showEditPopup]);
-
     useEffect(() => {
         const statusKeyboardInput = (e) => {
             if (e.keyCode) interrupt.current = true;
         };
-
-        // Copy the text inside the text field
 
         window.addEventListener("keydown", statusKeyboardInput);
         return () => window.removeEventListener("keydown", statusKeyboardInput);
@@ -158,22 +132,6 @@ export default function EditPopup({
 
         if (String(price).startsWith("$")) price = price.slice(1);
 
-        //        for (let i = 0; i < books.length; i++) {
-        //            if (
-        //                books[i].Title.toLowerCase() === title.toLowerCase() &&
-        //                books[i].UUID !== book.UUID
-        //            ) {
-        //                alert(
-        //                    "This book already exists. Press okay to auto-merge the books."
-        //                );
-        //
-        //                previousBookInventory = books[i].Inventory;
-        //                book.UUID = books[i].UUID;
-        //                book.AddDates = books[i].AddDates;
-        //                break;
-        //            } else previousBookInventory = 0;
-        //        }
-
         if (addBook.current) {
             book = {};
             book.UUID = uuidv4();
@@ -202,8 +160,6 @@ export default function EditPopup({
         }
 
         localStorage.setItem("lastGenre", genre);
-        complete = true;
-        interrupt.current = false;
 
         setManagedBook(book);
         setShowEditPopup(false);

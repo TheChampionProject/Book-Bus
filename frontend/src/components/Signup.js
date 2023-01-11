@@ -26,16 +26,11 @@ const Signup = ({ handleChange }) => {
             alert("Passwords do not match up!");
         } else {
             try {
-                await axios
-                    .post(process.env.REACT_APP_BACKEND_URL + "signup", {
-                        email: email,
-                        password: password,
-                        first: first,
-                        last: last,
-                    })
-                    .then(() => {
-                        navigate("/verification");
-                    });
+                const currentUser = await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                )
             } catch (err) {
                 console.log(err);
             }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import TableStructure from "../components/TableStructure";
 import "../App.css";
 import EditPopup from "../components/EditPopup.js";

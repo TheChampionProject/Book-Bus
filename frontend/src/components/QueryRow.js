@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import axios from "axios";
+
 import uuidv4 from "uuid";
 
 export default function QueryRow({

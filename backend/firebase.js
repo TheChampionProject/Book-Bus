@@ -23,7 +23,6 @@ dotenv.config();
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
-const auth = getAuth(app);
 const firestoredb = getFirestore(app);
 const storage = getStorage();
 let databaseBooks = [];
