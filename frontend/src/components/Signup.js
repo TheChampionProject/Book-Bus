@@ -8,8 +8,13 @@ import {
     Stack,
     Typography,
 } from "@mui/material";
-import axios from "axios";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { signUpAuth } from "../FirebaseFunctions";
 
 const Signup = ({ handleChange }) => {
     const [first, setFirst] = useState("");
@@ -26,18 +31,10 @@ const Signup = ({ handleChange }) => {
             alert("Passwords do not match up!");
         } else {
             try {
-                await axios
-                    .post(process.env.REACT_APP_BACKEND_URL + "signup", {
-                        email: email,
-                        password: password,
-                        first: first,
-                        last: last,
-                    })
-                    .then(() => {
-                        navigate("/verification");
-                    });
+                await signUpAuth(email, password, first, last).then(navigate("/verification"))
             } catch (err) {
                 console.log(err);
+                alert("Unable to sign Up");
             }
         }
     }

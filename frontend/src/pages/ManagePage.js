@@ -5,8 +5,8 @@ import EditPopup from "../components/EditPopup.js";
 import AddPopup from "../components/AddPopup.js";
 import Header from "../components/Header";
 import UserProtection from "../components/UserProtection.js";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { getSignedInUserInfoFB } from "../FirebaseFunctions";
 
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
@@ -31,9 +31,7 @@ export default function ManagePage() {
 
     useEffect(() => {
         const getVerification = async () => {
-            const response = await axios.get(
-                process.env.REACT_APP_BACKEND_URL + "getSignedInUserInfo"
-            );
+            const response = await getSignedInUserInfoFB();
 
             if (response.data === "No user signed in") {
                 alert("You must be signed in to view this page");

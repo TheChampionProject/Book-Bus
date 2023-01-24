@@ -5,6 +5,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import uuidv4 from "uuid";
 import { useNavigate } from "react-router-dom";
+import { getSignedInUserInfoFB } from "../FirebaseFunctions";
 
 export default function AdminPage() {
     const [signedUpDateQuery, setSignedUpDateQuery] = useState("");
@@ -41,9 +42,7 @@ export default function AdminPage() {
 
     useEffect(() => {
         const getUsername = async () => {
-            const response = await axios.get(
-                process.env.REACT_APP_BACKEND_URL + "getSignedInUserInfo"
-            );
+            const response = await getSignedInUserInfoFB();
 
             if (response.data === "No user signed in") {
                 alert("You must be signed in to view this page");

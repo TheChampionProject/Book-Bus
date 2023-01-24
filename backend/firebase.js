@@ -11,7 +11,6 @@ import {
     getFirestore,
     doc,
     setDoc,
-    updateDoc,
     getDoc,
 } from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
@@ -152,23 +151,16 @@ export const resetPasswordAuth = async (email) => {
     });
 };
 
-export const bookBusVerify = async (verificationFile) => {
-    const docRef = doc(firestoredb, "users", auth.currentUser.uid);
-    const docSnap = await getDoc(docRef);
-    const usrName = docSnap.data().name;
+export const bookBusVerify = async (verificationFile, userName) => {
 
     const targetRef = storageRef(
         storage,
-        `verificationForms/${usrName.split(" ")[0]}_${
+        `verificationForms/${userName.split(" ")[0]}_${
             usrName.split(" ")[1]
         }_verificationForm.pdf`
     );
-    await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
-        await updateDoc(docRef, {
-            watchedVideo: true,
-            uploadedForm: true,
-        });
-    });
+    
+    await uploadBytes(targetRef, verificationFile.buffer);
 };
 
 export const getVolunteerDatesFB = async () => {
@@ -190,7 +182,7 @@ export const getVolunteerDatesFB = async () => {
     else return dates;
 };
 
-export const updateVolunteerDateFB = async (dateID, add) => {
+export const updateVolunteerDateFB = async (dateID, userName, add) => {
     let dates = await getVolunteerDatesFB();
 
     let errorMessage = "",
@@ -205,8 +197,6 @@ export const updateVolunteerDateFB = async (dateID, add) => {
     if (data === "") {
         return "No date found with that ID.";
     }
-
-    const userName = await getSignedInUserNameFB();
 
     if (userName === "No user signed in") {
         return userName;
@@ -240,6 +230,7 @@ export const getSignedInUserInfoFB = async () => {
         return "No user signed in";
     }
 };
+
 export const getSignedInUserFB = async () => {
     return getAuth();
 };

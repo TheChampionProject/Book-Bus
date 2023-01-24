@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {Grid, Paper, TextField,Button,Link,Stack,DialogActions,Dialog,DialogTitle,DialogContent,} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { sendPasswordReset, signInAuth } from "../FirebaseFunctions";
 
 const Login = ({ handleChange }) => {
     const [email, setEmail] = useState("");
@@ -19,11 +20,7 @@ const Login = ({ handleChange }) => {
             alert("Fill in all fields!");
         } else {
             try {
-                await axios
-                    .post(process.env.REACT_APP_BACKEND_URL + "login", {
-                        email: email,
-                        password: password,
-                    })
+                await signInAuth(email, password)
                     .then((response) => {
                         if (response.data["watchedVideo"] && response.data["uploadedForm"]) {
                             navigate("/home")
@@ -32,6 +29,7 @@ const Login = ({ handleChange }) => {
                         }
                     });
             } catch (err) {
+                console.log(err);
                 alert("Invalid username or password!");
             }
         }
@@ -44,10 +42,7 @@ const Login = ({ handleChange }) => {
         else {
             try {
                 setOpen(false);
-                await axios
-                    .post(process.env.REACT_APP_BACKEND_URL + "reset", {
-                        email: resetEmail,
-                    })
+                await sendPasswordReset()
                     .then(() => alert("Success! Check your spam folder for the reset email"));
             } catch (err) {
                 console.log(err);

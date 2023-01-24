@@ -1,8 +1,8 @@
 import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from "react";
 import VolunteerDates from "../components/VolunteerDates";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { getSignedInUserInfoFB, getSignedInUserNameFB, signOutUser, signUpForDate } from "../FirebaseFunctions";
 export default function HomePage() {
     const [selectedDateIDs, setSelectedDateIDs] = useState([]);
     const [unselectedDateIDs, setUnselectedDateIDs] = useState([]);
@@ -14,9 +14,7 @@ export default function HomePage() {
 
     useEffect(() => {
         const getUsername = async () => {
-            const response = await axios.get(
-                process.env.REACT_APP_BACKEND_URL + "getSignedInUserName"
-            );
+            const response = await getSignedInUserNameFB();
             if (response.data === "No user signed in") {
                 alert("You must be signed in to view this page");
                 window.location = "/login";
@@ -30,9 +28,7 @@ export default function HomePage() {
     const submit = async (e) => {
         e.preventDefault();
 
-        const response = await axios.get(
-            process.env.REACT_APP_BACKEND_URL + "getSignedInUserInfo"
-        );
+        const response = await getSignedInUserInfoFB();
 
 
 
@@ -45,13 +41,7 @@ export default function HomePage() {
 
         let request = "Error";
         try {
-            request = await axios.post(
-                process.env.REACT_APP_BACKEND_URL + "signUpForDate",
-                {
-                    dateIDs: selectedDateIDs,
-                    unselectedDateIDs: unselectedDateIDs,
-                }
-            );
+            request = await signUpForDate(selectedDateIDs, unselectedDateIDs);
         } catch {
             alert("There was an error with your request");
         }
@@ -68,8 +58,7 @@ export default function HomePage() {
 
     const handleLogout = async () => {
         try {
-            await axios
-                .post(process.env.REACT_APP_BACKEND_URL + "logout")
+            await signOutUser()
                 .then(() => {
                     navigate("/login");
                 });
@@ -77,6 +66,7 @@ export default function HomePage() {
             alert("Unable to Sign Out!");
         }
     };
+    
     return (
         <>
             <div className="CenterHomePage">

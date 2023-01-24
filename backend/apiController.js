@@ -117,7 +117,7 @@ export const getVolunteerDates = asyncHandler(async (req, res) => {
 
 export const signUpForDate = asyncHandler(async (req, res) => {
     for (let i = 0; i < req.body.dateIDs.length; i++) {
-        let fbRequest = await updateVolunteerDateFB(req.body.dateIDs[i], true);
+        let fbRequest = await updateVolunteerDateFB(req.body.dateIDs[i], req.body.userName, true);
         if (fbRequest === "failure") {
             res.send("failure");
             return;
@@ -127,6 +127,7 @@ export const signUpForDate = asyncHandler(async (req, res) => {
     for (let i = 0; i < req.body.unselectedDateIDs.length; i++) {
         let fbRequest = await updateVolunteerDateFB(
             req.body.unselectedDateIDs[i],
+            req.body.userName,
             false
         );
         if (fbRequest === "failure") {
