@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import TableStructure from "../components/TableStructure";
 import "../App.css";
 import EditPopup from "../components/EditPopup.js";
@@ -7,7 +7,8 @@ import Header from "../components/Header";
 import UserProtection from "../components/UserProtection.js";
 import { useNavigate } from "react-router-dom";
 import { getSignedInUserInfoFB } from "../FirebaseFunctions";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../FirebaseFunctions";
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [showEditPoup, setShowEditPopup] = useState(false); // Show the popup
@@ -33,11 +34,11 @@ export default function ManagePage() {
         const getVerification = async () => {
             const response = await getSignedInUserInfoFB();
 
-            if (response.data === "No user signed in") {
+            if (response === "No user signed in") {
                 alert("You must be signed in to view this page");
                 navigate("/login");
             }
-            if (!(response.data.uploadedForm && response.data.watchedVideo)) {
+            if (!(response.uploadedForm && response.watchedVideo)) {
                 alert("You must be a verified volunteer to view this page");
                 navigate("/home");
             }

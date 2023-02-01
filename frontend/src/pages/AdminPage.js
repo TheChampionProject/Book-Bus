@@ -44,11 +44,11 @@ export default function AdminPage() {
         const getUsername = async () => {
             const response = await getSignedInUserInfoFB();
 
-            if (response.data === "No user signed in") {
+            if (response === "No user signed in") {
                 alert("You must be signed in to view this page");
                 navigate("/login");
             }
-            if (!response.data.admin) {
+            if (!response.admin) {
                 alert("You must be an admin to view this page");
                 navigate("/home");
             }

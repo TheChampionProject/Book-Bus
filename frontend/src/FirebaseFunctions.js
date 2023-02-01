@@ -13,13 +13,13 @@ import {
     updateDoc,
     getDoc,
 } from "firebase/firestore";
-import dotenv from "dotenv";
-import { firebaseConfig } from "../keys.js";
+import { getDatabase, ref, get, set, child } from "firebase/database";
+import { firebaseConfig } from "./keys.js";
+import axios from "axios";
 
-dotenv.config()
-
+//const dbRef = ref(getDatabase());
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 const firestoredb = getFirestore(app);
 
 export const signUpAuth = async (email, password, first, last) => {
@@ -57,9 +57,9 @@ export const signInAuth = async (email, password) => {
     return verification;
 };
 
-export const getSignedInUserNameFB = async () => {
+export const getSignedInUserNameFB = async (uid) => {
     try {
-        const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+        const docRef = doc(firestoredb, "users", uid);
         const docSnap = await getDoc(docRef);
         return docSnap.data().name;
     } catch {
@@ -67,10 +67,11 @@ export const getSignedInUserNameFB = async () => {
     }
 };
 
-export const getSignedInUserInfoFB = async () => {
+export const getSignedInUserInfoFB = async (uid) => {
     try {
-        const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+        const docRef = doc(firestoredb, "users", uid);
         const docSnap = await getDoc(docRef);
+
         return docSnap.data();
     } catch {
         return "No user signed in";
@@ -81,7 +82,7 @@ export const signOutUser = async () => {
     await signOut(auth);
 };
 
-export const signUpForDate = async(selectedDateIDs, unselectedDateIDs) => {
+export const signUpForDate = async (selectedDateIDs, unselectedDateIDs) => {
     const userName = await getSignedInUserNameFB();
     return await axios.post(
         process.env.REACT_APP_BACKEND_URL + "signUpForDate",
@@ -93,7 +94,7 @@ export const signUpForDate = async(selectedDateIDs, unselectedDateIDs) => {
     );
 };
 
-export const verify = async(bodyFormData) => {
+export const verify = async (bodyFormData) => {
     const docRef = doc(firestoredb, "users", auth.currentUser.uid);
     const docSnap = await getDoc(docRef);
     const userName = docSnap.data().name;
@@ -102,11 +103,11 @@ export const verify = async(bodyFormData) => {
         method: "post",
         url: process.env.REACT_APP_BACKEND_URL + "verify",
         data: {
-            verificationFile: bodyFormData, 
+            verificationFile: bodyFormData,
             userName: userName,
         },
         headers: { "Content-Type": "multipart/form-data" },
-    }).then( async () => {
+    }).then(async () => {
         await updateDoc(docRef, {
             watchedVideo: true,
             uploadedForm: true,
@@ -114,6 +115,26 @@ export const verify = async(bodyFormData) => {
     });
 };
 
-export const sendPasswordReset = async(email) => {
+export const sendPasswordReset = async (email) => {
     await sendPasswordResetEmail(auth, email);
-}
+};
+
+//export const getBooksFB = async () => {
+//    let databaseBooks = [];
+//    let errorMessage = "";
+//
+//    await get(child(dbRef, `/`))
+//        .then((snapshot) => {
+//            if (snapshot.exists()) {
+//                databaseBooks.push(snapshot.val());
+//            } else {
+//                errorMessage = "No Data Found";
+//            }
+//        })
+//        .catch((error) => {
+//            errorMessage = error;
+//        });
+//
+//    if (errorMessage !== "") return errorMessage;
+//    else return databaseBooks;
+//};

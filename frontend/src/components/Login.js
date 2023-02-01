@@ -1,13 +1,25 @@
-import React, { useState } from "react";
-import {Grid, Paper, TextField,Button,Link,Stack,DialogActions,Dialog,DialogTitle,DialogContent,} from "@mui/material";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import {
+    Grid,
+    Paper,
+    TextField,
+    Button,
+    Link,
+    Stack,
+    DialogActions,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { sendPasswordReset, signInAuth } from "../FirebaseFunctions";
+import { sendPasswordReset, signInAuth, auth } from "../FirebaseFunctions";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Login = ({ handleChange }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [resetEmail, setResetEmail] = useState("");
+    const [user, loading] = useAuthState(auth);
     const [open, setOpen] = useState(false);
     let navigate = useNavigate();
 
@@ -20,14 +32,13 @@ const Login = ({ handleChange }) => {
             alert("Fill in all fields!");
         } else {
             try {
-                await signInAuth(email, password)
-                    .then((response) => {
-                        if (response.data["watchedVideo"] && response.data["uploadedForm"]) {
-                            navigate("/home")
-                        } else {
-                            navigate("/verification")
-                        }
-                    });
+                await signInAuth(email, password).then((response) => {
+                    if (response["watchedVideo"] && response["uploadedForm"]) {
+                        navigate("/home");
+                    } else {
+                        navigate("/verification");
+                    }
+                });
             } catch (err) {
                 console.log(err);
                 alert("Invalid username or password!");
@@ -37,13 +48,13 @@ const Login = ({ handleChange }) => {
 
     async function handleReset() {
         if (!resetEmail) {
-            alert("Please fill in all fields")
-        }
-        else {
+            alert("Please fill in all fields");
+        } else {
             try {
                 setOpen(false);
-                await sendPasswordReset()
-                    .then(() => alert("Success! Check your spam folder for the reset email"));
+                await sendPasswordReset().then(() =>
+                    alert("Success! Check your spam folder for the reset email")
+                );
             } catch (err) {
                 console.log(err);
             }
@@ -85,8 +96,9 @@ const Login = ({ handleChange }) => {
                         Login
                     </Button>
                     <Stack direction={"row"} justifyContent="space-between">
-                        <Link href="#" onClick={handleClickOpen}>Forgot password?</Link>
-                        
+                        <Link href="#" onClick={handleClickOpen}>
+                            Forgot password?
+                        </Link>
                     </Stack>
                 </Stack>
                 <Dialog open={open}>

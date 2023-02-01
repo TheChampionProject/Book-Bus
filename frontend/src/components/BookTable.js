@@ -45,7 +45,7 @@ export default function BookTable({
     const getBooks = async () => {
         let res = [];
         let databaseBooks = [];
-        await axios
+        const req = await axios
             .get(process.env.REACT_APP_BACKEND_URL + "getAllBooks")
             .catch(() => {
                 setAlert({
