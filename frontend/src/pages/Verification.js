@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { Grid, Stack, Button, Toolbar } from "@mui/material";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import VolunteerVerification from "../assets/Completion-Confirmation-book-bus.pdf";
+import { verify } from "../FirebaseFunctions";
 
 export default function VolunteerVerify() {
     const [videoEnded, setVideoEnded] = useState(false);
@@ -15,12 +15,7 @@ export default function VolunteerVerify() {
         if (videoEnded && selectedFile) {
             bodyFormData.append("verificationFile", selectedFile);
             try {
-                await axios({
-                    method: "post",
-                    url: process.env.REACT_APP_BACKEND_URL + "verify",
-                    data: bodyFormData,
-                    headers: { "Content-Type": "multipart/form-data" },
-                });
+                await verify();
                 navigate("/home");
             } catch (err) {
                 console.log(err);

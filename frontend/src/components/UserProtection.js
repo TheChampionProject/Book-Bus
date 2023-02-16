@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
-import axios from "axios";
-
+import { auth } from "../FirebaseFunctions";
+import { useAuthState } from "react-firebase-hooks/auth";
 export default function UserProtection() {
+    const [user, loading] = useAuthState(auth);
     useEffect(() => {
         const getUsername = async () => {
-            const response = await axios.get(
-                process.env.REACT_APP_BACKEND_URL + "getSignedInUserName"
-            );
-            if (response.data === "No user signed in") {
+            if (user === null && !loading) {
                 alert("You must be signed in to view this page");
-                window.location = "/login"
+                window.location = "/login";
             }
         };
         getUsername();
-    }, []);
+    }, [user]);
     return <></>;
 }

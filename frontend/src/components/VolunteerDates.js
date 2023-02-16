@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import React from "react";
+import { getVolunteerDatesFB } from "../FirebaseFunctions";
 export default function VolunteerDates({
     availableDates,
     setAvailableDates,
@@ -13,12 +14,9 @@ export default function VolunteerDates({
         const getDates = async () => {
             let availableDates = [];
 
-            await fetch(process.env.REACT_APP_BACKEND_URL + "getDates")
-                .then((response) => response.json())
-                .then((data) => {
-                    for (let i in data[0]) availableDates.push(data[0][i]);
-                    setAvailableDates(availableDates);
-                });
+            const dates = await getVolunteerDatesFB();
+            for (let i in dates[0]) availableDates.push(dates[0][i]);
+            setAvailableDates(availableDates);
 
             const currentDate = new Date();
             availableDates = availableDates.filter((date) => {
