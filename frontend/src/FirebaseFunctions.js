@@ -10,9 +10,9 @@ import {
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
-import { firebaseConfig } from "./keys";
+import { firebaseConfig } from "./keys.js";
 import axios from "axios";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 dotenv.config();
 
 const GOOGLE_BOOKS_API_BASE_URL =
