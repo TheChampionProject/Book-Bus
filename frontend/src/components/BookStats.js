@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import "../App.css";
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import StatYearDD from "./StatYearDD";
+import { getBooksFB } from "../FirebaseFunctions";
+import { useNavigate } from "react-router-dom";
+
 export default function BooksGiven() {
     let archivedBooks = [];
     let activeBooks = [];
@@ -37,6 +39,8 @@ export default function BooksGiven() {
 
     let [statsYear, setStatsYear] = useState(new Date().getFullYear());
     let [processOldStats, setProcessOldStats] = useState(false);
+
+    const navigate = useNavigate();
     // Load books from database on page load
     useEffect(() => {
         const callGetBooks = async () => {
@@ -47,14 +51,12 @@ export default function BooksGiven() {
     }, [statsYear]);
 
     const getBooks = async () => {
-        await axios
-            .get(process.env.REACT_APP_BACKEND_URL + "getAllBooks")
-            .then(async (response) => {
-                archivedBooks = response.data[0].archive;
-                activeBooks = response.data[0].active;
-                volunteerDates = response.data[0]["volunteer-dates"];
-                await processStats();
-            });
+        const books = await getBooksFB();
+        archivedBooks = books[0].archive;
+        activeBooks = books[0].active;
+        volunteerDates = books[0]["volunteer-dates"];
+
+        await processStats();
     };
 
     const processStats = async () => {
@@ -264,7 +266,7 @@ export default function BooksGiven() {
 
     return (
         <>
-            <a href="/home" className="StatsHomeLink">
+            <a onClick={() => navigate("/home")} className="StatsHomeLink">
                 Home Page
             </a>
             <label className="StatsLabel">Select Year For Statistics: </label>
@@ -293,13 +295,19 @@ export default function BooksGiven() {
 
                 <div className="Statistic">
                     <p className="StatText">
-                        ${Math.round(thisYearGiftedValue)}
+                        $
+                        {isNaN(Math.round(thisYearGiftedValue))
+                            ? 0
+                            : Math.round(thisYearGiftedValue)}
                     </p>
                     <p className="StatDescription">Amount Gifted (This Year)</p>
                 </div>
                 <div className="Statistic">
                     <p className="StatText">
-                        ${Math.round(allTimeGiftedValue)}
+                        $
+                        {isNaN(Math.round(allTimeGiftedValue))
+                            ? 0
+                            : Math.round(allTimeGiftedValue)}
                     </p>
                     <p className="StatDescription">Amount Gifted (All Time)</p>
                 </div>

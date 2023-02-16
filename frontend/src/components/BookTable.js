@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import axios from "axios";
 import BookRow from "./BookRow.js";
+import { getBooksFB, setBookFB } from "../FirebaseFunctions";
 export default function BookTable({
     setBook,
     setShowEditPopup,
@@ -16,7 +16,6 @@ export default function BookTable({
 }) {
     let index = useRef();
 
-    // Load books from database on page load
     useEffect(() => {
         const callGetBooks = async () => {
             await getBooks();
@@ -41,52 +40,40 @@ export default function BookTable({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [managedBook]);
 
-    // Get all the books from firebase through an API call to the backend
     const getBooks = async () => {
         let res = [];
         let databaseBooks = [];
-        await axios
-            .get(process.env.REACT_APP_BACKEND_URL + "getAllBooks")
-            .catch(() => {
-                setAlert({
-                    show: true,
-                    message:
-                        "There was a problem connecting to the database. Please refresh the page",
-                    success: false,
-                });
-            })
-            .then((response) => {
-                databaseBooks.push(response.data[0]); // response.data[0] is the JSON object full of books
+        const books = await getBooksFB();
+        databaseBooks.push(books[0]); // response.data[0] is the JSON object full of books
 
-                for (let j in databaseBooks[0].active) {
-                    res.push({ ...databaseBooks[0].active[j], UUID: j }); // In order to turn a giant JSON full of books into an array of books
-                }
+        for (let j in databaseBooks[0].active) {
+            res.push({ ...databaseBooks[0].active[j], UUID: j }); // In order to turn a giant JSON full of books into an array of books
+        }
 
-                res = res.filter((n) => n); // Remove null entries which is what deleted books are
+        res = res.filter((n) => n); // Remove null entries which is what deleted books are
 
-                for (let i = 0; i < res.length; i++) {
-                    // Neccesary bc firebase isn't reordered. Now after the sort the original index of the book is preserved.
-                    res[i] = {
-                        Title: res[i].Title,
-                        Genre: res[i].Genre,
-                        Inventory: res[i].Inventory,
-                        Price: res[i].Price,
-                        Needed: res[i].Needed,
-                        UUID: res[i].UUID,
-                        AddDates: res[i].AddDates ? res[i].AddDates : [],
-                    };
-                }
+        for (let i = 0; i < res.length; i++) {
+            // Neccesary bc firebase isn't reordered. Now after the sort the original index of the book is preserved.
+            res[i] = {
+                Title: res[i].Title,
+                Genre: res[i].Genre,
+                Inventory: res[i].Inventory,
+                Price: res[i].Price,
+                Needed: res[i].Needed,
+                UUID: res[i].UUID,
+                AddDates: res[i].AddDates ? res[i].AddDates : [],
+            };
+        }
 
-                if (mode === "gift" || mode === "manage") {
-                    res.sort((a, b) => {
-                        return alphaSortArray(a.Title, b.Title);
-                    });
-                } else {
-                    res.sort((a, b) => {
-                        return neededSortArray(a.Needed, b.Needed);
-                    });
-                }
+        if (mode === "gift" || mode === "manage") {
+            res.sort((a, b) => {
+                return alphaSortArray(a.Title, b.Title);
             });
+        } else {
+            res.sort((a, b) => {
+                return neededSortArray(a.Needed, b.Needed);
+            });
+        }
 
         setBooks(res);
     };
@@ -104,21 +91,17 @@ export default function BookTable({
         }
 
         if (newBook == null) return;
-        let request = await axios
-            .put(process.env.REACT_APP_BACKEND_URL + "setBook", {
-                newBook,
-            })
-            .catch(() => {
-                setAlert({
-                    show: true,
-                    message:
-                        "There was a problem connecting to the database." +
-                        newBook.Title +
-                        " was not " +
-                        message,
-                    success: false,
-                });
+        let request = await setBookFB(newBook, newBook.gift ? "archive" : "active").catch(() => {
+            setAlert({
+                show: true,
+                message:
+                    "There was a problem connecting to the database." +
+                    newBook.Title +
+                    " was not " +
+                    message,
+                success: false,
             });
+        });
 
         try {
             if (request.data === "success") {

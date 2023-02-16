@@ -7,26 +7,25 @@ import {
     sendPasswordResetEmail,
     signOut,
 } from "firebase/auth";
-import {
-    getFirestore,
-    doc,
-    setDoc,
-    updateDoc,
-    getDoc,
-} from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
-import { firebaseConfig } from "../keys.js";
-
+import { firebaseConfig } from "./keys";
+import axios from "axios";
+import { useAuthState } from "react-firebase-hooks/auth";
 dotenv.config();
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase();
-const dbRef = ref(getDatabase());
-const auth = getAuth(app);
+const GOOGLE_BOOKS_API_BASE_URL =
+    "https://www.googleapis.com/books/v1/volumes?q=";
+
+export const app = initializeApp(firebaseConfig);
+export const db = getDatabase();
+export const auth = getAuth(app);
+
 const firestoredb = getFirestore(app);
 const storage = getStorage();
 let databaseBooks = [];
+const dbRef = ref(getDatabase());
 
 export const getBooksFB = async () => {
     databaseBooks = [];
@@ -50,6 +49,7 @@ export const getBooksFB = async () => {
 
 export const setBookFB = async (book, location) => {
     await getBooksFB();
+
     let errorMessage = "";
     let archiveDates = [],
         archiveDate;
@@ -152,23 +152,15 @@ export const resetPasswordAuth = async (email) => {
     });
 };
 
-export const bookBusVerify = async (verificationFile) => {
-    const docRef = doc(firestoredb, "users", auth.currentUser.uid);
-    const docSnap = await getDoc(docRef);
-    const usrName = docSnap.data().name;
-
+export const verify = async (verificationFile, userName) => {
     const targetRef = storageRef(
         storage,
-        `verificationForms/${usrName.split(" ")[0]}_${
-            usrName.split(" ")[1]
+        `verificationForms/${userName.split(" ")[0]}_${
+            userName.split(" ")[1]
         }_verificationForm.pdf`
     );
-    await uploadBytes(targetRef, verificationFile.buffer).then(async () => {
-        await updateDoc(docRef, {
-            watchedVideo: true,
-            uploadedForm: true,
-        });
-    });
+
+    await uploadBytes(targetRef, verificationFile.buffer);
 };
 
 export const getVolunteerDatesFB = async () => {
@@ -190,7 +182,7 @@ export const getVolunteerDatesFB = async () => {
     else return dates;
 };
 
-export const updateVolunteerDateFB = async (dateID, add) => {
+export const updateVolunteerDateFB = async (dateID, userName, add) => {
     let dates = await getVolunteerDatesFB();
 
     let errorMessage = "",
@@ -205,8 +197,6 @@ export const updateVolunteerDateFB = async (dateID, add) => {
     if (data === "") {
         return "No date found with that ID.";
     }
-
-    const userName = await getSignedInUserNameFB();
 
     if (userName === "No user signed in") {
         return userName;
@@ -231,15 +221,16 @@ export const updateVolunteerDateFB = async (dateID, add) => {
     else return "success";
 };
 
-export const getSignedInUserInfoFB = async () => {
+export const getSignedInUserInfoFB = async (uid) => {
     try {
-        const docRef = doc(firestoredb, "users", auth.currentUser.uid);
+        const docRef = doc(firestoredb, "users", uid);
         const docSnap = await getDoc(docRef);
         return docSnap.data();
     } catch {
         return "No user signed in";
     }
 };
+
 export const getSignedInUserFB = async () => {
     return getAuth();
 };
@@ -255,13 +246,49 @@ export const getSignedInUserNameFB = async () => {
 };
 
 export const changeDateFB = async (newData) => {
+    let errorMessage = "";
     await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData }).catch(
         (e) => {
             errorMessage = e;
         }
     );
+
+    if (errorMessage !== "") return errorMessage;
 };
 
 export const signOutUser = async () => {
     await signOut(auth);
+};
+
+export const getSearchQueryBooks = async (req, res) => {
+    let books = [],
+        booksRequest;
+
+    if (!req.body.title) {
+        res.status(400);
+        throw new Error("Missing Title");
+    }
+
+    if (req.body.mode === "titleSearch") {
+        booksRequest = await axios.get(
+            GOOGLE_BOOKS_API_BASE_URL + req.body.title
+        );
+    } else {
+        booksRequest = await axios.get(
+            GOOGLE_BOOKS_API_BASE_URL + "isbn:" + req.body.title
+        );
+    }
+
+    try {
+        if (!booksRequest.data.items) {
+            res.send("Error");
+        } else {
+            for (let i = 0; i < booksRequest.data.items.length; i++) {
+                books.push(booksRequest.data.items[i]);
+            }
+            res.send(books);
+        }
+    } catch {
+        res.send("Error");
+    }
 };

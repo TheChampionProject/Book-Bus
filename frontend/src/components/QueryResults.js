@@ -1,7 +1,5 @@
 import QueryRow from "./QueryRow.js";
 import React, { useRef } from "react";
-import axios from "axios";
-
 import uuidv4 from "uuid";
 
 export default function QueryResults({
@@ -55,7 +53,7 @@ export default function QueryResults({
         refinedBook.AddDates.push(new Date().toISOString());
 
         setBook(refinedBook);
-        console.log(refinedBook);
+
         setShowAddPopup(false);
         setShowEditPopup(true);
         okayToRun.current = false;

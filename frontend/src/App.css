@@ -135,6 +135,7 @@
 
 .StatsHomeLink {
     position: absolute;
+    cursor: pointer;
     left: 1em;
     top: 1em;
 }
@@ -199,6 +200,14 @@
     position: absolute;
     bottom: 0.3em;
     left: 1em;
+}
+
+.Link {
+    background: none !important;
+    font-family: arial, sans-serif;
+    color: 0e6dfd;
+    text-decoration: underline;
+    cursor: pointer !important;
 }
 
 .AddPopup {
