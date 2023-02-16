@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DateDD from "../components/DateDD";
-import axios from "axios";
 import Button from "react-bootstrap/Button";
 import uuidv4 from "uuid";
 import { useNavigate } from "react-router-dom";
-import { getSignedInUserInfoFB } from "../FirebaseFunctions";
+import {
+    getSignedInUserInfoFB,
+    getVolunteerDatesFB,
+    changeDateFB,
+} from "../FirebaseFunctions";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../FirebaseFunctions";
 
 export default function AdminPage() {
     const [signedUpDateQuery, setSignedUpDateQuery] = useState("");
@@ -23,39 +28,44 @@ export default function AdminPage() {
 
     let [addDateMode, setDateMode] = useState(false);
 
-
     let navigate = useNavigate();
-
+    const [user, loading] = useAuthState(auth);
 
     useEffect(() => {
         const getDates = async () => {
-            await fetch(process.env.REACT_APP_BACKEND_URL + "getDates")
-                .then((response) => response.json())
-                .then((data) => {
-                    for (let i in data[0]) dates.push(data[0][i]);
-                    setDates(dates);
-                });
+            const data = await getVolunteerDatesFB();
+            for (let i in data[0]) dates.push(data[0][i]);
+            setDates(dates);
         };
         getDates();
     }, []);
 
-
     useEffect(() => {
         const getUsername = async () => {
-            const response = await getSignedInUserInfoFB();
+            try {
+                if (!loading && user === null) {
+                    alert("You must be signed in to view this page");
+                    navigate("/login");
+                } else {
+                    const response = await getSignedInUserInfoFB(user.uid);
 
-            if (response === "No user signed in") {
+                    if (response === "No user signed in") {
+                        alert("You must be signed in to view this page");
+                        navigate("/login");
+                    }
+
+                    if (!response.admin) {
+                        alert("You must be an admin to view this page");
+                        navigate("/home");
+                    }
+                }
+            } catch {
                 alert("You must be signed in to view this page");
                 navigate("/login");
-            }
-            if (!response.admin) {
-                alert("You must be an admin to view this page");
-                navigate("/home");
             }
         };
         getUsername();
     }, []);
-
 
     const addDate = (e) => {
         e.preventDefault();
@@ -67,21 +77,18 @@ export default function AdminPage() {
 
     const submit = async () => {
         if (addDateMode) {
-
             if (
                 newDate === "" ||
                 newTime === "" ||
                 newLocation === "" ||
                 newEndTime === ""
             ) {
-
                 alert("Please fill out all fields");
                 return;
             }
         }
         let startDate = newDate,
             location = newLocation,
-
             time = newTime,
             endTime = newEndTime;
 
@@ -95,17 +102,21 @@ export default function AdminPage() {
             location: location,
             id: dateToBeChanged.id,
             endDate: startDate + " " + endTime,
-            volunteers: dateToBeChanged.startDate === "Select a date to change"? dateToBeChanged.volunteers : [""],
+            volunteers:
+                dateToBeChanged.startDate === "Select a date to change"
+                    ? dateToBeChanged.volunteers
+                    : [""],
         };
-        const request = await axios.post(
-            process.env.REACT_APP_BACKEND_URL + "changeDate",
-            {
-                newData,
-            }
-        );
-        if (request.data === "Error")
-            alert("There was an error with your request");
+        //const request = await axios.post(
+        //    process.env.REACT_APP_BACKEND_URL + "changeDate",
+        //    {
+        //        newData,
+        //    }
+        //);
 
+
+        const request = await changeDateFB(newData);
+        if (request === "Error") alert("There was an error with your request");
         else
             alert(
                 "Date changed successfully. Refresh the page to see changes."
@@ -141,15 +152,15 @@ export default function AdminPage() {
             signedUpDateQueryVolunteers.push("No volunteers signed up :(");
     }
 
-
     return (
         <>
             <div className="CenterAdminPage">
                 <h1>Admin Page</h1>
 
                 <a
-                    href="/home"
+                    onClick={() => navigate("/home")}
                     style={{ position: "absolute", top: "1em", left: "1em" }}
+                    className="Link"
                 >
                     Home Page
                 </a>
@@ -161,9 +172,7 @@ export default function AdminPage() {
                         style={{ marginRight: "2em" }}
                         onClick={(e) => addDate(e)}
                     >
-
                         Add
-
                     </Button>
 
                     <Dropdown>
@@ -251,7 +260,6 @@ export default function AdminPage() {
 
                 <br />
                 {signedUpDateQueryVolunteers}
-
             </div>
         </>
     );

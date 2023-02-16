@@ -22,7 +22,6 @@ export default function QueryRow({
                 book.volumeInfo.title.toLowerCase()
             ) {
                 refinedBook = books[i];
-                console.log("Found book: " + refinedBook);
             }
         }
 

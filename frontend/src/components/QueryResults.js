@@ -53,7 +53,7 @@ export default function QueryResults({
         refinedBook.AddDates.push(new Date().toISOString());
 
         setBook(refinedBook);
-        console.log(refinedBook);
+
         setShowAddPopup(false);
         setShowEditPopup(true);
         okayToRun.current = false;
