@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { classNames } from "@hkamran/utility-web";
-import Dropdown from "react-bootstrap/Dropdown";
+import { Dropdown, Button } from "react-bootstrap";
 import GenreDDI from "./GenreDDI";
 import { useNavigate } from "react-router-dom";
 
@@ -19,28 +19,33 @@ export default function Header({
 
     if (useSearchBar) {
         leftElement = (
-            <a
-                onClick={() => {
-                    navigate(href);
-                }}
-                className="Link"
+            <Button
+                variant="primary"
+                onClick={() => navigate(href)}
+                style={{ position: "absolute", top: "20%", left: "1%" }}
             >
                 {hrefName}
-            </a>
+            </Button>
         );
         rightElement = (
             <input
                 type="text"
                 placeholder="Search"
                 className="SearchBar"
-                style={{ margin: "1em" }}
                 onChange={(e) => setSearchQuery(e.target.value)}
             />
         );
 
         dropdown = (
             <Dropdown>
-                <Dropdown.Toggle variant="primary" className="GenreFilter">
+                <Dropdown.Toggle
+                    variant="primary"
+                    style={{
+                        position: "absolute",
+                        marginTop: ".3em",
+                        left: "6%",
+                    }}
+                >
                     {genreFilter}
                 </Dropdown.Toggle>
 
@@ -50,11 +55,7 @@ export default function Header({
             </Dropdown>
         );
     } else {
-        leftElement = (
-            <a href = "https://thechampionproject.org/">
-                Our mission
-            </a>
-        );
+        leftElement = <a href="https://thechampionproject.org/">Our mission</a>;
         rightElement = (
             <a
                 onClick={() => navigate("/login")}
@@ -68,11 +69,16 @@ export default function Header({
     }
     return (
         <>
-            <div className="fixed-top navbar NavHead">
+            <div
+                className="fixed-top navbar NavHead"
+                style={{ textAlign: "center" }}
+            >
                 {leftElement}
                 {dropdown}
                 <h3 className="CPStyleMobile">TCP</h3>
-                <h3 className="CPStyleFull">The Champion Project</h3>{" "}
+                <h1 className="CPStyleFull" style={{}}>
+                    The Champion Project
+                </h1>{" "}
                 {rightElement}
             </div>
 

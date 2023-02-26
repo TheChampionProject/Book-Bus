@@ -5,6 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import StatYearDD from "./StatYearDD";
 import { getBooksFB } from "../FirebaseFunctions";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 export default function BooksGiven() {
     let archivedBooks = [];
@@ -266,9 +267,24 @@ export default function BooksGiven() {
 
     return (
         <>
-            <a onClick={() => navigate("/home")} className="StatsHomeLink">
-                Home Page
-            </a>
+            <div
+                className="fixed-top navbar NavHead"
+                style={{ textAlign: "center" }}
+            >
+                <Button
+                    variant="primary"
+                    onClick={() => navigate("/home")}
+                    style={{ position: "absolute", top: "20%", left: "1%" }}
+                >
+                    Home Page
+                </Button>
+                <h1 style={{}} className="CPStyleFull">
+                    The Champion Project
+                </h1>
+                <h1 style={{}} className="CPStyleMobile">
+                    TCP
+                </h1>
+            </div>
             <label className="StatsLabel">Select Year For Statistics: </label>
             <Dropdown>
                 <Dropdown.Toggle variant="primary" className="StatsDropdown">

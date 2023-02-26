@@ -2,7 +2,6 @@ import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from "react";
 import VolunteerDates from "../components/VolunteerDates";
 import { useNavigate } from "react-router-dom";
-import UserProtection from "../components/UserProtection";
 import {
     signOutUser,
     changeDateFB,
@@ -33,7 +32,7 @@ export default function HomePage() {
                 setUsername(info.name.split(" ")[0]);
                 setFullUsername(info.name);
             } catch {
-                alert("You must be signed in to view this page");
+                 alert("You must be signed in to view this page");
                 window.location.href = "/login";
             }
         };
@@ -66,9 +65,7 @@ export default function HomePage() {
         else if (request.data === "No user signed in")
             alert("You must be signed in to sign up for a date");
         else if (request.data === "success")
-            alert(
-                "Your date changes have been saved! Please refresh the page to ensure the changes are correct."
-            );
+            alert("Your date changes have been saved!");
     };
 
     const handleLogout = async () => {
@@ -83,60 +80,78 @@ export default function HomePage() {
 
     return (
         <>
-            <div className="CenterHomePage">
-                <div className="HomePageHeader">
-                    <h1>
-                        Thank you for volunteering for the Champion Project{" "}
-                        {username}!
-                    </h1>
-                    <Button
-                        variant="primary"
-                        onClick={handleLogout}
-                        style={{ position: "absolute", top: "1%", right: "2%" }}
+            <div
+                className="fixed-top navbar NavHead"
+                style={{ textAlign: "center" }}
+            >
+                <h1 style={{}} className="CPStyleFull">
+                    Thank you for volunteering for the Champion Project{" "}
+                    {username}!
+                </h1>
+                <h1 style={{}} className="CPStyleMobile">
+                    Hi {username}!
+                </h1>
+
+                <Button
+                    variant="primary"
+                    onClick={handleLogout}
+                    style={{ position: "absolute", top: "20%", right: "2%" }}
+                >
+                    Sign Out
+                </Button>
+            </div>
+
+            <div
+                className="StatsArea"
+                style={{ position: "relative", top: "5em" }}
+            >
+                <div className="Statistic">
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-square-md"
+                        onClick={() => navigate("/manage")}
                     >
-                        Sign Out
-                    </Button>
+                        Add Books
+                    </button>
+                    <p className="StatDescription">Add books to the database</p>
                 </div>
 
-                <br />
-                <h2>Chose a page to go to: </h2>
-                <Button variant="primary" onClick={() => navigate("/manage")}>
-                    Manage the book database
-                </Button>
-                <br />
-                <br />
-                <Button variant="primary" onClick={() => navigate("/gift")}>
-                    Gift books
-                </Button>
-                <br />
-                <br />
-                <Button variant="primary" href="/stats">
-                    View statistics
-                </Button>
-
-                <br />
-                <br />
-                <Button variant="primary" onClick={() => navigate("/admin")}>
-                    Change Event Dates
-                </Button>
-                <br />
-                <br />
-                <h2>Or sign up to volunteer: </h2>
-                <h5>Available Dates:</h5>
-                <VolunteerDates
-                    availableDates={availableDates}
-                    setAvailableDates={setAvailableDates}
-                    setSelectedDateIDs={setSelectedDateIDs}
-                    selectedDateIDs={selectedDateIDs}
-                    fullUserName={fullUserName}
-                    setUnselectedDateIDs={setUnselectedDateIDs}
-                    unselectedDateIDs={unselectedDateIDs}
-                />
-                <br />
-
-                <Button variant="primary" onClick={submit} className="">
-                    Save Changes
-                </Button>
+                <div className="Statistic">
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-square-md"
+                        onClick={() => navigate("/gift")}
+                    >
+                        Gift Books
+                    </button>
+                    <p className="StatDescription">
+                        Give away books at an event
+                    </p>
+                </div>
+                <div className="Statistic">
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-square-md"
+                        onClick={() => navigate("/stats")}
+                    >
+                        View Statistics
+                    </button>
+                    <p className="StatDescription">
+                        View statistics about the book database{" "}
+                    </p>
+                </div>
+                <div className="Statistic">
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-square-md"
+                        onClick={() => navigate("/admin")}
+                    >
+                        Change Events
+                    </button>
+                    <p className="StatDescription">
+                        Change volunteer event dates and view volunteers
+                    </p>
+                </div>
             </div>
         </>
     );
