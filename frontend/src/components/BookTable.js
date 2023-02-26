@@ -91,56 +91,38 @@ export default function BookTable({
         }
 
         if (newBook == null) return;
-        let request = await setBookFB(newBook, newBook.gift ? "archive" : "active").catch(() => {
+
+        const request = await setBookFB(newBook.managedBook, false);
+        if (newBook.gift) await setBookFB(newBook.managedBook, true);
+
+
+        if (request !== "success") {
+            console.log(newBook);
             setAlert({
                 show: true,
                 message:
                     "There was a problem connecting to the database." +
-                    newBook.Title +
+                    newBook.managedBook.Title +
                     " was not " +
                     message,
                 success: false,
             });
-        });
-
-        try {
-            if (request.data === "success") {
-                setAlert({
-                    show: true,
-                    message:
-                        "Successfully " +
-                        message +
-                        `"${newBook.managedBook.Title}"`,
-                    success: true,
-                });
-
-                setTimeout(() => {
-                    setAlert({
-                        show: false,
-                    });
-                }, 3000);
-            } else if (request.data === "failure")
-                setAlert({
-                    show: true,
-                    message:
-                        "There was a problem connecting to the database." +
-                        newBook.Title +
-                        " was not " +
-                        message +
-                        ". Please refresh the page.",
-                    success: false,
-                });
-        } catch {
+        } else if (request === "success") {
+            
             setAlert({
                 show: true,
                 message:
-                    "There was a problem connecting to the database." +
-                    newBook.Title +
-                    " was not " +
+                    "Successfully " +
                     message +
-                    ". Please refresh the page.",
-                success: false,
+                    `"${newBook.managedBook.Title}"`,
+                success: true,
             });
+
+            setTimeout(() => {
+                setAlert({
+                    show: false,
+                });
+            }, 3000);
         }
     };
 
