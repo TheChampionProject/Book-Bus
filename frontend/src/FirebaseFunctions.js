@@ -47,7 +47,7 @@ export const getBooksFB = async () => {
     else return databaseBooks;
 };
 
-export const setBookFB = async (book, location) => {
+export const setBookFB = async (book, gift) => {
     await getBooksFB();
 
     let errorMessage = "";
@@ -57,7 +57,7 @@ export const setBookFB = async (book, location) => {
     let sendAddDates = "";
     let params;
 
-    if (location === "archive") {
+    if (gift) {
         archiveDate = new Date().toISOString();
 
         prevArchivedBooks = Object.values(databaseBooks[0].archive); // Get all archived books with JSONs in array
@@ -92,7 +92,7 @@ export const setBookFB = async (book, location) => {
         Price: book.Price,
     };
 
-    if (location === "archive") {
+    if (gift) {
         params = { ...editedBook, ArchiveDates: archiveDates };
     } else {
         params = {
@@ -103,8 +103,12 @@ export const setBookFB = async (book, location) => {
         };
     }
 
-    await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
+    await set(
+        ref(db, `/${gift ? "archive" : "active"}/${book.UUID}`),
+        params
+    ).catch((e) => {
         errorMessage = e;
+        console.log(e);
     });
 
     if (errorMessage !== "") return errorMessage;

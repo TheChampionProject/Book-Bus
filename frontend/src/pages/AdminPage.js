@@ -8,6 +8,7 @@ import {
     getSignedInUserInfoFB,
     getVolunteerDatesFB,
     changeDateFB,
+    signOutUser,
 } from "../FirebaseFunctions";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../FirebaseFunctions";
@@ -75,6 +76,16 @@ export default function AdminPage() {
         setDateToBeChanged(newDate);
     };
 
+    const handleLogout = async () => {
+        try {
+            await signOutUser().then(() => {
+                navigate("/login");
+            });
+        } catch (err) {
+            alert("Unable to Sign Out!");
+        }
+    };
+
     const submit = async () => {
         if (addDateMode) {
             if (
@@ -107,20 +118,10 @@ export default function AdminPage() {
                     ? dateToBeChanged.volunteers
                     : [""],
         };
-        //const request = await axios.post(
-        //    process.env.REACT_APP_BACKEND_URL + "changeDate",
-        //    {
-        //        newData,
-        //    }
-        //);
-
 
         const request = await changeDateFB(newData);
         if (request === "Error") alert("There was an error with your request");
-        else
-            alert(
-                "Date changed successfully. Refresh the page to see changes."
-            );
+        else alert("Date changed successfully!");
     };
 
     let signedUpDateQueryVolunteers = [];
@@ -154,16 +155,42 @@ export default function AdminPage() {
 
     return (
         <>
-            <div className="CenterAdminPage">
-                <h1>Admin Page</h1>
-
-                <a
-                    onClick={() => navigate("/home")}
-                    style={{ position: "absolute", top: "1em", left: "1em" }}
-                    className="Link"
+            <div
+                className="CenterAdminPage"
+                style={{
+                    position: "relative",
+                    top: "5em",
+                    display: "grid",
+                    justifyContent: "center",
+                }}
+            >
+                <div
+                    className="fixed-top navbar NavHead"
+                    style={{ textAlign: "center" }}
                 >
-                    Home Page
-                </a>
+                    <Button
+                        variant="primary"
+                        onClick={() => navigate("/home")}
+                        style={{ position: "absolute", top: "20%", left: "1%" }}
+                    >
+                        Home Page
+                    </Button>
+                    <h1 style={{}} className="CPStyleFull">
+                        The Champion Project
+                    </h1>
+
+                    <Button
+                        variant="primary"
+                        onClick={handleLogout}
+                        style={{
+                            position: "absolute",
+                            top: "20%",
+                            right: "2%",
+                        }}
+                    >
+                        Sign Out
+                    </Button>
+                </div>
 
                 <br />
                 <h4>Change/Add A BookBus Event Date:</h4>
@@ -246,20 +273,24 @@ export default function AdminPage() {
                         Submit
                     </Button>
                 </div>
-                <br />
-                <h4>Or View Volunteers Signed Up For An Event:</h4>
-                <Dropdown>
-                    <Dropdown.Toggle variant="primary">
-                        {signedUpDateQuery.startDate}
-                    </Dropdown.Toggle>
+                <div style={{ position: "relative", marginTop: "2em" }}>
+                    <h4>Or View Volunteers Signed Up For An Event:</h4>
+                    <Dropdown>
+                        <Dropdown.Toggle variant="primary">
+                            {signedUpDateQuery.startDate}
+                        </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                        <DateDD dates={dates} setDate={setSignedUpDateQuery} />
-                    </Dropdown.Menu>
-                </Dropdown>
+                        <Dropdown.Menu>
+                            <DateDD
+                                dates={dates}
+                                setDate={setSignedUpDateQuery}
+                            />
+                        </Dropdown.Menu>
+                    </Dropdown>
 
-                <br />
-                {signedUpDateQueryVolunteers}
+                    <br />
+                    {signedUpDateQueryVolunteers}
+                </div>
             </div>
         </>
     );
