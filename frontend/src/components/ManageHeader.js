@@ -5,12 +5,9 @@ import { Dropdown, Button } from "react-bootstrap";
 import GenreDDI from "./GenreDDI";
 import { useNavigate } from "react-router-dom";
 
-export default function Header({
+export default function ManageHeader({
     setSearchQuery,
     alert,
-    href,
-    hrefName,
-    useSearchBar,
     setGenreFilter,
     genreFilter,
 }) {
@@ -31,10 +28,11 @@ export default function Header({
                 >
                     <Button
                         variant="primary"
-                        onClick={() => navigate(href)}
+                        onClick={() => navigate("/home")}
                         style={{}}
+                        className="CPStyleFull"
                     >
-                        {hrefName}
+                        Home
                     </Button>
                     <Dropdown>
                         <Dropdown.Toggle
@@ -49,14 +47,27 @@ export default function Header({
                         </Dropdown.Menu>
                     </Dropdown>{" "}
                 </div>
-                <h3 className="CPStyleMobile">TCP</h3>
-                <h2 className="CPStyleFull" style={{ marginTop: "-1.1em" }}>
+
+                <h2 className="CPStyleFull" style={{ marginTop: "-1.4em" }}>
                     The Champion Project
                 </h2>
                 <input
                     type="text"
                     placeholder="Search"
-                    className="SearchBar"
+                    className="SearchBarFull"
+                    style={{ position: "absolute", right: "1em", top: "1em" }}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Search"
+                    className="SearchBarMobile"
+                    style={{
+                        width: "7em",
+                        position: "absolute",
+                        top: "1em",
+                        right: "1em",
+                    }}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
             </div>

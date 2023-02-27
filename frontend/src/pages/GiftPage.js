@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GiftConfirmation from "../components/GiftConfirmation.js";
 import TableStructure from "../components/TableStructure";
-import Header from "../components/Header";
+import ManageHeader from "../components/ManageHeader.js";
 import "../App.css";
 import UserProtection from "../components/UserProtection.js";
 
@@ -21,16 +21,12 @@ export default function ManagePage() {
     return (
         <>
             <UserProtection />
-            <Header
+            <ManageHeader
                 setSearchQuery={setSearchQuery}
                 alert={alert}
-                href={"/home"}
-                hrefName={"Home Page"}
-                useSearchBar={true}
-                setGenreFilter={setGenreFilter}
                 genreFilter={genreFilter}
+                setGenreFilter={setGenreFilter}
             />
-
             <TableStructure
                 mode="gift"
                 setBook={setBook}

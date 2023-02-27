@@ -251,11 +251,13 @@ export const getSignedInUserNameFB = async () => {
 
 export const changeDateFB = async (newData) => {
     let errorMessage = "";
-    await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData }).catch(
-        (e) => {
+    await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData })
+        .then((e) => {
+            console.log(e);
+        })
+        .catch((e) => {
             errorMessage = e;
-        }
-    );
+        });
 
     if (errorMessage !== "") return errorMessage;
 };

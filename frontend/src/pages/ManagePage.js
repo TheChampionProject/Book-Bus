@@ -3,7 +3,7 @@ import TableStructure from "../components/TableStructure";
 import "../App.css";
 import EditPopup from "../components/EditPopup.js";
 import AddPopup from "../components/AddPopup.js";
-import Header from "../components/Header";
+import ManageHeader from "../components/ManageHeader";
 import UserProtection from "../components/UserProtection.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../FirebaseFunctions";
@@ -39,33 +39,13 @@ export default function ManagePage() {
         return () => window.removeEventListener("keydown", statusKeyboardInput);
     });
 
-    useEffect(() => {
-        const getUsername = async () => {
-            try {
-                if (!user && !loading || user !== null) {
-                    alert("You must be signed in to view this page");
-                    window.location.href = "/login";
-                } else if (user === null) {
-                    window.location.href = "/login";
-                }
-            } catch {
-                alert("You must be signed in to view this page");
-                window.location.href = "/login";
-            }
-        };
-        getUsername();
-    }, []);
-
     return (
         <>
             <UserProtection />
 
-            <Header
+            <ManageHeader
                 setSearchQuery={setSearchQuery}
                 alert={alert}
-                href={"/home"}
-                hrefName={"Home Page"}
-                useSearchBar={true}
                 genreFilter={genreFilter}
                 setGenreFilter={setGenreFilter}
             />
