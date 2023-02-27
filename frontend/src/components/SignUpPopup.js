@@ -20,6 +20,7 @@ export default function GiftConfirmation({
 
     const submit = async (e) => {
         e.preventDefault();
+        let error = false;
 
         const info = await getSignedInUserInfoFB(user.uid);
 
@@ -36,36 +37,22 @@ export default function GiftConfirmation({
                 fullUserName,
                 true
             );
-            if (fbRequest === "failure") {
-                alert("Error!");
-            }
+            error = fbRequest === "failure";
         }
 
         for (let i = 0; i < unselectedDateIDs.length; i++) {
             let fbRequest = await updateVolunteerDateFB(
-                selectedDateIDs[i],
+                unselectedDateIDs[i],
                 fullUserName,
                 false
             );
-            if (fbRequest === "failure") {
-                alert("Error!");
-            }
+            error = fbRequest === "failure";
         }
 
-        //let request = "Error";
-        //try {
-        //    request = await changeDateFB(selectedDateIDs, unselectedDateIDs);
-        //} catch {
-        //    alert("There was an error with your request");
-        //}
+        if (error) alert("There was an error with your request");
+        else alert("Successfully signed up for dates!");
 
-        //if (request.data === "User already Signed Up")
-        //    alert("You are already signed up for this date");
-        //else if (request.data === "No date found with that ID.")
-        //    alert("There was an error with your request");
-        //else if (request.data === "No user signed in")
-        //    alert("You must be signed in to sign up for a date");
-        //else if (request.data === "success") alert("Successfully signed up!");
+        setShowSignUpPopup(false);
     };
 
     return (
@@ -93,7 +80,6 @@ export default function GiftConfirmation({
                             display: "flex",
                             justifyContent: "end",
                             marginLeft: "auto",
-                            
                         }}
                     >
                         <Button

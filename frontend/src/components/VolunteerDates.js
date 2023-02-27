@@ -65,8 +65,8 @@ export default function VolunteerDates({
             }
         }
 
-        console.log(selectedDateIDs)
-        console.log(unselectedDateIDs)
+        //console.log(selectedDateIDs)
+        //console.log(unselectedDateIDs)
     };
 
     // It's hacky but it works

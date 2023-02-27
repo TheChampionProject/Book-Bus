@@ -187,6 +187,9 @@ export const getVolunteerDatesFB = async () => {
 };
 
 export const updateVolunteerDateFB = async (dateID, userName, add) => {
+    console.log(dateID);
+    console.log(userName);
+    console.log(add);
     let dates = await getVolunteerDatesFB();
 
     let errorMessage = "",
@@ -209,10 +212,13 @@ export const updateVolunteerDateFB = async (dateID, userName, add) => {
     if (!data.volunteers) data.volunteers = [];
 
     if (!add) {
+        console.log(data.volunteers);
         data.volunteers.splice(data.volunteers.indexOf(userName), 1);
+        console.log(data.volunteers);
     } else if (data.volunteers.includes(userName)) {
         return "User already Signed Up";
     } else if (add) {
+        console.log("Addign");
         data.volunteers.push(userName);
     }
     await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
