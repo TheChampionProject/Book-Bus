@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../App.css";
 import TableStructure from "../components/TableStructure";
-
-import Header from "../components/Header";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function DonatePage() {
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
@@ -11,19 +11,51 @@ export default function DonatePage() {
         message: "",
         success: false,
     }); // Show the alert
-    const [searchQuery, setSearchQuery] = useState("");
     let [books, setBooks] = useState(null);
-    let [genreFilter, setGenreFilter] = useState("All");
-
+    const navigate = useNavigate();
 
     return (
         <>
-            <Header
-                setSearchQuery={setSearchQuery}
-                alert={alert}
-                href={"/login"}
-                hrefName={"Login/Signup"}
-            />
+            <div
+                className="fixed-top navbar NavHead"
+                style={{ textAlign: "center", height: "4em" }}
+            >
+                <div
+                    style={{
+                        marginTop: ".5em",
+                        position: "relative",
+                    }}
+                >
+                    <Button
+                        variant="primary"
+                        onClick={() =>
+                            (window.location.href =
+                                "https://thechampionproject.org/")
+                        }
+                        style={{
+                            position: "absolute",
+                            left: "1em",
+                            top: "0em",
+                        }}
+                    >
+                        Our Mission
+                    </Button>
+                    <h2 style={{}} className="CPStyleFull">
+                        The Champion Project
+                    </h2>
+                    <Button
+                        variant="primary"
+                        onClick={() => navigate("/login")}
+                        style={{
+                            position: "absolute",
+                            right: "1em",
+                            top: "0em",
+                        }}
+                    >
+                        Login/Signup
+                    </Button>
+                </div>
+            </div>
 
             <div className="TextCenterDiv">
                 <em>
@@ -37,10 +69,10 @@ export default function DonatePage() {
                 managedBook={managedBook}
                 setManagedBook={setManagedBook}
                 setAlert={setAlert}
-                searchQuery={searchQuery}
+                searchQuery={""}
                 books={books}
                 setBooks={setBooks}
-                genreFilter={genreFilter}
+                genreFilter={"All"}
             />
         </>
     );

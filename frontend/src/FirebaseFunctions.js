@@ -10,9 +10,9 @@ import {
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
-import { firebaseConfig } from "./keys";
+import { firebaseConfig } from "./keys.js";
 import axios from "axios";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 dotenv.config();
 
 const GOOGLE_BOOKS_API_BASE_URL =
@@ -47,7 +47,7 @@ export const getBooksFB = async () => {
     else return databaseBooks;
 };
 
-export const setBookFB = async (book, location) => {
+export const setBookFB = async (book, gift) => {
     await getBooksFB();
 
     let errorMessage = "";
@@ -57,7 +57,7 @@ export const setBookFB = async (book, location) => {
     let sendAddDates = "";
     let params;
 
-    if (location === "archive") {
+    if (gift) {
         archiveDate = new Date().toISOString();
 
         prevArchivedBooks = Object.values(databaseBooks[0].archive); // Get all archived books with JSONs in array
@@ -92,7 +92,7 @@ export const setBookFB = async (book, location) => {
         Price: book.Price,
     };
 
-    if (location === "archive") {
+    if (gift) {
         params = { ...editedBook, ArchiveDates: archiveDates };
     } else {
         params = {
@@ -103,8 +103,12 @@ export const setBookFB = async (book, location) => {
         };
     }
 
-    await set(ref(db, `/${location}/${book.UUID}`), params).catch((e) => {
+    await set(
+        ref(db, `/${gift ? "archive" : "active"}/${book.UUID}`),
+        params
+    ).catch((e) => {
         errorMessage = e;
+        console.log(e);
     });
 
     if (errorMessage !== "") return errorMessage;
@@ -182,6 +186,9 @@ export const getVolunteerDatesFB = async () => {
 };
 
 export const updateVolunteerDateFB = async (dateID, userName, add) => {
+    console.log(dateID);
+    console.log(userName);
+    console.log(add);
     let dates = await getVolunteerDatesFB();
 
     let errorMessage = "",
@@ -204,10 +211,13 @@ export const updateVolunteerDateFB = async (dateID, userName, add) => {
     if (!data.volunteers) data.volunteers = [];
 
     if (!add) {
+        console.log(data.volunteers);
         data.volunteers.splice(data.volunteers.indexOf(userName), 1);
+        console.log(data.volunteers);
     } else if (data.volunteers.includes(userName)) {
         return "User already Signed Up";
     } else if (add) {
+        console.log("Addign");
         data.volunteers.push(userName);
     }
     await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
@@ -246,11 +256,13 @@ export const getSignedInUserNameFB = async () => {
 
 export const changeDateFB = async (newData) => {
     let errorMessage = "";
-    await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData }).catch(
-        (e) => {
+    await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData })
+        .then((e) => {
+            console.log(e);
+        })
+        .catch((e) => {
             errorMessage = e;
-        }
-    );
+        });
 
     if (errorMessage !== "") return errorMessage;
 };

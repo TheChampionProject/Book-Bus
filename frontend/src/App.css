@@ -25,12 +25,6 @@
     top: 5rem;
 }
 
-.GenreFilter {
-    position: fixed;
-    top: 1rem;
-    left: 7em;
-}
-
 .BookTableParent {
     display: flex;
     flex-direction: column;
@@ -102,7 +96,7 @@
 
 .SearchBar {
     position: fixed;
-    top: 0.5rem;
+    top: 1em;
     right: 0.5em;
 }
 
@@ -124,56 +118,11 @@
     width: 100%; /* Full width */
 }
 
-.StatsDropdown {
-    position: relative;
-}
-
-.StatsLabel {
-    font-weight: bold;
-    position: relative;
-}
-
 .StatsHomeLink {
     position: absolute;
     cursor: pointer;
     left: 1em;
     top: 1em;
-}
-
-@media only screen and (min-width: 1000px) {
-    .StatsDropdown {
-        bottom: 0.8em;
-        left: 52.5%;
-    }
-
-    .StatsLabel {
-        top: 1em;
-        left: 44%;
-    }
-}
-
-@media only screen and (max-width: 1000px) {
-    .StatsDropdown {
-        bottom: 0.8em;
-        left: 58%;
-    }
-
-    .StatsLabel {
-        top: 1em;
-        left: 32%;
-    }
-}
-
-@media only screen and (min-width: 1500px) {
-    .StatsDropdown {
-        bottom: 0.8em;
-        left: 52.5%;
-    }
-
-    .StatsLabel {
-        top: 1em;
-        left: 44%;
-    }
 }
 
 /* Links inside the navbar */
@@ -218,27 +167,15 @@
 .CPStyleMobile {
     color: #a70102;
     font-family: "Permanent Marker", cursive;
-    font-size: 2em;
-    position: relative;
     top: 0.2em;
-
-    position: relative;
-    left: 8em;
-    width: "1em";
 }
 
 .CPStyleFull {
     color: #a70102;
     font-family: "Permanent Marker", cursive;
-    font-size: 2em;
-    position: relative;
-    top: 0.2em;
 }
 
 @media only screen and (min-width: 1000px) {
-    .CPStyleFull {
-        left: 30%;
-    }
     .CPStyleMobile {
         display: none;
     }
@@ -247,32 +184,12 @@
 @media only screen and (max-width: 1000px) {
     .CPStyleFull {
         display: none;
-    }
-}
-
-@media only screen and (min-width: 1000px) {
-    .CPStyle {
-        left: 30%;
-    }
-}
-
-@media only screen and (max-width: 1000px) {
-    .CPStyle {
-        left: 8%;
     }
 }
 
 @media only screen and (min-width: 1500px) {
-    .CPStyleFull {
-        left: 40%;
-    }
-
     .CPStyleMobile {
         display: none;
-    }
-
-    .CPStyle {
-        left: 40%;
     }
 }
 
@@ -311,19 +228,21 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 1rem;
     border-radius: 0.5rem;
     background-color: #f5f5f5;
     /*width: 25%;*/
     width: 100%;
+    text-align: center;
 }
 
 .StatDescription {
-    font-weight: 300;
+    font-weight: bold;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    margin-top: 0;
+    margin-top: 10px;
     margin-bottom: 0;
+    text-align: center;
 }
 
 .StatText {
@@ -353,7 +272,6 @@
 .GiftHeader {
     color: #a70102;
     font-family: "Permanent Marker", cursive;
-    font-size: 2em;
     position: relative;
     top: 0.2em;
     left: 0%;
@@ -366,19 +284,6 @@
 .statsNav .navItem {
     flex: 1 1 0%;
     text-decoration: none;
-}
-
-.CenterHomePage {
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    top: 0px;
-}
-
-@media only screen and (max-width: 1000px) {
-    .CenterHomePage {
-        width: 75%;
-    }
 }
 
 .CenterAdminPage {
@@ -408,4 +313,22 @@
 
 .Hidden {
     display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+    .SearchBarMobile {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .SearchBarFull {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .SearchBarMobile {
+        display: none;
+    }
 }
