@@ -9,6 +9,13 @@ import {
     auth,
     getSignedInUserInfoFB,
 } from "../FirebaseFunctions";
+import {
+    DialogActions,
+    Dialog,
+    DialogTitle,
+    Stack,
+    Button as MUIButton,
+} from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function HomePage() {
@@ -17,6 +24,7 @@ export default function HomePage() {
     const [availableDates, setAvailableDates] = useState([]);
     const [username, setUsername] = useState("");
     const [fullUserName, setFullUsername] = useState(null);
+    const [open, setOpen] = useState(false);
     const [user, loading] = useAuthState(auth);
 
     const navigate = useNavigate();
@@ -38,6 +46,14 @@ export default function HomePage() {
             }
         };
         getUsername();
+
+        const checkVerification = async() => {
+            const info = await getSignedInUserInfoFB(user.uid);
+            if (!info['verified']) {
+                setOpen(true);
+            }
+        }
+        checkVerification();
     }, []);
 
     const submit = async (e) => {
@@ -137,6 +153,28 @@ export default function HomePage() {
                 <Button variant="primary" onClick={submit} className="">
                     Save Changes
                 </Button>
+                <Dialog open={open}>
+                    <DialogTitle>Do you Want to Become a Verified Volunteer for The Champion Project?</DialogTitle>
+                    <DialogActions>
+                        <Stack justifyContent="space-evenly" direction="row">
+                            <MUIButton
+                                onClick={() => {
+                                    setOpen(false);
+                                }}
+                                color={"error"}
+                            >
+                                Skip
+                            </MUIButton>
+                            <MUIButton 
+                                onClick={() => {setOpen(false)}} 
+                                href="https://ministryopportunities.org/opportunity/76424" 
+                                color="success"
+                            >
+                                Sure
+                            </MUIButton>
+                        </Stack>
+                    </DialogActions>
+                </Dialog>
             </div>
         </>
     );

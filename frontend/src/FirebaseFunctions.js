@@ -127,8 +127,7 @@ export const signUpAuth = async (email, password, first, last) => {
         email: email,
         name: first + " " + last,
         password: password,
-        watchedVideo: false,
-        uploadedForm: false,
+        verified: false,
     }).catch((e) => {
         return e;
     });
