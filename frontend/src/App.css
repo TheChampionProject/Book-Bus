@@ -118,56 +118,11 @@
     width: 100%; /* Full width */
 }
 
-.StatsDropdown {
-    position: relative;
-}
-
-.StatsLabel {
-    font-weight: bold;
-    position: relative;
-}
-
 .StatsHomeLink {
     position: absolute;
     cursor: pointer;
     left: 1em;
     top: 1em;
-}
-
-@media only screen and (min-width: 1000px) {
-    .StatsDropdown {
-        bottom: 0.8em;
-        left: 52.5%;
-    }
-
-    .StatsLabel {
-        top: 1em;
-        left: 44%;
-    }
-}
-
-@media only screen and (max-width: 1000px) {
-    .StatsDropdown {
-        bottom: 0.8em;
-        left: 58%;
-    }
-
-    .StatsLabel {
-        top: 1em;
-        left: 32%;
-    }
-}
-
-@media only screen and (min-width: 1500px) {
-    .StatsDropdown {
-        bottom: 0.8em;
-        left: 52.5%;
-    }
-
-    .StatsLabel {
-        top: 1em;
-        left: 44%;
-    }
 }
 
 /* Links inside the navbar */
@@ -317,7 +272,6 @@
 .GiftHeader {
     color: #a70102;
     font-family: "Permanent Marker", cursive;
-    font-size: 2em;
     position: relative;
     top: 0.2em;
     left: 0%;
@@ -359,4 +313,22 @@
 
 .Hidden {
     display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+    .SearchBarMobile {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .SearchBarFull {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .SearchBarMobile {
+        display: none;
+    }
 }
