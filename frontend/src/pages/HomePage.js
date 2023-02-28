@@ -28,7 +28,6 @@ export default function HomePage() {
     const navigate = useNavigate();
 
     const [showSignUpPopup, setShowSignUpPopup] = useState(false);
-    const [fullUserName, setFullUsername] = useState(null);
 
     useEffect(() => {
         const getUsername = async () => {
@@ -113,9 +112,9 @@ export default function HomePage() {
                     </button>
                     <p className="StatDescription">Add books to the database</p>
                 </div>
-                <Button variant="primary" onClick={submit} className="">
+                {/* <Button variant="primary" onClick={submit} className="">
                     Save Changes
-                </Button>
+                </Button> */}
                 <Dialog open={open}>
                     <DialogTitle>Do you Want to Become a Verified Volunteer for The Champion Project?</DialogTitle>
                     <DialogActions >
