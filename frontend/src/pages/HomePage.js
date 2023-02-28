@@ -1,12 +1,7 @@
 import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-    signOutUser,
-    changeDateFB,
-    auth,
-    getSignedInUserInfoFB,
-} from "../FirebaseFunctions";
+import { signOutUser, auth, getSignedInUserInfoFB } from "../FirebaseFunctions";
 import {
     DialogActions,
     Dialog,
@@ -26,7 +21,7 @@ export default function HomePage() {
     const navigate = useNavigate();
 
     const [showSignUpPopup, setShowSignUpPopup] = useState(false);
-    const [fullUserName, setFullUsername] = useState(null);
+    const [isVerified, setIsVerified] = useState(false);
 
     useEffect(() => {
         const getUsername = async () => {
@@ -36,6 +31,7 @@ export default function HomePage() {
                     window.location.href = "/login";
                 }
                 const info = await getSignedInUserInfoFB(user.uid);
+                setIsVerified(info.verified);
 
                 setUsername(info.name.split(" ")[0]);
                 setFullUsername(info.name);
@@ -45,14 +41,6 @@ export default function HomePage() {
             }
         };
         getUsername();
-
-        const checkVerification = async() => {
-            const info = await getSignedInUserInfoFB(user.uid);
-            if (!info['verified']) {
-                setOpen(true);
-            }
-        }
-        checkVerification();
     }, []);
 
     const handleLogout = async () => {
@@ -63,6 +51,17 @@ export default function HomePage() {
         } catch (err) {
             alert("Unable to Sign Out!");
         }
+    };
+
+    const tryToShowPopup = async (e) => {
+        e.preventDefault();
+        const info = await getSignedInUserInfoFB(user.uid);
+
+        if (!info.verified) {
+            alert("You must be verified before signing up for a date!");
+            setShowSignUpPopup(false);
+            return;
+        } else setShowSignUpPopup(true);
     };
 
     return (
@@ -89,8 +88,24 @@ export default function HomePage() {
             </div>
 
             <div
+                className="alert alert-danger"
+                role="alert"
+                style={{
+                    position: "relative",
+                    top: "3.9em",
+                    textAlign: "center",
+                    display: `${isVerified ? "none" : ""}`,
+                }}
+            >
+                <a href="https://ministryopportunities.org/opportunity/76424">
+                    You aren't verified! Click here to begin the verification
+                    process.
+                </a>
+            </div>
+
+            <div
                 className="StatsArea"
-                style={{ position: "relative", top: "5em" }}
+                style={{ position: "relative", top: "3em" }}
             >
                 <div className="Statistic">
                     <button
@@ -102,24 +117,32 @@ export default function HomePage() {
                     </button>
                     <p className="StatDescription">Add books to the database</p>
                 </div>
-                <Button variant="primary" onClick={submit} className="">
-                    Save Changes
-                </Button>
+
                 <Dialog open={open}>
-                    <DialogTitle>Do you Want to Become a Verified Volunteer for The Champion Project?</DialogTitle>
+                    <DialogTitle>
+                        Do you Want to Become a Verified Volunteer for The
+                        Champion Project?
+                    </DialogTitle>
                     <DialogActions>
                         <Stack justifyContent="space-evenly" direction="row">
                             <MUIButton
                                 onClick={() => {
+                                    localStorage.setItem(
+                                        "hideVerifyPopup",
+                                        "true"
+                                    );
+
                                     setOpen(false);
                                 }}
                                 color={"error"}
                             >
                                 Skip
                             </MUIButton>
-                            <MUIButton 
-                                onClick={() => {setOpen(false)}} 
-                                href="https://ministryopportunities.org/opportunity/76424" 
+                            <MUIButton
+                                onClick={() => {
+                                    setOpen(false);
+                                }}
+                                href="https://ministryopportunities.org/opportunity/76424"
                                 color="success"
                             >
                                 Sure
@@ -167,12 +190,26 @@ export default function HomePage() {
                     <button
                         type="button"
                         className="btn btn-primary btn-square-md"
-                        onClick={() => setShowSignUpPopup(true)}
+                        onClick={(e) => {
+                            tryToShowPopup(e);
+                        }}
                     >
                         Sign Up
                     </button>
                     <p className="StatDescription">
                         Sign up to volunteer at a bookbus event
+                    </p>
+                </div>
+                <div className="Statistic">
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-square-md"
+                        onClick={() => navigate("/verifylist")}
+                    >
+                        Verify
+                    </button>
+                    <p className="StatDescription">
+                        Verify volunteers for bookbus events
                     </p>
                 </div>
             </div>

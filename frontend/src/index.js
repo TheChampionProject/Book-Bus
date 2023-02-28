@@ -10,6 +10,7 @@ import React from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import AuthPage from "./pages/AuthPage.js";
 import Verification from "./pages/Verification.js";
+import VerifyList from "./pages/VerifyList.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,6 +25,7 @@ root.render(
             <Route path="/stats" element={<StatsPage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/verifylist" element={<VerifyList />} />
 
         </Routes>
     </Router>

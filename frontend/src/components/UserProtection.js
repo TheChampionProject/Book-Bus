@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { auth } from "../FirebaseFunctions";
+import { auth, getSignedInUserInfoFB } from "../FirebaseFunctions";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 export default function UserProtection() {
@@ -12,6 +12,15 @@ export default function UserProtection() {
                     alert("You must be signed in to view this page");
                     navigate("/login");
                 }
+
+                const info = await getSignedInUserInfoFB(user.uid);
+
+                if (!info.verified) {
+                    alert("You must be verified before changing the book database!");
+                    navigate("/home");
+                    return;
+                }
+
             } catch {
                 alert("You must be signed in to view this page");
                 navigate("/login");
