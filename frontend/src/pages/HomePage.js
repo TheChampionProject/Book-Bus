@@ -1,24 +1,27 @@
 import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from "react";
-import VolunteerDates from "../components/VolunteerDates";
 import { useNavigate } from "react-router-dom";
+import { signOutUser, auth, getSignedInUserInfoFB } from "../FirebaseFunctions";
 import {
-    signOutUser,
-    changeDateFB,
-    auth,
-    getSignedInUserInfoFB,
-} from "../FirebaseFunctions";
+    DialogActions,
+    Dialog,
+    DialogTitle,
+    Stack,
+    Button as MUIButton,
+} from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
+import SignUpPopup from "../components/SignUpPopup";
 
 export default function HomePage() {
-    const [selectedDateIDs, setSelectedDateIDs] = useState([]);
-    const [unselectedDateIDs, setUnselectedDateIDs] = useState([]);
-    const [availableDates, setAvailableDates] = useState([]);
     const [username, setUsername] = useState("");
     const [fullUserName, setFullUsername] = useState(null);
+    const [open, setOpen] = useState(false);
     const [user, loading] = useAuthState(auth);
 
     const navigate = useNavigate();
+
+    const [showSignUpPopup, setShowSignUpPopup] = useState(false);
+    const [isVerified, setIsVerified] = useState(false);
 
     useEffect(() => {
         const getUsername = async () => {
@@ -28,45 +31,17 @@ export default function HomePage() {
                     window.location.href = "/login";
                 }
                 const info = await getSignedInUserInfoFB(user.uid);
+                setIsVerified(info.verified);
 
                 setUsername(info.name.split(" ")[0]);
                 setFullUsername(info.name);
             } catch {
-                 alert("You must be signed in to view this page");
+                alert("You must be signed in to view this page");
                 window.location.href = "/login";
             }
         };
         getUsername();
     }, []);
-
-    const submit = async (e) => {
-        e.preventDefault();
-
-        const response = await getSignedInUserInfoFB();
-
-        if (!response.watchedVideo || !response.uploadedForm) {
-            alert(
-                "You must watch the video and upload the form before signing up for a date!"
-            );
-            return;
-        }
-
-        let request = "Error";
-        try {
-            request = await changeDateFB(selectedDateIDs, unselectedDateIDs);
-        } catch {
-            alert("There was an error with your request");
-        }
-
-        if (request.data === "User already Signed Up")
-            alert("You are already signed up for this date");
-        else if (request.data === "No date found with that ID.")
-            alert("There was an error with your request");
-        else if (request.data === "No user signed in")
-            alert("You must be signed in to sign up for a date");
-        else if (request.data === "success")
-            alert("Your date changes have been saved!");
-    };
 
     const handleLogout = async () => {
         try {
@@ -78,16 +53,27 @@ export default function HomePage() {
         }
     };
 
+    const tryToShowPopup = async (e) => {
+        e.preventDefault();
+        const info = await getSignedInUserInfoFB(user.uid);
+
+        if (!info.verified) {
+            alert("You must be verified before signing up for a date!");
+            setShowSignUpPopup(false);
+            return;
+        } else setShowSignUpPopup(true);
+    };
+
     return (
         <>
             <div
                 className="fixed-top navbar NavHead"
                 style={{ textAlign: "center" }}
             >
-                <h1 style={{}} className="CPStyleFull">
+                <h2 style={{}} className="CPStyleFull">
                     Thank you for volunteering for the Champion Project{" "}
                     {username}!
-                </h1>
+                </h2>
                 <h1 style={{}} className="CPStyleMobile">
                     Hi {username}!
                 </h1>
@@ -102,8 +88,24 @@ export default function HomePage() {
             </div>
 
             <div
+                className="alert alert-danger"
+                role="alert"
+                style={{
+                    position: "relative",
+                    top: "3.9em",
+                    textAlign: "center",
+                    display: `${isVerified ? "none" : ""}`,
+                }}
+            >
+                <a href="https://ministryopportunities.org/opportunity/76424">
+                    You aren't verified! Click here to begin the verification
+                    process.
+                </a>
+            </div>
+
+            <div
                 className="StatsArea"
-                style={{ position: "relative", top: "5em" }}
+                style={{ position: "relative", top: "3em" }}
             >
                 <div className="Statistic">
                     <button
@@ -116,6 +118,38 @@ export default function HomePage() {
                     <p className="StatDescription">Add books to the database</p>
                 </div>
 
+                <Dialog open={open}>
+                    <DialogTitle>
+                        Do you Want to Become a Verified Volunteer for The
+                        Champion Project?
+                    </DialogTitle>
+                    <DialogActions>
+                        <Stack justifyContent="space-evenly" direction="row">
+                            <MUIButton
+                                onClick={() => {
+                                    localStorage.setItem(
+                                        "hideVerifyPopup",
+                                        "true"
+                                    );
+
+                                    setOpen(false);
+                                }}
+                                color={"error"}
+                            >
+                                Skip
+                            </MUIButton>
+                            <MUIButton
+                                onClick={() => {
+                                    setOpen(false);
+                                }}
+                                href="https://ministryopportunities.org/opportunity/76424"
+                                color="success"
+                            >
+                                Sure
+                            </MUIButton>
+                        </Stack>
+                    </DialogActions>
+                </Dialog>
                 <div className="Statistic">
                     <button
                         type="button"
@@ -152,7 +186,39 @@ export default function HomePage() {
                         Change volunteer event dates and view volunteers
                     </p>
                 </div>
+                <div className="Statistic">
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-square-md"
+                        onClick={(e) => {
+                            tryToShowPopup(e);
+                        }}
+                    >
+                        Sign Up
+                    </button>
+                    <p className="StatDescription">
+                        Sign up to volunteer at a bookbus event
+                    </p>
+                </div>
+                <div className="Statistic">
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-square-md"
+                        onClick={() => navigate("/verifylist")}
+                    >
+                        Verify
+                    </button>
+                    <p className="StatDescription">
+                        Verify volunteers for bookbus events
+                    </p>
+                </div>
             </div>
+
+            <SignUpPopup
+                showSignUpPopup={showSignUpPopup}
+                setShowSignUpPopup={setShowSignUpPopup}
+                fullUserName={fullUserName}
+            />
         </>
     );
 }

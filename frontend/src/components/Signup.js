@@ -8,11 +8,6 @@ import {
     Stack,
     Typography,
 } from "@mui/material";
-import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { signUpAuth } from "../FirebaseFunctions";
 
@@ -31,7 +26,7 @@ const Signup = ({ handleChange }) => {
             alert("Passwords do not match up!");
         } else {
             try {
-                await signUpAuth(email, password, first, last).then(navigate("/verification"))
+                await signUpAuth(email, password, first, last).then(navigate("/home"))
             } catch (err) {
                 console.log(err);
                 alert("Unable to sign Up");

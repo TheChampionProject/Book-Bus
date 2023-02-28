@@ -7,7 +7,14 @@ import {
     sendPasswordResetEmail,
     signOut,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+    collection,
+    getDocs,
+} from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
 import { firebaseConfig } from "./keys.js";
@@ -131,12 +138,24 @@ export const signUpAuth = async (email, password, first, last) => {
         email: email,
         name: first + " " + last,
         password: password,
-        watchedVideo: false,
-        uploadedForm: false,
+        verified: false,
+        uid: auth.currentUser.uid,
     }).catch((e) => {
         return e;
     });
     return currentUser;
+};
+
+export const updateUserVerificationFB = async (user, verified) => {
+    await setDoc(doc(firestoredb, "users", user.uid), {
+        email: user.email,
+        name: user.name,
+        password: user.password,
+        verified: verified,
+        uid: user.uid,
+    }).catch((e) => {
+        return e;
+    });
 };
 
 export const signInAuth = async (email, password) => {
@@ -209,7 +228,6 @@ export const updateVolunteerDateFB = async (dateID, userName, add) => {
     if (!data.volunteers) data.volunteers = [];
 
     if (!add) {
-        data.volunteers.splice(data.volunteers.indexOf(userName), 1);
     } else if (data.volunteers.includes(userName)) {
         return "User already Signed Up";
     } else if (add) {
@@ -235,6 +253,17 @@ export const getSignedInUserInfoFB = async (uid) => {
     }
 };
 
+export const getAllUsersFB = async () => {
+    let data = [];
+    const querySnapshot = await getDocs(collection(firestoredb, "users"));
+
+    querySnapshot.forEach((doc) => {
+        data.push(doc.data());
+    });
+
+    return data;
+};
+
 export const getSignedInUserFB = async () => {
     return getAuth();
 };
@@ -251,11 +280,13 @@ export const getSignedInUserNameFB = async () => {
 
 export const changeDateFB = async (newData) => {
     let errorMessage = "";
-    await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData }).catch(
-        (e) => {
+    await set(ref(db, `/volunteer-dates/${newData.id}/`), { ...newData })
+        .then((e) => {
+            console.log(e);
+        })
+        .catch((e) => {
             errorMessage = e;
-        }
-    );
+        });
 
     if (errorMessage !== "") return errorMessage;
 };

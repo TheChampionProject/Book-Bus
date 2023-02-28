@@ -33,11 +33,7 @@ const Login = ({ handleChange }) => {
         } else {
             try {
                 await signInAuth(email, password).then((response) => {
-                    if (response["watchedVideo"] && response["uploadedForm"]) {
-                        navigate("/home");
-                    } else {
-                        navigate("/verification");
-                    }
+                    navigate('/home')
                 });
             } catch (err) {
                 console.log(err);
@@ -52,7 +48,7 @@ const Login = ({ handleChange }) => {
         } else {
             try {
                 setOpen(false);
-                await resetPasswordAuth().then(() =>
+                await resetPasswordAuth(resetEmail).then(() =>
                     alert("Success! Check your spam folder for the reset email")
                 );
             } catch (err) {
@@ -99,6 +95,11 @@ const Login = ({ handleChange }) => {
                         <Link href="#" onClick={handleClickOpen}>
                             Forgot password?
                         </Link>
+                        <Stack direction={"row"} justifyContent="space-between">
+                            <Link href="#" onClick={() => handleChange(false)}>
+                                Sign Up
+                            </Link>
+                        </Stack>
                     </Stack>
                 </Stack>
                 <Dialog open={open}>

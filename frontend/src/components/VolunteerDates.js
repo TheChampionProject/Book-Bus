@@ -40,6 +40,13 @@ export default function VolunteerDates({
         if (checked) {
             selectedDateIDs.push(date.id);
             setSelectedDateIDs(selectedDateIDs);
+
+            for (let i = 0; i < unselectedDateIDs.length; i++) {
+                if (unselectedDateIDs[i] === date.id) {
+                    unselectedDateIDs.splice(i, 1);
+                    break;
+                }
+            }
         } else {
             for (let i = 0; i < selectedDateIDs.length; i++) {
                 if (selectedDateIDs[i] === date.id) {
