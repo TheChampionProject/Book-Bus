@@ -48,13 +48,7 @@ export default function AddPopup({
                 searchQuery,
                 scanMode ? "" : "titleSearch"
             );
-            //request = await axios.post(
-            //    process.env.REACT_APP_BACKEND_URL + "getSearchQueryBooks",
-            //    {
-            //        title: searchQuery,
-            //        mode: scanMode ? "" : "titleSearch",
-            //    }
-            //);
+       
 
             if (request.data === "Error") {
                 successfulQuery.current = false;
