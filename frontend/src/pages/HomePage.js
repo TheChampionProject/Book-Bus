@@ -15,6 +15,8 @@ import {
     DialogTitle,
     Stack,
     Button as MUIButton,
+    FormControlLabel,
+    Checkbox
 } from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -26,7 +28,7 @@ export default function HomePage() {
     const [fullUserName, setFullUsername] = useState(null);
     const [open, setOpen] = useState(false);
     const [user, loading] = useAuthState(auth);
-
+    const [remind, setRemind] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -49,7 +51,7 @@ export default function HomePage() {
 
         const checkVerification = async() => {
             const info = await getSignedInUserInfoFB(user.uid);
-            if (!info['verified']) {
+            if (!info['verified'] && localStorage.getItem("remind") != "no") {
                 setOpen(true);
             }
         }
@@ -96,6 +98,15 @@ export default function HomePage() {
             alert("Unable to Sign Out!");
         }
     };
+
+    const formChange = () => {
+        setRemind(!remind);
+        if(remind){
+            localStorage.setItem("remind", "yes");
+        }  else {
+            localStorage.setItem("remind", "no");
+        } 
+    }
 
     return (
         <>
@@ -155,23 +166,26 @@ export default function HomePage() {
                 </Button>
                 <Dialog open={open}>
                     <DialogTitle>Do you Want to Become a Verified Volunteer for The Champion Project?</DialogTitle>
-                    <DialogActions>
-                        <Stack justifyContent="space-evenly" direction="row">
-                            <MUIButton
-                                onClick={() => {
-                                    setOpen(false);
-                                }}
-                                color={"error"}
-                            >
-                                Skip
-                            </MUIButton>
-                            <MUIButton 
-                                onClick={() => {setOpen(false)}} 
-                                href="https://ministryopportunities.org/opportunity/76424" 
-                                color="success"
-                            >
-                                Sure
-                            </MUIButton>
+                    <DialogActions >
+                        <Stack justifyContent="flex-end" direction="row" >
+                            <FormControlLabel control={<Checkbox onChange={formChange}/>} label="Don't remind me again"/>
+                            <Stack direction="row">
+                                <MUIButton
+                                    onClick={() => {
+                                        setOpen(false);
+                                    }}
+                                    color={"error"}
+                                >
+                                    Skip
+                                </MUIButton>
+                                <MUIButton 
+                                    onClick={() => {setOpen(false)}} 
+                                    href="https://ministryopportunities.org/opportunity/76424" 
+                                    color="success"
+                                >
+                                    Sure
+                                </MUIButton>
+                            </Stack>
                         </Stack>
                     </DialogActions>
                 </Dialog>
