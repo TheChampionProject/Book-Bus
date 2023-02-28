@@ -7,7 +7,14 @@ import {
     sendPasswordResetEmail,
     signOut,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+    collection,
+    getDocs,
+} from "firebase/firestore";
 import { getStorage, uploadBytes, ref as storageRef } from "firebase/storage";
 import dotenv from "dotenv";
 import { firebaseConfig } from "./keys.js";
@@ -132,10 +139,23 @@ export const signUpAuth = async (email, password, first, last) => {
         name: first + " " + last,
         password: password,
         verified: false,
+        uid: auth.currentUser.uid,
     }).catch((e) => {
         return e;
     });
     return currentUser;
+};
+
+export const updateUserVerificationFB = async (user, verified) => {
+    await setDoc(doc(firestoredb, "users", user.uid), {
+        email: user.email,
+        name: user.name,
+        password: user.password,
+        verified: verified,
+        uid: user.uid,
+    }).catch((e) => {
+        return e;
+    });
 };
 
 export const signInAuth = async (email, password) => {
@@ -186,9 +206,6 @@ export const getVolunteerDatesFB = async () => {
 };
 
 export const updateVolunteerDateFB = async (dateID, userName, add) => {
-    console.log(dateID);
-    console.log(userName);
-    console.log(add);
     let dates = await getVolunteerDatesFB();
 
     let errorMessage = "",
@@ -211,13 +228,9 @@ export const updateVolunteerDateFB = async (dateID, userName, add) => {
     if (!data.volunteers) data.volunteers = [];
 
     if (!add) {
-        console.log(data.volunteers);
-        data.volunteers.splice(data.volunteers.indexOf(userName), 1);
-        console.log(data.volunteers);
     } else if (data.volunteers.includes(userName)) {
         return "User already Signed Up";
     } else if (add) {
-        console.log("Addign");
         data.volunteers.push(userName);
     }
     await set(ref(db, `/volunteer-dates/${dateID}/`), { ...data }).catch(
@@ -238,6 +251,17 @@ export const getSignedInUserInfoFB = async (uid) => {
     } catch {
         return "No user signed in";
     }
+};
+
+export const getAllUsersFB = async () => {
+    let data = [];
+    const querySnapshot = await getDocs(collection(firestoredb, "users"));
+
+    querySnapshot.forEach((doc) => {
+        data.push(doc.data());
+    });
+
+    return data;
 };
 
 export const getSignedInUserFB = async () => {

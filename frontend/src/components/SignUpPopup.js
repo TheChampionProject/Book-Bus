@@ -1,5 +1,5 @@
 import { Modal, Button } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import VolunteerDates from "./VolunteerDates";
 import {
     getSignedInUserInfoFB,
@@ -10,7 +10,6 @@ import { auth } from "../FirebaseFunctions";
 export default function GiftConfirmation({
     showSignUpPopup,
     setShowSignUpPopup,
-
     fullUserName,
 }) {
     const [selectedDateIDs, setSelectedDateIDs] = useState([]);
@@ -21,13 +20,11 @@ export default function GiftConfirmation({
     const submit = async (e) => {
         e.preventDefault();
         let error = false;
-
         const info = await getSignedInUserInfoFB(user.uid);
 
-        if (!info.watchedVideo || !info.uploadedForm) {
-            alert(
-                "You must watch the video and upload the form before signing up for a date!"
-            );
+        if (!info.verified) {
+            // alert("You must be verified before signing up for a date!");
+            setShowSignUpPopup(false);
             return;
         }
 
@@ -50,7 +47,7 @@ export default function GiftConfirmation({
         }
 
         if (error) alert("There was an error with your request");
-        else alert("Successfully signed up for dates!");
+        else alert("Saved Changes!");
 
         setShowSignUpPopup(false);
     };
