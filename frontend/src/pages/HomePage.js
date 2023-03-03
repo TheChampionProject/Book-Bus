@@ -25,20 +25,22 @@ export default function HomePage() {
 
     useEffect(() => {
         const getUsername = async () => {
-            try {
-                if (!user && !loading) {
+            setTimeout(async () => {
+                try {
+                    if (!user && !loading) {
+                        alert("You must be signed in to view this page");
+                        window.location.href = "/login";
+                    }
+                    const info = await getSignedInUserInfoFB(user.uid);
+                    setIsVerified(info.verified);
+
+                    setUsername(info.name.split(" ")[0]);
+                    setFullUsername(info.name);
+                } catch {
                     alert("You must be signed in to view this page");
                     window.location.href = "/login";
                 }
-                const info = await getSignedInUserInfoFB(user.uid);
-                setIsVerified(info.verified);
-
-                setUsername(info.name.split(" ")[0]);
-                setFullUsername(info.name);
-            } catch {
-                alert("You must be signed in to view this page");
-                window.location.href = "/login";
-            }
+            }, 1000);
         };
         getUsername();
     }, []);
@@ -86,22 +88,25 @@ export default function HomePage() {
                     Sign Out
                 </Button>
             </div>
-
-            <div
-                className="alert alert-danger"
-                role="alert"
-                style={{
-                    position: "relative",
-                    top: "3.9em",
-                    textAlign: "center",
-                    display: `${isVerified ? "none" : ""}`,
-                }}
-            >
-                <a href="https://ministryopportunities.org/opportunity/76424">
-                    You aren't verified! Click here to begin the verification
-                    process.
-                </a>
-            </div>
+            {isVerified ? (
+                <div
+                    className="alert alert-danger"
+                    role="alert"
+                    style={{
+                        position: "relative",
+                        top: "3.9em",
+                        textAlign: "center",
+                        display: `${isVerified ? "none" : ""}`,
+                    }}
+                >
+                    <a href="https://ministryopportunities.org/opportunity/76424">
+                        You aren't verified! Click here to begin the
+                        verification process.
+                    </a>
+                </div>
+            ) : (
+                <></>
+            )}
 
             <div
                 className="StatsArea"
