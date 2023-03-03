@@ -65,6 +65,7 @@ export default function QueryRow({
 
     if (!book.volumeInfo.authors) book.volumeInfo.authors = ["N/A"];
 
+
     return (
         <tr>
             <td>{book.volumeInfo.title}</td>

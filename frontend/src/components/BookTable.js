@@ -95,9 +95,7 @@ export default function BookTable({
         const request = await setBookFB(newBook.managedBook, false);
         if (newBook.gift) await setBookFB(newBook.managedBook, true);
 
-
         if (request !== "success") {
-            console.log(newBook);
             setAlert({
                 show: true,
                 message:
@@ -108,7 +106,6 @@ export default function BookTable({
                 success: false,
             });
         } else if (request === "success") {
-            
             setAlert({
                 show: true,
                 message:

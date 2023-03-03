@@ -30,7 +30,7 @@ export default function ManageHeader({
                         variant="primary"
                         onClick={() => navigate("/home")}
                         style={{}}
-                        className="CPStyleFull"
+                        className=""
                     >
                         Home
                     </Button>
