@@ -1,7 +1,7 @@
 import { Modal, Button, Table } from "react-bootstrap";
 import React, { useEffect, useState, useRef } from "react";
-import QueryResults from "./QueryResults.js";
 import { getSearchQueryBooks } from "../FirebaseFunctions";
+import QueryResults from "./QueryResults.js";
 import "../App.css";
 
 export default function AddPopup({
@@ -44,13 +44,9 @@ export default function AddPopup({
     const searchForBook = async () => {
         let request;
         try {
-            await getSearchQueryBooks(
-                searchQuery,
-                scanMode ? "" : "titleSearch"
-            );
-       
+            request = await getSearchQueryBooks(searchQuery, scanMode);
 
-            if (request.data === "Error") {
+            if (request === "Error") {
                 successfulQuery.current = false;
                 setAlert({
                     show: true,
@@ -69,8 +65,7 @@ export default function AddPopup({
             } else {
                 successfulQuery.current = true;
                 okayToRun.current = true;
-
-                setQueryList(request.data);
+                setQueryList(request);
                 setShowTable(true);
             }
         } catch {
@@ -91,6 +86,7 @@ export default function AddPopup({
             }, 3000);
         }
     };
+
     return (
         <>
             <Modal show={showAddPopup} onHide={() => setShowAddPopup(false)}>
@@ -129,9 +125,6 @@ export default function AddPopup({
                             }}
                             style={{
                                 marginLeft: "1rem",
-                                position: "absolute",
-                                bottom: "0.3 em",
-                                left: "1em",
                             }}
                         >
                             Can't Find It? Manually Add
@@ -146,9 +139,6 @@ export default function AddPopup({
                             }}
                             style={{
                                 marginLeft: "65%",
-                                position: "absolute",
-                                bottom: "0.3 em",
-                                left: "1em",
                             }}
                         >
                             {scanMode ? "Leave " : "Enter "}Scan Mode

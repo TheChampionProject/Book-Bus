@@ -295,35 +295,25 @@ export const signOutUser = async () => {
     await signOut(auth);
 };
 
-export const getSearchQueryBooks = async (req, res) => {
+export const getSearchQueryBooks = async (title, titleMode) => {
     let books = [],
         booksRequest;
 
-    if (!req.body.title) {
-        res.status(400);
-        throw new Error("Missing Title");
-    }
-
-    if (req.body.mode === "titleSearch") {
-        booksRequest = await axios.get(
-            GOOGLE_BOOKS_API_BASE_URL + req.body.title
-        );
+    if (titleMode) {
+        booksRequest = await axios.get(GOOGLE_BOOKS_API_BASE_URL + title);
     } else {
         booksRequest = await axios.get(
-            GOOGLE_BOOKS_API_BASE_URL + "isbn:" + req.body.title
+            GOOGLE_BOOKS_API_BASE_URL + "isbn:" + title
         );
     }
 
     try {
-        if (!booksRequest.data.items) {
-            res.send("Error");
-        } else {
-            for (let i = 0; i < booksRequest.data.items.length; i++) {
-                books.push(booksRequest.data.items[i]);
-            }
-            res.send(books);
+        for (let i = 0; i < booksRequest.data.items.length; i++) {
+            books.push(booksRequest.data.items[i]);
         }
+
+        return books;
     } catch {
-        res.send("Error");
+        return "Error";
     }
 };
