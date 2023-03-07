@@ -88,7 +88,7 @@ export default function HomePage() {
                     Sign Out
                 </Button>
             </div>
-            {isVerified ? (
+            {!isVerified ? (
                 <div
                     className="alert alert-danger"
                     role="alert"
