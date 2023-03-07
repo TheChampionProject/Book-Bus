@@ -217,6 +217,18 @@ export default function HomePage() {
                         Verify volunteers for bookbus events
                     </p>
                 </div>
+                <div className="Statistic">
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-square-md"
+                        onClick={() => window.location.href="https://www.paypal.com/paypalme/"}
+                    >
+                        Donate
+                    </button>
+                    <p className="StatDescription">
+                        Donate to the Champion Project. To verify each volunteer, it costs us $8. We appreciate any donations!
+                    </p>
+                </div>
             </div>
 
             <SignUpPopup
