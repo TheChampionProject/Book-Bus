@@ -299,7 +299,7 @@ export const getSearchQueryBooks = async (title, titleMode) => {
     let books = [],
         booksRequest;
 
-    if (titleMode) {
+    if (!titleMode) {
         booksRequest = await axios.get(GOOGLE_BOOKS_API_BASE_URL + title);
     } else {
         booksRequest = await axios.get(
