@@ -3,21 +3,37 @@ dotenv.config();
 
 
 export const firebaseConfig = {
-    apiKey: process.env.REACT_APP_API_KEY,
+//    apiKey: process.env.REACT_APP_API_KEY,
+//
+//    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+//
+//    databaseURL: process.env.REACT_APP_DATABASE_URL,
+//
+//    projectId: process.env.REACT_APP_PROJECT_ID,
+//
+//    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+//
+//    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+//
+//    appId: process.env.REACT_APP_APP_ID,
+//
+//    measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    apiKey: "AIzaSyBhMBZ_ZPuMecy3c6DTZ6csQkIbyBd161U",
 
-    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    authDomain: "the-champion-project-database.firebaseapp.comprocess.env.REACT_APP_AUTH_DOMAIN",
 
-    projectId: process.env.REACT_APP_PROJECT_ID,
+    databaseURL: "https://the-champion-project-database-default-rtdb.firebaseio.com",
 
-    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    projectId: "the-champion-project-database",
 
-    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    storageBucket: "the-champion-project-database.appspot.com",
 
-    appId: process.env.REACT_APP_APP_ID,
+    messagingSenderId: "11924760395",
 
-    measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+    appId: "1:11924760395:web:34e6feac29acce414b2ace",
+
+    measurementId: "G-29R2EDPLS5"
     
 };
 

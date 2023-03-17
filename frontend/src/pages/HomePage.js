@@ -22,6 +22,7 @@ export default function HomePage() {
 
     const [showSignUpPopup, setShowSignUpPopup] = useState(false);
     const [isVerified, setIsVerified] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         const getUsername = async () => {
@@ -36,6 +37,7 @@ export default function HomePage() {
 
                     setUsername(info.name.split(" ")[0]);
                     setFullUsername(info.name);
+                    setIsAdmin(info.admin);
                 } catch {
                     alert("You must be signed in to view this page");
                     window.location.href = "/login";
@@ -179,18 +181,22 @@ export default function HomePage() {
                         View statistics about the book database{" "}
                     </p>
                 </div>
-                <div className="Statistic">
-                    <button
-                        type="button"
-                        className="btn btn-primary btn-square-md"
-                        onClick={() => navigate("/admin")}
-                    >
-                        Change Events
-                    </button>
-                    <p className="StatDescription">
-                        Change volunteer event dates and view volunteers
-                    </p>
-                </div>
+                {isAdmin ? (
+                    <div className="Statistic">
+                        <button
+                            type="button"
+                            className="btn btn-primary btn-square-md"
+                            onClick={() => navigate("/admin")}
+                        >
+                            Change Events
+                        </button>
+                        <p className="StatDescription">
+                            Change volunteer event dates and view volunteers
+                        </p>
+                    </div>
+                ) : (
+                    <></>
+                )}
                 <div className="Statistic">
                     <button
                         type="button"
@@ -205,28 +211,36 @@ export default function HomePage() {
                         Sign up to volunteer at a bookbus event
                     </p>
                 </div>
+                {isAdmin ? (
+                    <div className="Statistic">
+                        <button
+                            type="button"
+                            className="btn btn-primary btn-square-md"
+                            onClick={() => navigate("/verifylist")}
+                        >
+                            Verify
+                        </button>
+                        <p className="StatDescription">
+                            Verify volunteers for bookbus events
+                        </p>
+                    </div>
+                ) : (
+                    <></>
+                )}
                 <div className="Statistic">
                     <button
                         type="button"
                         className="btn btn-primary btn-square-md"
-                        onClick={() => navigate("/verifylist")}
-                    >
-                        Verify
-                    </button>
-                    <p className="StatDescription">
-                        Verify volunteers for bookbus events
-                    </p>
-                </div>
-                <div className="Statistic">
-                    <button
-                        type="button"
-                        className="btn btn-primary btn-square-md"
-                        onClick={() => window.location.href="https://www.paypal.com/paypalme/"}
+                        onClick={() =>
+                            (window.location.href =
+                                "https://thechampionproject.org/donate/")
+                        }
                     >
                         Donate
                     </button>
                     <p className="StatDescription">
-                        Donate to the Champion Project. To verify each volunteer, it costs us $8. We appreciate any donations!
+                        Donate to the Champion Project. To verify each
+                        volunteer, it costs us $8. We appreciate any donations!
                     </p>
                 </div>
             </div>

@@ -75,15 +75,35 @@ export default function VerifyList() {
                     marginTop: "5em",
                 }}
             >
+                <h4>Full Verification</h4>
+
                 {allUserData.map((data, number) => (
                     <div key={number} className="form-check">
                         <input
                             className="form-check-input"
                             type="checkbox"
                             defaultChecked={data.verified}
-                            onChange={(e) =>
-                                tryToCheck(data, e.target.checked)
-                            }
+                            onChange={(e) => tryToCheck(data, e.target.checked)}
+                        ></input>
+                        <label className="form-check-label">{data.name}</label>
+                    </div>
+                ))}
+            </div>
+            <div
+                style={{
+                    display: "grid",
+                    justifyContent: "center",
+                    marginTop: "5em",
+                }}
+            >
+                <h4>Book Verification</h4>
+                {allUserData.map((data, number) => (
+                    <div key={number} className="form-check">
+                        <input
+                            className="form-check-input"
+                            type="checkbox"
+                            defaultChecked={data.verified}
+                            onChange={(e) => tryToCheck(data, e.target.checked)}
                         ></input>
                         <label className="form-check-label">{data.name}</label>
                     </div>
