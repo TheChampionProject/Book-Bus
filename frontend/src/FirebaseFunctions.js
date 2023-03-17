@@ -139,6 +139,7 @@ export const signUpAuth = async (email, password, first, last) => {
         name: first + " " + last,
         password: password,
         verified: false,
+        bookVerified: false,
         uid: auth.currentUser.uid,
     }).catch((e) => {
         return e;
@@ -152,6 +153,19 @@ export const updateUserVerificationFB = async (user, verified) => {
         name: user.name,
         password: user.password,
         verified: verified,
+        uid: user.uid,
+    }).catch((e) => {
+        return e;
+    });
+};
+
+export const updateUserBookVerificationFB = async (user, bookVerified) => {
+    await setDoc(doc(firestoredb, "users", user.uid), {
+        email: user.email,
+        name: user.name,
+        password: user.password,
+        verified: user.verified,
+        bookVerified: bookVerified,
         uid: user.uid,
     }).catch((e) => {
         return e;

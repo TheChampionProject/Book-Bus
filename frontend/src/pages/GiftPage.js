@@ -3,7 +3,9 @@ import GiftConfirmation from "../components/GiftConfirmation.js";
 import TableStructure from "../components/TableStructure";
 import ManageHeader from "../components/ManageHeader.js";
 import "../App.css";
-import UserProtection from "../components/UserProtection.js";
+import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, getSignedInUserInfoFB } from "../FirebaseFunctions";
 
 export default function ManagePage() {
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
@@ -18,9 +20,33 @@ export default function ManagePage() {
     const [books, setBooks] = useState(null);
     let [genreFilter, setGenreFilter] = useState("All");
 
+    const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate();
+    useEffect(() => {
+        const getUsername = async () => {
+            try {
+                if (!loading && user === null) {
+                    alert("You must be signed in to view this page");
+                    navigate("/login");
+                }
+
+                const info = await getSignedInUserInfoFB(user.uid);
+
+                if (!info.verified) {
+                    window.location.href = "/login";
+                    alert("You must be verified to gift books!");
+                    return;
+                }
+            } catch {
+                window.location.href = "/login";
+                alert("You must be signed in to view this page");
+            }
+        };
+        getUsername();
+    }, []);
+
     return (
         <>
-            <UserProtection />
             <ManageHeader
                 setSearchQuery={setSearchQuery}
                 alert={alert}

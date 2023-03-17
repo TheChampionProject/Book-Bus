@@ -6,6 +6,7 @@ import {
     getSignedInUserInfoFB,
     getAllUsersFB,
     updateUserVerificationFB,
+    updateUserBookVerificationFB
 } from "../FirebaseFunctions";
 import { Button } from "react-bootstrap";
 
@@ -46,6 +47,10 @@ export default function VerifyList() {
 
     const tryToCheck = async (data, checked) => {
         await updateUserVerificationFB(data, checked);
+    };
+
+     const tryToCheckBookVerification = async (data, checked) => {
+        await updateUserBookVerificationFB(data, checked);
     };
 
     return (
@@ -93,7 +98,7 @@ export default function VerifyList() {
                 style={{
                     display: "grid",
                     justifyContent: "center",
-                    marginTop: "5em",
+                    marginTop: "3em",
                 }}
             >
                 <h4>Book Verification</h4>
@@ -102,8 +107,8 @@ export default function VerifyList() {
                         <input
                             className="form-check-input"
                             type="checkbox"
-                            defaultChecked={data.verified}
-                            onChange={(e) => tryToCheck(data, e.target.checked)}
+                            defaultChecked={data.bookVerified || data.verified}
+                            onChange={(e) => tryToCheckBookVerification(data, e.target.checked)}
                         ></input>
                         <label className="form-check-label">{data.name}</label>
                     </div>

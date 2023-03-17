@@ -4,9 +4,11 @@ import "../App.css";
 import EditPopup from "../components/EditPopup.js";
 import AddPopup from "../components/AddPopup.js";
 import ManageHeader from "../components/ManageHeader";
-import UserProtection from "../components/UserProtection.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../FirebaseFunctions";
+import { useNavigate } from "react-router-dom";
+import { getSignedInUserInfoFB } from "../FirebaseFunctions";
+
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [showEditPoup, setShowEditPopup] = useState(false); // Show the popup
@@ -39,10 +41,38 @@ export default function ManagePage() {
         return () => window.removeEventListener("keydown", statusKeyboardInput);
     });
 
+    const navigate = useNavigate();
+    useEffect(() => {
+        const getUsername = async () => {
+            try {
+                if (!loading && user === null) {
+                    window.location.href = "/login";
+                    alert("You must be signed in to view this page");
+                }
+
+                const info = await getSignedInUserInfoFB(user.uid);
+
+                if (info.verified || info.bookVerified) {
+                 
+                } else {
+                       window.location.href = "/login";
+
+                    alert(
+                        "You must be verified before changing the book database!"
+                    );
+
+                    return;
+                }
+            } catch {
+                window.location.href = "/login";
+                alert("You must be signed in to view this page");
+            }
+        };
+        getUsername();
+    }, []);
+
     return (
         <>
-            <UserProtection />
-
             <ManageHeader
                 setSearchQuery={setSearchQuery}
                 alert={alert}
