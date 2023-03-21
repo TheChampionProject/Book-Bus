@@ -4,9 +4,11 @@ import "../App.css";
 import EditPopup from "../components/EditPopup.js";
 import AddPopup from "../components/AddPopup.js";
 import ManageHeader from "../components/ManageHeader";
-import UserProtection from "../components/UserProtection.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../FirebaseFunctions";
+import { useNavigate } from "react-router-dom";
+import { getSignedInUserInfoFB } from "../FirebaseFunctions";
+
 export default function ManagePage() {
     const [book, setBook] = useState(null); // The book that gets passed to popup
     const [showEditPoup, setShowEditPopup] = useState(false); // Show the popup
@@ -39,10 +41,37 @@ export default function ManagePage() {
         return () => window.removeEventListener("keydown", statusKeyboardInput);
     });
 
+    const navigate = useNavigate();
+    useEffect(() => {
+        const getUsername = async () => {
+            try {
+                if (!loading && user === null) {
+                    alert("You must be signed in to view this page");
+                    navigate("/login")
+                }
+
+                const info = await getSignedInUserInfoFB(user.uid);
+
+                if ((info.didRequirements && info.churchVerified) || info.bookVerified) {
+                    return;
+                } else {
+                    alert("You must be verified by the Champion Project to change the book database.");
+                    navigate("/login")                   
+                    return;
+                }
+            } catch {
+                alertFN("You must be verified by the Champion Project to change the book database.");
+                window.location.href = "/login";
+            }
+        };
+        getUsername();
+    }, []);
+
+    const alertFN = (message) => {window.alert(message)}
+
+
     return (
         <>
-            <UserProtection />
-
             <ManageHeader
                 setSearchQuery={setSearchQuery}
                 alert={alert}

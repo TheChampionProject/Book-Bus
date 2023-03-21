@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-
 export const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
 
@@ -18,6 +17,4 @@ export const firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID,
 
     measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-    
 };
-
