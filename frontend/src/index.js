@@ -10,6 +10,7 @@ import React from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import AuthPage from "./pages/AuthPage.js";
 import VerifyList from "./pages/VerifyList.js";
+import Verification from "./pages/Verification.js"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,11 +20,12 @@ root.render(
             <Route path="/manage" element={<ManagePage />} />
             <Route path="/gift" element={<GiftPage />} />
             <Route path="/donate" element={<DonatePage />} />
-            <Route path="/" element={<DonatePage />} />
+            <Route path="/*" element={<DonatePage />} />
             <Route path="/stats" element={<StatsPage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/verifylist" element={<VerifyList />} />
+            <Route path="/verify" element={<Verification />} />
         </Routes>
     </Router>
 );
