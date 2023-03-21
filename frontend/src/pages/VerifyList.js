@@ -5,8 +5,8 @@ import {
     auth,
     getSignedInUserInfoFB,
     getAllUsersFB,
-    updateUserVerificationFB,
-    updateUserBookVerificationFB
+    updateUserChurchVerificationFB,
+    updateUserBookVerificationFB,
 } from "../FirebaseFunctions";
 import { Button } from "react-bootstrap";
 
@@ -46,10 +46,10 @@ export default function VerifyList() {
     }, []);
 
     const tryToCheck = async (data, checked) => {
-        await updateUserVerificationFB(data, checked);
+        await updateUserChurchVerificationFB(data, checked);
     };
 
-     const tryToCheckBookVerification = async (data, checked) => {
+    const tryToCheckBookVerification = async (data, checked) => {
         await updateUserBookVerificationFB(data, checked);
     };
 
@@ -80,14 +80,14 @@ export default function VerifyList() {
                     marginTop: "5em",
                 }}
             >
-                <h4>Full Verification</h4>
+                <h4>Church Verification</h4>
 
                 {allUserData.map((data, number) => (
                     <div key={number} className="form-check">
                         <input
                             className="form-check-input"
                             type="checkbox"
-                            defaultChecked={data.verified}
+                            defaultChecked={data.churchVerified}
                             onChange={(e) => tryToCheck(data, e.target.checked)}
                         ></input>
                         <label className="form-check-label">{data.name}</label>
@@ -101,14 +101,19 @@ export default function VerifyList() {
                     marginTop: "3em",
                 }}
             >
-                <h4>Book Verification</h4>
+                <h4>Only Book Verification</h4>
                 {allUserData.map((data, number) => (
                     <div key={number} className="form-check">
                         <input
                             className="form-check-input"
                             type="checkbox"
                             defaultChecked={data.bookVerified || data.verified}
-                            onChange={(e) => tryToCheckBookVerification(data, e.target.checked)}
+                            onChange={(e) =>
+                                tryToCheckBookVerification(
+                                    data,
+                                    e.target.checked
+                                )
+                            }
                         ></input>
                         <label className="form-check-label">{data.name}</label>
                     </div>

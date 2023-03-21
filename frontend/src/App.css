@@ -17,6 +17,11 @@
     color: white;
 }
 
+.Link {
+    color: "0D6EFD";
+    text-decoration: underline;
+}
+
 .BookTable {
     flex-grow: 1;
     overflow: auto;

@@ -61,7 +61,6 @@ export const setBookFB = async (book, gift) => {
     let archiveDates = [],
         archiveDate;
     let prevArchivedBooks = [];
-    let sendAddDates = "";
     let params;
 
     if (gift) {
@@ -147,12 +146,30 @@ export const signUpAuth = async (email, password, first, last) => {
     return currentUser;
 };
 
-export const updateUserVerificationFB = async (user, verified) => {
+export const updateUserChurchVerificationFB = async (user, churchVerified) => {
     await setDoc(doc(firestoredb, "users", user.uid), {
         email: user.email,
         name: user.name,
         password: user.password,
-        verified: verified,
+        churchVerified: churchVerified,
+        bookVerified: user.bookVerified,
+        didRequirements: user.didRequirements,
+        admin: user.admin ? user.admin : false,
+        uid: user.uid,
+    }).catch((e) => {
+        return e;
+    });
+};
+
+export const updateUserRequirementsFB = async (user, didRequirements) => {
+    await setDoc(doc(firestoredb, "users", user.uid), {
+        email: user.email,
+        name: user.name,
+        password: user.password,
+        churchVerified: user.churchVerified,
+        bookVerified: user.bookVerified,
+        didRequirements: didRequirements,
+        admin: user.admin ? user.admin : false,
         uid: user.uid,
     }).catch((e) => {
         return e;
@@ -164,8 +181,10 @@ export const updateUserBookVerificationFB = async (user, bookVerified) => {
         email: user.email,
         name: user.name,
         password: user.password,
-        verified: user.verified,
+        churchVerified: user.churchVerified,
+        didRequirements: user.didRequirements,
         bookVerified: bookVerified,
+        admin: user.admin ? user.admin : false,
         uid: user.uid,
     }).catch((e) => {
         return e;
@@ -330,4 +349,13 @@ export const getSearchQueryBooks = async (title, titleMode) => {
     } catch {
         return "Error";
     }
+};
+
+export const uploadFormFB = async (name, verificationFile) => {
+    const targetRef = storageRef(
+        storage,
+        `verificationForms/${name}-verificationForm.pdf`
+    );
+
+    await uploadBytes(targetRef, verificationFile).then(async (res) => {});
 };

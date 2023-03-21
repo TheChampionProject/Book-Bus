@@ -2,26 +2,20 @@ import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOutUser, auth, getSignedInUserInfoFB } from "../FirebaseFunctions";
-import {
-    DialogActions,
-    Dialog,
-    DialogTitle,
-    Stack,
-    Button as MUIButton,
-} from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
 import SignUpPopup from "../components/SignUpPopup";
 
 export default function HomePage() {
     const [username, setUsername] = useState("");
     const [fullUserName, setFullUsername] = useState(null);
-    const [open, setOpen] = useState(false);
     const [user, loading] = useAuthState(auth);
 
     const navigate = useNavigate();
 
     const [showSignUpPopup, setShowSignUpPopup] = useState(false);
-    const [isVerified, setIsVerified] = useState(false);
+    const [churchVerified, setIsChurchVerified] = useState(false);
+    const [didRequirements, setDidRequirements] = useState(false);
+
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
@@ -33,7 +27,8 @@ export default function HomePage() {
                         window.location.href = "/login";
                     }
                     const info = await getSignedInUserInfoFB(user.uid);
-                    setIsVerified(info.verified);
+                    setIsChurchVerified(info.churchVerified);
+                    setDidRequirements(info.didRequirements);
 
                     setUsername(info.name.split(" ")[0]);
                     setFullUsername(info.name);
@@ -61,8 +56,18 @@ export default function HomePage() {
         e.preventDefault();
         const info = await getSignedInUserInfoFB(user.uid);
 
-        if (!info.verified) {
-            alert("You must be verified before signing up for a date!");
+        if (!info.churchVerified) {
+            alert(
+                "You must be verified with the church before signing up for a date!"
+            );
+            setShowSignUpPopup(false);
+            return;
+        } else setShowSignUpPopup(true);
+
+        if (!info.didRequirements) {
+            alert(
+                "You must complete the verification requirements before signing up for a date!"
+            );
             setShowSignUpPopup(false);
             return;
         } else setShowSignUpPopup(true);
@@ -90,7 +95,7 @@ export default function HomePage() {
                     Sign Out
                 </Button>
             </div>
-            {!isVerified ? (
+            {!churchVerified ? (
                 <div
                     className="alert alert-danger"
                     role="alert"
@@ -98,12 +103,32 @@ export default function HomePage() {
                         position: "relative",
                         top: "3.9em",
                         textAlign: "center",
-                        display: `${isVerified ? "none" : ""}`,
+                        display: `${churchVerified ? "none" : ""}`,
                     }}
                 >
                     <a href="https://ministryopportunities.org/opportunity/76424">
                         You aren't verified! Click here to begin the
                         verification process.
+                    </a>
+                </div>
+            ) : (
+                <></>
+            )}
+
+            {!didRequirements ? (
+                <div
+                    className="alert alert-danger"
+                    role="alert"
+                    style={{
+                        position: "relative",
+                        top: "3.9em",
+                        textAlign: "center",
+                        display: `${churchVerified ? "none" : ""}`,
+                    }}
+                >
+                    <a className="Link" onClick={(e) => {e.preventDefault(); navigate("/verify"); }}>
+                        You haven't completed the verification requirements!
+                        Click here to to do so.
                     </a>
                 </div>
             ) : (
@@ -125,38 +150,6 @@ export default function HomePage() {
                     <p className="StatDescription">Add books to the database</p>
                 </div>
 
-                <Dialog open={open}>
-                    <DialogTitle>
-                        Do you Want to Become a Verified Volunteer for The
-                        Champion Project?
-                    </DialogTitle>
-                    <DialogActions>
-                        <Stack justifyContent="space-evenly" direction="row">
-                            <MUIButton
-                                onClick={() => {
-                                    localStorage.setItem(
-                                        "hideVerifyPopup",
-                                        "true"
-                                    );
-
-                                    setOpen(false);
-                                }}
-                                color={"error"}
-                            >
-                                Skip
-                            </MUIButton>
-                            <MUIButton
-                                onClick={() => {
-                                    setOpen(false);
-                                }}
-                                href="https://ministryopportunities.org/opportunity/76424"
-                                color="success"
-                            >
-                                Sure
-                            </MUIButton>
-                        </Stack>
-                    </DialogActions>
-                </Dialog>
                 <div className="Statistic">
                     <button
                         type="button"

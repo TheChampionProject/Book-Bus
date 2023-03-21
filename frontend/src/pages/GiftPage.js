@@ -32,7 +32,8 @@ export default function ManagePage() {
 
                 const info = await getSignedInUserInfoFB(user.uid);
 
-                if (!info.verified) {
+                if (info.didRequirements && info.churchVerified) {
+                } else {
                     window.location.href = "/login";
                     alert("You must be verified to gift books!");
                     return;

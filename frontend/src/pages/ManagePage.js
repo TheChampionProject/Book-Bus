@@ -46,30 +46,29 @@ export default function ManagePage() {
         const getUsername = async () => {
             try {
                 if (!loading && user === null) {
-                    window.location.href = "/login";
                     alert("You must be signed in to view this page");
+                    navigate("/login")
                 }
 
                 const info = await getSignedInUserInfoFB(user.uid);
 
-                if (info.verified || info.bookVerified) {
-                 
+                if ((info.didRequirements && info.churchVerified) || info.bookVerified) {
+                    return;
                 } else {
-                       window.location.href = "/login";
-
-                    alert(
-                        "You must be verified before changing the book database!"
-                    );
-
+                    alert("You must be verified by the Champion Project to change the book database.");
+                    navigate("/login")                   
                     return;
                 }
             } catch {
+                alertFN("You must be verified by the Champion Project to change the book database.");
                 window.location.href = "/login";
-                alert("You must be signed in to view this page");
             }
         };
         getUsername();
     }, []);
+
+    const alertFN = (message) => {window.alert(message)}
+
 
     return (
         <>

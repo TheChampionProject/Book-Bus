@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function DonatePage() {
     const [managedBook, setManagedBook] = useState(null); // The book entry that needs to be edited
-    const [alert, setAlert] = useState({
+    const [setAlert] = useState({
         show: false,
         message: "",
         success: false,
-    }); // Show the alert
+    });
     let [books, setBooks] = useState(null);
     const navigate = useNavigate();
 

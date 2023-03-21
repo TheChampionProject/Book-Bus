@@ -12,14 +12,14 @@ import {
     DialogContent,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { resetPasswordAuth, signInAuth, auth } from "../FirebaseFunctions";
+import { resetPasswordAuth, signInAuth, auth, getSignedInUserInfoFB } from "../FirebaseFunctions";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Login = ({ handleChange }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [resetEmail, setResetEmail] = useState("");
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const [open, setOpen] = useState(false);
     let navigate = useNavigate();
 
@@ -32,8 +32,11 @@ const Login = ({ handleChange }) => {
             alert("Fill in all fields!");
         } else {
             try {
-                await signInAuth(email, password).then((response) => {
-                    navigate('/home')
+                await signInAuth(email, password).then(async () => {
+                    const info = await getSignedInUserInfoFB(user.uid);
+                    if (info.didRequirements) 
+                        navigate('/home');
+                    else navigate("/verify")
                 });
             } catch (err) {
                 console.log(err);
