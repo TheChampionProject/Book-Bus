@@ -37,6 +37,10 @@ export default function GiftConfirmation({
       error = fbRequest === "failure";
     }
 
+
+    console.log(selectedDateIDs)
+    console.log(unselectedDateIDs)
+
     for (let i = 0; i < unselectedDateIDs.length; i++) {
       let fbRequest = await updateVolunteerDateFB(
         unselectedDateIDs[i],
