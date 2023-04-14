@@ -263,6 +263,7 @@ export const updateVolunteerDateFB = async (dateID, userName, add) => {
   if (!data.volunteers) data.volunteers = [];
 
   if (!add) {
+    data.volunteers = data.volunteers.filter((user) => user !== userName);
   } else if (data.volunteers.includes(userName)) {
     return "User already Signed Up";
   } else if (add) {
