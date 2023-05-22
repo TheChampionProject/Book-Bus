@@ -62,6 +62,9 @@ export default function Verification() {
         <h2>
           First watch the video, then download, sign, and reupload the form
         </h2>
+        <h2>
+          <b>NOTE:</b> This is much more difficult on mobile, so we recommend using a computer
+        </h2>
       </Grid>
       <Grid align="center">
         <ReactPlayer
