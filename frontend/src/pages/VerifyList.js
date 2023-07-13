@@ -80,7 +80,7 @@ export default function VerifyList() {
                     marginTop: "5em",
                 }}
             >
-                <h4>Church Verification</h4>
+                <h4>Full Verification</h4>
 
                 {allUserData.map((data, number) => (
                     <div key={number} className="form-check">
