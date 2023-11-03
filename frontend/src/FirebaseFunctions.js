@@ -163,6 +163,24 @@ export const updateUserChurchVerificationFB = async (user, churchVerified) => {
   });
 };
 
+export const updateUserAdminFB = async (user, admin) => {
+    console.log("updating admin for user: " + user.name + " to " + admin)
+    await setDoc(doc(firestoredb, "users", user.uid), {
+      email: user.email,
+      name: user.name,
+      password: user.password,
+      churchVerified: true,
+      bookVerified: true,
+      didRequirements: user.didRequirements,
+      admin: admin,
+      uid: user.uid,
+    }).catch((e) => {
+      return e;
+    });
+
+    console.log("updated admin for user: " + user.name + " to " + admin)
+  };
+
 export const updateUserRequirementsFB = async (user, didRequirements) => {
   await setDoc(doc(firestoredb, "users", user.uid), {
     email: user.email,

@@ -220,6 +220,20 @@ export default function HomePage() {
         ) : (
           <></>
         )}
+        {isAdmin ? (
+          <div className="Statistic">
+            <button
+              type="button"
+              className="btn btn-primary btn-square-md"
+              onClick={() => navigate("/adminlist")}
+            >
+              Admin
+            </button>
+            <p className="StatDescription">Add admin access for other users</p>
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="Statistic">
           <button
             type="button"
