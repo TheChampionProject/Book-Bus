@@ -5,6 +5,7 @@ import DonatePage from "./pages/DonatePage.js";
 import HomePage from "./pages/HomePage.js";
 import StatsPage from "./pages/StatsPage.js";
 import AdminPage from "./pages/AdminPage.js";
+import AdminList from "./pages/AdminList"
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
@@ -25,6 +26,7 @@ root.render(
             <Route path="/home" element={<HomePage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/verifylist" element={<VerifyList />} />
+            <Route path="/adminlist" element={<AdminList />} />
             <Route path="/verify" element={<Verification />} />
         </Routes>
     </Router>
